@@ -12,11 +12,19 @@
 </head>
 <body>
 
-    <x-navbar/>
+    <div class="flex flex-col h-screen">
 
-    <main>
-        {{$slot}}
-    </main>
+        <x-navbar/>
+
+        <div class="flex-grow">
+            <main class="h-full">
+                {{$slot}}
+            </main>
+        </div>
+
+        {{-- <footer>asas</footer> --}}
+    
+    </div>
 
     <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
 </body>
