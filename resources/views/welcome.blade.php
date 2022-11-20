@@ -13,6 +13,7 @@
 
     <h1 class="text-6xl font-normal leading-normal mt-0 mb-2 text-black">Tailwind</h1>
     <p class="text-red-500">Here is some red text!</p>
-    
+    <i class="fa-solid fa-cart-shopping"></i>
+
 </body>
 </html>
