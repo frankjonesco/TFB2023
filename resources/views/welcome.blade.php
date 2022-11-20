@@ -7,6 +7,8 @@
 
     @vite('resources/css/app.css')
 
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.4/dist/flowbite.min.css" />
+
     <title>Top Family Business 2023</title>
 </head>
 <body>
@@ -15,5 +17,6 @@
     <p class="text-red-500">Here is some red text!</p>
     <i class="fa-solid fa-cart-shopping"></i>
 
+    <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
 </body>
 </html>
