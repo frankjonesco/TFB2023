@@ -13,9 +13,10 @@
 </head>
 <body>
 
-    <h1 class="text-6xl font-normal leading-normal mt-0 mb-2 text-black">Tailwind</h1>
-    <p class="text-red-500">Here is some red text!</p>
-    <i class="fa-solid fa-cart-shopping"></i>
+
+    <p class="bg-indigo-500 text-black dark:text-white">Here is my text!</p>
+
+    <x-navbar/>
 
     <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
 </body>
