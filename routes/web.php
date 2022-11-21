@@ -23,7 +23,19 @@ Route::get('/', function () {
 // Show all sectors
 Route::get('sectors', [SectorController::class, 'index']);
     // Dashboard SectorController
+    // Show all sectors
     Route::get('dashboard/sectors', [SectorController::class, 'adminIndex']);
+
+    // Show edit text
+    Route::get('dashboard/sectors/{sector}/text/edit', [SectorController::class, 'editText']);
+    // Update text
+    Route::put('dashboard/sectors/{sector}/text/update', [SectorController::class, 'updateText']);
+    
+    // Show edit image
+    Route::get('dashboard/sectors/{sector}/image/edit', [SectorController::class, 'editImage']);
+    
+    // Show single sector   
+    Route::get('dashboard/sectors/{sector}', [SectorController::class, 'adminShow']);
 
 // DashboardController
 // Dashboard index

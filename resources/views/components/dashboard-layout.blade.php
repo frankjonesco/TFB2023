@@ -2,7 +2,7 @@
     <x-container-full-w>
         <div class="flex h-full">
             <x-dashboard-sidbar/>
-            <div class="w-full h-full p-10">
+            <div class="w-full h-full px-5 py-4">
                 {{$slot}}
             </div>
         </div>

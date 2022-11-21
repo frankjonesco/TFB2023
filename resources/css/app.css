@@ -8,9 +8,28 @@
     h1 {
       @apply text-5xl;
       @apply font-semibold;
+      @apply py-5;
     }
     h2 {
       @apply text-xl;
+    }
+
+    button, .btn{
+      @apply text-white;
+      @apply bg-blue-700;
+      @apply hover:bg-blue-800;
+      @apply focus:ring-1;
+      @apply focus:ring-blue-300;
+      @apply font-normal;
+      @apply rounded-lg;
+      @apply text-sm;
+      @apply px-3;
+      @apply py-1;
+      @apply mr-2;
+    }
+
+    i{
+      @apply mr-1;
     }
 
   }

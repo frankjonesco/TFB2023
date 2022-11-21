@@ -1,5 +1,5 @@
-<aside class="w-64 h-full" aria-label="Sidebar">
-    <div class="overflow-y-auto py-4 px-3 bg-gray-50 h-full dark:bg-gray-800">
+<aside class="w-80" aria-label="Sidebar">
+    <div class="overflow-y-auto m-4 px-3 py-4 border rounded-lg border-gray-600 bg-gray-50 dark:bg-gray-900">
         <ul class="space-y-2">
             <li>
                 <a href="/dashboard" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">

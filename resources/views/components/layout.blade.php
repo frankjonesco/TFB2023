@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 
     <title>Top Family Business 2023</title>
 </head>
-<body>
+<body class="text-black bg-white dark:text-white dark:bg-gray-800">
 
     <div class="flex flex-col h-screen">
 
