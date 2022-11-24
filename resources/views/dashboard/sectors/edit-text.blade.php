@@ -13,7 +13,7 @@
             <input type="text" id="name" name="name" class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="Sector name" value="{{old('name') ?? $sector->name}}" oninput="window.updateSlug(this, 'slug', 'inputSlug')">
             <p class="mt-2 text-xs font-light text-green-600 dark:text-green-500">Slug: <span id="slug">{{$sector->slug}}</span></p>
             @error('name')
-                <p class="mt-2 text-xs font-light text-red-600 dark:text-red-500">Please enter a name.</p>
+                <p class="mt-2 text-xs font-light text-red-600 dark:text-red-500">{{$message}}</p>
             @enderror
         </div>
 
@@ -36,7 +36,7 @@
                 <option value="unlisted" class="block w-full">Unlisted</option>
             </select>
             @error('status')
-                <p class="mt-2 text-xs font-light text-red-600 dark:text-red-500">You must select a visibility setting.</p>
+                <p class="mt-2 text-xs font-light text-red-600 dark:text-red-500">You must set your visibility status.</p>
             @enderror
 
         </div>

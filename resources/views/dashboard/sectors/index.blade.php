@@ -2,7 +2,7 @@
     
     <h1>Sectors</h1>
     <p class="mb-9">Use sectors to organise your companies and news articles. Each sector also contains industry folders.</p>
-
+    <x-alerts/>
     <table class="table-auto w-full">
         <thead>
             <tr>
@@ -23,10 +23,12 @@
                         {{$sector->updated_at}}
                     </td>
                     <td class="p-4 pl-8">
-                        <button>
-                            <i class="fa-solid fa-marker"></i>
-                            Edit
-                        </button>
+                        <a href="/dashboard/sectors/{{$sector->hex}}/text/edit">
+                            <button>
+                                <i class="fa-solid fa-marker"></i>
+                                Edit
+                            </button>
+                        </a>
                     </td>
                 </tr>
             @endforeach

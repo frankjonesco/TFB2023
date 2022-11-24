@@ -33,7 +33,19 @@ Route::get('sectors', [SectorController::class, 'index']);
     
     // Show edit image
     Route::get('dashboard/sectors/{sector}/image/edit', [SectorController::class, 'editImage']);
+    // Update image
+    Route::put('dashboard/sectors/{sector}/image/update', [SectorController::class, 'updateImage']);
+    // Crop image
+    Route::get('dashboard/sectors/{sector}/image/crop', [SectorController::class, 'cropImage']);
+    // Render image
+    Route::post('dashboard/sectors/{sector}/image/render', [SectorController::class, 'renderImage']);
     
+    // Show delete form
+    Route::get('dashboard/sectors/{sector}/delete', [SectorController::class, 'deleteOptions']);
+    // Delete sector
+    Route::delete('dashboard/sectors/{sector}/delete', [SectorController::class, 'delete']);
+    
+
     // Show single sector   
     Route::get('dashboard/sectors/{sector}', [SectorController::class, 'adminShow']);
 

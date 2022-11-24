@@ -7,7 +7,6 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-
     <title>Top Family Business 2023</title>
 </head>
 <body class="text-black bg-white dark:text-white dark:bg-gray-800">

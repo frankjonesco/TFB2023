@@ -13,7 +13,7 @@
             Change image
         </button>
     </a>
-    <a href="">
+    <a href="/dashboard/sectors/{{$sector->hex}}/delete">
         <button>
             <i class="fa-regular fa-trash-alt"></i>
             Delete

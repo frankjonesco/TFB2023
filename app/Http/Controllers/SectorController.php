@@ -39,11 +39,13 @@ class SectorController extends Controller
     // ADMIN: Update text
     public function updateText(Sector $sector, Request $request){
 
+        // Validate form
         $request->validate([
             'name' => 'required',
             'status' => 'required'
         ]);
 
+        // Form data to model
         $sector->name = $request->name;
         $sector->slug = $request->slug;
         $sector->english_name = $request->english_name;
@@ -51,6 +53,7 @@ class SectorController extends Controller
         $sector->description = $request->description;
         $sector->status = $request->status;
 
+        // Save changes
         $sector->saveText();
 
         return redirect('dashboard/sectors/'.$sector->hex.'/text/edit')->with('success', 'Sector updated!');
@@ -61,5 +64,55 @@ class SectorController extends Controller
         return view('dashboard.sectors.edit-image', [
             'sector' => $sector
         ]);
+    }
+
+    // ADMIN: Update image
+    public function updateImage(Sector $sector, Request $request){
+
+        // Validate form
+        $request->validate([
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=100,min_height=100'
+        ]);
+
+        // Upload the image, make thumbnail, update database
+        if($request->hasFile('image')){
+            $sector->saveImage($request);
+        }
+        
+        return redirect('dashboard/sectors/'.$sector->hex.'/image/crop')->with('success', 'Your image was uploaded. Now let\'s crop it.');
+    }
+
+    // ADMIN: Crop image
+    public function cropImage(Sector $sector){
+        return view('dashboard.sectors.crop-image', [
+            'sector' => $sector
+        ]);
+    }
+
+    // ADMIN: Render image
+    public function renderImage(Sector $sector, Request $request){
+        $data = $request->validate([
+            'x' => 'required',
+            'y' => 'required',
+            'w' => 'required',
+            'h' => 'required'
+        ]);
+
+        $sector->saveRenderedImage($data);
+
+        return redirect('dashboard/sectors/'.$sector->hex)->with('success', 'Your image has been cropped.');
+    }
+
+    // ADMIN: Delete options
+    public function deleteOptions(Sector $sector){
+        return view('dashboard.sectors.delete-options', [
+            'sector' => $sector
+        ]);
+    }
+
+    // ADMIN: Delete sector
+    public function delete(Sector $sector){
+        $sector->delete();
+        return redirect('dashboard/sectors')->with('success', 'Sector deleted.');
     }
 }
