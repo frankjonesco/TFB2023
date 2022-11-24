@@ -1,21 +1,11 @@
 <x-dashboard-layout>
     <x-admin-sector-header :sector="$sector"/>
-    <div class="flex flex-row">
-        <div class="box grow">
-            <img id="image" src="{{asset('images/sectors/'.$sector->hex.'/'.$sector->image)}}" alt="" class="block" style="max-width: 100%;">
-            <form action="/dashboard/sectors/{{$sector->hex}}/image/render" method="POST">
-                @csrf
-                <input type="text" name="x" id="imgX" value="0" class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
-                <input type="text" name="y" id="imgY" value="0" class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
-                <input type="text" name="w" id="imgW" value="0" class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
-                <input type="text" name="h" id="imgH" value="0" class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
-                <a href="/dashboard/sectors/{{$sector->hex}}/image/edit">
-                    <button type="button" class="btn"><i class="fa-solid fa-arrow-left"></i> Upload a different image</button>
-                </a>
-                <button type="submit" class="btn mt-4"><i class="fa-solid fa-crop"></i> Crop image</button>
-            </form>
+
+    <div class="mb-4">
+        <div class="box">
+            <img id="image" src="{{asset('images/sectors/'.$sector->hex.'/'.$sector->image)}}" alt="" style="height:500px;">
         </div>
-        <div class="hidden">
+        {{-- <div class="hidden">
             <button><i class="fa-solid fa-rotate-right mr-0"></i></button>
             <button><i class="fa-solid fa-rotate-left mr-0"></i></button>
 
@@ -32,15 +22,30 @@
 
             <button><i class="fa-solid fa-rotate mr-0"></i></button>
             <button><i class="fa-solid fa-upload mr-0"></i></button>
-        </div>
+        </div> --}}
+
+        
     </div>
 
-
+    <form action="/dashboard/sectors/{{$sector->hex}}/image/render" method="POST">
+        @csrf
+        <input type="hidden" name="x" id="imgX">
+        <input type="hidden" name="y" id="imgY">
+        <input type="hidden" name="w" id="imgW">
+        <input type="hidden" name="h" id="imgH">
+        <a href="/dashboard/sectors/{{$sector->hex}}/image/edit">
+            <button type="button">
+                <i class="fa-solid fa-arrow-left"></i> 
+                Upload a different image
+            </button>
+        </a>
+        <button type="submit">
+            <i class="fa-solid fa-crop"></i> 
+            Crop image
+        </button>
+    </form>
 
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/cropper/2.3.4/cropper.min.css'>
-
-
-
     <script src='https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.8.1/cropper.min.js'></script>
 
     <script>
@@ -67,6 +72,5 @@
             },
         });
     </script>
-
 
 </x-dashboard-layout>

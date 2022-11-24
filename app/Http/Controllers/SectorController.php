@@ -56,7 +56,7 @@ class SectorController extends Controller
         // Save changes
         $sector->saveText();
 
-        return redirect('dashboard/sectors/'.$sector->hex.'/text/edit')->with('success', 'Sector updated!');
+        return redirect('dashboard/sectors/'.$sector->hex)->with('success', 'Sector updated!');
     }
 
     // ADMIN: Show edit image

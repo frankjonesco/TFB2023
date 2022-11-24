@@ -21,9 +21,10 @@ window.updateSlug = function (name, slug, inputField){
     var slug = document.getElementById(slug);
     slug.innerHTML = nameValue;
 
-
-
-
     var input = document.getElementById(inputField);
     input.value = nameValue;
+
+    if(nameValue == ''){
+        slug.innerHTML = 'enter text';
+    }
 }
