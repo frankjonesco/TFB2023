@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SectorController;
+use App\Http\Controllers\IndustryController;
 use App\Http\Controllers\DashboardController;
 
 /*
@@ -26,6 +27,12 @@ Route::get('sectors', [SectorController::class, 'index']);
     // Show all sectors
     Route::get('dashboard/sectors', [SectorController::class, 'adminIndex']);
 
+    // Show create form
+    Route::get('dashboard/sectors/create', [SectorController::class, 'create']);
+
+    // Store new sector
+    Route::post('dashboard/sectors/store', [SectorController::class, 'store']);
+
     // Show edit text
     Route::get('dashboard/sectors/{sector}/text/edit', [SectorController::class, 'editText']);
     // Update text
@@ -48,6 +55,44 @@ Route::get('sectors', [SectorController::class, 'index']);
 
     // Show single sector   
     Route::get('dashboard/sectors/{sector}', [SectorController::class, 'adminShow']);
+
+
+
+// IndustryController
+// Show all industries
+Route::get('industries', [IndustryController::class, 'index']);
+    // Dashboard IndustryController
+    // Show all industries
+    Route::get('dashboard/industries', [IndustryController::class, 'adminIndex']);
+
+    // Show create form
+    Route::get('dashboard/industries/create', [IndustryController::class, 'create']);
+
+    // Store new industry
+    Route::post('dashboard/industries/store', [IndustryController::class, 'store']);
+
+    // Show edit text
+    Route::get('dashboard/industries/{industry}/text/edit', [IndustryController::class, 'editText']);
+    // Update text
+    Route::put('dashboard/industries/{industry}/text/update', [IndustryController::class, 'updateText']);
+    
+    // Show edit image
+    Route::get('dashboard/industries/{industry}/image/edit', [IndustryController::class, 'editImage']);
+    // Update image
+    Route::put('dashboard/industries/{industry}/image/update', [IndustryController::class, 'updateImage']);
+    // Crop image
+    Route::get('dashboard/industries/{industry}/image/crop', [IndustryController::class, 'cropImage']);
+    // Render image
+    Route::post('dashboard/industries/{industry}/image/render', [IndustryController::class, 'renderImage']);
+    
+    // Show delete form
+    Route::get('dashboard/industries/{industry}/delete', [IndustryController::class, 'deleteOptions']);
+    // Delete sector
+    Route::delete('dashboard/industries/{industry}/delete', [IndustryController::class, 'delete']);
+    
+
+    // Show single sector   
+    Route::get('dashboard/industries/{industry}', [IndustryController::class, 'adminShow']);
 
 // DashboardController
 // Dashboard index

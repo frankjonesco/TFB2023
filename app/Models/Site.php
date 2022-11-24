@@ -14,17 +14,29 @@ class Site extends Model
 
     // START: RETRIEVAL METHODS
     
-        // SECTORS
+    // SECTORS
         
-        // All sectors
-        public function allSectors(){
-            return Sector::orderBy('name', 'ASC')->get();
-        }
+    // All sectors
+    public function allSectors(){
+        return Sector::orderBy('name', 'ASC')->get();
+    }
 
-        // Public sectors
-        public function publicSectors(){
-            return Sector::where('status', 'public')->orderBy('name', 'ASC')->get();
-        }
+    // Public sectors
+    public function publicSectors(){
+        return Sector::where('status', 'public')->orderBy('name', 'ASC')->get();
+    }
+
+    // SECTORS
+        
+    // All sectors
+    public function allIndustries(){
+        return Industry::orderBy('name', 'ASC')->get();
+    }
+
+    // Public sectors
+    public function publicIndustries(){
+        return Industry::where('status', 'public')->orderBy('name', 'ASC')->get();
+    }
 
     // END: RETRIEVAL METHODS
 
@@ -65,5 +77,31 @@ class Site extends Model
                 $constraint->aspectRatio(); 
             })
             ->save($directory_path.'/tn-'.$image_name);
+    }
+
+
+    // Handle rendered image
+    public function handleRenderedImage($data, $directory, $hex, $image){
+        // Round crop parameter to integer value
+        $w = round($data['w']);
+        $h = round($data['h']);
+        $x = round($data['x']);
+        $y = round($data['y']);
+
+        // Open file as image resource
+        $img = Image::make(asset('images/'.$directory.'/'.$hex.'/'.$image));
+
+        // Crop image
+        $img->crop($w,$h,$x,$y);
+
+        // Save full size image
+        $img->resize(867,423);
+        $img->save('images/'.$directory.'/'.$hex.'/'.$image);
+
+        // Save thumbnail image
+        $img->resize(240, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        $img->save('images/'.$directory.'/'.$hex.'/tn-'.$image);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Site;
 use App\Models\Sector;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class SectorController extends Controller
@@ -14,12 +15,45 @@ class SectorController extends Controller
             'sectors' => $site->publicSectors()
         ]);
     }
+    
+
+    // ADMIN METHODS
 
     // ADMIN: Show all sectors
     public function adminIndex(Site $site){
         return view('dashboard.sectors.index', [
             'sectors' => $site->allSectors()
         ]);
+    }
+
+    // ADMIN: Show create form
+    public function create(){
+        return view('dashboard.sectors.create');
+    }
+
+    // ADMIN: Store new sector
+    public function store(Request $request, Sector $sector){
+
+        // Validate form
+        $request->validate([
+            'name' => 'required',
+            'status' => 'required'
+        ]);
+
+        // Form data to model
+        $sector->hex = Str::random(11);
+        $sector->user_id = 1;
+        $sector->name = $request->name;
+        $sector->slug = $request->slug;
+        $sector->english_name = $request->english_name;
+        $sector->english_slug = $request->english_slug;
+        $sector->description = $request->description;
+        $sector->status = $request->status;
+
+        // Save changes
+        $sector->saveText();
+
+        return redirect('dashboard/sectors/'.$sector->hex)->with('success', 'Sector created!');
     }
 
     // ADMIN: Show single sector

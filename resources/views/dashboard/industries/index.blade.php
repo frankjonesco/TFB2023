@@ -1,24 +1,24 @@
 <x-dashboard-layout>
     
     <div class="flex flex-row items-center">
-        <h1 class="grow">Sectors</h1>
-        <a href="/dashboard/sectors/create">
+        <h1 class="grow">Industries</h1>
+        <a href="/dashboard/industries/create">
             <button>
                 <i class="fa-solid fa-plus"></i>
-                Create sector
+                Create industry
             </button>
         </a>
     </div>
 
-    <p class="mb-6">Manage your sectors here.</p>
+    <p class="mb-6">Manage your industries here.</p>
 
     <x-alerts/>
 
     <table>
         <thead>
             <tr>
-                <th>Sector name</th>
-                <th>Industries</th>
+                <th>Industry name</th>
+                <th>Sector</th>
                 <th>Companies</th>
                 <th>Articles</th>
                 <th>Owner</th>
@@ -27,32 +27,32 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($sectors as $sector)
+            @foreach($industries as $industry)
                 <tr>
                     <td>
-                        <a href="/dashboard/sectors/{{$sector->hex}}">
-                            {{$sector->name}}
+                        <a href="/dashboard/industries/{{$industry->hex}}">
+                            {{$industry->name}}
                         </a>
                     </td>
-                    <td>{{count($sector->industries)}}</td>
-                    <td>211</td>
-                    <td>45</td>
+                    <td>{{$industry->sector->name}}</td>
+                    <td>0</td>
+                    <td>0</td>
                     <td class="flex items-center">
                         <img src="{{asset('images/users/default-profile-pic-male.jpg')}}" alt="Frank Jones" title="Frank Jones" class="profile-pic-small-round">
                         Frank Jones
                     </td>
                     <td>
-                        {{$sector->updated_at}}
+                        {{$industry->updated_at}}
                     </td>
                     <td class="text-right">
-                        <a href="/dashboard/sectors/{{$sector->hex}}/text/edit">
+                        <a href="/dashboard/industries/{{$industry->hex}}/text/edit">
                             <button>
                                 <i class="fa-solid fa-info-circle"></i>
                                 Details
                             </button>
                         </a>
 
-                        <a href="/dashboard/sectors/{{$sector->hex}}/text/edit">
+                        <a href="/dashboard/industries/{{$industry->hex}}/text/edit">
                             <button>
                                 <i class="fa-solid fa-marker"></i>
                                 Edit
