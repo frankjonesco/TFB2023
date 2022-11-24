@@ -140,6 +140,11 @@
       @apply dark:text-gray-300;
     }
 
+    table{
+      @apply table-auto;
+      @apply w-full;
+    }
+
     th{
       @apply border-b;
       @apply font-medium;
@@ -148,11 +153,7 @@
       @apply pt-0;
       @apply pb-3;
       @apply text-left;
-    }
-
-    table{
-      @apply table-auto;
-      @apply w-full;
+      @apply text-white;
     }
 
     tr{

@@ -7,7 +7,7 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Sector extends Model
+class Category extends Model
 {
     use HasFactory;
 
@@ -22,14 +22,9 @@ class Sector extends Model
 
     // RELATIONSHIPS
 
-    // Relationship to industries
-    public function industries(){
-        return $this->hasMany(Industry::class, 'sector_id');
-    }
-
-    // Relationship to companies
-    public function companies(){
-        return $this->hasMany(Company::class, 'sector_ids');
+    // Relationship to articles
+    public function articles(){
+        return $this->hasMany(Article::class, 'category_id');
     }
 
     // Relationship to users
@@ -50,7 +45,7 @@ class Sector extends Model
     // Save image (update)
     public function saveImage($request){
         $site = new Site();
-        $this->image = $site->handleImageUpload($request, 'sectors', $this->hex);
+        $this->image = $site->handleImageUpload($request, 'categories', $this->hex);
         $this->save();
         return $this;
     }
@@ -58,7 +53,7 @@ class Sector extends Model
     // Save rendered image (update)
     public function saveRenderedImage($data){
         $site = new Site();
-        $this->image = $site->handleRenderedImage($data, 'sectors', $this->hex, $this->image);
-        return $this;  
+        $this->image = $site->handleRenderedImage($data, 'categories', $this->hex, $this->image);
+        return $this;
     }
 }

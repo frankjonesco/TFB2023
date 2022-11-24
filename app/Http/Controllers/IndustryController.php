@@ -6,10 +6,11 @@ use App\Models\Site;
 use App\Models\Industry;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class IndustryController extends Controller
 {
-    // Show all public sectors
+    // Show all public industries
     public function index(Site $site){
         return view('industries.index', [
             'industries' => $site->publicIndustries()
@@ -33,7 +34,7 @@ class IndustryController extends Controller
         ]);
     }
 
-    // ADMIN: Store new sector
+    // ADMIN: Store new industry
     public function store(Request $request, Industry $industry){
 
         // Validate form
@@ -149,9 +150,10 @@ class IndustryController extends Controller
         ]);
     }
 
-    // ADMIN: Delete sector
+    // ADMIN: Delete industry
     public function delete(Industry $industry){
         $industry->delete();
+        File::deleteDirectory(public_path('images/industries/'.$industry->hex));
         return redirect('dashboard/industries')->with('success', 'Industry deleted.');
     }
 }

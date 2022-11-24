@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SectorController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\IndustryController;
 use App\Http\Controllers\DashboardController;
 
@@ -87,12 +90,140 @@ Route::get('industries', [IndustryController::class, 'index']);
     
     // Show delete form
     Route::get('dashboard/industries/{industry}/delete', [IndustryController::class, 'deleteOptions']);
-    // Delete sector
+    // Delete industry
     Route::delete('dashboard/industries/{industry}/delete', [IndustryController::class, 'delete']);
     
 
-    // Show single sector   
+    // Show single industry   
     Route::get('dashboard/industries/{industry}', [IndustryController::class, 'adminShow']);
+
+
+
+
+
+
+// CompanyController
+// Show all companies
+Route::get('companies', [CompanyController::class, 'index']);
+    // Dashboard CompanyController
+    // Show all companies
+    Route::get('dashboard/companies', [CompanyController::class, 'adminIndex']);
+
+    // Show create form
+    Route::get('dashboard/companies/create', [CompanyController::class, 'create']);
+
+    // Store new company
+    Route::post('dashboard/companies/store', [CompanyController::class, 'store']);
+
+    // Show edit text
+    Route::get('dashboard/companies/{company}/text/edit', [CompanyController::class, 'editText']);
+    // Update text
+    Route::put('dashboard/companies/{company}/text/update', [CompanyController::class, 'updateText']);
+    
+    // Show edit image
+    Route::get('dashboard/companies/{company}/image/edit', [CompanyController::class, 'editImage']);
+    // Update image
+    Route::put('dashboard/companies/{company}/image/update', [CompanyController::class, 'updateImage']);
+    // Crop image
+    Route::get('dashboard/companies/{company}/image/crop', [CompanyController::class, 'cropImage']);
+    // Render image
+    Route::post('dashboard/companies/{company}/image/render', [CompanyController::class, 'renderImage']);
+    
+    // Show delete form
+    Route::get('dashboard/companies/{company}/delete', [CompanyController::class, 'deleteOptions']);
+    // Delete company
+    Route::delete('dashboard/companies/{company}/delete', [CompanyController::class, 'delete']);
+    
+
+    // Show single company   
+    Route::get('dashboard/companies/{company}', [CompanyController::class, 'adminShow']);
+
+
+
+
+
+
+// CategoryController
+// Show all categories
+Route::get('categories', [CategoryController::class, 'index']);
+    // Dashboard CategoryController
+    // Show all categories
+    Route::get('dashboard/categories', [CategoryController::class, 'adminIndex']);
+
+    // Show create form
+    Route::get('dashboard/categories/create', [CategoryController::class, 'create']);
+
+    // Store new category
+    Route::post('dashboard/categories/store', [CategoryController::class, 'store']);
+
+    // Show edit text
+    Route::get('dashboard/categories/{category}/text/edit', [CategoryController::class, 'editText']);
+    // Update text
+    Route::put('dashboard/categories/{category}/text/update', [CategoryController::class, 'updateText']);
+    
+    // Show edit image
+    Route::get('dashboard/categories/{category}/image/edit', [CategoryController::class, 'editImage']);
+    // Update image
+    Route::put('dashboard/categories/{category}/image/update', [CategoryController::class, 'updateImage']);
+    // Crop image
+    Route::get('dashboard/categories/{category}/image/crop', [CategoryController::class, 'cropImage']);
+    // Render image
+    Route::post('dashboard/categories/{category}/image/render', [CategoryController::class, 'renderImage']);
+    
+    // Show delete form
+    Route::get('dashboard/categories/{category}/delete', [CategoryController::class, 'deleteOptions']);
+    // Delete category
+    Route::delete('dashboard/categories/{category}/delete', [CategoryController::class, 'delete']);
+    
+
+    // Show single category   
+    Route::get('dashboard/categories/{category}', [CategoryController::class, 'adminShow']);
+
+
+
+
+
+
+// ArticleController
+// Show all articles
+Route::get('articles', [ArticleController::class, 'index']);
+    // Dashboard ArticleController
+    // Show all articles
+    Route::get('dashboard/articles', [ArticleController::class, 'adminIndex']);
+
+    // Show create form
+    Route::get('dashboard/articles/create', [ArticleController::class, 'create']);
+
+    // Store new article
+    Route::post('dashboard/articles/store', [ArticleController::class, 'store']);
+
+    // Show edit text
+    Route::get('dashboard/articles/{article}/text/edit', [ArticleController::class, 'editText']);
+    // Update text
+    Route::put('dashboard/articles/{article}/text/update', [ArticleController::class, 'updateText']);
+    
+    // Show edit image
+    Route::get('dashboard/articles/{article}/image/edit', [ArticleController::class, 'editImage']);
+    // Update image
+    Route::put('dashboard/articles/{article}/image/update', [ArticleController::class, 'updateImage']);
+    // Crop image
+    Route::get('dashboard/articles/{article}/image/crop', [ArticleController::class, 'cropImage']);
+    // Render image
+    Route::post('dashboard/articles/{article}/image/render', [ArticleController::class, 'renderImage']);
+    
+    // Show delete form
+    Route::get('dashboard/articles/{article}/delete', [ArticleController::class, 'deleteOptions']);
+    // Delete article
+    Route::delete('dashboard/articles/{article}/delete', [ArticleController::class, 'delete']);
+    
+
+    // Show single article   
+    Route::get('dashboard/articles/{article}', [ArticleController::class, 'adminShow']);
+
+
+
+    
+
 
 // DashboardController
 // Dashboard index

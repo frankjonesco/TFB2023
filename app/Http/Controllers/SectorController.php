@@ -6,6 +6,7 @@ use App\Models\Site;
 use App\Models\Sector;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class SectorController extends Controller
 {
@@ -147,6 +148,7 @@ class SectorController extends Controller
     // ADMIN: Delete sector
     public function delete(Sector $sector){
         $sector->delete();
+        File::deleteDirectory(public_path('images/sectors/'.$sector->hex));
         return redirect('dashboard/sectors')->with('success', 'Sector deleted.');
     }
 }

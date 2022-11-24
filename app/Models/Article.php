@@ -2,16 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Str;
-use Intervention\Image\Facades\Image;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Sector extends Model
+class Article extends Model
 {
     use HasFactory;
 
-    // ROUTING
+    // ROUTES
 
     // Set the route key name
     public function getRouteKeyName(){
@@ -22,14 +20,9 @@ class Sector extends Model
 
     // RELATIONSHIPS
 
-    // Relationship to industries
-    public function industries(){
-        return $this->hasMany(Industry::class, 'sector_id');
-    }
-
-    // Relationship to companies
-    public function companies(){
-        return $this->hasMany(Company::class, 'sector_ids');
+    // Relationship to category
+    public function category(){
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
     // Relationship to users
@@ -50,7 +43,7 @@ class Sector extends Model
     // Save image (update)
     public function saveImage($request){
         $site = new Site();
-        $this->image = $site->handleImageUpload($request, 'sectors', $this->hex);
+        $this->image = $site->handleImageUpload($request, 'articles', $this->hex);
         $this->save();
         return $this;
     }
@@ -58,7 +51,7 @@ class Sector extends Model
     // Save rendered image (update)
     public function saveRenderedImage($data){
         $site = new Site();
-        $this->image = $site->handleRenderedImage($data, 'sectors', $this->hex, $this->image);
-        return $this;  
+        $this->image = $site->handleRenderedImage($data, 'articles', $this->hex, $this->image);
+        return $this;
     }
 }

@@ -35,7 +35,7 @@
                         </a>
                     </td>
                     <td>{{count($sector->industries)}}</td>
-                    <td>211</td>
+                    <td>{{count($sector->companies)}}</td>
                     <td>45</td>
                     <td class="flex items-center">
                         <img src="{{asset('images/users/default-profile-pic-male.jpg')}}" alt="Frank Jones" title="Frank Jones" class="profile-pic-small-round">
@@ -45,7 +45,7 @@
                         {{$sector->updated_at}}
                     </td>
                     <td class="text-right">
-                        <a href="/dashboard/sectors/{{$sector->hex}}/text/edit">
+                        <a href="/dashboard/sectors/{{$sector->hex}}">
                             <button>
                                 <i class="fa-solid fa-info-circle"></i>
                                 Details

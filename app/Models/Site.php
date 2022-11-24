@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
@@ -26,7 +27,9 @@ class Site extends Model
         return Sector::where('status', 'public')->orderBy('name', 'ASC')->get();
     }
 
-    // SECTORS
+
+
+    // INDUSTRIES
         
     // All sectors
     public function allIndustries(){
@@ -36,6 +39,48 @@ class Site extends Model
     // Public sectors
     public function publicIndustries(){
         return Industry::where('status', 'public')->orderBy('name', 'ASC')->get();
+    }
+
+
+
+    // COMPANIES
+        
+    // All sectors
+    public function allCompanies(){
+        return Company::orderBy('registered_name', 'ASC')->get();
+    }
+
+    // Public sectors
+    public function publicCompanies(){
+        return Company::where('status', 'public')->orderBy('registered_name', 'ASC')->get();
+    }
+
+
+
+    // CATEGORIES
+        
+    // All categories
+    public function allCategories(){
+        return Category::orderBy('name', 'ASC')->get();
+    }
+
+    // Public categories
+    public function publicCategories(){
+        return Category::where('status', 'public')->orderBy('name', 'ASC')->get();
+    }
+
+
+
+    // ARTICLES
+        
+    // All articles
+    public function allArticles(){
+        return Article::orderBy('created_at', 'DESC')->get();
+    }
+
+    // Public categories
+    public function publicArticles(){
+        return Article::where('status', 'public')->orderBy('created_at', 'DESC')->get();
     }
 
     // END: RETRIEVAL METHODS
