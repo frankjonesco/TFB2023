@@ -18,6 +18,7 @@
         <thead>
             <tr>
                 <th>Category name</th>
+                <th>Sector</th>
                 <th>Articles</th>
                 <th>Owner</th>
                 <th>Last updated</th>
@@ -32,7 +33,12 @@
                             {{$category->name}}
                         </a>
                     </td>
-                    <td>45</td>
+                    <td>
+                        <a href="/dashboard/sectors/{{$category->sector->hex}}">
+                            {{$category->sector->name}}
+                        </a>
+                    </td>
+                    <td>{{count($category->articles)}}</td>
                     <td class="flex items-center">
                         <img src="{{asset('images/users/default-profile-pic-male.jpg')}}" alt="Frank Jones" title="Frank Jones" class="profile-pic-small-round">
                         Frank Jones

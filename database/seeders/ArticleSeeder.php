@@ -20,6 +20,7 @@ class ArticleSeeder extends Seeder
             [
                 'hex' => Str::random(11),
                 'user_id' => 1,
+                'sector_id' => 3,
                 'category_id' => 2,
                 'title' => 'McDonalds releases new eco-friednly Happy Meals',
                 'slug' =>  'mcdonalds-releases-new-eco-friednly-happy-meals',
@@ -29,6 +30,7 @@ class ArticleSeeder extends Seeder
             [
                 'hex' => Str::random(11),
                 'user_id' => 1,
+                'sector_id' => 2,
                 'category_id' => 1,
                 'title' => 'Barclays will become a paperless business by 2050',
                 'slug' =>  'barclays-will-become-a-paperless-business-by-2050',
@@ -38,6 +40,7 @@ class ArticleSeeder extends Seeder
             [
                 'hex' => Str::random(11),
                 'user_id' => 1,
+                'sector_id' => 3,
                 'category_id' => 2,
                 'title' => 'NASA will move all spaceships to Mars',
                 'slug' =>  'nasa-will-move-all-spaceships-to-mars',
@@ -47,6 +50,7 @@ class ArticleSeeder extends Seeder
             [
                 'hex' => Str::random(11),
                 'user_id' => 1,
+                'sector_id' => 4,
                 'category_id' => 4,
                 'title' => 'Animal King has announce a change in it\'s R & D',
                 'slug' =>  'animal-king-has-announce-a-change-in-its-r-and-d',

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('hex', 11)->unique();
             $table->integer('user_id')->length(11);
+            $table->foreignId('sector_id')->nullable();
             $table->string('name');
             $table->string('slug');
             $table->string('english_name')->nullable();

@@ -20,14 +20,24 @@ class Company extends Model
 
     // RELATIONSHIPS
 
-     // Relationship to sector
-     public function sector(){
-        return $this->belongsTo(Sector::class, 'sector_id');
+    // Relationship to sector
+    public function sector(){
+        return $this->belongsTo(Sector::class, 'sector_ids');
     }
 
-     // Relationship to industry
-     public function industry(){
-        return $this->belongsTo(Industry::class, 'industry_id');
+    // Relationship to industry
+    public function industry(){
+        return $this->belongsTo(Industry::class, 'industry_ids');
+    }
+
+    // Relationship to contacts
+    public function contacts(){
+        return $this->hasMany(Contact::class, 'company_id');
+    }
+
+    // Relationship to comments
+    public function comments(){
+        return $this->hasMany(Comment::class, 'resource_id');
     }
 
 

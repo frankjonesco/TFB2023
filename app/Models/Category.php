@@ -32,6 +32,11 @@ class Category extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    // Relationship to sector
+    public function sector(){
+        return $this->belongsTo(Sector::class, 'sector_id');
+    }
+
 
 
     // ACTION METHODS

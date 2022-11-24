@@ -18,6 +18,7 @@
         <thead>
             <tr>
                 <th>Title</th>
+                <th>Sector</th>
                 <th>Category</th>
                 <th>Owner</th>
                 <th>Last updated</th>
@@ -30,6 +31,11 @@
                     <td>
                         <a href="/dashboard/articles/{{$article->hex}}">
                             {{$article->title}}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/dashboard/sectors/{{$article->sector->hex}}">
+                            {{$article->sector->name}}
                         </a>
                     </td>
                     <td>

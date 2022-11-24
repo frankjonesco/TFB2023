@@ -20,6 +20,7 @@ class CategorySeeder extends Seeder
             [
                 'hex' => Str::random(11),
                 'user_id' => 1,
+                'sector_id' => 2,
                 'name' => 'Partnerships',
                 'slug' => 'partnerships',
                 'status' => 'public'
@@ -27,13 +28,15 @@ class CategorySeeder extends Seeder
             [
                 'hex' => Str::random(11),
                 'user_id' => 1,
-                'name' => 'Product',
-                'slug' => 'partnerships',
+                'sector_id' => 3,
+                'name' => 'Products',
+                'slug' => 'products',
                 'status' => 'public'
             ],
             [
                 'hex' => Str::random(11),
                 'user_id' => 1,
+                'sector_id' => 3,
                 'name' => 'Acquisitions',
                 'slug' => 'acquisitions',
                 'status' => 'public'
@@ -41,6 +44,7 @@ class CategorySeeder extends Seeder
             [
                 'hex' => Str::random(11),
                 'user_id' => 1,
+                'sector_id' => 4,
                 'name' => 'Sustainable practices',
                 'slug' => 'sustainable-practices',
                 'status' => 'public'
@@ -48,6 +52,7 @@ class CategorySeeder extends Seeder
             [
                 'hex' => Str::random(11),
                 'user_id' => 1,
+                'sector_id' => 2,
                 'name' => 'Innovation',
                 'slug' => 'innovation',
                 'status' => 'public'

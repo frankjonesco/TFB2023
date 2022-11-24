@@ -18,9 +18,10 @@
         <thead>
             <tr>
                 <th>Company name</th>
-                <th></th>
-                <th></th>
-                <th></th>
+                <th>Sector</th>
+                <th>Industry</th>
+                <th class="text-center">Contacts</th>
+                <th class="text-center">Comments</th>
                 <th>Owner</th>
                 <th>Last updated</th>
                 <th></th>
@@ -34,9 +35,14 @@
                             {{$company->registered_name}}
                         </a>
                     </td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
+                    <td>
+                        <a href="/dashboard/sectors/{{$company->sector->hex}}">
+                            {{$company->sector->name}}
+                        </a>
+                    </td>
+                    <td>{{$company->industry_ids}}</td>
+                    <td class="text-center">{{count($company->contacts)}}</td>
+                    <td class="text-center">{{count($company->comments)}}</td>
                     <td class="flex items-center">
                         <img src="{{asset('images/users/default-profile-pic-male.jpg')}}" alt="Frank Jones" title="Frank Jones" class="profile-pic-small-round">
                         Frank Jones

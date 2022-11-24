@@ -32,6 +32,16 @@ class Sector extends Model
         return $this->hasMany(Company::class, 'sector_ids');
     }
 
+    // Relationship to categories
+    public function categories(){
+        return $this->hasMany(Category::class, 'sector_id');
+    }
+
+    // Relationship to articles
+    public function articles(){
+        return $this->hasMany(Article::class, 'sector_id');
+    }
+
     // Relationship to users
     public function user(){
         return $this->belongsTo(User::class, 'user_id');

@@ -18,9 +18,8 @@
         <thead>
             <tr>
                 <th>Sector name</th>
-                <th>Industries</th>
-                <th>Companies</th>
-                <th>Articles</th>
+                <th class="text-center">Industries</th>
+                <th class="text-center">Companies</th>
                 <th>Owner</th>
                 <th>Last updated</th>
                 <th></th>
@@ -34,9 +33,8 @@
                             {{$sector->name}}
                         </a>
                     </td>
-                    <td>{{count($sector->industries)}}</td>
-                    <td>{{count($sector->companies)}}</td>
-                    <td>45</td>
+                    <td class="text-center">{{count($sector->industries)}}</td>
+                    <td class="text-center">{{count($sector->companies)}}</td>
                     <td class="flex items-center">
                         <img src="{{asset('images/users/default-profile-pic-male.jpg')}}" alt="Frank Jones" title="Frank Jones" class="profile-pic-small-round">
                         Frank Jones

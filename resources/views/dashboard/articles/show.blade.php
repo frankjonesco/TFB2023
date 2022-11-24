@@ -1,7 +1,7 @@
 <x-dashboard-layout>
 
     <div class="flex flex-row items-center">
-        <h1 class="grow">Article: {{$article->name}}</h1>
+        <h1 class="grow">Article: {{$article->title}}</h1>
         <x-edit-article-buttons :article="$article" />
     </div>
 
