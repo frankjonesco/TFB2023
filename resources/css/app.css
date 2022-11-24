@@ -140,4 +140,34 @@
       @apply dark:text-gray-300;
     }
 
+    th{
+      @apply border-b;
+      @apply font-medium;
+      @apply p-4;
+      @apply pl-8;
+      @apply pt-0;
+      @apply pb-3;
+      @apply text-left;
+    }
+
+    table{
+      @apply table-auto;
+      @apply w-full;
+    }
+
+    tr{
+      @apply border-b;
+      @apply border-slate-500;
+      @apply text-slate-500;
+    }
+
+    td{
+      @apply p-4;
+      @apply pl-8;
+    }
+
+    a{
+      @apply hover:text-yellow-700;
+    }
+
   }
