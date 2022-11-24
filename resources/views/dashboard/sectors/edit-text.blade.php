@@ -1,5 +1,11 @@
 <x-dashboard-layout>
-    <x-admin-sector-header :sector="$sector"/>
+    
+    <div class="flex flex-row items-center">
+        <h1 class="grow">Edit text</h1>
+        <x-edit-sector-buttons :sector="$sector" />
+    </div>
+
+    <x-alerts/>
     
     <form action="/dashboard/sectors/{{$sector->hex}}/text/update" method="POST">
         @csrf
@@ -43,8 +49,7 @@
                 name="description" 
                 rows="4" 
                 placeholder="How would you describe this sector?"
-            >{{old('description') ?? $sector->description}}
-            </textarea>
+            >{{old('description') ?? $sector->description}}</textarea>
         </div>
 
         <div class="form-block">

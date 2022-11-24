@@ -1,6 +1,11 @@
 <x-dashboard-layout>
-    <x-admin-sector-header :sector="$sector"/>
     
+    <div class="flex flex-row items-center">
+        <h1 class="grow">Delete sector</h1>
+        <x-edit-sector-buttons :sector="$sector" />
+    </div>
+
+    <x-alerts/>
 
     <form action="/dashboard/sectors/{{$sector->hex}}/delete" method="POST">
         @csrf

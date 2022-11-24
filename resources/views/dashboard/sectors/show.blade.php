@@ -1,4 +1,12 @@
 <x-dashboard-layout>
-    <x-admin-sector-header :sector="$sector"/>
-    <p>Number of articles: 95</p>
+
+    <div class="flex flex-row items-center">
+        <h1 class="grow">Sector: {{$sector->name}}</h1>
+        <x-edit-sector-buttons :sector="$sector" />
+    </div>
+
+    <p class="mb-3">This is the sector details page.</p>
+
+    <x-alerts/>
+
 </x-dashboard-layout>

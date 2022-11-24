@@ -1,5 +1,11 @@
 <x-dashboard-layout>
-    <x-admin-sector-header :sector="$sector"/>
+    
+    <div class="flex flex-row items-center">
+        <h1 class="grow">Crop image</h1>
+        <x-edit-sector-buttons :sector="$sector" />
+    </div>
+
+    <x-alerts/>
 
     <div class="mb-4">
         <div class="box">

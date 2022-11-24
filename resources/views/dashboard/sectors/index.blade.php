@@ -1,15 +1,23 @@
 <x-dashboard-layout>
     
-    <h1>Sectors</h1>
-    <p class="mb-9">Use sectors to organise your companies and news articles. Each sector also contains industry folders.</p>
+    <div class="flex flex-row items-center">
+        <h1 class="grow">Sectors</h1>
+    </div>
+
+    <p class="mb-6">Manage your sectors here.</p>
+
     <x-alerts/>
 
     <table>
         <thead>
             <tr>
                 <th>Sector name</th>
+                <th>Industries</th>
+                <th>Companies</th>
+                <th>Articles</th>
+                <th>Owner</th>
                 <th>Last updated</th>
-                <th>Actions</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -20,10 +28,24 @@
                             {{$sector->name}}
                         </a>
                     </td>
+                    <td>127</td>
+                    <td>211</td>
+                    <td>45</td>
+                    <td class="flex items-center">
+                        <img src="{{asset('images/users/default-profile-pic-male.jpg')}}" alt="Frank Jones" title="Frank Jones" class="profile-pic-small-round">
+                        Frank Jones
+                    </td>
                     <td>
                         {{$sector->updated_at}}
                     </td>
-                    <td>
+                    <td class="text-right">
+                        <a href="/dashboard/sectors/{{$sector->hex}}/text/edit">
+                            <button>
+                                <i class="fa-solid fa-info-circle"></i>
+                                Details
+                            </button>
+                        </a>
+
                         <a href="/dashboard/sectors/{{$sector->hex}}/text/edit">
                             <button>
                                 <i class="fa-solid fa-marker"></i>

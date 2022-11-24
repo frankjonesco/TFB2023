@@ -134,7 +134,7 @@
     }
 
     .text-input-advice{
-      @apply mt-1;
+      @apply mt-2;
       @apply text-sm;
       @apply text-gray-500;
       @apply dark:text-gray-300;
@@ -168,6 +168,16 @@
 
     a{
       @apply hover:text-yellow-700;
+    }
+
+    .profile-pic-small-round{
+      @apply w-6;
+      @apply h-6;
+      @apply mr-2.5;
+      @apply p-px;
+      @apply border;
+      @apply border-white;
+      @apply rounded-full;
     }
 
   }
