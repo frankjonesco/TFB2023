@@ -14,21 +14,19 @@
 
     <x-alerts/>
 
-    <table>
+    <table class="table-fixed">
         <thead>
             <tr>
                 <th>Company name</th>
-                <th>Sector</th>
-                <th>Industry</th>
-                <th class="text-center">Contacts</th>
-                <th class="text-center">Comments</th>
+                <th>Sectors</th>
+                <th>Industries</th>
                 <th>Owner</th>
                 <th>Last updated</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            @foreach($companies as $company)
+            @foreach($companies as $company)    
                 <tr>
                     <td>
                         <a href="/dashboard/companies/{{$company->hex}}">
@@ -36,16 +34,32 @@
                         </a>
                     </td>
                     <td>
-                        <a href="/dashboard/sectors/{{$company->sector->hex}}">
-                            {{$company->sector->name}}
-                        </a>
+                        @if($company->sectors)
+                            @foreach($company->sectors as $sector)
+                                <a href="/dashboard/sectors/{{$sector->hex}}">
+                                    {{$sector->name}}
+                                </a>
+                                <br>
+                            @endforeach
+                        @endif
                     </td>
-                    <td>{{$company->industry_ids}}</td>
-                    <td class="text-center">{{count($company->contacts)}}</td>
-                    <td class="text-center">{{count($company->comments)}}</td>
+                    <td>
+                        @if($company->industries)
+                            @foreach($company->industries as $industry)
+                                <a href="/dashboard/industries/{{$industry->hex}}">
+                                    {{$industry->name}}
+                                </a>
+                                <br>
+                            @endforeach
+                        @endif
+                    </td>
                     <td class="flex items-center">
-                        <img src="{{asset('images/users/default-profile-pic-male.jpg')}}" alt="Frank Jones" title="Frank Jones" class="profile-pic-small-round">
-                        Frank Jones
+                        <a href="/dashboard/users/{{$company->user->hex}}">
+                            <img src="{{$company->user->profile_pic}}" alt="Frank Jones" title="Frank Jones" class="profile-pic-small-round">
+                        </a>
+                        <a href="/dashboard/users/{{$company->user->hex}}">
+                            {{$company->user->full_name}}
+                        </a>
                     </td>
                     <td>
                         {{$company->updated_at}}
@@ -57,16 +71,69 @@
                                 Details
                             </button>
                         </a>
-
-                        <a href="/dashboard/companies/{{$company->hex}}/text/edit">
-                            <button>
-                                <i class="fa-solid fa-marker"></i>
-                                Edit
-                            </button>
-                        </a>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+
+    <nav aria-label="Page navigation example" class="mt-7">
+        <div class="flex items-center mb-5">
+            <div class="grow">
+                Page: {{$companies->currentPage()}} - Showing {{$companies->count()}} of {{$companies->total()}} results
+            </div>
+            <div>
+                <ul class="inline-flex items-center -space-x-px">
+                    <li>
+                        <a href="{{$companies->previousPageUrl()}}" class="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                            <i class="fa-solid fa-arrow-left mr-0"></i>
+                        </a>
+                    </li>
+
+                    @for($i = 1; $i <= $companies->lastPage(); $i++)
+                        @php
+                            $link_limit = 11;
+                            $half_total_links = floor($link_limit / 2);
+                            $from = $companies->currentPage() - $half_total_links;
+                            $to = $companies->currentPage() + $half_total_links;
+                            if ($companies->currentPage() < $half_total_links) {
+                                $to += $half_total_links - $companies->currentPage();
+                            }
+                            if ($companies->lastPage() - $companies->currentPage() < $half_total_links) {
+                                $from -= $half_total_links - ($companies->lastPage() - $companies->currentPage()) - 1;
+                            }
+                        @endphp
+                        @if($from < $i && $i < $to)
+                            <li>
+                                <a href="{{$companies->url($i)}}"
+                                    @if($companies->currentPage() == $i)
+                                        class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-yellow-500 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white"
+                                    @else
+                                        class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                                    @endif
+                                        
+                                    >{{$i}}</a>
+                            </li>
+                        @endif
+                    @endfor
+
+                    <li>
+                        <a href="{{$companies->nextPageUrl()}}" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                            <i class="fa-solid fa-arrow-right mr-0"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="flex items-center">
+            <div class="grow"></div>
+            <form action="?" method="GET" class="flex items-center">
+                <span>Page</span>
+                <input type="text" name="page" class="!w-12 !ml-3 !mr-2.5 !mb-0 !text-base !text-center" value="{{$companies->currentPage()}}">
+                <span>of {{$companies->lastPage()}}</span>
+            </form>
+        </div>
+    </nav>
+
+      
 </x-dashboard-layout>

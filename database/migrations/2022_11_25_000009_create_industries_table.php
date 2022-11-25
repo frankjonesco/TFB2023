@@ -18,13 +18,12 @@ return new class extends Migration
             $table->integer('old_id')->nullable();
             $table->string('hex', 11);
             $table->foreignId('user_id')->nullable();
-            $table->foreignId('sector_id')->nullable();
+            $table->foreignId('category_id')->nullable()->onDelete('cascade');
             $table->string('name');
             $table->string('slug');
-            $table->string('english_name')->nullable();
-            $table->string('english_slug')->nullable();
+            $table->string('english_name');
+            $table->string('english_slug');
             $table->text('description')->nullable();
-            $table->string('image')->nullable();
             $table->foreignId('color_id')->nullable();
             $table->timestamps();
             $table->string('status');

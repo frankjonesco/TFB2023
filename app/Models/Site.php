@@ -47,7 +47,7 @@ class Site extends Model
         
     // All sectors
     public function allCompanies(){
-        return Company::orderBy('registered_name', 'ASC')->get();
+        return Company::orderBy('registered_name', 'ASC')->paginate(10);
     }
 
     // Public sectors

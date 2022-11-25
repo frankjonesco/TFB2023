@@ -41,4 +41,43 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+
+    // ROUTES
+
+    // Set the route key name
+    public function getRouteKeyName(){
+        return 'hex';
+    }
+
+
+
+    // RELATIONSHIPS
+
+    // Relationship to companies
+    public function companies(){
+        return $this->hasMany(User::class, 'user_id');
+    }
+
+
+
+    // ACCESSOR METHODS
+
+    // Accessor for profile pic
+    public function getFullNameAttribute()
+    {   
+        return ucfirst($this->first_name).' '.ucfirst($this->last_name);
+    }
+
+    // Accessor for profile pic
+    public function getProfilePicAttribute()
+    {   
+        if($this->image){
+            return asset('images/users/'.$this->hex.'/'.$this->image);
+        }
+        else{
+            return asset('images/users/profile-pic-male.jpg');
+        }
+    }
 }

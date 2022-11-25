@@ -20,16 +20,6 @@ class Company extends Model
 
     // RELATIONSHIPS
 
-    // Relationship to sector
-    public function sector(){
-        return $this->belongsTo(Sector::class, 'sector_ids');
-    }
-
-    // Relationship to industry
-    public function industry(){
-        return $this->belongsTo(Industry::class, 'industry_ids');
-    }
-
     // Relationship to contacts
     public function contacts(){
         return $this->hasMany(Contact::class, 'company_id');
@@ -40,8 +30,52 @@ class Company extends Model
         return $this->hasMany(Comment::class, 'resource_id');
     }
 
+    // Relationship to user
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
 
+
+    // ACCESSOR METHODS
+
+    // Accessor for sectors
+    public function getSectorsAttribute($value)
+    {   
+        $sector_ids = explode(',', Company::find($this->id)->sector_ids);
+       
+        $sectors = [];
+
+        if(count($sector_ids) > 1){
+            $sectors = Sector::whereIn('id', $sector_ids)->get();
+        }
+        elseif(count($sector_ids) == 1){
+            $sectors = Sector::find($sector_ids);
+        }
+
+        return $sectors;
+    }
+
+    // Accessor for industries
+    public function getIndustriesAttribute($value)
+    {   
+        $industry_ids = explode(',', Company::find($this->id)->industry_ids);
+       
+        $industries = [];
+
+        if(count($industry_ids) > 1){
+            $industries = Industry::whereIn('id', $industry_ids)->get();
+        }
+        elseif(count($industry_ids) == 1){
+            $industries = Industry::find($industry_ids);
+        }
+
+        return $industries;
+    }
+    
+
+
+    
     // ACTION METHODS
 
     // Save text (update)

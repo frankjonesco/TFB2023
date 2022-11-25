@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Site;
 use App\Models\Industry;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
@@ -16,123 +17,28 @@ class IndustrySeeder extends Seeder
      */
     public function run()
     {
-        $industries = [
-            [
-                'hex' => Str::random(11),
-                'user_id' => 1,
-                'sector_id' => 2,
-                'name' => 'Dairy products',
-                'slug' => 'dairy-products',
-                'status' => 'public'
-            ],
-            [
-                'hex' => Str::random(11),
-                'user_id' => 1,
-                'sector_id' => 2,
-                'name' => 'Animal feed',
-                'slug' => 'animal-feed',
-                'status' => 'public'
-            ],
-            [
-                'hex' => Str::random(11),
-                'user_id' => 1,
-                'sector_id' => 3,
-                'name' => 'Car rental',
-                'slug' => 'car-rental',
-                'status' => 'public'
-            ],
-            [
-                'hex' => Str::random(11),
-                'user_id' => 1,
-                'sector_id' => 3,
-                'name' => 'Tyre manufactoring',
-                'slug' => 'tyre-manufucturing',
-                'status' => 'public'
-            ],
-            [
-                'hex' => Str::random(11),
-                'user_id' => 1,
-                'sector_id' => 2,
-                'name' => 'Wholesale autoparts',
-                'slug' => 'wholesale-autoparts',
-                'status' => 'public'
-            ],
-            [
-                'hex' => Str::random(11),
-                'user_id' => 1,
-                'sector_id' => 1,
-                'name' => 'Retail',
-                'slug' => 'retail',
-                'status' => 'public'
-            ],
-            [
-                'hex' => Str::random(11),
-                'user_id' => 1,
-                'sector_id' => 1,
-                'name' => 'Cable production',
-                'slug' => 'cable-production',
-                'status' => 'public'
-            ],
-            [
-                'hex' => Str::random(11),
-                'user_id' => 1,
-                'sector_id' => 1,
-                'name' => 'Lighting',
-                'slug' => 'lighting',
-                'status' => 'public'
-            ],
-            [
-                'hex' => Str::random(11),
-                'user_id' => 1,
-                'sector_id' => 4,
-                'name' => 'Restaurant chain',
-                'slug' => 'restaurant-chain',
-                'status' => 'public'
-            ],
-            [
-                'hex' => Str::random(11),
-                'user_id' => 1,
-                'sector_id' => 4,
-                'name' => 'Confectionery',
-                'slug' => 'Confectionery',
-                'status' => 'public'
-            ],
-            [
-                'hex' => Str::random(11),
-                'user_id' => 1,
-                'sector_id' => 4,
-                'name' => 'Food hygiene',
-                'slug' => 'food-hygiene',
-                'status' => 'public'
-            ],
-            [
-                'hex' => Str::random(11),
-                'user_id' => 1,
-                'sector_id' => 5,
-                'name' => 'Steel production',
-                'slug' => 'steel-production',
-                'status' => 'public'
-            ],
-            [
-                'hex' => Str::random(11),
-                'user_id' => 1,
-                'sector_id' => 5,
-                'name' => 'Car tyres',
-                'slug' => 'car-tyres',
-                'status' => 'public'
-            ],
-            [
-                'hex' => Str::random(11),
-                'user_id' => 1,
-                'sector_id' => 5,
-                'name' => 'Packaging',
-                'slug' => 'packaging',
-                'status' => 'public'
-            ],
+        // Import industries
+        $industries = Industry::on('mysql_import')->get();
+
+        // Create industries
+        foreach($industries as $industry){
+            $site = new Site();
+            $slug = $site->prepSlug($industry->name);
+            $english_slug = $site->prepSlug($industry->english_name);
             
-            
-        ];
-        
-        collect($industries)->each(function ($industry) { Industry::create($industry); });
+            Industry::create([
+                'old_id' => $industry->id,
+                'hex' => Str::random(11),
+                'category_id' => null,
+                'name' => trim($industry->name),
+                'slug' => Str::slug($slug),
+                'english_name' => trim($industry->english_name),
+                'english_slug' => Str::slug($english_slug),
+                'description' => $industry->description,
+                'created_at' => date('Y-m-d H:i:s', $industry->created),
+                'status' => 'public',
+            ]);
+        }
+
     }
 }
