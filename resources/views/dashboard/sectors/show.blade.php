@@ -9,4 +9,6 @@
 
     <x-alerts/>
 
+    <img src="{{asset('images/sectors/'.$sector->hex.'/'.$sector->image)}}" alt="">
+
 </x-dashboard-layout>
