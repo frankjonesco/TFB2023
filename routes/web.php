@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\SectorController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CompanyController;
@@ -219,6 +220,46 @@ Route::get('articles', [ArticleController::class, 'index']);
 
     // Show single article   
     Route::get('dashboard/articles/{article}', [ArticleController::class, 'adminShow']);
+
+
+
+
+
+
+
+// UserController
+    // Dashboard ArticleController
+    // Show all articles
+    Route::get('dashboard/users', [UserController::class, 'adminIndex']);
+
+    // Show create form
+    Route::get('dashboard/users/create', [UserController::class, 'create']);
+
+    // Store new user
+    Route::post('dashboard/users/store', [UserController::class, 'store']);
+
+    // Show edit text
+    Route::get('dashboard/users/{user}/text/edit', [UserController::class, 'editText']);
+    // Update text
+    Route::put('dashboard/users/{user}/text/update', [UserController::class, 'updateText']);
+    
+    // Show edit image
+    Route::get('dashboard/users/{user}/image/edit', [UserController::class, 'editImage']);
+    // Update image
+    Route::put('dashboard/users/{user}/image/update', [UserController::class, 'updateImage']);
+    // Crop image
+    Route::get('dashboard/users/{user}/image/crop', [UserController::class, 'cropImage']);
+    // Render image
+    Route::post('dashboard/users/{user}/image/render', [UserController::class, 'renderImage']);
+    
+    // Show delete form
+    Route::get('dashboard/users/{user}/delete', [UserController::class, 'deleteOptions']);
+    // Delete user
+    Route::delete('dashboard/users/{user}/delete', [UserController::class, 'delete']);
+    
+
+    // Show single user   
+    Route::get('dashboard/users/{user}', [UserController::class, 'adminShow']);
 
 
 

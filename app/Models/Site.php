@@ -108,6 +108,20 @@ class Site extends Model
         return Article::where('status', 'public')->orderBy('created_at', 'DESC')->get();
     }
 
+
+
+    // USERS
+        
+    // All users
+    public function allUsers(){
+        return User::orderBy('first_name', 'ASC')->get();
+    }
+
+    // Paginate all articles
+    public function paginateAllUsers(){
+        return User::orderBy('first_name', 'ASC')->paginate(10);
+    }
+
     // END: RETRIEVAL METHODS
 
 

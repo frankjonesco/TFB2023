@@ -12,61 +12,65 @@
 
     <p class="mb-6">Manage your industries here.</p>
 
-    <x-alerts/>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Industry name</th>
-                <th>Sector</th>
-                <th class="text-center">Companies</th>
-                <th>Owner</th>
-                <th>Last updated</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($industries as $industry)
+    @if(count($industries) < 1)
+        <x-nothing-to-display table="industries" />
+    @else
+        <x-alerts/>
+        <table>
+            <thead>
                 <tr>
-                    <td>
-                        <a href="/dashboard/industries/{{$industry->hex}}">
-                            {{$industry->name}}
-                        </a>
-                    </td>
-                    <td>
-                        @if($industry->sector)
-                            <a href="/dashboard/sectors/{{$industry->sector->hex}}">
-                                {{$industry->sector->name}}
-                            </a>
-                        @endif
-                    </td>
-                    <td class="text-center">{{count($industry->companies)}}</td>
-                    <td>
-                        <x-user-profile-pic-full-name :user="$industry->user" />
-                    </td>
-                    <td>
-                        {{$industry->updated_at}}
-                    </td>
-                    <td class="text-right">
-                        <a href="/dashboard/industries/{{$industry->hex}}">
-                            <button>
-                                <i class="fa-solid fa-info-circle"></i>
-                                Details
-                            </button>
-                        </a>
-
-                        <a href="/dashboard/industries/{{$industry->hex}}/text/edit">
-                            <button>
-                                <i class="fa-solid fa-marker"></i>
-                                Edit
-                            </button>
-                        </a>
-                    </td>
+                    <th>Industry name</th>
+                    <th>Sector</th>
+                    <th class="text-center">Companies</th>
+                    <th>Owner</th>
+                    <th>Last updated</th>
+                    <th></th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach($industries as $industry)
+                    <tr>
+                        <td>
+                            <a href="/dashboard/industries/{{$industry->hex}}">
+                                {{$industry->name}}
+                            </a>
+                        </td>
+                        <td>
+                            @if($industry->sector)
+                                <a href="/dashboard/sectors/{{$industry->sector->hex}}">
+                                    {{$industry->sector->name}}
+                                </a>
+                            @endif
+                        </td>
+                        <td class="text-center">{{count($industry->companies)}}</td>
+                        <td>
+                            <x-user-profile-pic-full-name :user="$industry->user" />
+                        </td>
+                        <td>
+                            {{$industry->updated_at}}
+                        </td>
+                        <td class="text-right">
+                            <a href="/dashboard/industries/{{$industry->hex}}">
+                                <button>
+                                    <i class="fa-solid fa-info-circle"></i>
+                                    Details
+                                </button>
+                            </a>
 
-    <x-pagination table="industries" :results="$industries" />
+                            <a href="/dashboard/industries/{{$industry->hex}}/text/edit">
+                                <button>
+                                    <i class="fa-solid fa-marker"></i>
+                                    Edit
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+
+        <x-pagination table="industries" :results="$industries" />
+
+    @endif
 
 </x-dashboard-layout>
