@@ -35,9 +35,8 @@
                     </td>
                     <td class="text-center">{{count($sector->industries)}}</td>
                     <td class="text-center">{{count($sector->companies)}}</td>
-                    <td class="flex items-center">
-                        <img src="{{asset('images/users/default-profile-pic-male.jpg')}}" alt="Frank Jones" title="Frank Jones" class="profile-pic-small-round">
-                        Frank Jones
+                    <td>
+                        <x-user-profile-pic-full-name :user="$sector->user" />
                     </td>
                     <td>
                         {{$sector->updated_at}}

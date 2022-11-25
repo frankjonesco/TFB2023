@@ -43,9 +43,8 @@
                             {{$article->category->name}}
                         </a>
                     </td>
-                    <td class="flex items-center">
-                        <img src="{{asset('images/users/default-profile-pic-male.jpg')}}" alt="Frank Jones" title="Frank Jones" class="profile-pic-small-round">
-                        Frank Jones
+                    <td>
+                        <x-user-profile-pic-full-name :user="$article->user" />
                     </td>
                     <td>
                         {{$article->updated_at}}

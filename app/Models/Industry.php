@@ -32,7 +32,11 @@ class Industry extends Model
 
     // Relationship to users
     public function user(){
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id')
+            ->withDefault([
+                'first_name' => 'Unknown',
+                'last_name' => 'user'
+            ]);
     }
 
 

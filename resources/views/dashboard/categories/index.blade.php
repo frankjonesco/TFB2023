@@ -39,9 +39,8 @@
                         </a>
                     </td>
                     <td>{{count($category->articles)}}</td>
-                    <td class="flex items-center">
-                        <img src="{{asset('images/users/default-profile-pic-male.jpg')}}" alt="Frank Jones" title="Frank Jones" class="profile-pic-small-round">
-                        Frank Jones
+                    <td>
+                        <x-user-profile-pic-full-name :user="$category->user" />
                     </td>
                     <td>
                         {{$category->updated_at}}

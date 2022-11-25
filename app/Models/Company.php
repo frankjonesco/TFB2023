@@ -72,6 +72,33 @@ class Company extends Model
 
         return $industries;
     }
+
+
+
+    // HELPER METHODS
+
+    // Status in color
+    public function statusInColor(){
+        switch($this->status){
+            case 'public':
+                $color = 'text-green-300';
+                $icon = 'fa-eye';
+                break;
+            case 'private':
+                $color = 'text-red-300';
+                $icon = 'fa-eye-slash';
+                break;
+            case 'unlisted':
+                $color = 'text-blue-300';
+                $icon = 'fa-eye';
+                break;
+            default:
+                $color = 'text-white';
+        }
+
+        $span = '<span class="'.$color.'"><i class="fa-regular '.$icon.' mr-3 text-lg"></i>'.ucfirst($this->status).'</span>';
+        return $span;
+    }
     
 
 

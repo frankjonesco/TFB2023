@@ -21,7 +21,7 @@
                 <th>Sectors</th>
                 <th>Industries</th>
                 <th>Owner</th>
-                <th>Last updated</th>
+                <th>Visibility</th>
                 <th></th>
             </tr>
         </thead>
@@ -53,16 +53,11 @@
                             @endforeach
                         @endif
                     </td>
-                    <td class="flex items-center">
-                        <a href="/dashboard/users/{{$company->user->hex}}">
-                            <img src="{{$company->user->profile_pic}}" alt="Frank Jones" title="Frank Jones" class="profile-pic-small-round">
-                        </a>
-                        <a href="/dashboard/users/{{$company->user->hex}}">
-                            {{$company->user->full_name}}
-                        </a>
+                    <td>
+                        <x-user-profile-pic-full-name :user="$company->user" />
                     </td>
                     <td>
-                        {{$company->updated_at}}
+                        {!!$company->statusInColor()!!}
                     </td>
                     <td class="text-right">
                         <a href="/dashboard/companies/{{$company->hex}}">
@@ -80,7 +75,18 @@
     <nav aria-label="Page navigation example" class="mt-7">
         <div class="flex items-center mb-5">
             <div class="grow">
-                Page: {{$companies->currentPage()}} - Showing {{$companies->count()}} of {{$companies->total()}} results
+                @php
+                    $from = ($companies->currentpage()-1)*$companies->perpage()+1;
+                    $to = ($companies->currentpage()-1)*$companies->perpage()+$companies->count();
+                    $total = $companies->total();
+
+                    $from = number_format($from, 0, ',');
+                    $to = number_format($to, 0, ',');
+                    $total = number_format($total, 0, ',');
+                @endphp
+                <span class="text-gray-400">Showing</span> {{$from}} <span class="text-gray-400">to</span> {{$to}}
+                <span class="text-gray-400">of</span> {{$total}} <span class="text-gray-400">companies</span>
+                {{-- Showing {{$companies->count()}} of {{$companies->total()}} results --}}
             </div>
             <div>
                 <ul class="inline-flex items-center -space-x-px">

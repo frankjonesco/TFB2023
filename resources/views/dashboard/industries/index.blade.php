@@ -34,14 +34,15 @@
                         </a>
                     </td>
                     <td>
-                        <a href="/dashboard/sectors/{{$industry->sector->hex}}">
-                            {{$industry->sector->name}}
-                        </a>
+                        @if($industry->sector)
+                            <a href="/dashboard/sectors/{{$industry->sector->hex}}">
+                                {{$industry->sector->name}}
+                            </a>
+                        @endif
                     </td>
                     <td class="text-center">{{count($industry->companies)}}</td>
-                    <td class="flex items-center">
-                        <img src="{{asset('images/users/default-profile-pic-male.jpg')}}" alt="Frank Jones" title="Frank Jones" class="profile-pic-small-round">
-                        Frank Jones
+                    <td>
+                        <x-user-profile-pic-full-name :user="$industry->user" />
                     </td>
                     <td>
                         {{$industry->updated_at}}

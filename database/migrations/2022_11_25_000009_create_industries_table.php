@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('old_id')->nullable();
             $table->string('hex', 11);
             $table->foreignId('user_id')->nullable();
-            $table->foreignId('category_id')->nullable()->onDelete('cascade');
+            $table->foreignId('sector_id')->nullable()->onDelete('cascade');
             $table->string('name');
             $table->string('slug');
             $table->string('english_name');

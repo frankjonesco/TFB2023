@@ -29,7 +29,7 @@ class IndustrySeeder extends Seeder
             Industry::create([
                 'old_id' => $industry->id,
                 'hex' => Str::random(11),
-                'category_id' => null,
+                'sector_id' => null,
                 'name' => trim($industry->name),
                 'slug' => Str::slug($slug),
                 'english_name' => trim($industry->english_name),
