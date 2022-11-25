@@ -22,12 +22,22 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
+            ConfigSeeder::class,
+            CountrySeeder::class,
+            UserTypeSeeder::class,
+            UserSeeder::class,
+            ColorSwatchSeeder::class,
+            ColorSeeder::class,
+            SponsorSeeder::class,
             SectorSeeder::class,
             IndustrySeeder::class,
             CompanySeeder::class,
-
+            RankingSeeder::class,
+            ContactSeeder::class,
+            CommentSeeder::class,
             CategorySeeder::class,
             ArticleSeeder::class,
+            AssociationSeeder::class,
         ]);
     }
 }
