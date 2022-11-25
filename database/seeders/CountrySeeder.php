@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Country;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class CountrySeeder extends Seeder
 {
@@ -14,6 +16,17 @@ class CountrySeeder extends Seeder
      */
     public function run()
     {
-        //
+        // Import countries
+        $countries = Country::on('mysql_import')->get();
+
+        // Create countries
+        foreach($countries as $country) {
+            Country::create([
+                'name' => $country->nicename,
+                'slug' => Str::slug($country->nicename),
+                'iso' => $country->iso,
+                'phone_code' => $country->phonecode
+            ]);
+        }
     }
 }
