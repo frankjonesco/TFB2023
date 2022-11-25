@@ -13,8 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('color_swatches', function (Blueprint $table) {
+        Schema::create('color_themes', function (Blueprint $table) {
             $table->id();
+            $table->string('hex', 11);
+            $table->integer('user_id');
+            $table->string('name');
+            $table->string('slug');
+            $table->string('description');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('color_swatches');
+        Schema::dropIfExists('color_themes');
     }
 };

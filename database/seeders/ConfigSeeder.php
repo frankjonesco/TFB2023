@@ -18,7 +18,7 @@ class ConfigSeeder extends Seeder
     {
         $config = [
             'hex' => Str::random(11),
-            'color_swatch_id' => 1,
+            'color_theme_id' => 1,
         ];
 
         Config::create($config);

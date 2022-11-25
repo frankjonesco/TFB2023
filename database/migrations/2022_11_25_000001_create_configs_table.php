@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('configs', function (Blueprint $table) {
             $table->id();
             $table->string('hex', 11);
-            $table->foreignId('color_swatch_id');
+            $table->foreignId('color_theme_id');
             $table->timestamps();
         });
     }
