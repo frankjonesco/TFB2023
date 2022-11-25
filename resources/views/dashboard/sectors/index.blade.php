@@ -50,13 +50,6 @@
                                     Details
                                 </button>
                             </a>
-
-                            <a href="/dashboard/sectors/{{$sector->hex}}/text/edit">
-                                <button>
-                                    <i class="fa-solid fa-marker"></i>
-                                    Edit
-                                </button>
-                            </a>
                         </td>
                     </tr>
                 @endforeach

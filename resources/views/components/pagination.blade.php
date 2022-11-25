@@ -56,13 +56,15 @@
             </ul>
         </div>
     </div>
-    <div class="flex items-center">
-        <div class="grow"></div>
-        <form action="?" method="GET" class="flex items-center">
-            <span>Page</span>
-            <input type="text" name="page" class="!w-12 !ml-3 !mr-2.5 !mb-0 !text-base !text-center" value="{{$results->currentPage()}}">
-            <span class="mr-2.5">of</span>
-            <span>{{$results->lastPage()}}</span>
-        </form>
-    </div>
+    @if($results->lastPage() > 5)
+        <div class="flex items-center">
+            <div class="grow"></div>
+            <form action="?" method="GET" class="flex items-center">
+                <span>Page</span>
+                <input type="text" name="page" class="!w-12 !ml-3 !mr-2.5 !mb-0 !text-base !text-center" value="{{$results->currentPage()}}">
+                <span class="mr-2.5">of</span>
+                <span>{{$results->lastPage()}}</span>
+            </form>
+        </div>
+    @endif
 </nav>

@@ -56,13 +56,6 @@
                                     Details
                                 </button>
                             </a>
-
-                            <a href="/dashboard/industries/{{$industry->hex}}/text/edit">
-                                <button>
-                                    <i class="fa-solid fa-marker"></i>
-                                    Edit
-                                </button>
-                            </a>
                         </td>
                     </tr>
                 @endforeach

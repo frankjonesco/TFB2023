@@ -54,13 +54,6 @@
                                     Details
                                 </button>
                             </a>
-
-                            <a href="/dashboard/categories/{{$category->hex}}/text/edit">
-                                <button>
-                                    <i class="fa-solid fa-marker"></i>
-                                    Edit
-                                </button>
-                            </a>
                         </td>
                     </tr>
                 @endforeach

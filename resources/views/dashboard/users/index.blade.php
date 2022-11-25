@@ -42,13 +42,6 @@
                                     Details
                                 </button>
                             </a>
-
-                            <a href="/dashboard/users/{{$user->hex}}/text/edit">
-                                <button>
-                                    <i class="fa-solid fa-marker"></i>
-                                    Edit
-                                </button>
-                            </a>
                         </td>
                     </tr>
                 @endforeach
