@@ -18,7 +18,9 @@ return new class extends Migration
             $table->string('hex', 11);
             $table->string('name');
             $table->string('slug');
-            $table->string('logo');
+            $table->string('logo')->nullable();
+            $table->timestamps();
+            $table->boolean('active')->nullable();
         });
     }
 
