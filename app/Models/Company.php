@@ -57,10 +57,9 @@ class Company extends Model
     }
 
     // Accessor for industries
-    public function getIndustriesAttribute($value)
+    public function getIndustryRowsAttribute($value)
     {   
         $industry_ids = explode(',', Company::find($this->id)->industry_ids);
-       
         $industries = [];
 
         if(count($industry_ids) > 1){

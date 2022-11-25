@@ -66,4 +66,7 @@
             @endforeach
         </tbody>
     </table>
+
+    <x-pagination table="industries" :results="$industries" />
+
 </x-dashboard-layout>

@@ -23,7 +23,7 @@ class SectorController extends Controller
     // ADMIN: Show all sectors
     public function adminIndex(Site $site){
         return view('dashboard.sectors.index', [
-            'sectors' => $site->allSectors()
+            'sectors' => $site->paginateAllSectors()
         ]);
     }
 

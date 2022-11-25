@@ -23,7 +23,7 @@ class CategoryController extends Controller
     // ADMIN: Show all categories
     public function adminIndex(Site $site){
         return view('dashboard.categories.index', [
-            'categories' => $site->allCategories()
+            'categories' => $site->paginateAllCategories()
         ]);
     }
 

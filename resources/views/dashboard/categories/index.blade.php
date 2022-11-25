@@ -64,4 +64,7 @@
             @endforeach
         </tbody>
     </table>
+
+    <x-pagination table="categories" :results="$categories" />
+
 </x-dashboard-layout>

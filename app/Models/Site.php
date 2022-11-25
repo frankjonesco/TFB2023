@@ -22,6 +22,11 @@ class Site extends Model
         return Sector::orderBy('name', 'ASC')->get();
     }
 
+    // Paginate all sectors
+    public function paginateAllSectors(){
+        return Sector::orderBy('name', 'ASC')->paginate(10);
+    }
+
     // Public sectors
     public function publicSectors(){
         return Sector::where('status', 'public')->orderBy('name', 'ASC')->get();
@@ -36,6 +41,11 @@ class Site extends Model
         return Industry::orderBy('name', 'ASC')->get();
     }
 
+    // Paginate all sectors
+    public function paginateAllIndustries(){
+        return Industry::orderBy('name', 'ASC')->paginate(10);
+    }
+
     // Public sectors
     public function publicIndustries(){
         return Industry::where('status', 'public')->orderBy('name', 'ASC')->get();
@@ -45,12 +55,17 @@ class Site extends Model
 
     // COMPANIES
         
-    // All sectors
+    // All companies
     public function allCompanies(){
+        return Company::orderBy('registered_name', 'ASC')->get();
+    }
+
+    // Paginate all companies
+    public function paginateAllCompanies(){
         return Company::orderBy('registered_name', 'ASC')->paginate(10);
     }
 
-    // Public sectors
+    // Public companies
     public function publicCompanies(){
         return Company::where('status', 'public')->orderBy('registered_name', 'ASC')->get();
     }
@@ -62,6 +77,11 @@ class Site extends Model
     // All categories
     public function allCategories(){
         return Category::orderBy('name', 'ASC')->get();
+    }
+
+    // Paginate all categories
+    public function paginateAllCategories(){
+        return Category::orderBy('name', 'ASC')->paginate(10);
     }
 
     // Public categories
@@ -76,6 +96,11 @@ class Site extends Model
     // All articles
     public function allArticles(){
         return Article::orderBy('created_at', 'DESC')->get();
+    }
+
+    // Paginate all articles
+    public function paginateAllArticles(){
+        return Article::orderBy('created_at', 'DESC')->paginate(10);
     }
 
     // Public categories

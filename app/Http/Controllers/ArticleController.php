@@ -23,7 +23,7 @@ class ArticleController extends Controller
     // ADMIN: Show all articles
     public function adminIndex(Site $site){
         return view('dashboard.articles.index', [
-            'articles' => $site->allArticles()
+            'articles' => $site->paginateAllArticles()
         ]);
     }
 

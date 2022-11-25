@@ -24,7 +24,7 @@ class CompanyController extends Controller
     // ADMIN: Show all companies
     public function adminIndex(Site $site){
         return view('dashboard.companies.index', [
-            'companies' => $site->allCompanies()
+            'companies' => $site->paginateAllCompanies()
         ]);
     }
 
