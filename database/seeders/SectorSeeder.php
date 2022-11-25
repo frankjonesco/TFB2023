@@ -2,9 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Site;
 use App\Models\Sector;
+use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\File;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class SectorSeeder extends Seeder
@@ -16,44 +19,34 @@ class SectorSeeder extends Seeder
      */
     public function run()
     {
-        $sectors = [
-            [
+        // Import sectors (previously named 'categories')
+        $sectors = Category::on('mysql_import')->get();
+
+        // Create sectors
+        foreach($sectors as $sector){
+            $site = new Site();
+            $slug = $site->prepSlug($sector->name);
+            $english_slug = $site->prepSlug($sector->english_name);
+            
+            Sector::create([
+                'old_id' => $sector->id,
                 'hex' => Str::random(11),
                 'user_id' => 1,
-                'name' => 'Electronics',
-                'slug' => 'electronics',
+                'name' => trim($sector->name),
+                'slug' => Str::slug($slug),
+                'english_name' => trim($sector->english_name),
+                'english_slug' => Str::slug($english_slug),
+                'description' => null,
+                'image' => $sector->image,
+                'color_id' => $sector->color,
+                'created_at' => date('Y-m-d H:i:s', $sector->created),
                 'status' => 'public'
-            ],
-            [
-                'hex' => Str::random(11),
-                'user_id' => 1,
-                'name' => 'Agriculture',
-                'slug' => 'agriculture',
-                'status' => 'public'
-            ],
-            [
-                'hex' => Str::random(11),
-                'user_id' => 1,
-                'name' => 'Automotive',
-                'slug' => 'automotive',
-                'status' => 'public'
-            ],
-            [
-                'hex' => Str::random(11),
-                'user_id' => 1,
-                'name' => 'Food & Drink',
-                'slug' => 'food-and-drink',
-                'status' => 'public'
-            ],
-            [
-                'hex' => Str::random(11),
-                'user_id' => 1,
-                'name' => 'Manufactoring',
-                'slug' => 'manufactoring',
-                'status' => 'public'
-            ]
-        ];
+            ]);
+        }
+
+        // HANDLE IMAGE TRANSFER
+        $site = new Site();
         
-        collect($sectors)->each(function ($sector) { Sector::create($sector); });
+        $site->handleImageTransfer('sectors', Sector::all());
     }
 }

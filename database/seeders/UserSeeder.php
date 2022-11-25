@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Site;
 use App\Models\User;
-use App\Models\UserType;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
@@ -44,58 +44,9 @@ class UserSeeder extends Seeder
 
 
         // HANDLE IMAGE TRANSFER
-
-        // Delete existing directory
-        File::deleteDirectory(public_path('images/users'));
-
-        // Get users
-        $users = User::all();
-
-        // For each user
-        foreach($users as $user){
-            // Source and destination paths
-            $source_path = public_path('import_images/users/'.$user->old_id);
-            $destination_path = public_path('images/users/'.$user->hex);
-
-            // Copy source to destination if source exists
-            if(File::isDirectory($source_path)){
-                File::copyDirectory($source_path, $destination_path);
-
-                // If user has image
-                if($user->image){
-                    // Format a filename
-                    $random = Str::random(11);
-                    $image_name = $random.'.jpg';
-                    $thumbnail_name = 'tn-'.$image_name;
-
-                    // Old image paths
-                    $old_image_path = $destination_path.'/'.$user->image;
-                    $old_thumbnail_path = $destination_path.'/thumb-'.$user->image;
-
-                    // New image paths
-                    $new_image_path = $destination_path.'/'.$image_name;
-                    $new_thumbnail_path = $destination_path.'/'.$thumbnail_name;
-
-                    // Rename image
-                    File::move($old_image_path, $new_image_path);
-                    File::move($old_thumbnail_path, $new_thumbnail_path);
-
-                    // List files in user's directory
-                    $files_in_folder = File::allFiles($destination_path);
-
-                    // Delete irrelevant files
-                    foreach($files_in_folder as $file){
-                        if($file != $new_image_path && $file != $new_thumbnail_path){
-                            File::delete($file);
-                        }
-                    }
-
-                    // Save new image name
-                    $user->image = $image_name;
-                    $user->save();
-                }
-            }
-        }
+        $site = new Site();
+        
+        $site->handleImageTransfer('users', User::all());
 
         // Transfer default profile pics
         File::copy(

@@ -87,32 +87,49 @@ class Site extends Model
 
 
 
-    // Handle image upload
-    public function handleImageUpload($request, $directory, $hex){  
-        // If an image has been added to the request
-  
-            // Define a name for the new image
-            $image_name = Str::random('6').'-'.time().'.'.$request->image->extension();
-            // Specify the direcory path
-            $directory_path = public_path('images/'.$directory.'/'.$hex);
-            // Store in public folder
-            $request->file('image')->move($directory_path, $image_name);
-            // List all the file in the directory
-            $files_in_folder = File::allFiles($directory_path);
-            // Delete all files that are not the new image
-            foreach($files_in_folder as $key => $path){
-                if($path != $directory_path.'/'.$image_name){
-                    File::delete($path);
-                }
-            }
-            // Create a thumbnail
-            self::makeImageThumbnail($directory_path, $image_name);
 
-            return $image_name;
-        
-       
+    // START: FORMATTING METHODS
+
+    // Prep slug
+    public function prepSlug($value){
+        $value = strtolower($value);
+        $value = trim($value);
+        $value = str_replace('ä', 'ae', $value);
+        $value = str_replace('ö', 'oe', $value);
+        $value = str_replace('ü', 'ue', $value);
+        $value = str_replace('ß', 'ss', $value);
+        $value = str_replace('/', '-', $value);
+        $value = str_replace('&', 'and', $value);
+        return $value;
     }
 
+    // END: FORMATTING METHODS
+
+
+
+
+    // START: IMAGE HANDLING METHODS
+
+    // Handle image upload
+    public function handleImageUpload($request, $directory, $hex){  
+        // Define a name for the new image
+        $image_name = Str::random('6').'-'.time().'.'.$request->image->extension();
+        // Specify the direcory path
+        $directory_path = public_path('images/'.$directory.'/'.$hex);
+        // Store in public folder
+        $request->file('image')->move($directory_path, $image_name);
+        // List all the file in the directory
+        $files_in_folder = File::allFiles($directory_path);
+        // Delete all files that are not the new image
+        foreach($files_in_folder as $key => $path){
+            if($path != $directory_path.'/'.$image_name){
+                File::delete($path);
+            }
+        }
+        // Create a thumbnail
+        self::makeImageThumbnail($directory_path, $image_name);
+        return $image_name;
+    }
 
     // Make image thumbnail
     public function makeImageThumbnail($directory_path, $image_name){
@@ -123,7 +140,6 @@ class Site extends Model
             })
             ->save($directory_path.'/tn-'.$image_name);
     }
-
 
     // Handle rendered image
     public function handleRenderedImage($data, $directory, $hex, $image){
@@ -149,4 +165,57 @@ class Site extends Model
         });
         $img->save('images/'.$directory.'/'.$hex.'/tn-'.$image);
     }
+
+    // Handle image tranfer
+    public function handleImageTransfer($directory, $rows){
+        // Delete existing directory
+        File::deleteDirectory(public_path('images/'.$directory));
+
+        // For each row
+        foreach($rows as $row){
+            // Source and destination paths
+            $source_path = public_path('import_images/'.$directory.'/'.$row->old_id);
+            $destination_path = public_path('images/'.$directory.'/'.$row->hex);
+
+            // Copy source to destination if source exists
+            if(File::isDirectory($source_path)){
+                File::copyDirectory($source_path, $destination_path);
+
+                // If row has image
+                if($row->image){
+                    // Format a filename
+                    $random = Str::random(11);
+                    $image_name = $random.'.jpg';
+
+                    // Old image path
+                    $old_image_path = $destination_path.'/'.$row->image;
+
+                    // New image path
+                    $new_image_path = $destination_path.'/'.$image_name;
+
+                    // Rename image
+                    File::move($old_image_path, $new_image_path);
+
+                    // List files in user's directory
+                    $files_in_folder = File::allFiles($destination_path);
+
+                    // Delete irrelevant files
+                    foreach($files_in_folder as $file){
+                        if($file != $new_image_path){
+                            File::delete($file);
+                        }
+                    }
+
+                    // Save new image name
+                    $row->image = $image_name;
+                    $row->save();
+
+                    // Create a thumbnail
+                    self::makeImageThumbnail($destination_path, $image_name);
+                }
+            }
+        }
+    }
+
+    // END: IMAGE HANDLING METHODS
 }
