@@ -167,7 +167,7 @@ class Site extends Model
     }
 
     // Handle image tranfer
-    public function handleImageTransfer($directory, $rows){
+    public function handleImageTransfer($directory, $rows, $filename_prefix = null){
         // Delete existing directory
         File::deleteDirectory(public_path('images/'.$directory));
 
@@ -188,7 +188,7 @@ class Site extends Model
                     $image_name = $random.'.jpg';
 
                     // Old image path
-                    $old_image_path = $destination_path.'/'.$row->image;
+                    $old_image_path = $destination_path.'/'.$filename_prefix.$row->image;
 
                     // New image path
                     $new_image_path = $destination_path.'/'.$image_name;
