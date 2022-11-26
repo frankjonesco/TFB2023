@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            ConfigSeeder::class,
+            SettingSeeder::class,
             CountrySeeder::class,
             UserTypeSeeder::class,
             UserSeeder::class,

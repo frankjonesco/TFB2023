@@ -1,7 +1,7 @@
 <x-dashboard-layout>
     
     <div class="flex flex-row items-center">
-        <h1 class="grow">Create industy</h1>
+        <h1 class="grow">Edit company</h1>
         <x-edit-company-buttons :company="$company" />
     </div>
 

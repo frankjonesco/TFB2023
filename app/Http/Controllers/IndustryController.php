@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\File;
 
 class IndustryController extends Controller
 {
+    
     // Show all public industries
     public function index(Site $site){
         return view('industries.index', [
@@ -63,6 +64,7 @@ class IndustryController extends Controller
 
     // ADMIN: Show single industry
     public function adminShow(Industry $industry){
+        
         return view('dashboard.industries.show', [
             'industry' => $industry
         ]);

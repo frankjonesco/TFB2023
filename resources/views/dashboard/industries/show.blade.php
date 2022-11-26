@@ -5,7 +5,10 @@
         <x-edit-industry-buttons :industry="$industry" />
     </div>
 
-    <p class="mb-3">This is the industry details page.</p>
+    <p class="mb-3">Created: {{showDate($industry->created_at)}}</p>
+
+
+
 
     <x-alerts/>
 

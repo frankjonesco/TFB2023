@@ -182,7 +182,11 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+        // Intervention Image
         Intervention\Image\ImageServiceProvider::class,
+
+        // Composer Service Provider & Globals
+        App\Providers\ComposerServiceProvider::class,
 
         /*
          * Package Service Providers...
