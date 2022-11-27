@@ -55,6 +55,12 @@ Route::get('sectors', [SectorController::class, 'index']);
     Route::get('dashboard/sectors/{sector}/delete', [SectorController::class, 'deleteOptions']);
     // Delete sector
     Route::delete('dashboard/sectors/{sector}/delete', [SectorController::class, 'delete']);
+
+    // Store industry for this sector
+    Route::post('dashboard/sectors/{sector}/industries/store', [SectorController::class, 'storeIndustry']);
+
+    // Execute with selected
+    Route::put('/dashboard/sectors/{sector}/industries/with-selected', [SectorController::class, 'withSelected']);
     
 
     // Show single sector   
@@ -72,7 +78,7 @@ Route::get('industries', [IndustryController::class, 'index']);
     // Show create form
     Route::get('dashboard/industries/create', [IndustryController::class, 'create']);
 
-    // Store new industry
+    // Store new
     Route::post('dashboard/industries/store', [IndustryController::class, 'store']);
 
     // Show edit text
@@ -93,9 +99,12 @@ Route::get('industries', [IndustryController::class, 'index']);
     Route::get('dashboard/industries/{industry}/delete', [IndustryController::class, 'deleteOptions']);
     // Delete industry
     Route::delete('dashboard/industries/{industry}/delete', [IndustryController::class, 'delete']);
+
+    // Execute with selected
+    Route::put('/dashboard/industries/{industry}/companies/with-selected', [IndustryController::class, 'withSelected']);
     
 
-    // Show single industry   
+    // Show single   
     Route::get('dashboard/industries/{industry}', [IndustryController::class, 'adminShow']);
 
 

@@ -18,7 +18,7 @@ class IndustrySeeder extends Seeder
     public function run()
     {
         // Import industries
-        $industries = Industry::on('mysql_import')->get();
+        $industries = Industry::on('mysql_import')->where('category_id', '!=', null)->get();
 
         // Create industries
         foreach($industries as $industry){
@@ -29,7 +29,7 @@ class IndustrySeeder extends Seeder
             Industry::create([
                 'old_id' => $industry->id,
                 'hex' => Str::random(11),
-                'sector_id' => null,
+                'sector_id' => $industry->category_id,
                 'name' => trim($industry->name),
                 'slug' => Str::slug($slug),
                 'english_name' => trim($industry->english_name),

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Site;
+use App\Models\User;
 use App\Models\Sector;
+use App\Models\Company;
+use App\Models\Industry;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -23,7 +26,7 @@ class SectorController extends Controller
     // ADMIN: Show all sectors
     public function adminIndex(Site $site){
         return view('dashboard.sectors.index', [
-            'sectors' => $site->paginateAllSectors()
+            'sectors' => $site->paginateAllSectors(),
         ]);
     }
 
@@ -58,9 +61,11 @@ class SectorController extends Controller
     }
 
     // ADMIN: Show single sector
-    public function adminShow(Sector $sector){
+    public function adminShow(Sector $sector, Site $site){
         return view('dashboard.sectors.show', [
-            'sector' => $sector
+            'sector' => $sector,
+            'sectors' => $site->allSectors(),
+            'users' => $site->allUsers()
         ]);
     }
 
@@ -150,5 +155,79 @@ class SectorController extends Controller
         $sector->delete();
         File::deleteDirectory(public_path('images/sectors/'.$sector->hex));
         return redirect('dashboard/sectors')->with('success', 'Sector deleted.');
+    }
+
+
+
+
+    // ADMIN: Store industry
+    public function storeIndustry(Sector $sector, Request $request, Site $site){
+        $request->validate([
+            'industry_name' => 'required'
+        ]);
+
+        $industry = new Industry();
+
+        $industry->hex = Str::random(11);
+        $industry->user_id = 1;
+        $industry->sector_id = $sector->id;
+        $industry->name = $request->industry_name;
+        $industry->slug = Str::slug($site->prepSlug($request->industry_name));
+        $industry->english_name = $request->industry_name;
+        $industry->english_slug = Str::slug($site->prepSlug($request->industry_name));
+        $industry->status = 'public';
+
+        $industry->save();
+
+        return redirect('dashboard/sectors/'.$sector->hex)->with('success', 'New industry created.');
+    }
+
+    // ADMIN: With selected
+    public function withSelected(Sector $sector, Request $request){
+        
+        // Change sector
+        if($request->with_selected == 'change_sector'){
+            $request->validate([
+                'industry_ids' => 'required',
+                'sector_id' => 'required'
+            ]);
+            $industry_ids = explode(',', $request->industry_ids);
+            foreach($industry_ids as $industry_id){
+                Industry::where('id', $industry_id)->update(['sector_id' => $request->sector_id]);
+            }
+            return redirect('dashboard/sectors/'.$sector->hex)->with('success', 'The selected industries were moved to the '.$sector->name.' sector.');
+        }
+
+        // Change owner
+        if($request->with_selected == 'change_owner'){
+            $request->validate([
+                'industry_ids' => 'required',
+                'user_id' => 'required'
+            ]);
+            $industry_ids = explode(',', $request->industry_ids);
+            foreach($industry_ids as $industry_id){
+                Industry::where('id', $industry_id)->update(['user_id' => $request->user_id]);
+            }
+            $user = User::find($request->user_id);
+            return redirect('dashboard/sectors/'.$sector->hex)->with('success', $user->full_name.' was made the owner of the selected industries.');
+        }
+
+        // Delete
+        if($request->with_selected == 'delete'){
+            // Get industries
+            $industries = Industry::whereIn('id', explode(',', $request->industry_ids))->get();
+            foreach($industries as $industry){
+                // Check if the are any companies in this industry
+                $companies = Company::where('industry_ids', 'like', '%'.$industry->id.'%')->get();
+                dd($industry->id);
+                if(count($companies) > 0){
+                    dd('There are companies.');
+                }
+                else{
+                    dd('No companies.');
+                }
+            }
+            dd($industries);
+        }
     }
 }

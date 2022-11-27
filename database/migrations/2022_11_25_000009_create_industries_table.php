@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('english_name');
             $table->string('english_slug');
             $table->text('description')->nullable();
+            $table->string('image')->nullable();
             $table->foreignId('color_id')->nullable();
             $table->timestamps();
             $table->string('status');

@@ -32,13 +32,13 @@
                     <tr>
                         <td>
                             <a href="/dashboard/industries/{{$industry->hex}}">
-                                {{$industry->name}}
+                                {{$industry->english_name}}
                             </a>
                         </td>
                         <td>
                             @if($industry->sector)
                                 <a href="/dashboard/sectors/{{$industry->sector->hex}}">
-                                    {{$industry->sector->name}}
+                                    {{$industry->sector->english_name}}
                                 </a>
                             @endif
                         </td>

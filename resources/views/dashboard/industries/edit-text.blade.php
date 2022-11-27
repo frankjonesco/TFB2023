@@ -66,6 +66,23 @@
         </div>
 
         <div class="form-block">
+            <label for="user_id">Owner</label>
+            <select id="userId" name="user_id">
+                <option value="">Unclaimed</option>
+                @foreach($users as $user)
+                    @if(old('user_id'))
+                        <option value="{{$user->id}}" {{$user->id == old('user_id') ? 'selected' : null}}>{{$user->full_name}}</option>
+                    @else
+                        <option value="{{$user->id}}" {{$user->id == $industry->user_id ? 'selected' : null}}>{{$user->full_name}}</option>
+                    @endif
+                @endforeach
+            </select>
+            @error('user_id')
+                <p class="text-error">{{$message}}</p>
+            @enderror
+        </div>
+
+        <div class="form-block">
             <label for="status">Visibility</label>
             <select id="status" name="status">
                 <option value="public" class="block w-full" {{$industry->status == 'public' ? 'selected' : null}}>Public</option>
@@ -75,7 +92,6 @@
             @error('status')
                 <p class="text-error">You must set your visibility status.</p>
             @enderror
-
         </div>
         
         <div class="form-block">
