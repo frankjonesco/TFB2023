@@ -117,9 +117,14 @@ class Site extends Model
         return User::orderBy('first_name', 'ASC')->get();
     }
 
-    // Paginate all articles
+    // Paginate all users
     public function paginateAllUsers(){
         return User::orderBy('first_name', 'ASC')->paginate(10);
+    }
+
+    // All users
+    public function allAdminUsers(){
+        return User::where('user_type_id', '>=', 6)->orderBy('first_name', 'ASC')->get();
     }
 
     // END: RETRIEVAL METHODS

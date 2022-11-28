@@ -54,7 +54,7 @@ class SectorController extends Controller
             'description' => $request->description,
             'status' => $request->status
         ];
-        
+
         $sector->store($data);
         
         return redirect('dashboard/sectors/'.$sector->hex)->with('success', 'Sector created!');
@@ -66,7 +66,7 @@ class SectorController extends Controller
         return view('dashboard.sectors.show', [
             'sector' => $sector,
             'sectors' => $site->allSectors(),
-            'users' => $site->allUsers()
+            'users' => $site->allAdminUsers()
         ]);
     }
 
