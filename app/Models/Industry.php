@@ -42,6 +42,18 @@ class Industry extends Model
 
 
 
+    // RETRIEVAL METHODS
+
+    // All companies
+    public function allCompanies(){
+        $companies = Company::whereRaw(
+            'find_in_set("'.$this->id.'", industry_ids)'
+        )->get();
+        return $companies;
+    }
+
+
+
     // ACTION METHODS
 
     // Save text (update)

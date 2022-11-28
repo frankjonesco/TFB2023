@@ -183,7 +183,7 @@ class SectorController extends Controller
     }
 
     // ADMIN: With selected
-    public function withSelected(Sector $sector, Request $request){
+    public function withSelected(Sector $sector, Request $request, Site $site){
         
         // Change sector
         if($request->with_selected == 'change_sector'){
@@ -214,20 +214,94 @@ class SectorController extends Controller
 
         // Delete
         if($request->with_selected == 'delete'){
+            $request->validate([
+                'industry_ids' => 'required',
+            ]);
             // Get industries
+            $need_confirmation = false;
             $industries = Industry::whereIn('id', explode(',', $request->industry_ids))->get();
             foreach($industries as $industry){
-                // Check if the are any companies in this industry
+                // Check if there are any companies in this industry
                 $companies = Company::where('industry_ids', 'like', '%'.$industry->id.'%')->get();
-                dd($industry->id);
-                if(count($companies) > 0){
-                    dd('There are companies.');
+                // echo count($companies);
+
+                
+                if($companies->isEmpty()){
+                    $industry->delete();
+                    File::deleteDirectory(public_path('images/industries/'.$industry->hex));
+                    return redirect('dashboard/sectors/'.$sector->hex)->with('success', 'The selected sectors were deleted.');
+                    
                 }
                 else{
-                    dd('No companies.');
+                    $need_confirmation = true;                    
                 }
             }
-            dd($industries);
+
+            if($need_confirmation){
+                return redirect('dashboard/sectors/'.$sector->hex.'/industries/confirm-delete')->with('ids_to_delete', $request->industry_ids);
+            }
+
+            
         }
     }
+
+    public function confirmDeleteIndustry(Sector $sector, Site $site){
+        // Confirm delete industry
+        // dd(session('ids_to_delete'));
+        
+        $industry_ids = explode(',', session('ids_to_delete'));
+        $count = 0;
+        foreach($industry_ids as $key => $industry_id){
+            $count += Company::whereRaw(
+                'find_in_set("'.$industry_id.'", industry_ids)'
+            )->count();
+            $industries_to_delete[$key] = Industry::find($industry_id);
+        }
+
+        session(['ids_to_delete2' => session('ids_to_delete')]);
+        return view('dashboard.sectors.confirm-delete-industry', [
+            'ids_to_delete' => $industry_ids,
+            'sector' => $sector,
+            'companies_count' => $count,
+            'sectors' => $site->allSectors(),
+            'industries' => $site->allIndustries(),
+            'industries_to_delete' => $industries_to_delete
+        ]);
+    }
+
+    // Delete industry
+    public function deleteIndustry(Sector $sector, Industry $industry, Request $request, Site $site){
+        // dd(session('ids_to_delete2'));
+        // dd($request);
+
+        session(['ids_to_delete' => session('ids_to_delete2')]);
+
+        $request->validate([
+            'delete_action' => 'required'
+        ]);
+
+        if($request->delete_action == 'move_companies'){
+            $request->validate([
+                'sector_id' => 'required',  
+                'move_to_industry_id' => 'required'
+            ]);
+            dd('Move the companies to an existing industry');
+        }
+
+        if($request->delete_action == 'delete_companies'){
+            dd('Delete the companies');
+        }
+
+        if($request->delete_action == 'move_companies_to_new_industry'){
+            $request->validate([
+                'sector_id' => 'required',
+                'industry_name' => 'required'
+            ]);
+            
+            dd('Move the companies to a new industry');
+        }
+
+        
+    }
+    
 }

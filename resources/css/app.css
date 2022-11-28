@@ -13,12 +13,13 @@
     h2 {
       @apply text-3xl;
       @apply font-semibold;
-      @apply pt-10;
+      @apply pt-5;
       @apply pb-5;
     }
 
-    button, button[type=button], button[type=submit]{
+    button, button[type=button], button[type=submit], .btn{
       @apply text-white;
+      @apply hover:text-gray-200;
       @apply bg-blue-700;
       @apply hover:bg-blue-800;
       @apply focus:ring-1;
@@ -31,9 +32,24 @@
       @apply mr-2;
     }
 
+    .btn-cancel{
+      @apply btn;
+      @apply !text-gray-600;
+      @apply !bg-indigo-100;
+      @apply hover:!bg-indigo-200;
+    }
+
+    .btn-cancel:before{
+      font: var(--fa-font-solid);
+      content: "\f05e"; /*  fa-ban */
+      @apply mr-1;
+    }
+
     i{
       @apply mr-1;
     }
+
+    /* Forms */
 
     .form-block{
       @apply mb-6;
@@ -92,6 +108,18 @@
       @apply focus:ring-2;
     }
 
+    input[type=radio]{
+      @apply w-4;
+      @apply h-4;
+      @apply mr-4;
+      @apply text-blue-600;
+      @apply bg-gray-100;
+      @apply border-gray-300;
+      @apply focus:ring-transparent;
+      @apply dark:bg-gray-700;
+      @apply dark:border-gray-600;
+    }
+
     textarea{
       @apply block;
       @apply p-2.5;
@@ -136,6 +164,8 @@
       @apply text-gray-400;
     }
 
+    /* Text */
+
     .text-error{
       @apply mt-2;
       @apply text-xs;
@@ -158,6 +188,36 @@
       @apply text-gray-500;
       @apply dark:text-gray-300;
     }
+
+    .ul-o-2{
+      @apply underline;
+      @apply underline-offset-2;
+    }
+
+    /* Alerts */
+
+    .alert{
+      @apply p-4;
+      @apply mb-4;
+      @apply text-sm;
+      @apply rounded-lg;
+      @apply border;
+    }
+
+    .alert-warning{
+      @apply alert;
+      @apply border-yellow-900;
+      @apply bg-orange-300;
+      @apply text-yellow-900;
+    }
+
+    .alert::before{
+      font: var(--fa-font-solid);
+      content: "\f05a"; /*  fa-info-circle */
+      @apply mr-1.5;
+    }
+
+    /*  Tables */
 
     table{
       @apply table-auto;

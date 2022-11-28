@@ -7,7 +7,6 @@
 
 
     <x-alerts/>
-
     {{-- <img src="{{asset('images/sectors/'.$sector->hex.'/'.$sector->image)}}" alt="">
 
     <p class="mb-3">Created: {{showDate($sector->created_at)}}</p>
@@ -46,7 +45,7 @@
                                 {{$industry->sector->name}}
                             </a>
                         </td>
-                        <td class="text-center">{{count($industry->companies)}}</td>
+                        <td class="text-center">{{count($industry->allCompanies())}}</td>
                         <td>
                             <x-user-profile-pic-full-name :user="$industry->user" />
                         </td>
@@ -67,7 +66,7 @@
             <form action="/dashboard/sectors/{{$sector->hex}}/industries/with-selected" method="POST" class="grow">
                 @csrf
                 @method('PUT')
-                <input type="hidden" id="industryIds" name="industry_ids" placeholder="Industry IDs">
+                <input type="hidden" id="industryIds" name="industry_ids" placeholder="Industry IDs" value="{{old('industry_ids')}}">
                 <div class="flex flex-row items-center text-sm font-medium">
                     
                     <span class="mr-2.5">With selected</span>

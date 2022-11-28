@@ -60,7 +60,13 @@ Route::get('sectors', [SectorController::class, 'index']);
     Route::post('dashboard/sectors/{sector}/industries/store', [SectorController::class, 'storeIndustry']);
 
     // Execute with selected
-    Route::put('/dashboard/sectors/{sector}/industries/with-selected', [SectorController::class, 'withSelected']);
+    Route::put('dashboard/sectors/{sector}/industries/with-selected', [SectorController::class, 'withSelected']);
+
+    // Confirm delete industry for this sector
+    Route::get('dashboard/sectors/{sector}/industries/confirm-delete', [SectorController::class, 'confirmDeleteIndustry']);
+
+    // Delete industry
+    Route::delete('dashboard/sectors/{sector}/industries/delete', [SectorController::class, 'deleteIndustry']);
     
 
     // Show single sector   
