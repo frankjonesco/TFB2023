@@ -135,7 +135,7 @@ class Site extends Model
     // START: FORMATTING METHODS
 
     // Prep slug
-    public function prepSlug($value){
+    public function slug($value){
         $value = strtolower($value);
         $value = trim($value);
         $value = str_replace('ä', 'ae', $value);
@@ -144,7 +144,7 @@ class Site extends Model
         $value = str_replace('ß', 'ss', $value);
         $value = str_replace('/', '-', $value);
         $value = str_replace('&', 'and', $value);
-        return $value;
+        return Str::slug($value);
     }
 
     // END: FORMATTING METHODS

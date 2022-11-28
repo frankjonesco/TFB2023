@@ -89,15 +89,16 @@ class SectorController extends Controller
         ]);
 
         // Form data to model
-        $sector->name = $request->name;
-        $sector->slug = $request->slug;
-        $sector->english_name = $request->english_name;
-        $sector->english_slug = $request->english_slug;
-        $sector->description = $request->description;
-        $sector->status = $request->status;
+        $data = [
+            'name' => $request->name,
+            'slug' => $request->slug,
+            'english_name' => $request->english_name,
+            'english_slug' => $request->english_slug,
+            'description' => $request->description,
+            'status' => $request->status
+        ];
 
-        // Save changes
-        $sector->saveText();
+        $sector->updateText($data);
 
         return redirect('dashboard/sectors/'.$sector->hex)->with('success', 'Sector updated!');
     }

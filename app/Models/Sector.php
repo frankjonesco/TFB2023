@@ -57,17 +57,24 @@ class Sector extends Model
         $this->hex = Str::random(11);
         $this->user_id = 1;
         $this->name = $data['name'];
-        $this->slug = Str::slug($site->prepSlug($data['slug']));
+        $this->slug = $site->slug($data['slug']);
         $this->english_name = $data['english_name'];
-        $this->english_slug = Str::slug($site->prepSlug($data['english_slug']));
+        $this->english_slug = $site->prepSlug($data['english_slug']);
         $this->description = $data['description'];
         $this->status = $data['status'];
         $this->save();
         return $this;
     }
 
-    // Save text (update)
-    public function saveText(){
+    // Update text (update)
+    public function updateText($data){
+        $site = new Site();
+        $this->name = $data['name'];
+        $this->slug = $site->slug($data['slug']);
+        $this->english_name = $data['english_name'];
+        $this->english_slug = $site->slug($data['english_slug']);
+        $this->description = $data['description'];
+        $this->status = $data['status'];
         $this->save();
         return $this;
     }

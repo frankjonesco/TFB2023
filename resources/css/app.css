@@ -205,6 +205,19 @@
       @apply border;
     }
 
+    .alert-success{
+      @apply alert;
+      @apply border-green-900;
+      @apply bg-green-300;
+      @apply text-green-900;
+    }
+
+    .alert-success::before{
+      font: var(--fa-font-solid);
+      content: "\f058"; /*  fa-circle-check */
+      @apply mr-1.5;
+    }
+
     .alert-warning{
       @apply alert;
       @apply border-yellow-900;
@@ -212,7 +225,7 @@
       @apply text-yellow-900;
     }
 
-    .alert::before{
+    .alert-warning::before{
       font: var(--fa-font-solid);
       content: "\f05a"; /*  fa-info-circle */
       @apply mr-1.5;
