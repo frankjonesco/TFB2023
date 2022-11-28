@@ -29,15 +29,16 @@ class SectorController extends Controller
             'sectors' => $site->paginateAllSectors(),
         ]);
     }
+    
 
     // ADMIN: Show create form
     public function create(){
         return view('dashboard.sectors.create');
     }
 
+
     // ADMIN: Store new sector
     public function store(Request $request, Sector $sector){
-
         // Validate form
         $request->validate([
             'name' => 'required',
@@ -45,20 +46,20 @@ class SectorController extends Controller
         ]);
 
         // Form data to model
-        $sector->hex = Str::random(11);
-        $sector->user_id = 1;
-        $sector->name = $request->name;
-        $sector->slug = $request->slug;
-        $sector->english_name = $request->english_name;
-        $sector->english_slug = $request->english_slug;
-        $sector->description = $request->description;
-        $sector->status = $request->status;
-
-        // Save changes
-        $sector->saveText();
-
+        $data = [
+            'name' => $request->name,
+            'slug' => $request->slug,
+            'english_name' => $request->english_name,
+            'english_slug' => $request->english_slug,
+            'description' => $request->description,
+            'status' => $request->status
+        ];
+        
+        $sector->store($data);
+        
         return redirect('dashboard/sectors/'.$sector->hex)->with('success', 'Sector created!');
     }
+
 
     // ADMIN: Show single sector
     public function adminShow(Sector $sector, Site $site){
@@ -69,12 +70,14 @@ class SectorController extends Controller
         ]);
     }
 
+
     // ADMIN: Show edit text
     public function editText(Sector $sector){
         return view('dashboard.sectors.edit-text', [
             'sector' => $sector
         ]);
     }
+
 
     // ADMIN: Update text
     public function updateText(Sector $sector, Request $request){
@@ -99,12 +102,14 @@ class SectorController extends Controller
         return redirect('dashboard/sectors/'.$sector->hex)->with('success', 'Sector updated!');
     }
 
+
     // ADMIN: Show edit image
     public function editImage(Sector $sector){
         return view('dashboard.sectors.edit-image', [
             'sector' => $sector
         ]);
     }
+
 
     // ADMIN: Update image
     public function updateImage(Sector $sector, Request $request){
@@ -122,12 +127,14 @@ class SectorController extends Controller
         return redirect('dashboard/sectors/'.$sector->hex.'/image/crop')->with('success', 'Your image was uploaded. Now let\'s crop it.');
     }
 
+
     // ADMIN: Crop image
     public function cropImage(Sector $sector){
         return view('dashboard.sectors.crop-image', [
             'sector' => $sector
         ]);
     }
+
 
     // ADMIN: Render image
     public function renderImage(Sector $sector, Request $request){
@@ -143,6 +150,7 @@ class SectorController extends Controller
         return redirect('dashboard/sectors/'.$sector->hex)->with('success', 'Your image has been cropped.');
     }
 
+
     // ADMIN: Delete options
     public function deleteOptions(Sector $sector){
         return view('dashboard.sectors.delete-options', [
@@ -150,14 +158,13 @@ class SectorController extends Controller
         ]);
     }
 
+
     // ADMIN: Delete sector
     public function delete(Sector $sector){
         $sector->delete();
         File::deleteDirectory(public_path('images/sectors/'.$sector->hex));
         return redirect('dashboard/sectors')->with('success', 'Sector deleted.');
     }
-
-
 
 
     // ADMIN: Store industry
@@ -181,6 +188,7 @@ class SectorController extends Controller
 
         return redirect('dashboard/sectors/'.$sector->hex)->with('success', 'New industry created.');
     }
+
 
     // ADMIN: With selected
     public function withSelected(Sector $sector, Request $request, Site $site){
@@ -245,11 +253,17 @@ class SectorController extends Controller
         }
     }
 
+
     public function confirmDeleteIndustry(Sector $sector, Site $site){
         // Confirm delete industry
         // dd(session('ids_to_delete'));
-        
-        $industry_ids = explode(',', session('ids_to_delete'));
+        if(session()->has('ids_to_delete')){
+            $industry_ids = explode(',', session('ids_to_delete'));
+            session(['ids_to_delete2' => session('ids_to_delete')]);
+        }else{
+            $industry_ids = explode(',', session('ids_to_delete2'));
+            session(['ids_to_delete' => session('ids_to_delete2')]);
+        }
         $count = 0;
         foreach($industry_ids as $key => $industry_id){
             $count += Company::whereRaw(
@@ -258,23 +272,30 @@ class SectorController extends Controller
             $industries_to_delete[$key] = Industry::find($industry_id);
         }
 
-        session(['ids_to_delete2' => session('ids_to_delete')]);
         return view('dashboard.sectors.confirm-delete-industry', [
             'ids_to_delete' => $industry_ids,
             'sector' => $sector,
             'companies_count' => $count,
             'sectors' => $site->allSectors(),
             'industries' => $site->allIndustries(),
-            'industries_to_delete' => $industries_to_delete
+            'industries_to_delete' => $industries_to_delete,
+            'industry_ids_to_delete' => session('ids_to_delete')
         ]);
     }
 
+
     // Delete industry
-    public function deleteIndustry(Sector $sector, Industry $industry, Request $request, Site $site){
+    public function deleteIndustry(Sector $sector, Request $request, Site $site){
         // dd(session('ids_to_delete2'));
         // dd($request);
 
-        session(['ids_to_delete' => session('ids_to_delete2')]);
+        if(session()->has('ids_to_delete')){
+            $industry_ids = explode(',', session('ids_to_delete'));
+            session(['ids_to_delete2' => session('ids_to_delete')]);
+        }else{
+            $industry_ids = explode(',', session('ids_to_delete2'));
+            session(['ids_to_delete' => session('ids_to_delete2')]);
+        }
 
         $request->validate([
             'delete_action' => 'required'
@@ -283,9 +304,76 @@ class SectorController extends Controller
         if($request->delete_action == 'move_companies'){
             $request->validate([
                 'sector_id' => 'required',  
-                'move_to_industry_id' => 'required'
+                'move_to_industry_id' => 'required',
+                'industries_to_delete' => 'required'
             ]);
-            dd('Move the companies to an existing industry');
+            // dd($request->industries_to_delete);
+            $industry_ids = explode(',', $request->industries_to_delete);
+            $companies_count = 0;
+            foreach($industry_ids as $industry_id){
+                $industry = Industry::find($industry_id);
+                $companies = $industry->allCompanies($industry_id);
+                $companies_count += $companies->count();
+                
+                foreach($companies as $company){
+                    
+                        $str = $company->industry_ids;
+                        $item = $industry_id;
+
+                        $parts = explode(',', $str);
+
+                        while(($i = array_search($item, $parts)) !== false) {
+                            unset($parts[$i]);
+                        }
+
+                        $new = implode(',', $parts).','.$request->move_to_industry_id;
+                        $company = Company::where('id', $company->id)->first();
+                        $company->industry_ids = trim($new, ',');
+                        $company->save();
+
+
+                        // Check sector
+
+                        // Get the industry ids
+                        $industries = explode(',', $company->industry_ids);
+
+                        //dd($company->industry_ids);
+                        // For each industry, get the sector,
+                        $sector_ids = [];
+                        foreach($industries as $ind){
+                            $ind = Industry::find($ind);
+                            $sector_ids[] = Sector::find($ind->sector_id)->id;
+                        }
+
+                        // Build CSV of sector ids
+                        $csv = implode(',', array_unique($sector_ids));
+                        // Update company sector_ids
+                        $company->sector_ids = $csv;
+                        $company->save();
+                }
+
+                $industry->delete();
+                File::deleteDirectory(public_path('images/industries/'.$industry->hex));
+                
+            }
+
+
+
+
+
+
+            $move_to_industry = Industry::find($request->move_to_industry_id);
+            $companies_label = $companies_count == 1 ? 'company' : 'companies';
+            
+            if(count($industry_ids) == 1){
+                $industry_label = 'The \''.$industry->name.'\' industry was';
+            }else{
+                $industry_label = count($industry_ids).' industries';
+            }
+
+            return redirect('dashboard/sectors')->with('success', $industry_label.' deleted and the '.$companies_count.' '.$companies_label.' moved to the \''.$move_to_industry->name.'\' industry.');
+            
+            
         }
 
         if($request->delete_action == 'delete_companies'){

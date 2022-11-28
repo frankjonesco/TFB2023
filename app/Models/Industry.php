@@ -45,10 +45,14 @@ class Industry extends Model
     // RETRIEVAL METHODS
 
     // All companies
-    public function allCompanies(){
-        $companies = Company::whereRaw(
-            'find_in_set("'.$this->id.'", industry_ids)'
-        )->get();
+    public function allCompanies($industry_id = null){
+        
+        if(!$industry_id){
+            $industry_id = $this->id;
+        }
+
+        $companies = Company::whereRaw('find_in_set("'.$industry_id.'", industry_ids)')->get();
+
         return $companies;
     }
 

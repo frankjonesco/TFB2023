@@ -28,6 +28,8 @@
         @csrf
         @method('DELETE')
 
+        <input type="hidden" name="industries_to_delete" value="{{$industry_ids_to_delete}}">
+
         {{-- Radio buttons --}}
         <div class="form-block">
             <label>

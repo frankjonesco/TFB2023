@@ -35,7 +35,7 @@
                 @foreach($sector->industries as $industry)
                     <tr>
                         <td class="flex items-center">
-                            <input type="checkbox" value="{{$industry->id}}" onclick="handleClick(this)">
+                            <input type="checkbox" name="industry_id_checkboxes[]" value="{{$industry->id}}" onclick="handleClick(this)">
                             <a href="/dashboard/industries/{{$industry->hex}}">
                                 {{$industry->name}}
                             </a>
@@ -124,6 +124,20 @@
 
 
     <script>
+        
+
+        window.addEventListener('load', 
+            function() { 
+                console.log('Enter: ');
+                var markedCheckbox = document.querySelectorAll('input[type="checkbox"]:checked');
+                for (var checkbox of markedCheckbox){
+                    let industryIds = document.getElementById('industryIds');
+                    industryIds.value = industryIds.value + ',' + checkbox.value;
+                }
+            }
+        );
+
+
         function handleClick(checkbox) {
             let industryIds = document.getElementById('industryIds').value;
             const idsArrays = industryIds.split(',');

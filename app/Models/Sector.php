@@ -51,6 +51,21 @@ class Sector extends Model
 
     // ACTION METHODS
 
+    // Store new sector
+    public function store($data){
+        $site = new Site();
+        $this->hex = Str::random(11);
+        $this->user_id = 1;
+        $this->name = $data['name'];
+        $this->slug = Str::slug($site->prepSlug($data['slug']));
+        $this->english_name = $data['english_name'];
+        $this->english_slug = Str::slug($site->prepSlug($data['english_slug']));
+        $this->description = $data['description'];
+        $this->status = $data['status'];
+        $this->save();
+        return $this;
+    }
+
     // Save text (update)
     public function saveText(){
         $this->save();
