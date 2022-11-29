@@ -20,6 +20,16 @@ class Company extends Model
 
     // RELATIONSHIPS
 
+    // Relationship to sectors
+    public function sectors(){
+        return $this->belongsToMany(Industry::class, 'sector_id');
+    }
+
+    // Relationship to industries
+    public function industries(){
+        return $this->belongsToMany(Industry::class);
+    }
+
     // Relationship to contacts
     public function contacts(){
         return $this->hasMany(Contact::class, 'company_id');

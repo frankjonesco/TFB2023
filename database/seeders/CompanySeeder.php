@@ -98,7 +98,7 @@ class CompanySeeder extends Seeder
                 'industry_ids' => $new_industry_ids,
                 'registered_name' => $registered_name,
                 'trading_name' => $company->short_name,
-                'slug' => Str::slug($site->prepSlug($company->short_name ?? $registered_name)),
+                'slug' => $site->slug($company->short_name ?? $registered_name),
                 'parent_organization' => $parent_organization,
                 'description' => $company->descr,
                 'website' => $company->website,

@@ -24,7 +24,7 @@ class Sector extends Model
 
     // Relationship to industries
     public function industries(){
-        return $this->hasMany(Industry::class, 'sector_id');
+        return $this->belongsToMany(Industry::class);
     }
 
     // Relationship to companies
@@ -59,7 +59,7 @@ class Sector extends Model
         $this->name = $data['name'];
         $this->slug = $site->slug($data['slug']);
         $this->english_name = $data['english_name'];
-        $this->english_slug = $site->prepSlug($data['english_slug']);
+        $this->english_slug = $site->slug($data['english_slug']);
         $this->description = $data['description'];
         $this->status = $data['status'];
         $this->save();

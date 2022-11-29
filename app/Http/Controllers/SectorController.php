@@ -39,13 +39,10 @@ class SectorController extends Controller
 
     // ADMIN: Store new sector
     public function store(Request $request, Sector $sector){
-        // Validate form
         $request->validate([
             'name' => 'required',
             'status' => 'required'
         ]);
-
-        // Form data to model
         $data = [
             'name' => $request->name,
             'slug' => $request->slug,
@@ -54,10 +51,8 @@ class SectorController extends Controller
             'description' => $request->description,
             'status' => $request->status
         ];
-
         $sector->store($data);
-        
-        return redirect('dashboard/sectors/'.$sector->hex)->with('success', 'Sector created!');
+        return redirect('dashboard/sectors/'.$sector->hex)->with('success', 'Sector created.');
     }
 
 
@@ -81,14 +76,10 @@ class SectorController extends Controller
 
     // ADMIN: Update text
     public function updateText(Sector $sector, Request $request){
-
-        // Validate form
         $request->validate([
             'name' => 'required',
             'status' => 'required'
         ]);
-
-        // Form data to model
         $data = [
             'name' => $request->name,
             'slug' => $request->slug,
@@ -97,9 +88,7 @@ class SectorController extends Controller
             'description' => $request->description,
             'status' => $request->status
         ];
-
         $sector->updateText($data);
-
         return redirect('dashboard/sectors/'.$sector->hex)->with('success', 'Sector updated!');
     }
 
@@ -114,18 +103,13 @@ class SectorController extends Controller
 
     // ADMIN: Update image
     public function updateImage(Sector $sector, Request $request){
-
-        // Validate form
         $request->validate([
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=100,min_height=100'
         ]);
-
-        // Upload the image, make thumbnail, update database
         if($request->hasFile('image')){
             $sector->saveImage($request);
         }
-        
-        return redirect('dashboard/sectors/'.$sector->hex.'/image/crop')->with('success', 'Your image was uploaded. Now let\'s crop it.');
+        return redirect('dashboard/sectors/'.$sector->hex.'/image/crop')->with('success', 'Image uploaded. Now let\'s crop it.');
     }
 
 

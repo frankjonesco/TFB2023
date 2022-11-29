@@ -25,17 +25,17 @@ class SectorSeeder extends Seeder
         // Create sectors
         foreach($sectors as $sector){
             $site = new Site();
-            $slug = $site->prepSlug($sector->name);
-            $english_slug = $site->prepSlug($sector->english_name);
+            $slug = $site->slug($sector->name);
+            $english_slug = $site->slug($sector->english_name);
             
             Sector::create([
                 'old_id' => $sector->id,
                 'hex' => Str::random(11),
                 'user_id' => 1,
                 'name' => trim($sector->name),
-                'slug' => Str::slug($slug),
+                'slug' => $slug,
                 'english_name' => trim($sector->english_name),
-                'english_slug' => Str::slug($english_slug),
+                'english_slug' => $english_slug,
                 'description' => null,
                 'image' => $sector->image,
                 'color_id' => $sector->color,

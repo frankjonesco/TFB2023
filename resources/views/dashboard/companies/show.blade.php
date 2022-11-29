@@ -9,4 +9,10 @@
 
     <x-alerts/>
 
+    <p>
+        Industries:
+        @foreach($company->sectors as $sector)
+            {{$sector->name}}
+        @endforeach
+    </p>
 </x-dashboard-layout>

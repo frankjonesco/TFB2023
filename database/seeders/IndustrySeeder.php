@@ -23,17 +23,17 @@ class IndustrySeeder extends Seeder
         // Create industries
         foreach($industries as $industry){
             $site = new Site();
-            $slug = $site->prepSlug($industry->name);
-            $english_slug = $site->prepSlug($industry->english_name);
+            $slug = $site->slug($industry->name);
+            $english_slug = $site->slug($industry->english_name);
             
             Industry::create([
                 'old_id' => $industry->id,
                 'hex' => Str::random(11),
                 'sector_id' => $industry->category_id,
                 'name' => trim($industry->name),
-                'slug' => Str::slug($slug),
+                'slug' => $slug,
                 'english_name' => trim($industry->english_name),
-                'english_slug' => Str::slug($english_slug),
+                'english_slug' => $english_slug,
                 'description' => $industry->description,
                 'created_at' => date('Y-m-d H:i:s', $industry->created),
                 'status' => 'public',

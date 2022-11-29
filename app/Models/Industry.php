@@ -21,14 +21,17 @@ class Industry extends Model
 
     // RELATIONSHIPS
 
-    // Relationship to sector
-    public function sector(){
-        return $this->belongsTo(Sector::class, 'sector_id');
+    // Relationship to sectors
+    public function sectors(){
+        return $this->belongsToMany(Sector::class);
     }
 
     // Relationship to companies
+    // public function companies(){
+    //     return $this->hasMany(Company::class, 'industry_ids');
+    // }
     public function companies(){
-        return $this->hasMany(Company::class, 'industry_ids');
+        return $this->belongsToMany(Company::class);
     }
 
     // Relationship to users
