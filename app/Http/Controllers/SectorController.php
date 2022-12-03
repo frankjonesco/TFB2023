@@ -106,7 +106,6 @@ class SectorController extends Controller
         $request->validate([
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=100,min_height=100'
         ]);
-        //
         if($request->hasFile('image')){
             $sector->saveImage($request);
         }
