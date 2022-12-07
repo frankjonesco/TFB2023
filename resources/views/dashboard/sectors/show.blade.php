@@ -33,6 +33,7 @@
                     <th></th>
                 </tr>
                 @foreach($sector->industries as $industry)
+
                     <tr>
                         <td class="flex items-center">
                             <input type="checkbox" name="industry_id_checkboxes[]" value="{{$industry->id}}" onclick="handleClick(this)">
@@ -41,8 +42,8 @@
                             </a>
                         </td>
                         <td>
-                            <a href="/dashboard/sectors/{{$industry->sector->hex}}">
-                                {{$industry->sector->name}}
+                            <a href="/dashboard/sectors/{{$sector->hex}}">
+                                {{$sector->name}}
                             </a>
                         </td>
                         <td class="text-center">{{count($industry->allCompanies())}}</td>

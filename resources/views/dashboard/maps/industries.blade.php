@@ -32,33 +32,40 @@
 
     <x-alerts/>
 
-    <h2>Maps</h2>
+    <h2>Industries</h2>
 
     <table>
 
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Sector ID</th>
-                <th>Industry ID</th>
-                <th>Company ID</th>
+                <th>Name</th>
+                <th>No. of sectors</th>
+                <th>Sectors</th>
+               
             </tr>
         </thead>
 
         <tbody>
-            @foreach($maps as $map)
+            @foreach($industries as $industry)
                 <tr>
                     <td>
-                        {{$map->id}}
+                        {{$industry->id}}
                     </td>
                     <td>
-                        {{$map->sector_id}}
+                        {{$industry->english_name}}
                     </td>
                     <td>
-                        {{$map->industry_id}}
+                        {{count($industry->sectors)}}
                     </td>
                     <td>
-                        {{$map->company_id}}
+                        <ul>
+                            @foreach($industry->sectors as $sector)
+                                <li>- 
+                                    {{$sector->english_name}}
+                                </li>
+                            @endforeach
+                        </ul>
                     </td>
                 </tr>
             @endforeach

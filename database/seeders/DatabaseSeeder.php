@@ -38,9 +38,7 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             ArticleSeeder::class,
             AssociationSeeder::class,
-
-            SectorIndustryMapSeeder::class,
-            SectorIndustryCompanyMapSeeder::class
+            MapSeeder::class
         ]);
     }
 }

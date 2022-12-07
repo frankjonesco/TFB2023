@@ -13,9 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sector_industry_company_maps', function (Blueprint $table) {
+        Schema::create('maps', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('sector_industry_map_id');
+            $table->string('hex', 11)->unique();
+            $table->foreignId('sector_id');
+            $table->foreignId('industry_id');
             $table->foreignId('company_id');
         });
     }
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sector_industry_company_maps');
+        Schema::dropIfExists('maps');
     }
 };

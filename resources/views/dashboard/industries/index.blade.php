@@ -36,13 +36,15 @@
                             </a>
                         </td>
                         <td>
-                            @if($industry->sector)
-                                <a href="/dashboard/sectors/{{$industry->sector->hex}}">
-                                    {{$industry->sector->english_name}}
-                                </a>
+                            @if($industry->grouped_sectors)
+                                @foreach($industry->grouped_sectors as $sector)
+                                    <a href="/dashboard/sectors/{{$sector->hex}}">
+                                        {{$sector->english_name}}
+                                    </a>
+                                @endforeach
                             @endif
                         </td>
-                        <td class="text-center">{{count($industry->companies)}}</td>
+                        <td class="text-center"></td>
                         <td>
                             <x-user-profile-pic-full-name :user="$industry->user" />
                         </td>

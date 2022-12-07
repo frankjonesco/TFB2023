@@ -2,11 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Map;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
-use App\Models\SectorIndustryMap;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class SectorIndustryMapSeeder extends Seeder
+class MapSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,15 +16,17 @@ class SectorIndustryMapSeeder extends Seeder
      */
     public function run()
     {
-        $sector_industry_maps = [
+        $maps = [
             [
+                'hex' => Str::random(11),
                 'sector_id' => 9,
-                'industry_id' => 2
+                'industry_id' => 2,
+                'company_id' => 239
             ]
         ];
 
-        foreach($sector_industry_maps as $sector_industry_map){
-            SectorIndustryMap::insert($sector_industry_map);
+        foreach($maps as $map){
+            Map::insert($map);
         }
     }
 }

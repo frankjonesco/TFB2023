@@ -23,15 +23,34 @@ class Industry extends Model
 
     // Relationship to sectors
     public function sectors(){
-        return $this->belongsToMany(Sector::class);
+        return $this->belongsToMany(
+            Sector::class, 
+            'maps'
+        );
     }
 
-    // Relationship to companies
-    // public function companies(){
-    //     return $this->hasMany(Company::class, 'industry_ids');
-    // }
+    // Relationship to sectors (grouped)
+    public function grouped_sectors(){
+        return $this->belongsToMany(
+            Sector::class,
+            'maps'
+        )->distinct();
+    }
+
+    /// Relationship to companies with pivot (ungrouped)
     public function companies(){
-        return $this->belongsToMany(Company::class);
+        return $this->belongsToMany(
+            Company::class,
+            'maps'
+        )->withPivot('id', 'sector_id', 'industry_id', 'company_id');
+    }
+    
+    // Relationship to companies (grouped)
+    public function grouped_companies(){
+        return $this->belongsToMany(
+            Company::class,
+            'maps'
+        )->distinct();
     }
 
     // Relationship to users

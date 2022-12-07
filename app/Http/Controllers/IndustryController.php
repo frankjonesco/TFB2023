@@ -24,6 +24,9 @@ class IndustryController extends Controller
 
     // ADMIN: Show all industries
     public function adminIndex(Site $site){
+
+        // dd($site->paginateAllIndustries()[0]);
+
         return view('dashboard.industries.index', [
             'industries' => $site->paginateAllIndustries()
         ]);

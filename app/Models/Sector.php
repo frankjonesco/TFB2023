@@ -24,12 +24,18 @@ class Sector extends Model
 
     // Relationship to industries
     public function industries(){
-        return $this->belongsToMany(Industry::class);
+        return $this->belongsToMany(
+            Industry::class,
+            'maps'
+        )->withPivot('id', 'sector_id', 'industry_id', 'company_id');
     }
 
     // Relationship to companies
     public function companies(){
-        return $this->hasMany(Company::class, 'sector_ids');
+        return $this->belongsToMany(
+            Company::class,
+            'maps',
+        );
     }
 
     // Relationship to categories

@@ -285,6 +285,21 @@ Route::get('articles', [ArticleController::class, 'index']);
     // Show all maps
     Route::get('dashboard/maps', [MapController::class, 'adminIndex']);
 
+    // Show map sectors
+    Route::get('dashboard/maps/sectors', [MapController::class, 'adminSectors']);
+
+    // Show single map sector
+    Route::get('dashboard/maps/sectors/{sector}', [MapController::class, 'showSector']);
+
+    // Show map industries
+    Route::get('dashboard/maps/industries', [MapController::class, 'adminIndustries']);
+
+    // Show single map industry
+    Route::get('dashboard/maps/industries/{industry}', [MapController::class, 'showIndustry']);
+
+    // Show map companies
+    Route::get('dashboard/maps/companies', [MapController::class, 'adminCompanies']);
+
 
     
 

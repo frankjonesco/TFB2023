@@ -22,12 +22,18 @@ class Company extends Model
 
     // Relationship to sectors
     public function sectors(){
-        return $this->belongsToMany(Industry::class, 'sector_id');
+        return $this->belongsToMany(
+            Sector::class,
+            'maps',
+        );
     }
 
     // Relationship to industries
     public function industries(){
-        return $this->belongsToMany(Industry::class);
+        return $this->belongsToMany(
+            Industry::class,
+            'maps',
+        );
     }
 
     // Relationship to contacts
@@ -49,38 +55,38 @@ class Company extends Model
 
     // ACCESSOR METHODS
 
-    // Accessor for sectors
-    public function getSectorsAttribute($value)
-    {   
-        $sector_ids = explode(',', Company::find($this->id)->sector_ids);
+    // // Accessor for sectors
+    // public function getSectorsAttribute($value)
+    // {   
+    //     $sector_ids = explode(',', Company::find($this->id)->sector_ids);
        
-        $sectors = [];
+    //     $sectors = [];
 
-        if(count($sector_ids) > 1){
-            $sectors = Sector::whereIn('id', $sector_ids)->get();
-        }
-        elseif(count($sector_ids) == 1){
-            $sectors = Sector::find($sector_ids);
-        }
+    //     if(count($sector_ids) > 1){
+    //         $sectors = Sector::whereIn('id', $sector_ids)->get();
+    //     }
+    //     elseif(count($sector_ids) == 1){
+    //         $sectors = Sector::find($sector_ids);
+    //     }
 
-        return $sectors;
-    }
+    //     return $sectors;
+    // }
 
-    // Accessor for industries
-    public function getIndustryRowsAttribute($value)
-    {   
-        $industry_ids = explode(',', Company::find($this->id)->industry_ids);
-        $industries = [];
+    // // Accessor for industries
+    // public function getIndustryRowsAttribute($value)
+    // {   
+    //     $industry_ids = explode(',', Company::find($this->id)->industry_ids);
+    //     $industries = [];
 
-        if(count($industry_ids) > 1){
-            $industries = Industry::whereIn('id', $industry_ids)->get();
-        }
-        elseif(count($industry_ids) == 1){
-            $industries = Industry::find($industry_ids);
-        }
+    //     if(count($industry_ids) > 1){
+    //         $industries = Industry::whereIn('id', $industry_ids)->get();
+    //     }
+    //     elseif(count($industry_ids) == 1){
+    //         $industries = Industry::find($industry_ids);
+    //     }
 
-        return $industries;
-    }
+    //     return $industries;
+    // }
 
 
 
