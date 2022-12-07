@@ -38,6 +38,8 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             ArticleSeeder::class,
             AssociationSeeder::class,
+
+            MapSeeder::class
         ]);
     }
 }

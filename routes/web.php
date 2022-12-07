@@ -243,7 +243,7 @@ Route::get('articles', [ArticleController::class, 'index']);
 
 
 // UserController
-    // Dashboard ArticleController
+    // Dashboard UserController
     // Show all articles
     Route::get('dashboard/users', [UserController::class, 'adminIndex']);
 
@@ -276,6 +276,13 @@ Route::get('articles', [ArticleController::class, 'index']);
     // Show single user   
     Route::get('dashboard/users/{user}', [UserController::class, 'adminShow']);
 
+
+
+
+// MapController
+    // Dashboard UserController
+    // Show all articles
+    Route::get('dashboard/maps', [MapController::class, 'adminIndex']);
 
 
     
