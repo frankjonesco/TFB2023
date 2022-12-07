@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MapController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SectorController;
 use App\Http\Controllers\ArticleController;
@@ -280,8 +281,8 @@ Route::get('articles', [ArticleController::class, 'index']);
 
 
 // MapController
-    // Dashboard UserController
-    // Show all articles
+    // Dashboard MapController
+    // Show all maps
     Route::get('dashboard/maps', [MapController::class, 'adminIndex']);
 
 

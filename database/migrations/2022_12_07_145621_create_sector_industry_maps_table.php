@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('maps', function (Blueprint $table) {
+        Schema::create('sector_industry_maps', function (Blueprint $table) {
             $table->id();
             $table->foreignId('sector_id');
             $table->foreignId('industry_id');
-            $table->foreignId('company_id');
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('maps');
+        Schema::dropIfExists('sector_industry_maps');
     }
 };

@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('company_industry', function (Blueprint $table) {
+        Schema::create('sector_industry_company_maps', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('sector_id')->references('id')->on('sectors')->onDelete('cascade');
-            $table->foreignId('industry_id')->references('id')->on('industries')->onDelete('cascade');
-            $table->foreignId('company_id')->references('id')->on('companies')->onDelete('cascade');
+            $table->foreignId('sector_industry_map_id');
+            $table->foreignId('company_id');
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('company_industry');
+        Schema::dropIfExists('sector_industry_company_maps');
     }
 };
