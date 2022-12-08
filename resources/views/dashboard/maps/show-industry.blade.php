@@ -41,15 +41,15 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>No. of sectors</th>
+                <th class="text-center">In how many sectors?</th>
                 <th>Sectors</th>
-                <th>No. of industries</th>
+                <th class="text-center">In how many industries?</th>
                 <th>Industries</th>               
             </tr>
         </thead>
 
         <tbody>
-            @foreach($industry->companies as $company)
+            @foreach($industry->grouped_companies as $company)
                 <tr>
                     <td>
                         {{$company->id}}
@@ -57,12 +57,12 @@
                     <td>
                         {{$company->registered_name}}
                     </td>
-                    <td>
-                        {{count($company->sectors)}}
+                    <td class="text-center">
+                        {{count($company->industry_sectors)}}
                     </td>
                     <td>
                         <ul>
-                            @foreach($company->sectors as $sector)
+                            @foreach($company->industry_sectors as $sector)
                                 <li>- 
                                     <a href="/dashboard/maps/sectors/{{$sector->hex}}">
                                         {{$sector->english_name}}
@@ -71,12 +71,12 @@
                             @endforeach
                         </ul>
                     </td>
-                    <td>
-                        {{count($company->industries)}}
+                    <td class="text-center">
+                        {{count($company->sector_industries)}}
                     </td>
                     <td>
                         <ul>
-                            @foreach($company->industries as $industry)
+                            @foreach($company->grouped_industries as $industry)
                                 <li>- 
                                     <a href="/dashboard/maps/industries/{{$industry->hex}}">
                                         {{$industry->english_name}}

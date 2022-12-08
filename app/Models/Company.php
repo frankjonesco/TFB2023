@@ -28,6 +28,22 @@ class Company extends Model
         );
     }
 
+    // Relationship to sectors (grouped)
+    public function grouped_sectors(){
+        return $this->belongsToMany(
+            Sector::class,
+            'maps',
+        )->distinct();
+    }
+
+    // Relationship to industry sectors
+    public function industry_sectors(){
+        return $this->belongsToMany(
+            Sector::class,
+            'maps',
+        )->wherePivot('industry_id', $this->pivot->industry_id);
+    }
+
     // Relationship to industries
     public function industries(){
         return $this->belongsToMany(
@@ -35,6 +51,24 @@ class Company extends Model
             'maps',
         );
     }
+
+    // Relationship to industries (grouped)
+    public function grouped_industries(){
+        return $this->belongsToMany(
+            Industry::class,
+            'maps',
+        )->distinct();
+    }
+
+    // Relationship to industry sectors
+    public function sector_industries(){
+        return $this->belongsToMany(
+            Industry::class,
+            'maps',
+        )->distinct();
+    }
+
+     
 
     // Relationship to contacts
     public function contacts(){

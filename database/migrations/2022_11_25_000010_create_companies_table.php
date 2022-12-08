@@ -19,8 +19,6 @@ return new class extends Migration
             $table->integer('old_id')->nullable();
             $table->string('hex', 11);
             $table->foreignId('user_id')->nullable();
-            $table->string('sector_ids')->nullable();
-            $table->string('industry_ids')->nullable();
             $table->string('registered_name');
             $table->string('trading_name')->nullable();
             $table->string('slug')->nullable();

@@ -33,53 +33,7 @@ class CompanySeeder extends Seeder
             if($company->user_id != ''){
                 $user = User::where('old_id', $company->user_id)->first();
                 $user_id = $user ? $user->id : $random_user_id;
-            }
-
-            // Sector IDs
-            $new_sector_ids = null;
-            if($company->categories){
-                $sector_ids = explode(',', $company->categories);
-                foreach($sector_ids as $sector_id){
-                    $sector_id = trim($sector_id);
-                    $sector = Sector::where('old_id', $sector_id)->first();
-                    if($sector){
-                        $new_sector_ids[] = $sector->id;
-                    }
-                    else{
-                        $new_sector_ids = [];
-                    }
-                }
-                if(count($new_sector_ids) > 0){
-                    $new_sector_ids = implode(',', $new_sector_ids);
-                }
-                else{
-                    $new_sector_ids = null;
-                }
-            }
-
-
-            // Industry IDs
-            $new_industry_ids = null;
-            if($company->industries){
-                $industry_ids = explode(',', $company->industries);
-                foreach($industry_ids as $industry_id){
-                    $industry_id = trim($industry_id);
-                    $industry = Industry::where('old_id', $industry_id)->first();
-                    if($industry){
-                        $new_industry_ids[] = $industry->id;
-                    }else{
-                        $new_industry_ids = [];
-                    }
-                }
-                if(count($new_industry_ids) > 0){
-                    $new_industry_ids = implode(',', $new_industry_ids);
-                }
-                else{
-                    $new_industry_ids = null;
-                }
-            }
-
-            
+            }           
 
             // Registerd name
             $registered_name = ($company->display_name != null) ? $company->display_name : $company->name;
@@ -94,8 +48,6 @@ class CompanySeeder extends Seeder
                 'old_id' => $company->id,
                 'hex' => Str::random(11),
                 'user_id' => $user_id,
-                'sector_ids' => $new_sector_ids,
-                'industry_ids' => $new_industry_ids,
                 'registered_name' => $registered_name,
                 'trading_name' => $company->short_name,
                 'slug' => $site->slug($company->short_name ?? $registered_name),

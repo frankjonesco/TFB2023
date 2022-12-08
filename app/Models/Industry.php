@@ -37,12 +37,21 @@ class Industry extends Model
         )->distinct();
     }
 
-    /// Relationship to companies with pivot (ungrouped)
+    // Relationship to industry sectors
+    public function industry_sectors(){
+        return $this->belongsToMany(
+            Sector::class,
+            'maps'
+        )->wherePivot('industry_id', 12);
+    }
+
+    // Relationship to companies with pivot (ungrouped)
     public function companies(){
         return $this->belongsToMany(
             Company::class,
             'maps'
-        )->withPivot('id', 'sector_id', 'industry_id', 'company_id');
+        )->withPivot('id', 'sector_id', 'industry_id', 'company_id')
+        ->wherePivot('sector_id', $this->pivot->sector_id);
     }
     
     // Relationship to companies (grouped)
@@ -52,6 +61,16 @@ class Industry extends Model
             'maps'
         )->distinct();
     }
+
+    //
+    public function sector_industry_companies(){
+        return $this->belongsToMany(
+            Company::class,
+            'maps'
+        )->withPivot('id', 'sector_id', 'industry_id', 'company_id');
+    }
+
+    
 
     // Relationship to users
     public function user(){

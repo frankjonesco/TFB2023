@@ -39,10 +39,10 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Name</th>
-                <th>No. of sectors</th>
+                <th>Industry name</th>
+                <th class="text-center">In how many sectors?</th>
                 <th>Sectors</th>
-               
+                <th class="text-center">Has how many companies?</th>               
             </tr>
         </thead>
 
@@ -53,19 +53,26 @@
                         {{$industry->id}}
                     </td>
                     <td>
-                        {{$industry->english_name}}
+                        <a href="/dashboard/maps/industries/{{$industry->hex}}">
+                            {{$industry->english_name}}
+                        </a>
                     </td>
-                    <td>
-                        {{count($industry->sectors)}}
+                    <td class="text-center">
+                        {{count($industry->grouped_sectors)}}
                     </td>
                     <td>
                         <ul>
-                            @foreach($industry->sectors as $sector)
+                            @foreach($industry->grouped_sectors as $sector)
                                 <li>- 
-                                    {{$sector->english_name}}
+                                    <a href="/dashboard/maps/sectors/{{$sector->hex}}">
+                                        {{$sector->english_name}}
+                                    </a>
                                 </li>
                             @endforeach
                         </ul>
+                    </td>
+                    <td class="text-center">
+                        {{count($industry->grouped_companies)}}
                     </td>
                 </tr>
             @endforeach

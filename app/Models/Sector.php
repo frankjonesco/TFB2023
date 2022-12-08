@@ -30,12 +30,28 @@ class Sector extends Model
         )->withPivot('id', 'sector_id', 'industry_id', 'company_id');
     }
 
+    // Relationship to industries (grouped)
+    public function grouped_industries(){
+        return $this->belongsToMany(
+            Industry::class,
+            'maps'
+        )->distinct();
+    }
+
     // Relationship to companies
     public function companies(){
         return $this->belongsToMany(
             Company::class,
             'maps',
-        );
+        )->withPivot('id', 'sector_id', 'industry_id', 'company_id');
+    }
+
+    // Relationship to companies (grouped)
+    public function grouped_companies(){
+        return $this->belongsToMany(
+            Industry::class,
+            'maps'
+        )->distinct();
     }
 
     // Relationship to categories

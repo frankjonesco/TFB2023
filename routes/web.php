@@ -291,6 +291,9 @@ Route::get('articles', [ArticleController::class, 'index']);
     // Show single map sector
     Route::get('dashboard/maps/sectors/{sector}', [MapController::class, 'showSector']);
 
+    // Show single sector's industry companies
+    Route::get('/dashboard/maps/sectors/{sector}/industries/{map}', [MapController::class, 'showSectorIndustryCompanies']);
+
     // Show map industries
     Route::get('dashboard/maps/industries', [MapController::class, 'adminIndustries']);
 

@@ -32,6 +32,15 @@ class MapController extends Controller
         ]);
     }
 
+    // Show companies for sector's industry
+    public function showSectorIndustryCompanies(Sector $sector, Map $map){
+        return view('dashboard.maps.show-sector-industry-companies', [
+            'map' => $map,
+            'sector' => $map->sector,
+            'industry' => $map->industry->first()
+        ]);
+    }
+
     // Admin industries
     public function adminIndustries(){
         return view('dashboard.maps.industries', [
@@ -42,7 +51,7 @@ class MapController extends Controller
     // Show single map sector
     public function showIndustry(Industry $industry){
 
-        $industry = Industry::where('hex', $industry->hex)->with('sectors', 'companies')->first();
+        $industry = Industry::where('hex', $industry->hex)->with('sectors', 'grouped_companies')->first();
         return view('dashboard.maps.show-industry', [
             'industry' => $industry
         ]);
