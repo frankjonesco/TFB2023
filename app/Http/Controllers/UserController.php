@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
+
+    // Show sign up form
+    public function showSignUp(){
+        return view('users.signup');
+    }
+
     // ADMIN METHODS
 
     // ADMIN: Show all users

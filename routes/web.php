@@ -27,7 +27,7 @@ Route::get('/', function () {
 
 // UserController
 // Show sign up form
-Route::get('/signup', [UserController::class, 'showSignup']);
+Route::get('/signup', [UserController::class, 'showSignUp']);
 
 
 // SectorController
