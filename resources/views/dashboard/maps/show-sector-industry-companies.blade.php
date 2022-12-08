@@ -53,7 +53,7 @@
             </thead>
 
             <tbody>
-                @foreach($industry->sector_industry_companies as $company)
+                @foreach($industry->companies as $company)
                     <tr>
                         <td>
                             {{$company->id}}

@@ -10,7 +10,7 @@ class Map extends Model
     use HasFactory;
 
     // Relationship to sector
-    public function room(){
+    public function sector(){
         return $this->hasOneThrough(Sector::class, Map::class, 'id', 'id', 'sector_id', 'id');
     }
 
@@ -18,6 +18,6 @@ class Map extends Model
     public function industry(){
         return $this->belongsToMany(Industry::class, 'maps', 'id')->withPivot('id', 'sector_id', 'industry_id', 'company_id');
     }
-    
+
 }
 

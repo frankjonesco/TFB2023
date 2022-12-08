@@ -58,8 +58,14 @@ class SectorController extends Controller
 
     // ADMIN: Show single sector
     public function adminShow(Sector $sector, Site $site){
+
+        // dd($sector->industries->groupBy('id')->first()[]);
+
+        // dd($sector->industries->groupBy('id'));
+
         return view('dashboard.sectors.show', [
             'sector' => $sector,
+            'industries' => $sector->industries->groupBy('id'),
             'sectors' => $site->allSectors(),
             'users' => $site->allAdminUsers()
         ]);

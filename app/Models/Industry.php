@@ -50,8 +50,7 @@ class Industry extends Model
         return $this->belongsToMany(
             Company::class,
             'maps'
-        )->withPivot('id', 'sector_id', 'industry_id', 'company_id')
-        ->wherePivot('sector_id', $this->pivot->sector_id);
+        )->withPivot('id', 'hex', 'sector_id', 'industry_id', 'company_id');
     }
     
     // Relationship to companies (grouped)
@@ -60,17 +59,7 @@ class Industry extends Model
             Company::class,
             'maps'
         )->distinct();
-    }
-
-    //
-    public function sector_industry_companies(){
-        return $this->belongsToMany(
-            Company::class,
-            'maps'
-        )->withPivot('id', 'sector_id', 'industry_id', 'company_id');
-    }
-
-    
+    }    
 
     // Relationship to users
     public function user(){

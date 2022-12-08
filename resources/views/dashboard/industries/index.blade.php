@@ -20,10 +20,10 @@
             <thead>
                 <tr>
                     <th>Industry name</th>
+                    <th class="text-center">No. of Sectors</th>
                     <th>Sector</th>
-                    <th class="text-center">Companies</th>
+                    <th class="text-center">No. of Companies</th>
                     <th>Owner</th>
-                    <th>Last updated</th>
                     <th></th>
                 </tr>
             </thead>
@@ -35,21 +35,27 @@
                                 {{$industry->english_name}}
                             </a>
                         </td>
+                        <td class="text-center">
+                            {{count($industry->grouped_sectors)}}
+                        </td>
                         <td>
                             @if($industry->grouped_sectors)
-                                @foreach($industry->grouped_sectors as $sector)
-                                    <a href="/dashboard/sectors/{{$sector->hex}}">
-                                        {{$sector->english_name}}
-                                    </a>
-                                @endforeach
+                                <ul>
+                                    @foreach($industry->grouped_sectors as $sector)
+                                        <li>- 
+                                            <a href="/dashboard/sectors/{{$sector->hex}}">
+                                                {{$sector->english_name}}
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
                             @endif
                         </td>
-                        <td class="text-center"></td>
-                        <td>
-                            <x-user-profile-pic-full-name :user="$industry->user" />
+                        <td class="text-center">
+                            {{count($industry->companies)}}
                         </td>
                         <td>
-                            {{$industry->updated_at}}
+                            <x-user-profile-pic-full-name :user="$industry->user" />
                         </td>
                         <td class="text-right">
                             <a href="/dashboard/industries/{{$industry->hex}}">

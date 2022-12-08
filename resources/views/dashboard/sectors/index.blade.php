@@ -13,20 +13,26 @@
     <p class="mb-6">Manage your sectors here.</p>
 
     @if(count($sectors) < 1)
+        
         <x-nothing-to-display table="sectors" />
+    
     @else
+    
         <x-alerts/>
+        
         <table>
+
             <thead>
                 <tr>
                     <th>Sector name</th>
-                    <th class="text-center">Industries</th>
-                    <th class="text-center">Companies</th>
+                    <th class="text-center">No. of Industries</th>
+                    <th>Companies</th>
+                    <th class="text-center">No. of Companies</th>
                     <th>Owner</th>
-                    <th>Last updated</th>
                     <th></th>
                 </tr>
             </thead>
+
             <tbody>
                 @foreach($sectors as $sector)
                     <tr>
@@ -35,14 +41,28 @@
                                 {{$sector->name}}
                             </a>
                         </td>
-                        <td class="text-center">{{count($sector->industries)}}</td>
-                        <td class="text-center">{{count($sector->companies)}}</td>
+                        <td class="text-center">
+                            {{count($sector->grouped_industries)}}
+                        </td>
+                        <td>
+                            <ul>
+                                @foreach($sector->grouped_industries as $industry)
+                                
+                                    <li>- 
+                                        <a href="/dashboard/industries/{{$industry->hex}}">
+                                            {{$industry->english_name}}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </td>
+                        <td class="text-center">
+                            {{count($sector->companies)}}
+                        </td>
                         <td>
                             <x-user-profile-pic-full-name :user="$sector->user" />
                         </td>
-                        <td>
-                            {{$sector->updated_at}}
-                        </td>
+
                         <td class="text-right">
                             <a href="/dashboard/sectors/{{$sector->hex}}">
                                 <button>
@@ -54,6 +74,7 @@
                     </tr>
                 @endforeach
             </tbody>
+
         </table>
 
         <x-pagination table="sectors" :results="$sectors" />

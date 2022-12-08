@@ -102,7 +102,7 @@ class MapSeeder extends Seeder
                     
                     if($industries){
                         foreach($industries as $industry){
-                            if(($industry != null) && ($sector != null)){
+                            if($sector != null){
                                 $maps[] = [
                                     [
                                         'hex' => Str::random(11),

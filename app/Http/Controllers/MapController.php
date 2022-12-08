@@ -34,6 +34,8 @@ class MapController extends Controller
 
     // Show companies for sector's industry
     public function showSectorIndustryCompanies(Sector $sector, Map $map){
+
+        // dd($map->sector);
         return view('dashboard.maps.show-sector-industry-companies', [
             'map' => $map,
             'sector' => $map->sector,

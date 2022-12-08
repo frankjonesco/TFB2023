@@ -17,7 +17,7 @@
         <h2 class="grow">Indusrties: </h2>
     </div>
 
-    @if(count($sector->industries) > 0)
+    @if(count($industries) > 0)
         <form>
             @csrf
             @method('PUT')
@@ -26,34 +26,73 @@
             <table>
                 <tr>
                     <th>Industry name</th>
-                    <th>Sector</th>
-                    <th class="text-center">Companies</th>
+                    <th class="text-center">No. of Sectors</th>
+                    <th>Sectors</th>
+                    <th class="text-center">No. of Companies</th>
                     <th>Owner</th>
-                    <th>Last updated</th>
                     <th></th>
                 </tr>
-                @foreach($sector->industries as $industry)
 
-                    <tr>
-                        <td class="flex items-center">
-                            <input type="checkbox" name="industry_id_checkboxes[]" value="{{$industry->id}}" onclick="handleClick(this)">
-                            <a href="/dashboard/industries/{{$industry->hex}}">
-                                {{$industry->name}}
-                            </a>
-                        </td>
-                        <td>
-                            <a href="/dashboard/sectors/{{$sector->hex}}">
-                                {{$sector->name}}
-                            </a>
-                        </td>
-                        <td class="text-center">{{count($industry->allCompanies())}}</td>
-                        <td>
-                            <x-user-profile-pic-full-name :user="$industry->user" />
-                        </td>
-                        <td>{{$industry->updated_at}}</td>
-                        <td></td>
-                    </tr>
-                @endforeach
+                {{-- {{dd($industries)}} --}}
+
+                
+
+                @php
+                    $i = 0;
+                @endphp
+
+                    {{-- For each industry --}}
+                        
+                        @foreach($industries as $industry)
+                        {{-- {{dd($industry[0])}} --}}
+                            @php
+                                $industry = $industry[0];
+                            @endphp
+                            <tr>
+
+                                <td>
+                                    <div class="flex items-center">
+                                        <input type="checkbox" name="industry_id_checkboxes[]" value="{{$industry->id}}" onclick="handleClick(this)">
+                                        <a href="/dashboard/industries/{{$industry->hex}}">
+                                            {{$industry->name}}
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>
+                                    {{count($industry->grouped_sectors)}}
+                                </td>
+                                <td>
+                                    <ul>
+                                        @foreach($industry->grouped_sectors as $sector)
+                                            <li>
+                                                <a href="/dashboard/sectors/{{$sector->hex}}">
+                                                    {{$sector->name}}
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </td>
+                                <td class="text-center">
+                                    {{count($industry->companies)}}
+                                </td>
+                                <td>
+                                    <x-user-profile-pic-full-name :user="$industry->user" />
+                                </td>
+                                <td></td>
+                            </tr>
+
+                            @php
+                                $i++;
+                            @endphp
+
+                        @endforeach
+
+                    {{-- End for each industry --}}
+
+                    
+
+           
+
             </table>
         </form>
 
