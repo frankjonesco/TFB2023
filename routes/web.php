@@ -25,6 +25,11 @@ Route::get('/', function () {
     return view('home');
 });
 
+// UserController
+// Show sign up form
+Route::get('/signup', [UserController::class, 'showSignup']);
+
+
 // SectorController
 // Show all sectors
 Route::get('sectors', [SectorController::class, 'index']);

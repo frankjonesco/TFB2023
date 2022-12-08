@@ -33,10 +33,6 @@
                     <th></th>
                 </tr>
 
-                {{-- {{dd($industries)}} --}}
-
-                
-
                 @php
                     $i = 0;
                 @endphp
