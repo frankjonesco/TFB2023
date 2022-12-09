@@ -7,9 +7,12 @@
 
 @layer base {
 
-    /* body{
-      font-family: 'Lato', sans-serif;
-    } */
+    body{
+      @apply text-black;
+      @apply bg-white;
+      @apply dark:text-white;
+      @apply dark:bg-gray-800;
+    }
 
     h1 {
       @apply text-5xl;
@@ -23,7 +26,10 @@
       @apply pb-5;
     }
 
-    button, button[type=button], button[type=submit], .btn{
+    button,
+    button[type=button],
+    button[type=submit],
+    .btn{
       @apply text-white;
       @apply hover:text-gray-200;
       @apply bg-blue-700;

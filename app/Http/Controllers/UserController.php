@@ -6,6 +6,7 @@ use App\Models\Site;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
@@ -18,9 +19,31 @@ class UserController extends Controller
 
     // Store sign up
     public function storeSignUp(Request $request){
+        
+        // Validate form
         $request->validate([
-            'first_name' => 'required'
+            'first_name' => 'required|min:2',
+            'last_name' => 'required|min:2',
+            'gender' => 'required',
+            'email' => ['required', 'email', Rule::unique('users', 'email')],
+            'password' => 'required|confirmed|min:6'
         ]);
+
+        // Create user
+        $user = User::create([
+            'hex' => Str::random(11),
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'gender' => $request->gender,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'user_type_id' => 6
+        ]);
+
+        // Log user in
+        auth()->login($user);
+
+        return redirect('/')->with('message', 'Account created & logged in!');
     }
 
     // ADMIN METHODS

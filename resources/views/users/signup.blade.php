@@ -7,7 +7,7 @@
 
             <div class="form-block">
                 <label for="first_name">First name</label>
-                <input type="text" name="first_name" placeholder="First name">
+                <input type="text" name="first_name" placeholder="First name" value="{{old('first_name')}}">
                 @error('first_name')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                 @enderror
@@ -15,7 +15,7 @@
 
             <div class="form-block">
                 <label for="last_name">Last name</label>
-                <input type="text" name="last_name" placeholder="Last name">
+                <input type="text" name="last_name" placeholder="Last name" value="{{old('last_name')}}">
                 @error('last_name')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                 @enderror
@@ -25,8 +25,8 @@
                 <label for="first_name">Gender</label>
                 <select name="gender">
                     <option disabled selected>Select your gender</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
+                    <option value="male" {{old('gender') === 'male' ? 'selected' : null}}>Male</option>
+                    <option value="female" {{old('gender') === 'female' ? 'selected' : null}}>Female</option>
                 </select>
                 @error('gender')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -35,7 +35,7 @@
 
             <div class="form-block">
                 <label for="last_name">Email</label>
-                <input type="email" name="last_name" placeholder="Email">
+                <input type="email" name="email" placeholder="Email" value="{{old('email')}}">
                 @error('email')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                 @enderror
