@@ -16,6 +16,11 @@ class UserController extends Controller
         return view('users.signup');
     }
 
+    // Store sign up
+    public function storeSignUp(Request $request){
+        dd($request);
+    }
+
     // ADMIN METHODS
 
     // ADMIN: Show all users

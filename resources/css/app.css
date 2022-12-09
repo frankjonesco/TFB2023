@@ -71,7 +71,9 @@
       @apply dark:text-white;
     }
     
-    input[type=text]{
+    input[type=text],
+    input[type=email],
+    input[type=password]{
       @apply border;
       @apply text-sm; 
       @apply rounded-lg; 

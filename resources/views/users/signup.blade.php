@@ -7,40 +7,47 @@
 
             <div class="form-block">
                 <label for="first_name">First name</label>
-                <input type="text" name="first_name">
+                <input type="text" name="first_name" placeholder="First name">
+                @error()
             </div>
 
             <div class="form-block">
                 <label for="last_name">Last name</label>
-                <input type="text" name="last_name">
+                <input type="text" name="last_name" placeholder="Last name">
             </div>
 
             <div class="form-block">
-                <label for="first_name">First name</label>
-                <input type="text" name="first_name">
+                <label for="first_name">Gender</label>
+                <select name="gender">
+                    <option disabled selected>Select your gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
             </div>
 
             <div class="form-block">
-                <label for="last_name">Last name</label>
-                <input type="text" name="last_name">
+                <label for="last_name">Email</label>
+                <input type="email" name="last_name" placeholder="Email">
             </div>
 
             <div class="form-block">
-                <label for="first_name">First name</label>
-                <input type="text" name="first_name">
+                <label for="password">Password</label>
+                <input type="password" name="password" placeholder="Password">
+            </div>
+
+            <div class="form-block">
+                <label for="first_name">Confirm password</label>
+                <input type="password" name="password_confirmation" placeholder="Confirm password">
             </div>
 
             <div class="form-block">
                 <button type="submit">Sign up</button>
-            </div>
-
-            <div class="form-block">
-                <p>
+                <span class="text-sm">
                     Already have an account?
                     <a href="/login">
                         Log in
                     </a>
-                </p>
+                </span>
             </div>
 
         </form>
