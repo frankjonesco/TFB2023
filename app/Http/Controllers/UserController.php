@@ -46,6 +46,21 @@ class UserController extends Controller
         return redirect('/')->with('message', 'Account created & logged in!');
     }
 
+    // Show login form 
+    public function login(){
+        return view('users.login');
+    }
+
+    // Log user out
+    public function logout(Request $request){
+        auth()->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/')->with('message', 'You have been logged out.');
+    }
+
     // ADMIN METHODS
 
     // ADMIN: Show all users
