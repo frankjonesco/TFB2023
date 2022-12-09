@@ -2,7 +2,7 @@
     <x-container>
         <h1>Log in</h1>
         
-        <form action="/users/store" method="POST" class="w-1/4">
+        <form action="/users/authenticate" method="POST" class="w-1/4">
             @csrf
 
             <div class="form-block">
