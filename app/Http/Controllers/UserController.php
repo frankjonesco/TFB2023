@@ -18,7 +18,9 @@ class UserController extends Controller
 
     // Store sign up
     public function storeSignUp(Request $request){
-        dd($request);
+        $request->validate([
+            'first_name' => 'required'
+        ]);
     }
 
     // ADMIN METHODS

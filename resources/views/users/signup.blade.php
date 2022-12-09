@@ -8,12 +8,17 @@
             <div class="form-block">
                 <label for="first_name">First name</label>
                 <input type="text" name="first_name" placeholder="First name">
-                @error()
+                @error('first_name')
+                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                @enderror
             </div>
 
             <div class="form-block">
                 <label for="last_name">Last name</label>
                 <input type="text" name="last_name" placeholder="Last name">
+                @error('last_name')
+                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                @enderror
             </div>
 
             <div class="form-block">
@@ -23,16 +28,25 @@
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                 </select>
+                @error('gender')
+                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                @enderror
             </div>
 
             <div class="form-block">
                 <label for="last_name">Email</label>
                 <input type="email" name="last_name" placeholder="Email">
+                @error('email')
+                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                @enderror
             </div>
 
             <div class="form-block">
                 <label for="password">Password</label>
                 <input type="password" name="password" placeholder="Password">
+                @error('password')
+                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                @enderror
             </div>
 
             <div class="form-block">
