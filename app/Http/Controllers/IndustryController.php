@@ -83,7 +83,6 @@ class IndustryController extends Controller
 
     // ADMIN: Show single industry
     public function adminShow(Industry $industry, Site $site){
-        
         return view('dashboard.industries.show', [
             'industry' => $industry,
             'industries' => $site->allIndustries()
@@ -92,11 +91,15 @@ class IndustryController extends Controller
 
     // ADMIN:: Show sector industries
     public function showSectorIndustries(Map $map, Site $site){
-        // dd($map);
+
+        // dd($map->sector_industry_companies);
+
         return view('dashboard.sectors.show-industries', [
             'sector' => $map->sector,
             'sectors' => $site->allSectors(),
+            'industry' => $map->industry,
             'industries' => $map->sector->industries->groupBy('id'),
+            'companies' => $map->sector_industry_companies->groupBy('id'),
             'users' => $site->allUsers()
         ]);
     }

@@ -1,23 +1,20 @@
 <x-dashboard-layout>
-
+{{-- {{dd($sector)}} --}}
     <div class="flex flex-row items-center">
-        <h1 class="grow">Sector: {{$sector->name}}</h1>
+        <h1 class="grow">Sector industries</h1>
         <x-edit-sector-buttons :sector="$sector" />
     </div>
 
+    <h2>Sector: {{$sector->english_name}}</h2>
+    <h2>Industry: {{$industry->english_name}}</h2>
 
     <x-alerts/>
-    {{-- <img src="{{asset('images/sectors/'.$sector->hex.'/'.$sector->image)}}" alt="">
-
-    <p class="mb-3">Created: {{showDate($sector->created_at)}}</p>
-
-    <x-owner-card :user="$sector->user" /> --}}
 
     <div class="flex flex-row items-center">
-        <h2 class="grow">Indusrties: </h2>
+        <h2 class="grow">Companies: </h2>
     </div>
 
-    @if(count($industries) > 0)
+    @if(count($companies) > 0)
         <form>
             @csrf
             @method('PUT')
@@ -25,11 +22,12 @@
             {{-- List --}}
             <table>
                 <tr>
-                    <th>Industry name</th>
+                    <th>Registered name</th>
+                    <th>Trading name</th>
                     <th class="text-center">No. of Sectors</th>
                     <th>Sectors</th>
-                    <th class="text-center">No. of Companies</th>
-                    <th>Owner</th>
+                    <th class="text-center">No. of Industries</th>
+                    <th>Industries</th>
                     <th></th>
                 </tr>
 
@@ -39,49 +37,65 @@
 
                     {{-- For each industry --}}
                         
-                        @foreach($industries as $industry)
+                        @foreach($companies as $company)
                         {{-- {{dd($industry[0])}} --}}
                             @php
-                                $industry = $industry[0];
+                                $company = $company[0];
                             @endphp
                             <tr>
 
                                 <td>
                                     <div class="flex items-center">
                                         <input type="checkbox" name="industry_id_checkboxes[]" value="{{$industry->id}}" onclick="handleClick(this)">
-                                        <a href="/dashboard/industries/{{$industry->hex}}">
-                                            {{$industry->english_name}}
+                                        <a href="/dashboard/companies/{{$company->hex}}">
+                                            {{$company->registered_name}}
                                         </a>
                                     </div>
                                 </td>
+                                <td>
+                                    @if($company->trading_name)
+                                        {{$company->trading_name}}
+                                    @else
+                                        <i class="text-gray-700">- N o n e -</i>
+                                    @endif
+                                </td>
                                 <td class="text-center">
-                                    {{count($industry->grouped_sectors)}}
+                                    {{count($company->sectors)}}
                                 </td>
                                 <td>
                                     <ul>
-                                        @foreach($industry->grouped_sectors as $grouped_sector)
-                                            <li>- 
-                                                <a href="/dashboard/sectors/{{$grouped_sector->hex}}">
-                                                    {{$grouped_sector->english_name}}
+                                        @foreach($company->sectors as $sector)
+                                            <li>-
+                                                <a href="">
+                                                    {{$sector->name}}
                                                 </a>
                                             </li>
                                         @endforeach
                                     </ul>
                                 </td>
                                 <td class="text-center">
-                                    {{count($industry->companies)}}
+                                    {{count($company->industries)}}
                                 </td>
                                 <td>
-                                    <x-user-profile-pic-full-name :user="$industry->user" />
+                                    <ul>
+                                        @foreach($company->sectors as $sector)
+                                            <li>-
+                                                <a href="">
+                                                    {{$sector->name}}
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
                                 </td>
                                 <td class="text-right">
-                                    <a href="/dashboard/industries/{{$industry->hex}}">
+                                    <a href="/dashboard/companies/{{$company->hex}}">
                                         <button type="button">
                                             <i class="fa-solid fa-magnifying-glass"></i>
                                             Inspect
                                         </button>
                                     </a>
                                 </td>
+                                
                             </tr>
 
                             @php
