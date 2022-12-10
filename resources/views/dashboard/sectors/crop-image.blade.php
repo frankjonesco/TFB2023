@@ -33,7 +33,7 @@
         
     </div>
 
-    <form action="/dashboard/sectors/{{$sector->hex}}/image/render" method="POST">
+    <form action="/dashboard/sectors/{{$sector->hex}}/image/render" method="POST" class="flex justify-between">
         @csrf
         <input type="hidden" name="x" id="imgX">
         <input type="hidden" name="y" id="imgY">
@@ -47,7 +47,7 @@
         </a>
         <button type="submit">
             <i class="fa-solid fa-crop"></i> 
-            Crop image
+            Save image
         </button>
     </form>
 

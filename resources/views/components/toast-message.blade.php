@@ -19,9 +19,6 @@
     </div>
 @endif
 
-
-
-
 <script>
     // document.addEventListener("DOMContentLoaded", function(){
     //     var replacers = document.querySelectorAll('[data-replace]');
