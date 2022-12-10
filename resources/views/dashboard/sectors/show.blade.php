@@ -50,19 +50,19 @@
                                     <div class="flex items-center">
                                         <input type="checkbox" name="industry_id_checkboxes[]" value="{{$industry->id}}" onclick="handleClick(this)">
                                         <a href="/dashboard/industries/{{$industry->hex}}">
-                                            {{$industry->name}}
+                                            {{$industry->english_name}}
                                         </a>
                                     </div>
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     {{count($industry->grouped_sectors)}}
                                 </td>
                                 <td>
                                     <ul>
                                         @foreach($industry->grouped_sectors as $grouped_sector)
-                                            <li>
+                                            <li>- 
                                                 <a href="/dashboard/sectors/{{$grouped_sector->hex}}">
-                                                    {{$grouped_sector->name}}
+                                                    {{$grouped_sector->english_name}}
                                                 </a>
                                             </li>
                                         @endforeach
@@ -74,7 +74,14 @@
                                 <td>
                                     <x-user-profile-pic-full-name :user="$industry->user" />
                                 </td>
-                                <td></td>
+                                <td class="text-right">
+                                    <a href="/dashboard/industries/{{$industry->hex}}">
+                                        <button type="button">
+                                            <i class="fa-solid fa-magnifying-glass"></i>
+                                            Inspect
+                                        </button>
+                                    </a>
+                                </td>
                             </tr>
 
                             @php

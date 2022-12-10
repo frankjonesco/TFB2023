@@ -211,7 +211,9 @@ class SectorController extends Controller
                     ]
                 );
             }
-            return redirect('dashboard/sectors/'.$sector->hex)->with('success', 'The selected industries were moved to the '.$sector->name.' sector.');
+
+            $destination_sector_name = Sector::find($request->sector_id)->name;
+            return redirect('dashboard/sectors/'.$sector->hex)->with('success', 'The selected industries were moved to the '.$destination_sector_name.' sector.');
         }
 
         // Change owner
@@ -235,11 +237,13 @@ class SectorController extends Controller
             ]);
             // Get industries
             $need_confirmation = false;
-            $industries = Industry::whereIn('id', explode(',', $request->industry_ids))->get();
-            foreach($industries as $industry){
-                // Check if there are any companies in this industry
-                $companies = Company::where('industry_ids', 'like', '%'.$industry->id.'%')->get();
-                // echo count($companies);
+            $industry_ids = explode(',', $request->industry_ids);
+            foreach($industry_ids as $industry_id){
+
+                $industry = Industry::find($industry_id);
+
+                $companies = $industry->companies;
+
 
                 
                 if($companies->isEmpty()){
@@ -274,9 +278,8 @@ class SectorController extends Controller
         }
         $count = 0;
         foreach($industry_ids as $key => $industry_id){
-            $count += Company::whereRaw(
-                'find_in_set("'.$industry_id.'", industry_ids)'
-            )->count();
+            $industry = Industry::find($industry_id);
+            $count += $industry->companies->count();
             $industries_to_delete[$key] = Industry::find($industry_id);
         }
 
@@ -309,77 +312,38 @@ class SectorController extends Controller
             'delete_action' => 'required'
         ]);
 
+        
         if($request->delete_action == 'move_companies'){
+            
             $request->validate([
                 'sector_id' => 'required',  
                 'move_to_industry_id' => 'required',
                 'industries_to_delete' => 'required'
             ]);
+            
             // dd($request->industries_to_delete);
+            
             $industry_ids = explode(',', $request->industries_to_delete);
+            
             $companies_count = 0;
+            
             foreach($industry_ids as $industry_id){
                 $industry = Industry::find($industry_id);
-                $companies = $industry->allCompanies($industry_id);
-                $companies_count += $companies->count();
-                
-                foreach($companies as $company){
-                    
-                        $str = $company->industry_ids;
-                        $item = $industry_id;
 
-                        $parts = explode(',', $str);
+                // Update maps    
+                Map::where([
+                    'sector_id' => $request->current_sector_id,
+                    'industry_id' => $industry->id
+                ])
+                ->update([
+                    'sector_id' => $request->sector_id,
+                    'industry_id' => $request->move_to_industry_id
+                ]
+            );
 
-                        while(($i = array_search($item, $parts)) !== false) {
-                            unset($parts[$i]);
-                        }
-
-                        $new = implode(',', $parts).','.$request->move_to_industry_id;
-                        $company = Company::where('id', $company->id)->first();
-                        $company->industry_ids = trim($new, ',');
-                        $company->save();
-
-
-                        // Check sector
-
-                        // Get the industry ids
-                        $industries = explode(',', $company->industry_ids);
-
-                        //dd($company->industry_ids);
-                        // For each industry, get the sector,
-                        $sector_ids = [];
-                        foreach($industries as $ind){
-                            $ind = Industry::find($ind);
-                            $sector_ids[] = Sector::find($ind->sector_id)->id;
-                        }
-
-                        // Build CSV of sector ids
-                        $csv = implode(',', array_unique($sector_ids));
-                        // Update company sector_ids
-                        $company->sector_ids = $csv;
-                        $company->save();
-                }
-
-                $industry->delete();
-                File::deleteDirectory(public_path('images/industries/'.$industry->hex));
-                
             }
 
-
-
-
-
-
-            $move_to_industry = Industry::find($request->move_to_industry_id);
-            $companies_label = $companies_count == 1 ? 'company' : 'companies';
-            
-            if(count($industry_ids) == 1){
-                $industry_label = 'The \''.$industry->name.'\' industry was';
-            }else{
-                $industry_label = count($industry_ids).' industries';
-            }
-
-            return redirect('dashboard/sectors')->with('success', $industry_label.' deleted and the '.$companies_count.' '.$companies_label.' moved to the \''.$move_to_industry->name.'\' industry.');
+            return redirect('dashboard/sectors')->with('success', 'Good');
             
             
         }

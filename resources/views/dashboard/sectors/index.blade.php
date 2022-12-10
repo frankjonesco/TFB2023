@@ -26,7 +26,7 @@
                 <tr>
                     <th>Sector name</th>
                     <th class="text-center">No. of Industries</th>
-                    <th>Companies</th>
+                    <th>Industries</th>
                     <th class="text-center">No. of Companies</th>
                     <th>Owner</th>
                     <th></th>
@@ -38,7 +38,7 @@
                     <tr>
                         <td>
                             <a href="/dashboard/sectors/{{$sector->hex}}">
-                                {{$sector->name}}
+                                {{$sector->english_name}}
                             </a>
                         </td>
                         <td class="text-center">
@@ -66,8 +66,8 @@
                         <td class="text-right">
                             <a href="/dashboard/sectors/{{$sector->hex}}">
                                 <button>
-                                    <i class="fa-solid fa-info-circle"></i>
-                                    Details
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    Inspect
                                 </button>
                             </a>
                         </td>

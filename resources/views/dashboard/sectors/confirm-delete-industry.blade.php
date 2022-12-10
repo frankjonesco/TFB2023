@@ -82,7 +82,7 @@
                 </label>
                 <select name="sector_id" class="w-80" onchange="showSectorIndustries(this)">
                     @foreach($sectors as $sector_item)
-                        <option value="{{$sector_item->id}}" {{$sector_item->id == $sector->id ? 'selected' : null}}>{{$sector_item->name}}</option>
+                        <option value="{{$sector_item->id}}" {{$sector_item->id == $sector->id ? 'selected' : null}}>{{$sector_item->english_name}}</option>
                     @endforeach
                 </select>
                 @error('sector_id')
@@ -101,7 +101,7 @@
                             <option value="">Choose industry</option>
                             @foreach($sector_item->industries as $industry_item)
                                 @unless(in_array($industry_item->id, $ids_to_delete))
-                                    <option value="{{$industry_item->id}}">{{$industry_item->name}}</option>
+                                    <option value="{{$industry_item->id}}">{{$industry_item->english_name}}</option>
                                 @endunless
                             @endforeach
                         </select>

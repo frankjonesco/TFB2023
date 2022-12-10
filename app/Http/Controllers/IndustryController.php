@@ -113,7 +113,6 @@ class IndustryController extends Controller
         $industry->slug = $request->slug;
         $industry->english_name = $request->english_name;
         $industry->english_slug = $request->english_slug;
-        $industry->sector_id = $request->sector_id;
         $industry->description = $request->description;
         $industry->user_id = $request->user_id;
         $industry->status = $request->status;
