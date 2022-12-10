@@ -91,6 +91,8 @@ Route::get('industries', [IndustryController::class, 'index']);
     // Show all industries
     Route::get('dashboard/industries', [IndustryController::class, 'adminIndex']);
 
+    
+
     // Show create form
     Route::get('dashboard/industries/create', [IndustryController::class, 'create']);
 
@@ -122,6 +124,9 @@ Route::get('industries', [IndustryController::class, 'index']);
 
     // Show single   
     Route::get('dashboard/industries/{industry}', [IndustryController::class, 'adminShow']);
+
+    // Show all sector industries
+    Route::get('dashboard/sector-industries/{map}', [IndustryController::class, 'showSectorIndustries']);
 
 
 

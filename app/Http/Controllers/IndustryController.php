@@ -90,6 +90,17 @@ class IndustryController extends Controller
         ]);
     }
 
+    // ADMIN:: Show sector industries
+    public function showSectorIndustries(Map $map, Site $site){
+        // dd($map);
+        return view('dashboard.sectors.show-industries', [
+            'sector' => $map->sector,
+            'sectors' => $site->allSectors(),
+            'industries' => $map->sector->industries->groupBy('id'),
+            'users' => $site->allUsers()
+        ]);
+    }
+
     // ADMIN: Show edit text
     public function editText(Industry $industry, Site $site){
         return view('dashboard.industries.edit-text', [

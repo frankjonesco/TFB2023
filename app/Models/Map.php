@@ -14,6 +14,14 @@ class Map extends Model
 
     use HasFactory;
 
+    // ROUTES
+
+    // Set the route key name
+    public function getRouteKeyName(){
+        return 'hex';
+    }
+    
+
     // Relationship to sector
     public function sector(){
         return $this->hasOneThrough(Sector::class, Map::class, 'id', 'id', 'sector_id', 'id');

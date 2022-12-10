@@ -45,16 +45,30 @@
                             {{count($sector->grouped_industries)}}
                         </td>
                         <td>
-                            <ul>
-                                @foreach($sector->grouped_industries as $industry)
-                                
-                                    <li>- 
-                                        <a href="/dashboard/industries/{{$industry->hex}}">
-                                            {{$industry->english_name}}
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
+                            @if(count($sector->industries) > 0)
+
+                            
+                                <ul>
+                                    @php
+                                        $i = 0;
+                                    @endphp
+                                    @foreach($sector->industries->groupBy('id') as $industry)
+                                        @php
+                                            $industry = $industry[0];
+                                        @endphp
+                                        <li>- 
+                                            <a href="/dashboard/sector-industries/{{$industry->pivot->hex}}">
+                                                {{$industry->english_name}}
+                                            </a>
+                                        </li>
+
+                                        @php
+                                            $i++;
+                                        @endphp
+
+                                    @endforeach
+                                </ul>
+                            @endif
                         </td>
                         <td class="text-center">
                             {{count($sector->companies)}}
