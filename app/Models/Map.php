@@ -10,6 +10,8 @@ class Map extends Model
 
     protected $fillable = ['id', 'hex', 'sector_id', 'industry_id', 'company_id'];
 
+    public $timestamps = false;
+
     use HasFactory;
 
     // Relationship to sector

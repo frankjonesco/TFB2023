@@ -102,7 +102,8 @@
             <form action="/dashboard/sectors/{{$sector->hex}}/industries/with-selected" method="POST" class="grow">
                 @csrf
                 @method('PUT')
-                <input type="hidden" id="industryIds" name="industry_ids" placeholder="Industry IDs" value="{{old('industry_ids')}}">
+                <input type="hidden" name="current_sector_id" value="{{$sector->id}}">
+                <input type="hidden" id="industryIds" name="industry_ids" value="{{old('industry_ids')}}">
                 <div class="flex flex-row items-center text-sm font-medium">
                     
                     <span class="mr-2.5">With selected</span>
@@ -117,18 +118,23 @@
                         to
                     </span>
                     <span class="mr-2.5" id="selectorSpan">
+
+                        {{-- Select sector --}}
                         <select name="sector_id" id="selectSector">
                             <option value="" disabled selected>Choose sector</option>
                             @foreach($sectors as $sector_item)
                                 <option value="{{$sector_item->id}}" {{old('sector_id') == $sector_item->id ? 'selected' : null}}>{{$sector_item->name}}</option>
                             @endforeach
                         </select>
+
+                        {{-- Select user --}}
                         <select name="user_id" id="selectUser" style="display:none;">
                             <option value="" disabled selected>Choose user</option>
                             @foreach($users as $user_item)
                                 <option value="{{$user_item->id}}" {{old('user_id') == $user_item->id ? 'selected' : null}}>{{$user_item->full_name}}</option>
                             @endforeach
                         </select>
+
                     </span>
                     <button type="submit">Go</button>
                 

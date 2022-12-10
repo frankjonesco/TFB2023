@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Map;
 use App\Models\Site;
 use App\Models\User;
 use App\Models\Sector;
@@ -190,13 +191,25 @@ class SectorController extends Controller
         
         // Change sector
         if($request->with_selected == 'change_sector'){
+            // Validate form
             $request->validate([
                 'industry_ids' => 'required',
                 'sector_id' => 'required'
             ]);
+
+            // Industry IDs to array
             $industry_ids = explode(',', $request->industry_ids);
+            
             foreach($industry_ids as $industry_id){
-                Industry::where('id', $industry_id)->update(['sector_id' => $request->sector_id]);
+                // Update maps    
+                Map::where([
+                        'sector_id' => $request->current_sector_id,
+                        'industry_id' => $industry_id
+                    ])
+                    ->update([
+                        'sector_id' => $request->sector_id
+                    ]
+                );
             }
             return redirect('dashboard/sectors/'.$sector->hex)->with('success', 'The selected industries were moved to the '.$sector->name.' sector.');
         }
