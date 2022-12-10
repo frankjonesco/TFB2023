@@ -7,6 +7,7 @@ use App\Models\Company;
 use App\Models\Industry;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\File;
 
 class IndustryController extends Controller
@@ -40,18 +41,23 @@ class IndustryController extends Controller
     }
 
     // ADMIN: Store new industry
-    public function store(Request $request, Industry $industry){
+    public function store(Request $request){
 
         // Validate form
         $request->validate([
-            'name' => 'required',
+            'name' => ['required', Rule::unique('industries', 'name')],
+            'english_name' => ['required', Rule::unique('industries', 'english_name')],
+            'slug' => ['required', Rule::unique('industries', 'slug')],
+            'english_slug' => ['required', Rule::unique('industries', 'english_slug')],
+            
             'sector_id' => 'required',
             'status' => 'required'
         ]);
 
         // Form data to model
+        $industry = new Industry();
         $industry->hex = Str::random(11);
-        $industry->user_id = 1;
+        $industry->user_id = auth()->user()->id;
         $industry->sector_id = $request->sector_id;
         $industry->name = $request->name;
         $industry->slug = $request->slug;
