@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Map;
 use App\Models\Site;
 use App\Models\Company;
 use App\Models\Industry;
@@ -49,7 +50,6 @@ class IndustryController extends Controller
             'english_name' => ['required', Rule::unique('industries', 'english_name')],
             'slug' => ['required', Rule::unique('industries', 'slug')],
             'english_slug' => ['required', Rule::unique('industries', 'english_slug')],
-            
             'sector_id' => 'required',
             'status' => 'required'
         ]);
@@ -58,7 +58,6 @@ class IndustryController extends Controller
         $industry = new Industry();
         $industry->hex = Str::random(11);
         $industry->user_id = auth()->user()->id;
-        $industry->sector_id = $request->sector_id;
         $industry->name = $request->name;
         $industry->slug = $request->slug;
         $industry->english_name = $request->english_name;
@@ -68,6 +67,16 @@ class IndustryController extends Controller
 
         // Save changes
         $industry->saveText();
+
+
+        // Handle maps
+        Map::insert([
+            'hex' => Str::random(11),
+            'sector_id' => $request->sector_id,
+            'industry_id' => $industry->id 
+        ]);
+        
+        $industry->sector_id = $request->sector_id;
 
         return redirect('dashboard/industries/'.$industry->hex)->with('success', 'Industry created!');
     }

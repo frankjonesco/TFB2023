@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Map extends Model
 {
+
+    protected $fillable = ['id', 'hex', 'sector_id', 'industry_id', 'company_id'];
+
     use HasFactory;
 
     // Relationship to sector
@@ -16,7 +19,7 @@ class Map extends Model
 
     // Relationship to industry
     public function industry(){
-        return $this->belongsToMany(Industry::class, 'maps', 'id')->withPivot('id', 'sector_id', 'industry_id', 'company_id');
+        return $this->belongsToMany(Industry::class, 'maps', 'id')->withPivot('id', 'hex', 'sector_id', 'industry_id', 'company_id');
     }
 
 }
