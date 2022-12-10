@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
+use Illuminate\Validation\Rule;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Industry extends Model
@@ -72,6 +75,18 @@ class Industry extends Model
 
 
 
+    // ACCESSORS
+
+    /**
+    * Set which column to use for the 'name' attribute.
+    *
+    * @return \Illuminate\Database\Eloquent\Casts\Attribute
+    */
+
+    
+
+
+
     // RETRIEVAL METHODS
 
     // All companies
@@ -90,11 +105,25 @@ class Industry extends Model
 
     // ACTION METHODS
 
+    
+
     // Save text (update)
     public function saveText(){
         $this->save();
         return $this;
     }
+
+    // Add map (insert)
+    public function addMap($sector_id, $industry_id){
+        Map::insert([
+            'hex' => Str::random(11),
+            'sector_id' => $sector_id,
+            'industry_id' => $industry_id
+        ]);
+
+        return true;
+    }
+
 
     // Save image (update)
     public function saveImage($request){

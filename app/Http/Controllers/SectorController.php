@@ -9,6 +9,7 @@ use App\Models\Company;
 use App\Models\Industry;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\File;
 
 class SectorController extends Controller
@@ -160,23 +161,26 @@ class SectorController extends Controller
 
     // ADMIN: Store industry
     public function storeIndustry(Sector $sector, Request $request, Site $site){
+
+
+        // Validate form
         $request->validate([
-            'industry_name' => 'required'
+            'industry_name' => ['required', Rule::unique('industries', 'name')],
         ]);
 
+        
+        // Data to model
         $industry = new Industry();
-
         $industry->hex = Str::random(11);
-        $industry->user_id = 1;
-        $industry->sector_id = $sector->id;
+        $industry->user_id = auth()->user()->id;
         $industry->name = $request->industry_name;
-        $industry->slug = Str::slug($site->prepSlug($request->industry_name));
-        $industry->english_name = $request->industry_name;
-        $industry->english_slug = Str::slug($site->prepSlug($request->industry_name));
+        $industry->slug = $site->slug($request->industry_name);
         $industry->status = 'public';
-
         $industry->save();
 
+        // Add map
+        $industry->addMap($sector->id, $industry->id);
+        
         return redirect('dashboard/sectors/'.$sector->hex)->with('success', 'New industry created.');
     }
 

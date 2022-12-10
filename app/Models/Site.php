@@ -19,12 +19,12 @@ class Site extends Model
         
     // All sectors
     public function allSectors(){
-        return Sector::orderBy('name', 'ASC')->get();
+        return Sector::orderBy('english_name', 'ASC')->get();
     }
 
     // Paginate all sectors
     public function paginateAllSectors(){
-        return Sector::orderBy('name', 'ASC')->paginate(10);
+        return Sector::orderBy('english_name', 'ASC')->paginate(10);
     }
 
     // Public sectors
@@ -38,12 +38,12 @@ class Site extends Model
         
     // All sectors
     public function allIndustries(){
-        return Industry::orderBy('name', 'ASC')->get();
+        return Industry::orderBy('english_name', 'ASC')->get();
     }
 
     // Paginate all sectors
     public function paginateAllIndustries(){
-        return Industry::orderBy('name', 'ASC')->paginate(10);
+        return Industry::orderBy('english_name', 'ASC')->paginate(10);
     }
 
     // Public sectors

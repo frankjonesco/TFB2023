@@ -21,7 +21,7 @@
                 <tr>
                     <th>Industry name</th>
                     <th class="text-center">No. of Sectors</th>
-                    <th>Sector</th>
+                    <th>Sectors</th>
                     <th class="text-center">No. of Companies</th>
                     <th>Owner</th>
                     <th></th>

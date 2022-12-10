@@ -59,10 +59,10 @@
                                 </td>
                                 <td>
                                     <ul>
-                                        @foreach($industry->grouped_sectors as $sector)
+                                        @foreach($industry->grouped_sectors as $grouped_sector)
                                             <li>
-                                                <a href="/dashboard/sectors/{{$sector->hex}}">
-                                                    {{$sector->name}}
+                                                <a href="/dashboard/sectors/{{$grouped_sector->hex}}">
+                                                    {{$grouped_sector->name}}
                                                 </a>
                                             </li>
                                         @endforeach
