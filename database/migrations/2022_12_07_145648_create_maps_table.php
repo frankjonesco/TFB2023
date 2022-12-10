@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('maps', function (Blueprint $table) {
             $table->id();
             $table->string('hex', 11)->unique();
-            $table->foreignId('sector_id')->nullable();
-            $table->foreignId('industry_id')->nullable();
-            $table->foreignId('company_id')->nullable();
+            $table->foreignId('sector_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('industry_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('company_id')->nullable()->constrained()->onDelete('cascade');
         });
     }
 

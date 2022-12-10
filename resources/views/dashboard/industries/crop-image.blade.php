@@ -33,7 +33,7 @@
         
     </div>
 
-    <form action="/dashboard/industries/{{$industry->hex}}/image/render" method="POST">
+    <form action="/dashboard/industries/{{$industry->hex}}/image/render" method="POST" class="flex justify-between">
         @csrf
         <input type="hidden" name="x" id="imgX">
         <input type="hidden" name="y" id="imgY">
