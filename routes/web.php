@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SectorController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\IndustryController;
 use App\Http\Controllers\DashboardController;
@@ -24,6 +25,13 @@ use App\Http\Controllers\DashboardController;
 Route::get('/', function () {
     return view('home');
 });
+
+
+Route::get('/news', [ArticleController::class, 'index']);
+Route::get('/rankings', [CompanyController::class, 'index']);
+Route::get('/industries', [IndustryController::class, 'index']);
+Route::get('/partners', [PartnerController::class, 'index']);
+
 
 // UserController
 // Show sign up form

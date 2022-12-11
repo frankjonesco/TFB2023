@@ -1,21 +1,14 @@
 <x-dashboard-layout>
 
     <div class="flex flex-row items-center">
-        <h1 class="grow">Industry: {{$industry->name}}</h1>
+        <h1 class="grow">Companies</h1>
         <x-edit-industry-buttons :industry="$industry" />
     </div>
 
+    <p class="mb-6">List of companies in the '{{$industry->english_name}}' industry.</p>
+
     <x-alerts/>
 
-    <p class="mb-3">Created: {{showDate($industry->created_at)}}</p>
-
-    <x-owner-card :user="$industry->user" />
-
-    
-
-    <div class="flex flex-row items-center">
-        <h2 class="grow">Companies: </h2>
-    </div>
     @if(count($industry->companies) > 0)
 
         <form action="/dashboard/industries/{{$industry->hex}}/companies/with-selected" method="POST">

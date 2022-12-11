@@ -1,21 +1,13 @@
 <x-dashboard-layout>
 
     <div class="flex flex-row items-center">
-        <h1 class="grow">Sector: {{$sector->name}}</h1>
+        <h1 class="grow">Industries</h1>
         <x-edit-sector-buttons :sector="$sector" />
     </div>
 
+    <p class="mb-6">List of industries in the '{{$sector->name}}' sector.</p>
 
     <x-alerts/>
-    {{-- <img src="{{asset('images/sectors/'.$sector->hex.'/'.$sector->image)}}" alt="">
-
-    <p class="mb-3">Created: {{showDate($sector->created_at)}}</p>
-
-    <x-owner-card :user="$sector->user" /> --}}
-
-    <div class="flex flex-row items-center">
-        <h2 class="grow">Indusrties: </h2>
-    </div>
 
     @if(count($industries) > 0)
         <form>

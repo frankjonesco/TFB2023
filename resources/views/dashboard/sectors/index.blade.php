@@ -10,7 +10,7 @@
         </a>
     </div>
 
-    <p class="mb-6">Manage your sectors here.</p>
+    <p class="mb-6">List of sectors on the site.</p>
 
     @if(count($sectors) < 1)
         

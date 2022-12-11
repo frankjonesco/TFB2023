@@ -5,8 +5,7 @@
         <x-edit-sector-buttons :sector="$sector" />
     </div>
 
-    <h2>Sector: {{$sector->english_name}}</h2>
-    <h2>Industry: {{$industry->english_name}}</h2>
+    <p class="mb-6">List of companies in the '{{$industry->english_name}}' industry in the '{{$sector->english_name}}' sector.</p>
 
     <x-alerts/>
 
