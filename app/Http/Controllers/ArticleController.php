@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Site;
 use App\Models\Article;
+use App\Models\Comment;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -17,7 +18,8 @@ class ArticleController extends Controller
             'latest_articles' => Article::latest()->skip(3)->take(4)->get(),
             'highlighted_feature_articles' => Article::latest()->skip(7)->take(2)->get(),
             'featured_articles' => Article::latest()->skip(9)->take(5)->get(),
-            'articles' => $site->publicArticles()
+            'articles' => $site->publicArticles(),
+            'comments' => Comment::latest()->take(6)->get()
         ]);
     }
     
