@@ -17,3 +17,5 @@ use Illuminate\Support\Facades\Config;
             return Sponsor::where('show_in_navbar', true)->get();
         }
     }
+
+    

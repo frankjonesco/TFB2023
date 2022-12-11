@@ -32,6 +32,13 @@
         @apply pb-5;
     }
 
+    h3{
+        @apply text-xl;
+        @apply font-semibold;
+        @apply pt-5;
+        @apply pb-5;
+    }
+
     /* Buttons */
 
     button,

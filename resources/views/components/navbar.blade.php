@@ -125,7 +125,7 @@
         </nav>
 
         <a href="https://www.bitrock.partners/" class="flex items-center" target="_blank">
-            <img src="{{asset('images/bitrock-strip-1.jpg')}}" alt="Bitrock - Digital Patners" width="576" class="border border-zinc-400" />
+            <img src="{{asset('images/bitrock-strip-1.jpg')}}" alt="Bitrock - Digital Patners" width="576" class="border border-zinc-400 opacity-75" />
         </a>
     </div>
 </section>
