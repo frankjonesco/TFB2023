@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('logo')->nullable();
+            $table->boolean('show_in_navbar')->nullable();
+            $table->string('url')->nullable();
             $table->timestamps();
             $table->boolean('active')->nullable();
         });

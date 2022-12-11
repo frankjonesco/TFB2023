@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Site;
 use App\Models\Sponsor;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
@@ -22,6 +23,8 @@ class SponsorSeeder extends Seeder
                 'name' => 'PricewaterhouseCoopers',
                 'slug' => 'pwc',
                 'logo' => 'pricewaterhousecoopers.png',
+                'show_in_navbar' => true,
+                'url' => 'https://www.pwc.com/',
                 'active' => 1
             ],
             [
@@ -29,17 +32,24 @@ class SponsorSeeder extends Seeder
                 'name' => 'Matchbird',
                 'slug' => 'matchbird',
                 'logo' => 'matchbird.png',
+                'show_in_navbar' => true,
+                'url' => 'https://matchbird.com/',
                 'active' => 1
             ],
             [
                 'hex' => Str::random(11),
                 'name' => 'Headgate',
                 'slug' => 'headgate',
-                'logo' => 'headgatea.png',
+                'logo' => 'headgate.png',
+                'url' => 'https://head-gate.de/',
                 'active' => 1
             ]
         ];
 
         collect($sponsors)->each(function($sponsor){ Sponsor::create($sponsor); });
+
+        // HANDLE IMAGE TRANSFER
+        $site = new Site();
+        $site->handleImageTransfer('companies', Sponsor::all());
     }
 }

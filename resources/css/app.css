@@ -188,7 +188,7 @@
 
     a{
         @apply text-sky-300;
-        @apply hover:text-amber-200;
+        @apply hover:!text-amber-200;
     }
 
     .text-error{
@@ -301,15 +301,89 @@
 
     /* Navigation */
 
+    section#topNav{
+        @apply flex;
+        @apply px-8;
+        @apply py-1.5;
+        @apply bg-zinc-900;
+        @apply text-zinc-500;
+        @apply text-xs;
+        @apply border-b;
+        @apply border-zinc-700;
+    }
+
+    section#topNav a{
+        @apply text-zinc-500;
+    }
+
+    #topNav>span{
+        @apply mr-32;
+    }
+
+    section#topNav>.socials{
+        @apply grow;
+        @apply mr-0;
+    }
+
+    section#topNav>.socials>ul{
+        @apply flex;
+        @apply justify-end;
+        @apply space-x-4;
+    }
+
+    .pre-navbar-item .temperature::after {
+        content: ' ℃';
+        font-size: 0.7em;
+        vertical-align: top;
+        margin-right: 1em;
+        position: relative;
+        top: 1px;
+    }
+
+    .pre-navbar-item.links ul {
+        list-style-type: none;
+    }
+
+    .pre-navbar-item.links ul li {
+        list-style-type: none;
+        float: left;
+        margin-right: 18px;
+    }
+
     section#navigation{
         @apply flex;
-        @apply px-4;
+        @apply px-8;
         @apply py-6;
         @apply bg-slate-900;
+        @apply border-b;
+        @apply border-zinc-700;
+    }
+
+    section#navigation>div{
+        @apply bg-slate-900;
+    }
+
+    nav ul>li>a{
+        @apply bg-transparent;
+        @apply block;
+        @apply py-2;
+        @apply pl-3;
+        @apply pr-4;
+        @apply rounded;
+        @apply md:p-0;
+        @apply uppercase;
+        @apply font-medium;
+        @apply text-zinc-100;
     }
 
     nav#primaryNav{
 
     }
+
+    nav#secondaryNav{
+        @apply pb-6;
+        @apply text-xs;
+    }
+    
 
   }

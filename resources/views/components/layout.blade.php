@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="flex flex-col h-screen">
-        <x-navbar/>
+        <x-navbar />
         <div class="flex-grow">
             <main class="h-full">
                 {{$slot}}
