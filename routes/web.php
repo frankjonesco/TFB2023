@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MapController;
+use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SectorController;
 use App\Http\Controllers\ArticleController;
@@ -31,6 +32,11 @@ Route::get('/news', [ArticleController::class, 'index']);
 Route::get('/rankings', [CompanyController::class, 'index']);
 Route::get('/industries', [IndustryController::class, 'index']);
 Route::get('/partners', [PartnerController::class, 'index']);
+
+Route::get('/about', [SiteController::class, 'showAbout']);
+Route::get('/contact', [SiteController::class, 'showContact']);
+Route::get('/blog', [SiteController::class, 'showBlog']);
+Route::get('/forum', [SiteController::class, 'showForum']);
 
 
 // UserController
