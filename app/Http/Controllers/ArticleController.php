@@ -13,6 +13,8 @@ class ArticleController extends Controller
     // Show all public articles
     public function index(Site $site){
         return view('articles.index', [
+            'leading_articles' => Article::latest()->take(3)->get(),
+            'latest_articles' => Article::latest()->skip(3)->take(4)->get(),
             'articles' => $site->publicArticles()
         ]);
     }

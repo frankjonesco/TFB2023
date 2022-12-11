@@ -33,7 +33,7 @@
 
         <div class="flex pb-1.5">
             <a href="/" class="flex items-center">
-                <img src="{{asset('images/top-family-business-logo.png')}}" class="h-6 py-4 mr-3 sm:h-24 pr-10" alt="Top Family Business Logo" />
+                <img src="{{asset('images/top-family-business-logo.png')}}" class="py-4 mr-3 pr-10 w-80" alt="Top Family Business Logo" />
             </a>
 
             @foreach(navSponsors() as $nav_sponsors)

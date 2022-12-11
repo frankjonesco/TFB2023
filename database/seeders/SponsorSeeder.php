@@ -43,6 +43,13 @@ class SponsorSeeder extends Seeder
                 'logo' => 'headgate.png',
                 'url' => 'https://head-gate.de/',
                 'active' => 1
+            ],
+            [
+                'hex' => Str::random(11),
+                'name' => 'Top Family Business',
+                'slug' => 'top-family-business',
+                'logo' => 'top-family-business.png',
+                'active' => 1
             ]
         ];
 
