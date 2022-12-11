@@ -90,25 +90,44 @@
         </div>
 
         {{-- Featured articles --}}
-        <div class="mt-6 px-3">
+        <div class="mt-6 px-3 w-2/3">
 
-            <div class="flex mb-4">
-                <h3 class="pl-1.5 pr-5 border-b border-sky-500 uppercase">Today's featured</h3>
+            <div class="flex mb-7">
+                <h3 class="pl-1.5 pr-5 pb-3 border-b border-sky-500 uppercase text-lg">Today's featured</h3>
                 <span class="grow border-b border-zinc-500"></span>
             </div>
 
             <div class="flex">
-                <div>
+                <div class="mr-6">
                     @foreach($highlighted_feature_articles as $article)
-                        <div class="bg-no-repeat px-4 py-5 flex flex-col justify-end overflow-hidden" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.45)), url('{{asset('images/articles/'.$article->hex.'/'.$article->image)}}');">
-                            
+                        <div class="bg-no-repeat bg-cover bg-center px-4 py-5 mb-6 flex flex-col justify-end overflow-hidden h-80" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.45)), url('{{asset('images/articles/'.$article->hex.'/'.$article->image)}}');">
+                            <div class="flex flex-col justify-center items-center h-full">
+                                <span class="{{$color}} w-max px-2 py-1 rounded-lg text-xs font-bold">
+                                    Top Stories
+                                </span>
+                                <h3 class="pt-3 pb-3">
+                                    <a href="/news/articles/{{$article->hex}}/{{$article->slug}}" class="text-zinc-100 hover:!text-zinc-100 hover:!text-opacity-80">
+                                        {{$article->title}}
+                                    </a>
+                                </h3>
+                                <span class="text-xs italic">
+                                    <span class="mr-3">
+                                        <i class="fa-regular fa-clock mr-1"></i>
+                                        {{showDate($article->created_at)}}
+                                    </span>
+                                    <span>
+                                        <i class="fa-regular fa-eye mr-1"></i>
+                                        {{$article->views}}
+                                    </span>
+                                </span>
+                            </div>
                         </div>
                     @endforeach
                 </div>
                 <div>
                     @foreach($featured_articles as $article)
                         <div class="flex pb-2 mb-2 border-b border-zinc-700 border-dotted">
-                            <img src="{{asset('images/articles/'.$article->hex.'/'.$article->image)}}" alt="" class="w-48">
+                            <div class="w-1/3 h-28 bg-no-repeat bg-cover bg-center px-4 py-5 mb-6 flex flex-col justify-end overflow-hidden" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.45)), url('{{asset('images/articles/'.$article->hex.'/'.$article->image)}}');"></div>
                             <div class="flex flex-col pl-4 self-center">
                                 <span class="text-xs text-zinc-500 italic">Category</span>
                                 <h4 class="pt-1 pb-2">{{$article->title}}</h4>
