@@ -27,11 +27,14 @@ class SectorSeeder extends Seeder
             $site = new Site();
             $slug = $site->slug($sector->name);
             $english_slug = $site->slug($sector->english_name);
+
+            $ids = [1,2,3,4];
+            $random_user_id = $ids[array_rand($ids)];
             
             Sector::create([
                 'old_id' => $sector->id,
                 'hex' => Str::random(11),
-                'user_id' => 1,
+                'user_id' => $random_user_id,
                 'name' => trim($sector->name),
                 'slug' => $slug,
                 'english_name' => trim($sector->english_name),

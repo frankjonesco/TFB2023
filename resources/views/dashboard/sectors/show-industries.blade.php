@@ -22,8 +22,7 @@
             {{-- List --}}
             <table>
                 <tr>
-                    <th>Registered name</th>
-                    <th>Trading name</th>
+                    <th>Company name</th>
                     <th class="text-center">No. of Sectors</th>
                     <th>Sectors</th>
                     <th class="text-center">No. of Industries</th>
@@ -48,40 +47,34 @@
                                     <div class="flex items-center">
                                         <input type="checkbox" name="industry_id_checkboxes[]" value="{{$industry->id}}" onclick="handleClick(this)">
                                         <a href="/dashboard/companies/{{$company->hex}}">
-                                            {{$company->registered_name}}
+                                            {{$company->show_name}}
                                         </a>
                                     </div>
                                 </td>
-                                <td>
-                                    @if($company->trading_name)
-                                        {{$company->trading_name}}
-                                    @else
-                                        <i class="text-gray-700">- N o n e -</i>
-                                    @endif
-                                </td>
+                       
                                 <td class="text-center">
-                                    {{count($company->sectors)}}
+                                    {{count($company->grouped_sectors)}}
                                 </td>
                                 <td>
                                     <ul>
-                                        @foreach($company->sectors as $sector)
+                                        @foreach($company->grouped_sectors as $sector)
                                             <li>-
-                                                <a href="">
-                                                    {{$sector->name}}
+                                                <a href="/dashboard/sectors">
+                                                    {{$sector->english_name}}
                                                 </a>
                                             </li>
                                         @endforeach
                                     </ul>
                                 </td>
                                 <td class="text-center">
-                                    {{count($company->industries)}}
+                                    {{count($company->grouped_industries)}}
                                 </td>
                                 <td>
                                     <ul>
-                                        @foreach($company->sectors as $sector)
+                                        @foreach($company->grouped_industries as $industry)
                                             <li>-
                                                 <a href="">
-                                                    {{$sector->name}}
+                                                    {{$industry->english_name}}
                                                 </a>
                                             </li>
                                         @endforeach

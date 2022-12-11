@@ -23,6 +23,10 @@ class UserSeeder extends Seeder
 
         // Create users
         foreach($users as $user){
+
+            $ids = [1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+            $random_color_fill_id = $ids[array_rand($ids)];
+
             User::create([
                 'old_id' => $user->id,
                 'hex' => Str::random(11),
@@ -37,7 +41,7 @@ class UserSeeder extends Seeder
                 'image' => $user->image,
                 'gender' => $user->gender,
                 'country_iso' => $user->country,
-                'color_fill_id' => null,
+                'color_fill_id' => $random_color_fill_id,
                 'created_at' => $user->created,
             ]);
         }

@@ -28,7 +28,7 @@ class CompanySeeder extends Seeder
         foreach($companies as $company){
 
             // User ID
-            $ids = [2,4];
+            $ids = [1,2,3,4];
             $random_user_id = $ids[array_rand($ids)];
             if($company->user_id != ''){
                 $user = User::where('old_id', $company->user_id)->first();

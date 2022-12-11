@@ -25,10 +25,14 @@ class IndustrySeeder extends Seeder
             $site = new Site();
             $slug = $site->slug($industry->name);
             $english_slug = $site->slug($industry->english_name);
+
+            $ids = [1,2,3,4];
+            $random_user_id = $ids[array_rand($ids)];
             
             Industry::create([
                 'old_id' => $industry->id,
                 'hex' => Str::random(11),
+                'user_id' => $random_user_id,
                 'name' => trim($industry->name),
                 'slug' => $slug,
                 'english_name' => trim($industry->english_name),

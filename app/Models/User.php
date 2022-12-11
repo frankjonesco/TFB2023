@@ -3,10 +3,11 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -64,9 +65,18 @@ class User extends Authenticatable
         return $this->hasMany(User::class, 'user_id');
     }
 
+    // User's color
+    public function color(){
+        return $this->belongsTo(
+            Color::class, 
+            'color_fill_id', 
+            'fill_id'
+        )->where('color_theme_id', Setting::find(1)->color_theme_id);
+    }
 
 
-    // ACCESSOR METHODS
+
+
 
     // Accessor for profile pic
     public function getFullNameAttribute()
