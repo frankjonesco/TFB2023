@@ -16,7 +16,7 @@ class ArticleController extends Controller
             'leading_articles' => Article::latest()->take(3)->get(),
             'latest_articles' => Article::latest()->skip(3)->take(4)->get(),
             'highlighted_feature_articles' => Article::latest()->skip(7)->take(2)->get(),
-            'featured_articles' => Article::latest()->skip(9)->take(6)->get(),
+            'featured_articles' => Article::latest()->skip(9)->take(5)->get(),
             'articles' => $site->publicArticles()
         ]);
     }
