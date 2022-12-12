@@ -22,6 +22,13 @@ class ArticleController extends Controller
             'comments' => Comment::latest()->take(6)->get()
         ]);
     }
+
+    // Show single article
+    public function show(Article $article, $slug){
+        return view('articles.show', [
+            'article' => $article,
+        ]);
+    }
     
 
     // ADMIN METHODS

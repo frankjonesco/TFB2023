@@ -29,6 +29,7 @@ Route::get('/', function () {
 
 
 Route::get('/news', [ArticleController::class, 'index']);
+Route::get('/news/articles/{article}/{slug}', [ArticleController::class, 'show']);
 Route::get('/rankings', [CompanyController::class, 'index']);
 Route::get('/industries', [IndustryController::class, 'index']);
 Route::get('/partners', [PartnerController::class, 'index']);

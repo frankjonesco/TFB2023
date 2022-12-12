@@ -170,10 +170,9 @@
 
                 @foreach($comments as $comment)
                     <div class="flex">
-                        <img src="{{asset('images/users/'.$comment->user->hex.'/tn-'.$comment->user->image)}}" alt="{{$comment->user->full_name}}" class="w-12 h-12 mr-4 rounded-full">
+                        <img src="{{asset('images/users/'.$comment->user->hex.'/tn-'.$comment->user->image)}}" alt="{{$comment->user->full_name}}" class="w-10 h-10 mr-4 rounded-full border border-lime-400">
                         <div class="p-4 mb-5 bg-zinc-600 border border-zinc-900 rounded-md overflow-hidden">{{$comment->body}}</div>
                     </div>
-
                 @endforeach
             </div>
 
