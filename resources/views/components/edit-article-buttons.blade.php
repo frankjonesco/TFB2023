@@ -1,4 +1,4 @@
-<div class="w-full flex justify-end buttons-ml">
+<div class="flex justify-end buttons-ml">
     <a href="/dashboard/articles/{{$article->hex}}/text/edit">   
         <button>
             <i class="fa-solid fa-marker"></i>

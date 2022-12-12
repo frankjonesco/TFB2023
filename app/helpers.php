@@ -32,55 +32,68 @@ use Illuminate\Support\Facades\Config;
             return [
                 [
                     'label' => 'Created by',
-                    'result' => $article->user->full_name
+                    'result' => $article->user->full_name,
+                    'icon' => 'fa-regular fa-user'
                 ],
                 [
                     'label' => 'Created at',
-                    'result' => $article->created_at
+                    'result' => showDate($article->created_at),
+                    'icon' => 'fa-regular fa-calendar'
                 ],
                 [
                     'label' => 'Updated at',
-                    'result' => $article->updated_at
+                    'result' => showDate($article->updated_at),
+                    'icon' => 'fa-regular fa-calendar'
                 ],
                 [
                     'label' => 'Views',
-                    'result' => $article->views === null ? '<span class="no-results">None</span>' : $article->views
+                    'result' => $article->views === null ? '<span class="no-results">None</span>' : $article->views,
+                    'icon' => 'fa-regular fa-eye'
                 ],
                 [
                     'label' => 'Comments',
-                    'result' => count($article->comments) == 0 ? '<span class="no-results">None</span>' : count($article->comments)
+                    'result' => count($article->comments) == 0 ? '<span class="no-results">None</span>' : count($article->comments),
+                    'icon' => 'fa-regular fa-comments'
                 ],
                 [
                     'label' => 'Likes',
-                    'result' => $article->likes === null ? '<span class="no-results">None</span>' : $article->likes
+                    'result' => $article->likes === null ? '<span class="no-results">None</span>' : $article->likes,
+                    'icon' => 'fa-regular fa-thumbs-up'
                 ],
                 [
                     'label' => 'Dislikes',
-                    'result' => $article->dislikes === null ? '<span class="no-results">None</span>' : $article->dislikes
+                    'result' => $article->dislikes === null ? '<span class="no-results">None</span>' : $article->dislikes,
+                    'icon' => 'fa-regular fa-thumbs-down'
                 ],
                 [
                     'label' => 'Hex',
-                    'result' => $article->hex
+                    'result' => $article->hex,
+                    'icon' => 'fa-solid fa-fingerprint'
                 ],
                 [
                     'label' => 'Sector',
-                    'result' => $article->sector === null ? '<span class="no-results">Not assigned</span>' : $article->sector
+                    'result' => $article->sector === null ? '<span class="no-results">Not assigned</span>' : $article->sector,
+                    'icon' => 'fa-regular fa-building'
                 ],
                 [
                     'label' => 'Category',
-                    'result' => $article->category === null ? '<span class="no-results">Not assigned</span>' : $article->category
+                    'result' => $article->category === null ? '<span class="no-results">Not assigned</span>' : $article->category,
+                    'icon' => 'fa-regular fa-folder'
                 ],
                 [
                     'label' => 'Sponsor',
-                    'result' => $article->sponsor === null ? '<span class="no-results">No sponsor</span>' : $article->sponsor
+                    'result' => $article->sponsor === null ? '<span class="no-results">No sponsor</span>' : $article->sponsor,
+                    'icon' => 'fa-solid fa-award'
                 ],
                 [
                     'label' => 'Tags',
-                    'result' => $article->tags === null ? '<span class="no-results">No tags added</span>' : $article->tags
+                    'result' => $article->tags === null ? '<span class="no-results">No tags added</span>' : $article->tags,
+                    'icon' => 'fa-solid fa-tags'
                 ],
                 [
                     'label' => 'Status',
-                    'result' => ucfirst($article->status)
+                    'result' => ucfirst($article->status),
+                    'icon' => 'fa-regular fa-calendar'
                 ],
             ];
         }

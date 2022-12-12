@@ -43,10 +43,13 @@
                 <h3 class="pl-1.5 pr-5 pb-3 border-b border-sky-500 uppercase text-lg">Article details</h3>
                 <span class="grow border-b border-zinc-500"></span>
             </div>
-            <div class="grid grid-cols-2 gap-3">
+            <div class="grid grid-cols-[1fr_8fr_11fr] gap-0 text-sm">
                 @foreach($article->details as $key => $detail)
-                    <div>{{$detail['label']}}:</div>
-                    <div>{!!$detail['result']!!}</div>
+                    <div class="p-2">
+                        <i class="{{$detail['icon']}}"></i>
+                    </div>
+                    <div class="p-2 w-full border-b border-gray-700">{{$detail['label']}}:</div>
+                    <div class="p-2 border-b border-gray-700 font-thin">{!!$detail['result']!!}</div>
                 @endforeach
             </div>
 
