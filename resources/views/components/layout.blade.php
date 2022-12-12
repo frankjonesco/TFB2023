@@ -15,6 +15,11 @@
                 {{$slot}}
             </main>
         </div>
+        <footer class="p-4">
+            <a href="/terms">Terms</a>
+            <span class="text-zinc-500"> | </span>
+            <a href="/privacy">Privacy</a>
+        </footer>
     </div>
     <x-toast-message />
     <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>

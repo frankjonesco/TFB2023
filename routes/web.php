@@ -23,6 +23,22 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
+/*
+|--------------------------------------------------------------------------
+| Routes for SiteController
+|--------------------------------------------------------------------------
+*/
+
+
+// Public routes for SiteController
+Route::controller(SiteController::class)->group(function(){
+    Route::get('/', 'home')->name('home');
+    Route::get('/terms', 'showTerms');
+    Route::get('/privacy', 'showPrivacy');
+    Route::get('/about', 'showAbout');
+    Route::get('/contact', 'showContact');
+});
+
 Route::get('/', function () {
     return view('home');
 });

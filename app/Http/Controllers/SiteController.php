@@ -25,4 +25,14 @@ class SiteController extends Controller
     public function showForum(){
         return view('forum.index');
     }
+
+    // Show terms
+    public function showTerms(){
+        return view('terms.show');
+    }
+
+    // Show privacy
+    public function showPrivacy(){
+        return view('privacy.show');
+    }
 }
