@@ -34,7 +34,7 @@ class ArticleController extends Controller
     // ADMIN METHODS
 
     // ADMIN: Show all articles
-    public function adminIndex(Site $site){
+    public function adminIndex(Site $site){ 
         return view('dashboard.articles.index', [
             'articles' => $site->paginateAllArticles()
         ]);
@@ -74,6 +74,9 @@ class ArticleController extends Controller
 
     // ADMIN: Show single article
     public function adminShow(Article $article){
+        $article->details = compileArticleDetails($article);
+
+        // dd($article->details);
         return view('dashboard.articles.show', [
             'article' => $article
         ]);

@@ -22,22 +22,28 @@
                     <th>Title</th>
                     <th></th>
                     <th>Category</th>
+                    <th class="text-center">Views</th>
+                    <th class="text-center">Comments</th>
                     <th>Owner</th>
-                    <th>Last updated</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($articles as $article)
                     <tr>
-                        <td class="flex items-center">
-                            <img src="{{asset('images/articles/'.$article->hex.'/tn-'.$article->image)}}" alt="Top Family Business - {{$article->title}}" class="w-24 mr-4 rounded border border-sky-100">
+                        <td>
                             <a href="/dashboard/articles/{{$article->hex}}">
                                 {{$article->title}}
                             </a>
                         </td>
                         <td>
-                            
+                            <a href="/dashboard/articles/{{$article->hex}}">
+                                <img 
+                                    src="{{asset('images/articles/'.$article->hex.'/tn-'.$article->image)}}"
+                                    alt="Top Family Business - {{$article->title}}"
+                                    class="w-20 mr-4 rounded border border-indigo-100 hover:border-amber-300 cursor-pointer"
+                                >
+                            </a>
                         </td>
                         <td>
                             @if($article->category)
@@ -48,11 +54,14 @@
                                 <span class="no-results">Uncategorised</span>
                             @endif
                         </td>
-                        <td>
-                            <x-user-profile-pic-full-name :user="$article->user" />
+                        <td class="text-center">
+                            {{$article->views}}
+                        </td>
+                        <td class="text-center">
+                            {{count($article->comments)}}
                         </td>
                         <td>
-                            {{$article->updated_at}}
+                            <x-user-profile-pic-full-name :user="$article->user" />
                         </td>
                         <td class="text-right">
                             <a href="/dashboard/articles/{{$article->hex}}">
