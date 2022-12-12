@@ -221,6 +221,11 @@
         @apply dark:text-gray-300;
     }
 
+    .no-results{
+        @apply italic;
+        @apply text-zinc-600;
+    }
+
     .ul-o-2{
         @apply underline;
         @apply underline-offset-2;

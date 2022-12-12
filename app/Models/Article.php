@@ -21,11 +21,6 @@ class Article extends Model
 
     // RELATIONSHIPS
 
-    // Relationship to sector
-    public function sector(){
-        return $this->belongsTo(Sector::class, 'sector_id');
-    }
-
     // Relationship to category
     public function category(){
         return $this->belongsTo(Category::class, 'category_id');
