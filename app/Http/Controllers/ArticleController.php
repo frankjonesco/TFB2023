@@ -96,7 +96,7 @@ class ArticleController extends Controller
         // Validate form
         $request->validate([
             'title' => ['required', 'max:191'],
-            'tags' => ['not_regex:/0-9a-zA-Z, /'],
+            'tags' => ['regex:/^[A-Za-z0-9\-, ]*$/','nullable'],
             'status' => 'required'
         ]);
 
