@@ -7,7 +7,7 @@
                 @php
                     $article = $leading_articles[0];
                 @endphp
-                <div class="bg-no-repeat bg-cover px-7 py-8 flex flex-col justify-end h-[32rem]" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.65)),
+                <div class="bg-no-repeat bg-cover px-7 py-8 flex flex-col justify-end h-[32rem]" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.85)),
                 url('{{asset('images/articles/'.$article->hex.'/'.$article->image)}}');" >
                     <span class="bg-indigo-500 w-max px-2 py-1 rounded-lg text-sm font-bold">
                         Top Stories
@@ -59,7 +59,7 @@
                                 $color = 'bg-black-500';
                             }
                         @endphp
-                        <div class="bg-no-repeat px-4 py-5 flex flex-col justify-end overflow-hidden" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.45)), url('{{asset('images/articles/'.$article->hex.'/'.$article->image)}}');">
+                        <div class="bg-no-repeat bg-center bg-cover px-4 py-5 flex flex-col justify-end overflow-hidden" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.85)), url('{{asset('images/articles/'.$article->hex.'/'.$article->image)}}');">
                             <div class="translate-y-[4.80rem]">
                                 <span class="{{$color}} w-max px-2 py-1 rounded-lg text-xs font-bold">
                                     Top Stories
@@ -101,7 +101,7 @@
                 <div class="flex">
                     <div class="mr-6">
                         @foreach($highlighted_feature_articles as $article)
-                            <div class="bg-no-repeat bg-cover bg-center px-4 py-5 mb-6 flex flex-col justify-end overflow-hidden w-96 h-72" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.60)), url('{{asset('images/articles/'.$article->hex.'/'.$article->image)}}');">
+                            <div class="bg-no-repeat bg-cover bg-center px-4 py-5 mb-6 flex flex-col justify-end overflow-hidden w-96 h-72" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.85)), url('{{asset('images/articles/'.$article->hex.'/'.$article->image)}}');">
                                 <div class="flex flex-col justify-center items-center h-full">
                                     <span class="bg-lime-600 w-max px-2 py-1 rounded-lg text-xs font-bold">
                                         Top Stories
@@ -128,7 +128,7 @@
                     <div class="w-full">
                         @foreach($featured_articles as $article)
                             <div class="flex pb-2 mb-2 w-full border-b border-zinc-700 border-dotted">
-                                <div class="w-36 h-28 bg-no-repeat bg-cover bg-center px-4 flex flex-col justify-end overflow-hidden" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.60)), url('{{asset('images/articles/'.$article->hex.'/'.$article->image)}}');"></div>
+                                <div class="w-36 h-28 bg-no-repeat bg-cover bg-center px-4 flex flex-col justify-end overflow-hidden" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.85)), url('{{asset('images/articles/'.$article->hex.'/'.$article->image)}}');"></div>
                                 <div class="flex flex-col pl-4 self-center">
                                     <span class="{{$color}} w-max px-1.5 py-0.5 rounded-lg text-xs font-bold">
                                         Top Stories
@@ -163,17 +163,7 @@
                     </ul>
                 </span>
 
-                <div class="flex mb-7 mt-16">
-                    <h3 class="pl-1.5 pr-5 pb-3 border-b border-sky-500 uppercase text-lg">Recent comments</h3>
-                    <span class="grow border-b border-zinc-500"></span>
-                </div>
-
-                @foreach($comments as $comment)
-                    <div class="flex">
-                        <img src="{{asset('images/users/'.$comment->user->hex.'/tn-'.$comment->user->image)}}" alt="{{$comment->user->full_name}}" class="w-10 h-10 mr-4 rounded-full border border-lime-400">
-                        <div class="p-4 mb-5 bg-zinc-600 border border-zinc-900 rounded-md overflow-hidden">{{$comment->body}}</div>
-                    </div>
-                @endforeach
+                <x-module-comments :comments="$comments" />
             </div>
 
         </div>

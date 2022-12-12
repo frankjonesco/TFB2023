@@ -12,9 +12,16 @@ use Illuminate\Support\Facades\Config;
     }
 
     // Nav sponsors
-    if(! function_exists('navSponsors')) {
+    if(!function_exists('navSponsors')) {
         function navSponsors(){
             return Sponsor::where('show_in_navbar', true)->get();
+        }
+    }
+
+    // Linkify
+    if(!function_exists('linkify')){
+        function linkify($text) {
+            return preg_replace('@(https?://([-\w\.]+)+(:\d+)?(/([\w/_\.%-=#]*(\?\S+)?)?)?)@', '<a href="$1">$1</a>', $text);
         }
     }
 
