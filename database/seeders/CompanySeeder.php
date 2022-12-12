@@ -44,7 +44,7 @@ class CompanySeeder extends Seeder
             $site = new Site();
 
             // Create company
-            Company::create([
+            Company::insert([
                 'old_id' => $company->id,
                 'hex' => Str::random(11),
                 'user_id' => $user_id,

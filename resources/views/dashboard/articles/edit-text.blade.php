@@ -1,7 +1,7 @@
 <x-dashboard-layout>
     
     <div class="flex flex-row items-center">
-        <h1 class="grow">Edit text</h1>
+        <h2 class="grow">Edit article text</h2>
         <x-edit-article-buttons :article="$article" />
     </div>
 
@@ -24,14 +24,48 @@
             >
             <p class="text-slug">Slug: <span id="slug">{{$article->slug ?? 'enter text'}}</span></p>
             @error('title')
-                <p class="text-error">{{$message}}</p>
+                <p class="text-error">
+                    {{$message}}
+                </p>
+            @enderror
+        </div>
+
+        <div class="form-block">
+            <label for="caption">Caption</label>
+            <input 
+                type="text" 
+                id="caption" 
+                name="caption" 
+                placeholder="Caption" 
+                value="{{old('caption') ?? $article->caption}}" 
+            >
+            @error('caption')
+                <p class="text-error">
+                    {{$message}}
+                </p>
+            @enderror
+        </div>
+
+        <div class="form-block">
+            <label for="teaser">Teaser</label>
+            <input 
+                type="text" 
+                id="teaser" 
+                name="teaser" 
+                placeholder="Teaser" 
+                value="{{old('teaser') ?? $article->teaser}}" 
+            >
+            @error('teaser')
+                <p class="text-error">
+                    {{$message}}
+                </p>
             @enderror
         </div>
 
         <div class="form-block">
             <label for="category_id">Category</label>
             <select name="category_id">
-                <option value="" class="block w-full" disabled selected>Which categoru is this article in?</option>
+                <option value="" class="block w-full" disabled selected>Select a category</option>
                 @foreach($categories as $category)
                     <option value="{{$category->id}}" {{$article->category_id == $category->id ? 'selected' : null}}>{{$category->name}}</option>
                 @endforeach
@@ -49,6 +83,23 @@
                 rows="4" 
                 placeholder="Main article body..."
             >{{old('description') ?? $article->body}}</textarea>
+        </div>
+
+        <div class="form-block">
+            <label for="tags">Tags (separated with a comma 'tag one, tag two')</label>
+            <input 
+                type="text" 
+                id="tags" 
+                name="tags" 
+                placeholder="Tags" 
+                value="{{old('tags') ?? str_replace(',', ', ', $article->tags)}}"
+                onkeypress="return /[0-9a-zA-Z, ]/i.test(event.key)"
+            >
+            @error('tags')
+                <p class="text-error">
+                    {{$message}}
+                </p>
+            @enderror
         </div>
 
         <div class="form-block">

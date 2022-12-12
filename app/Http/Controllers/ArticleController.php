@@ -95,17 +95,22 @@ class ArticleController extends Controller
 
         // Validate form
         $request->validate([
-            'title' => 'required',
-            'category_id' => 'required',
+            'title' => ['required', 'max:191'],
+            'tags' => ['not_regex:/0-9a-zA-Z, /'],
             'status' => 'required'
         ]);
 
         // Form data to model
         $article->title = $request->title;
         $article->slug = $request->slug;
+        $article->caption = $request->caption;
+        $article->teaser = $request->teaser;
         $article->category_id = $request->category_id;
         $article->body = $request->body;
+        $article->tags = formatTags($request->tags);
         $article->status = $request->status;
+
+        
 
         // Save changes
         $article->saveText();

@@ -19,7 +19,8 @@ class SettingSeeder extends Seeder
         $config = [
             'hex' => Str::random(11),
             'color_theme_id' => 1,
-            'date_format' => 'd M Y - H:i'
+            'date_format' => 'd M Y',
+            'time_format' => 'H:i'
         ];
 
         Setting::create($config);

@@ -3,11 +3,20 @@
 use App\Models\Sponsor;
 use Illuminate\Support\Facades\Config;
 
-    // Settings: date_format
+    // Show date
     if(!function_exists('showDate')){
         function showDate($date){
-            $format = Config::get('date_format');
-            return $date->format($format);
+            $date_format = Config::get('date_format');
+            return $date->format($date_format);
+        }
+    }
+
+    // Show date/time
+    if(!function_exists('showDateTime')){
+        function showDateTime($date){
+            $date_format = Config::get('date_format');
+            $time_format = Config::get('time_format');
+            return $date->format($date_format.' - '.$time_format);
         }
     }
 
@@ -96,6 +105,27 @@ use Illuminate\Support\Facades\Config;
                     'icon' => 'fa-regular fa-calendar'
                 ],
             ];
+        }
+    }
+
+    //  Format tags
+    if(!function_exists('formatTags')){
+        function formatTags($tags){
+            $tags = explode(',', $tags);
+            $trimmed_tags = [];
+            foreach($tags as $tag){
+                $tag = preg_replace('/[^A-Za-z0-9\, ]/', '', $tag);
+                $words = explode(' ', $tag);
+                $tag = [];
+                foreach($words as $word){
+                    $tag[] = $word;
+                }
+                $tag = implode(' ', array_filter($tag));
+                $trimmed_tags[] = trim($tag);
+            }
+            $tags = implode(',', array_filter($trimmed_tags));
+
+            return $tags;
         }
     }
 

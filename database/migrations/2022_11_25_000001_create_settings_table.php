@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('hex', 11);
             $table->foreignId('color_theme_id');
             $table->string('date_format');
+            $table->string('time_format');
             $table->timestamps();
         });
     }

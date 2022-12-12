@@ -85,7 +85,7 @@ class ArticleSeeder extends Seeder
             $site = new Site();
 
             // Create article
-            Article::create([
+            Article::insert([
 
                 'old_id' => $article->id,
                 'hex' => Str::random(11),
