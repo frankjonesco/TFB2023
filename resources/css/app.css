@@ -370,7 +370,8 @@
         @apply bg-slate-900;
     }
 
-    nav ul>li>a{
+    nav ul>li>a,
+    nav ul>li>form>a{
         @apply bg-transparent;
         @apply block;
         @apply py-2;

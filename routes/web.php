@@ -29,7 +29,6 @@ use App\Http\Controllers\DashboardController;
 |--------------------------------------------------------------------------
 */
 
-
 // Public routes for SiteController
 Route::controller(SiteController::class)->group(function(){
     Route::get('/', 'home')->name('home');
@@ -42,314 +41,260 @@ Route::controller(SiteController::class)->group(function(){
 });
 
 
-Route::get('/news', [ArticleController::class, 'index']);
-Route::get('/news/articles/{article}/{slug}', [ArticleController::class, 'show']);
-Route::get('/rankings', [CompanyController::class, 'index']);
-Route::get('/industries', [IndustryController::class, 'index']);
-Route::get('/partners', [PartnerController::class, 'index']);
+/*
+|--------------------------------------------------------------------------
+| Routes for ArticleController
+|--------------------------------------------------------------------------
+*/
 
-Route::get('/blog', [SiteController::class, 'showBlog']);
-Route::get('/forum', [SiteController::class, 'showForum']);
+// Auth routes for ArticleController
+Route::controller(ArticleController::class)->middleware('auth')->group(function() {
+    Route::get('/dashboard/articles', 'adminIndex');
+    Route::get('/dashboard/articles/create', 'create');
+    Route::post('/dashboard/articles/store', 'store');
+    Route::get('/dashboard/articles/{article}/text/edit', 'editText');
+    Route::put('/dashboard/articles/{article}/text/update', 'updateText');
+    Route::get('/dashboard/articles/{article}/image/edit', 'editImage');
+    Route::put('/dashboard/articles/{article}/image/update', 'updateImage');
+    Route::get('/dashboard/articles/{article}/image/crop', 'cropImage');
+    Route::post('/dashboard/articles/{article}/image/render', 'renderImage');    
+    Route::get('/dashboard/articles/{article}/delete', 'deleteOptions');
+    Route::delete('/dashboard/articles/{article}/delete', 'delete');
+    Route::get('/dashboard/articles/{article}', 'adminShow');
+});
+
+// Public routes for ArticleController
+Route::controller(ArticleController::class)->group(function(){
+    Route::get('/news', 'index');
+    Route::get('/news/articles/{article}/{slug}', 'show');
+});
 
 
-// UserController
-// Show sign up form
-Route::get('/signup', [UserController::class, 'showSignUp']);
-Route::post('/users/store', [UserController::class, 'storeSignUp']);
-Route::post('/logout', [UserController::class, 'logout']);
-Route::get('/login', [UserController::class, 'login']);
-Route::post('/users/authenticate', [UserController::class, 'authenticateForLogin']);
+/*
+|--------------------------------------------------------------------------
+| Routes for CategoryController
+|--------------------------------------------------------------------------
+*/
+
+// Auth routes for CategoryController
+Route::controller(CategoryController::class)->middleware('auth')->group(function() {
+    Route::get('/dashboard/categories', 'adminIndex');
+    Route::get('/dashboard/categories/create', 'create');
+    Route::post('/dashboard/categories/store', 'store');
+    Route::get('/dashboard/categories/{category}/text/edit', 'editText');
+    Route::put('/dashboard/categories/{category}/text/update', 'updateText');
+    Route::get('/dashboard/categories/{category}/image/edit', 'editImage');
+    Route::put('/dashboard/categories/{category}/image/update', 'updateImage');
+    Route::get('/dashboard/categories/{category}/image/crop', 'cropImage');
+    Route::post('/dashboard/categories/{category}/image/render', 'renderImage');
+    Route::get('/dashboard/categories/{category}/delete', 'deleteOptions');
+    Route::delete('/dashboard/categories/{category}/delete', 'delete');
+    Route::get('/dashboard/categories/{category}', 'adminShow');
+});
+
+// Public routes for CategoryController
+Route::controller(CategoryController::class)->group(function(){
+    Route::get('/categories', 'index');
+});
 
 
-// SectorController
-// Show all sectors
-Route::get('sectors', [SectorController::class, 'index']);
-    // Dashboard SectorController
-    // Show all sectors
-    Route::get('dashboard/sectors', [SectorController::class, 'adminIndex']);
+/*
+|--------------------------------------------------------------------------
+| Routes for CompanyController
+|--------------------------------------------------------------------------
+*/
 
-    // Show create form
-    Route::get('dashboard/sectors/create', [SectorController::class, 'create']);
+// Auth routes for CompanyController
+Route::controller(CompanyController::class)->middleware('auth')->group(function() {
+    Route::get('/dashboard/companies', 'adminIndex');
+    Route::get('/dashboard/companies/create', 'create');
+    Route::post('/dashboard/companies/store', 'store');
+    Route::get('/dashboard/companies/{company}/text/edit', 'editText');
+    Route::put('/dashboard/companies/{company}/text/update', 'updateText');
+    Route::get('/dashboard/companies/{company}/image/edit', 'editImage');
+    Route::put('/dashboard/companies/{company}/image/update', 'updateImage');
+    Route::get('/dashboard/companies/{company}/image/crop', 'cropImage');
+    Route::post('/dashboard/companies/{company}/image/render', 'renderImage');
+    Route::get('/dashboard/companies/{company}/delete', 'deleteOptions');
+    Route::delete('/dashboard/companies/{company}/delete', 'delete');
+    Route::get('/dashboard/companies/{company}', 'adminShow');
+});
 
-    // Store new sector
-    Route::post('dashboard/sectors/store', [SectorController::class, 'store']);
+// Public routes for CompanyController
+Route::controller(CompanyController::class)->group(function(){
+    Route::get('/rankings', 'index');
+});
 
-    // Show edit text
-    Route::get('dashboard/sectors/{sector}/text/edit', [SectorController::class, 'editText']);
-    // Update text
-    Route::put('dashboard/sectors/{sector}/text/update', [SectorController::class, 'updateText']);
+
+/*
+|--------------------------------------------------------------------------
+| Routes for SectorController
+|--------------------------------------------------------------------------
+*/
+
+// Auth routes for SectorController
+Route::controller(SectorController::class)->middleware('auth')->group(function() {
+    Route::get('/dashboard/sectors', 'adminIndex');
+    Route::get('/dashboard/sectors/create', 'create');
+    Route::post('/dashboard/sectors/store', 'store');
+    Route::get('/dashboard/sectors/{sector}/text/edit', 'editText');
+    Route::put('/dashboard/sectors/{sector}/text/update', 'updateText');
+    Route::get('/dashboard/sectors/{sector}/image/edit', 'editImage');
+    Route::put('/dashboard/sectors/{sector}/image/update', 'updateImage');
+    Route::get('/dashboard/sectors/{sector}/image/crop', 'cropImage');
+    Route::post('/dashboard/sectors/{sector}/image/render', 'renderImage');
+    Route::get('/dashboard/sectors/{sector}/delete', 'deleteOptions');
+    Route::delete('/dashboard/sectors/{sector}/delete', 'delete');
+    Route::post('/dashboard/sectors/{sector}/industries/store', 'storeIndustry');
+    Route::put('/dashboard/sectors/{sector}/industries/with-selected', 'withSelected');
+    Route::get('/dashboard/sectors/{sector}/industries/confirm-delete', 'confirmDeleteIndustry');
+    Route::delete('/dashboard/sectors/{sector}/industries/delete', 'deleteIndustry');
+    Route::get('/dashboard/sectors/{sector}', 'adminShow');
+});
+
+// Public routes for SectorController
+Route::controller(SectorController::class)->group(function(){
+    Route::get('/sectors', 'index');
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| Routes for IndustryController
+|--------------------------------------------------------------------------
+*/
+
+// Auth routes for IndustryController
+Route::controller(IndustryController::class)->middleware('auth')->group(function() {
+    Route::get('/dashboard/industries', 'adminIndex');
+    Route::get('/dashboard/industries/create', 'create');
+    Route::post('/dashboard/industries/store', 'store');
+    Route::get('/dashboard/industries/{industry}/text/edit', 'editText');
+    Route::put('/dashboard/industries/{industry}/text/update', 'updateText');
+    Route::get('/dashboard/industries/{industry}/image/edit', 'editImage');
+    Route::put('/dashboard/industries/{industry}/image/update', 'updateImage');
+    Route::get('/dashboard/industries/{industry}/image/crop', 'cropImage');
+    Route::post('/dashboard/industries/{industry}/image/render', 'renderImage');
+    Route::get('/dashboard/industries/{industry}/delete', 'deleteOptions');
+    Route::delete('/dashboard/industries/{industry}/delete', 'delete');
+    Route::put('/dashboard/industries/{industry}/companies/with-selected', 'withSelected'); 
+    Route::get('/dashboard/industries/{industry}', 'adminShow');
+    Route::get('/dashboard/sector-industries/{map}', 'showSectorIndustries');
+});
+
+// Public routes for IndustryController
+Route::controller(IndustryController::class)->group(function(){
+    Route::get('/industries', 'index');
     
-    // Show edit image
-    Route::get('dashboard/sectors/{sector}/image/edit', [SectorController::class, 'editImage']);
-    // Update image
-    Route::put('dashboard/sectors/{sector}/image/update', [SectorController::class, 'updateImage']);
-    // Crop image
-    Route::get('dashboard/sectors/{sector}/image/crop', [SectorController::class, 'cropImage']);
-    // Render image
-    Route::post('dashboard/sectors/{sector}/image/render', [SectorController::class, 'renderImage']);
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| Routes for MapController
+|--------------------------------------------------------------------------
+*/
+
+// Auth routes for MapController
+Route::controller(MapController::class)->middleware('auth')->group(function() {
+    Route::get('/dashboard/maps', 'adminIndex');
+    Route::get('/dashboard/maps/sectors', 'adminSectors');
+    Route::get('/dashboard/maps/sectors/{sector}', 'showSector');
+    Route::get('/dashboard/maps/sectors/{sector}/industries/{map}', 'showSectorIndustryCompanies');
+    Route::get('/dashboard/maps/industries', 'adminIndustries');
+    Route::get('/dashboard/maps/industries/{industry}', 'showIndustry');
+    Route::get('/dashboard/maps/companies', 'adminCompanies');
+});
+
+// Public routes for MapController
+Route::controller(MapController::class)->group(function(){
+
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| Routes for PartnerController
+|--------------------------------------------------------------------------
+*/
+
+// Auth routes for PartnerController
+Route::controller(PartnerController::class)->middleware('auth')->group(function() {
+
+});
+
+// Public routes for PartnerController
+Route::controller(PartnerController::class)->group(function(){
+    Route::get('/partners', 'index');
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| Routes for UserController
+|--------------------------------------------------------------------------
+*/
+
+// Auth routes for UserController
+Route::controller(UserController::class)->middleware('auth')->group(function(){
+    Route::post('/logout', 'logout');
+    Route::get('/dashboard/users', 'adminIndex');
+    Route::get('/dashboard/users/create', 'create');
+    Route::post('/dashboard/users/store', 'store');
+    Route::get('/dashboard/users/{user}/text/edit', 'editText');
+    Route::put('/dashboard/users/{user}/text/update', 'updateText');
+    Route::get('/dashboard/users/{user}/image/edit', 'editImage');
+    Route::put('/dashboard/users/{user}/image/update', 'updateImage');
+    Route::get('/dashboard/users/{user}/image/crop', 'cropImage');
+    Route::post('/dashboard/users/{user}/image/render', 'renderImage');
+    Route::get('/dashboard/users/{user}/delete', 'deleteOptions');
+    Route::delete('/dashboard/users/{user}/delete', 'delete');
+    Route::get('/dashboard/users/{user}', 'adminShow');
+});
+
+// Guest route for UserController
+Route::controller(UserController::class)->middleware('guest')->group(function(){
+    Route::get('/signup', 'showSignUp');
+    Route::post('/users/store', 'storeSignUp');
+    Route::get('/login', 'login')->name('login');
+    Route::post('/users/authenticate', 'authenticateForLogin');
+});
+
+// Public routes for UserController
+Route::controller(UserController::class)->group(function(){
     
-    // Show delete form
-    Route::get('dashboard/sectors/{sector}/delete', [SectorController::class, 'deleteOptions']);
-    // Delete sector
-    Route::delete('dashboard/sectors/{sector}/delete', [SectorController::class, 'delete']);
+});
 
-    // Store industry for this sector
-    Route::post('dashboard/sectors/{sector}/industries/store', [SectorController::class, 'storeIndustry']);
 
-    // Execute with selected
-    Route::put('dashboard/sectors/{sector}/industries/with-selected', [SectorController::class, 'withSelected']);
+/*
+|--------------------------------------------------------------------------
+| Routes for DashboardController
+|--------------------------------------------------------------------------
+*/
 
-    // Confirm delete industry for this sector
-    Route::get('dashboard/sectors/{sector}/industries/confirm-delete', [SectorController::class, 'confirmDeleteIndustry']);
+// Auth routes for DashboardController
+Route::controller(DashboardController::class)->middleware('auth')->group(function() {
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+});
 
-    // Delete industry
-    Route::delete('dashboard/sectors/{sector}/industries/delete', [SectorController::class, 'deleteIndustry']);
-    
+// Public routes for ArticleController
+Route::controller(DashboardController::class)->group(function(){
 
-    // Show single sector   
-    Route::get('dashboard/sectors/{sector}', [SectorController::class, 'adminShow']);
+});
 
 
+// /*
+// |--------------------------------------------------------------------------
+// | Routes for ArticleController
+// |--------------------------------------------------------------------------
+// */
 
-// IndustryController
-// Show all industries
-Route::get('industries', [IndustryController::class, 'index']);
-    // Dashboard IndustryController
-    // Show all industries
-    Route::get('dashboard/industries', [IndustryController::class, 'adminIndex']);
+// // Auth routes for ArticleController
+// Route::controller(ArticleController::class)->middleware('auth')->group(function() {
 
-    
+// });
 
-    // Show create form
-    Route::get('dashboard/industries/create', [IndustryController::class, 'create']);
+// // Public routes for ArticleController
+// Route::controller(ArticleController::class)->group(function(){
 
-    // Store new
-    Route::post('dashboard/industries/store', [IndustryController::class, 'store']);
-
-    // Show edit text
-    Route::get('dashboard/industries/{industry}/text/edit', [IndustryController::class, 'editText']);
-    // Update text
-    Route::put('dashboard/industries/{industry}/text/update', [IndustryController::class, 'updateText']);
-    
-    // Show edit image
-    Route::get('dashboard/industries/{industry}/image/edit', [IndustryController::class, 'editImage']);
-    // Update image
-    Route::put('dashboard/industries/{industry}/image/update', [IndustryController::class, 'updateImage']);
-    // Crop image
-    Route::get('dashboard/industries/{industry}/image/crop', [IndustryController::class, 'cropImage']);
-    // Render image
-    Route::post('dashboard/industries/{industry}/image/render', [IndustryController::class, 'renderImage']);
-    
-    // Show delete form
-    Route::get('dashboard/industries/{industry}/delete', [IndustryController::class, 'deleteOptions']);
-    // Delete industry
-    Route::delete('dashboard/industries/{industry}/delete', [IndustryController::class, 'delete']);
-
-    // Execute with selected
-    Route::put('/dashboard/industries/{industry}/companies/with-selected', [IndustryController::class, 'withSelected']);
-    
-
-    // Show single   
-    Route::get('dashboard/industries/{industry}', [IndustryController::class, 'adminShow']);
-
-    // Show all sector industries
-    Route::get('dashboard/sector-industries/{map}', [IndustryController::class, 'showSectorIndustries']);
-
-
-
-
-
-
-// CompanyController
-// Show all companies
-Route::get('companies', [CompanyController::class, 'index']);
-    // Dashboard CompanyController
-    // Show all companies
-    Route::get('dashboard/companies', [CompanyController::class, 'adminIndex']);
-
-    // Show create form
-    Route::get('dashboard/companies/create', [CompanyController::class, 'create']);
-
-    // Store new company
-    Route::post('dashboard/companies/store', [CompanyController::class, 'store']);
-
-    // Show edit text
-    Route::get('dashboard/companies/{company}/text/edit', [CompanyController::class, 'editText']);
-    // Update text
-    Route::put('dashboard/companies/{company}/text/update', [CompanyController::class, 'updateText']);
-    
-    // Show edit image
-    Route::get('dashboard/companies/{company}/image/edit', [CompanyController::class, 'editImage']);
-    // Update image
-    Route::put('dashboard/companies/{company}/image/update', [CompanyController::class, 'updateImage']);
-    // Crop image
-    Route::get('dashboard/companies/{company}/image/crop', [CompanyController::class, 'cropImage']);
-    // Render image
-    Route::post('dashboard/companies/{company}/image/render', [CompanyController::class, 'renderImage']);
-    
-    // Show delete form
-    Route::get('dashboard/companies/{company}/delete', [CompanyController::class, 'deleteOptions']);
-    // Delete company
-    Route::delete('dashboard/companies/{company}/delete', [CompanyController::class, 'delete']);
-    
-
-    // Show single company   
-    Route::get('dashboard/companies/{company}', [CompanyController::class, 'adminShow']);
-
-
-
-
-
-
-// CategoryController
-// Show all categories
-Route::get('categories', [CategoryController::class, 'index']);
-    // Dashboard CategoryController
-    // Show all categories
-    Route::get('dashboard/categories', [CategoryController::class, 'adminIndex']);
-
-    // Show create form
-    Route::get('dashboard/categories/create', [CategoryController::class, 'create']);
-
-    // Store new category
-    Route::post('dashboard/categories/store', [CategoryController::class, 'store']);
-
-    // Show edit text
-    Route::get('dashboard/categories/{category}/text/edit', [CategoryController::class, 'editText']);
-    // Update text
-    Route::put('dashboard/categories/{category}/text/update', [CategoryController::class, 'updateText']);
-    
-    // Show edit image
-    Route::get('dashboard/categories/{category}/image/edit', [CategoryController::class, 'editImage']);
-    // Update image
-    Route::put('dashboard/categories/{category}/image/update', [CategoryController::class, 'updateImage']);
-    // Crop image
-    Route::get('dashboard/categories/{category}/image/crop', [CategoryController::class, 'cropImage']);
-    // Render image
-    Route::post('dashboard/categories/{category}/image/render', [CategoryController::class, 'renderImage']);
-    
-    // Show delete form
-    Route::get('dashboard/categories/{category}/delete', [CategoryController::class, 'deleteOptions']);
-    // Delete category
-    Route::delete('dashboard/categories/{category}/delete', [CategoryController::class, 'delete']);
-    
-
-    // Show single category   
-    Route::get('dashboard/categories/{category}', [CategoryController::class, 'adminShow']);
-
-
-
-
-
-
-// ArticleController
-// Show all articles
-Route::get('articles', [ArticleController::class, 'index']);
-    // Dashboard ArticleController
-    // Show all articles
-    Route::get('dashboard/articles', [ArticleController::class, 'adminIndex']);
-
-    // Show create form
-    Route::get('dashboard/articles/create', [ArticleController::class, 'create']);
-
-    // Store new article
-    Route::post('dashboard/articles/store', [ArticleController::class, 'store']);
-
-    // Show edit text
-    Route::get('dashboard/articles/{article}/text/edit', [ArticleController::class, 'editText']);
-    // Update text
-    Route::put('dashboard/articles/{article}/text/update', [ArticleController::class, 'updateText']);
-    
-    // Show edit image
-    Route::get('dashboard/articles/{article}/image/edit', [ArticleController::class, 'editImage']);
-    // Update image
-    Route::put('dashboard/articles/{article}/image/update', [ArticleController::class, 'updateImage']);
-    // Crop image
-    Route::get('dashboard/articles/{article}/image/crop', [ArticleController::class, 'cropImage']);
-    // Render image
-    Route::post('dashboard/articles/{article}/image/render', [ArticleController::class, 'renderImage']);
-    
-    // Show delete form
-    Route::get('dashboard/articles/{article}/delete', [ArticleController::class, 'deleteOptions']);
-    // Delete article
-    Route::delete('dashboard/articles/{article}/delete', [ArticleController::class, 'delete']);
-    
-
-    // Show single article   
-    Route::get('dashboard/articles/{article}', [ArticleController::class, 'adminShow']);
-
-
-
-
-
-
-
-// UserController
-    // Dashboard UserController
-    // Show all articles
-    Route::get('dashboard/users', [UserController::class, 'adminIndex']);
-
-    // Show create form
-    Route::get('dashboard/users/create', [UserController::class, 'create']);
-
-    // Store new user
-    Route::post('dashboard/users/store', [UserController::class, 'store']);
-
-    // Show edit text
-    Route::get('dashboard/users/{user}/text/edit', [UserController::class, 'editText']);
-    // Update text
-    Route::put('dashboard/users/{user}/text/update', [UserController::class, 'updateText']);
-    
-    // Show edit image
-    Route::get('dashboard/users/{user}/image/edit', [UserController::class, 'editImage']);
-    // Update image
-    Route::put('dashboard/users/{user}/image/update', [UserController::class, 'updateImage']);
-    // Crop image
-    Route::get('dashboard/users/{user}/image/crop', [UserController::class, 'cropImage']);
-    // Render image
-    Route::post('dashboard/users/{user}/image/render', [UserController::class, 'renderImage']);
-    
-    // Show delete form
-    Route::get('dashboard/users/{user}/delete', [UserController::class, 'deleteOptions']);
-    // Delete user
-    Route::delete('dashboard/users/{user}/delete', [UserController::class, 'delete']);
-    
-
-    // Show single user   
-    Route::get('dashboard/users/{user}', [UserController::class, 'adminShow']);
-
-
-
-
-// MapController
-    // Dashboard MapController
-    // Show all maps
-    Route::get('dashboard/maps', [MapController::class, 'adminIndex']);
-
-    // Show map sectors
-    Route::get('dashboard/maps/sectors', [MapController::class, 'adminSectors']);
-
-    // Show single map sector
-    Route::get('dashboard/maps/sectors/{sector}', [MapController::class, 'showSector']);
-
-    // Show single sector's industry companies
-    Route::get('/dashboard/maps/sectors/{sector}/industries/{map}', [MapController::class, 'showSectorIndustryCompanies']);
-
-    // Show map industries
-    Route::get('dashboard/maps/industries', [MapController::class, 'adminIndustries']);
-
-    // Show single map industry
-    Route::get('dashboard/maps/industries/{industry}', [MapController::class, 'showIndustry']);
-
-    // Show map companies
-    Route::get('dashboard/maps/companies', [MapController::class, 'adminCompanies']);
-
-
-    
-
-
-// DashboardController
-// Dashboard index
-Route::get('dashboard', [DashboardController::class, 'index']);
-
-
+// });

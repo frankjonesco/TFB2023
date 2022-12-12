@@ -80,6 +80,9 @@
                     <li>
                         <a href="/about">About</a>
                     </li>
+                    <li>
+                        <a href="/contact">Contact</a>
+                    </li>
                     @auth
                         <li>
                             <a href="/dashboard">Dashboard</a>
@@ -87,7 +90,7 @@
                         <li>
                             <form action="/logout" class="inline" method="POST">
                                 @csrf
-                                <a href="#" onclick="this.parentNode.submit()" class="bg-transparent block py-2 pl-3 pr-4 rounded md:p-0 {{request()->segment(1) == 'dashboard' ? 'text-indigo-800 dark:text-white' : 'text-slate-800 dark:text-gray-400'}}">Logout</a>
+                                <a href="#" onclick="this.parentNode.submit()" class="bg-transparent block py-2 pl-3 pr-4 rounded md:p-0">Logout</a>
                             </form>
                             
                         </li>
