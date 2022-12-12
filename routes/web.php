@@ -37,10 +37,8 @@ Route::controller(SiteController::class)->group(function(){
     Route::get('/privacy', 'showPrivacy');
     Route::get('/about', 'showAbout');
     Route::get('/contact', 'showContact');
-});
-
-Route::get('/', function () {
-    return view('home');
+    Route::get('/blog', 'showBlog');
+    Route::get('/forum', 'showForum');
 });
 
 
@@ -50,8 +48,6 @@ Route::get('/rankings', [CompanyController::class, 'index']);
 Route::get('/industries', [IndustryController::class, 'index']);
 Route::get('/partners', [PartnerController::class, 'index']);
 
-Route::get('/about', [SiteController::class, 'showAbout']);
-Route::get('/contact', [SiteController::class, 'showContact']);
 Route::get('/blog', [SiteController::class, 'showBlog']);
 Route::get('/forum', [SiteController::class, 'showForum']);
 

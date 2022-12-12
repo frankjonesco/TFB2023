@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class SiteController extends Controller
 {
+    public function home(){
+        return view('home');
+    }
+
     // Show about
     public function showAbout(){
         return view('about.show');
