@@ -1,7 +1,7 @@
 <x-dashboard-layout>
-    
-    <div class="flex flex-row items-center">
-        <h1 class="grow">Articles</h1>
+
+
+    <div class="mt-4">
         <a href="/dashboard/articles/create">
             <button>
                 <i class="fa-solid fa-plus"></i>
@@ -9,6 +9,7 @@
             </button>
         </a>
     </div>
+    <h2>Articles</h2>
 
     <p class="mb-6">Manage your articles here.</p>
 
@@ -65,7 +66,7 @@
                         </td>
                         <td class="text-right">
                             <a href="/dashboard/articles/{{$article->hex}}">
-                                <button>
+                                <button class="block">
                                     <i class="fa-solid fa-info-circle"></i>
                                     Details
                                 </button>

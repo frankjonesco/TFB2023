@@ -1,20 +1,29 @@
-<div class="flex justify-end buttons-ml">
-    <a href="/dashboard/articles/{{$article->hex}}/text/edit">   
+<div class="flex justify-between mt-4">
+    <a href="/dashboard/articles">   
         <button>
-            <i class="fa-solid fa-marker"></i>
-            Edit
+            <i class="fa-solid fa-arrow-left"></i>
+            Back to articles
         </button>
     </a>
-    <a href="/dashboard/articles/{{$article->hex}}/image/edit">
-        <button>
-            <i class="fa-regular fa-image"></i>
-            Change image
-        </button>
-    </a>
-    <a href="/dashboard/articles/{{$article->hex}}/delete">
-        <button>
-            <i class="fa-regular fa-trash-alt"></i>
-            Delete
-        </button>
-    </a>
+    <div class="flex justify-start buttons-mr">
+        
+        <a href="/dashboard/articles/{{$article->hex}}/text/edit">   
+            <button>
+                <i class="fa-solid fa-marker"></i>
+                Edit
+            </button>
+        </a>
+        <a href="/dashboard/articles/{{$article->hex}}/image/edit">
+            <button>
+                <i class="fa-regular fa-image"></i>
+                Change image
+            </button>
+        </a>
+        <a href="/dashboard/articles/{{$article->hex}}/delete">
+            <button>
+                <i class="fa-regular fa-trash-alt"></i>
+                Delete
+            </button>
+        </a>
+    </div>
 </div>

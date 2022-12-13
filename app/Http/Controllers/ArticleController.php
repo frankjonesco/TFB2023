@@ -84,6 +84,7 @@ class ArticleController extends Controller
 
     // ADMIN: Show edit text
     public function editText(Article $article, Site $site){
+        $article->details = compileArticleDetails($article);
         return view('dashboard.articles.edit-text', [
             'article' => $article,
             'categories' => $site->allCategories()
@@ -110,8 +111,6 @@ class ArticleController extends Controller
         $article->tags = formatTags($request->tags);
         $article->status = $request->status;
 
-        
-
         // Save changes
         $article->saveText();
 
@@ -120,6 +119,7 @@ class ArticleController extends Controller
 
     // ADMIN: Show edit image
     public function editImage(Article $article){
+        $article->details = compileArticleDetails($article);
         return view('dashboard.articles.edit-image', [
             'article' => $article
         ]);
@@ -143,6 +143,7 @@ class ArticleController extends Controller
 
     // ADMIN: Crop image
     public function cropImage(Article $article){
+        $article->details = compileArticleDetails($article);
         return view('dashboard.articles.crop-image', [
             'article' => $article
         ]);
