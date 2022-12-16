@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Validation\Rules\File;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Article extends Model
 {
@@ -75,5 +76,26 @@ class Article extends Model
         $site = new Site();
         $this->image = $site->handleRenderedImage($data, 'articles', $this->hex, $this->image);
         return $this;
+    }
+
+
+    // RENDERING METHODS
+    
+    // Get image
+    public function getImage(){
+        if(!$this->image){
+            return asset('images/articles/no-image.png');
+        }
+
+        return asset('images/articles/'.$this->hex.'/'.$this->image);
+    }
+
+    // Get image thumbnail
+    public function getImageThumbnail(){
+        if(!$this->image){
+            return asset('images/articles/tn-no-image.png');
+        }
+
+        return asset('images/articles/'.$this->hex.'/tn-'.$this->image);
     }
 }

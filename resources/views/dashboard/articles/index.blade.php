@@ -40,7 +40,7 @@
                         <td>
                             <a href="/dashboard/articles/{{$article->hex}}">
                                 <img 
-                                    src="{{asset('images/articles/'.$article->hex.'/tn-'.$article->image)}}"
+                                    src="{{$article->getImageThumbnail()}}"
                                     alt="Top Family Business - {{$article->title}}"
                                     class="w-20 mr-4 rounded border border-indigo-100 hover:border-amber-300 cursor-pointer"
                                 >
