@@ -56,7 +56,11 @@
                             @endif
                         </td>
                         <td class="text-center">
-                            {{$article->views}}
+                            @if(!$article->views)
+                                <span class="no-results">None</span>
+                            @else
+                                {{$article->views}}
+                            @endif
                         </td>
                         <td class="text-center">
                             {{count($article->comments)}}
