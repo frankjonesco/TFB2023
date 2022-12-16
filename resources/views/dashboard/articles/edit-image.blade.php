@@ -1,7 +1,7 @@
 <x-dashboard-layout>
     <div class="flex">
 
-        <div class="w-2/3 pr-10">
+        <div class="w-3/4 pr-10">
         
             <x-edit-article-buttons :article="$article" />
             <h2>Change image</h2>
@@ -13,7 +13,9 @@
                 <div class="form-block">
                     <label>Upload image file</label>
                     <input aria-describedby="image_help" id="image" name="image" type="file">
-                    <div class="text-input-advice" id="image_help">Article images are used for the public facing content.</div>
+                    <div class="text-input-advice font-light" id="image_help">
+                        Accepted files formats (.jpg, .png) up to 5 MB filesize.
+                    </div>
                     @error('image')
                         <p class="text-error">{{$message}}</p>
                     @enderror
@@ -21,7 +23,7 @@
             </form>
         </div>
 
-        <div class="w-1/3">
+        <div class="w-1/4">
             <x-module-article-details :details="$article->details" />
         </div>
     

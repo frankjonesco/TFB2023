@@ -2,7 +2,7 @@
     
     <div class="flex">
 
-        <div class="w-2/3 pr-10">
+        <div class="w-3/4 pr-10">
 
     
             <x-edit-article-buttons :article="$article" />
@@ -84,7 +84,7 @@
 
         </div>
 
-        <div class="w-1/3">
+        <div class="w-1/4">
             
             <x-module-article-details :details="$article->details" />
 

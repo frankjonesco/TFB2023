@@ -1,7 +1,7 @@
 <x-dashboard-layout>
 
-
-    <div class="mt-4">
+    <div class="flex justify-between items-center">
+        <h2>TOFAM Articles</h2>
         <a href="/dashboard/articles/create">
             <button>
                 <i class="fa-solid fa-plus"></i>
@@ -9,7 +9,6 @@
             </button>
         </a>
     </div>
-    <h2>Articles</h2>
 
     <p class="mb-6">Manage your articles here.</p>
 

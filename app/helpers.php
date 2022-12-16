@@ -86,7 +86,7 @@ use Illuminate\Support\Facades\Config;
                 ],
                 [
                     'label' => 'Category',
-                    'result' => $article->category === null ? '<span class="no-results">Not assigned</span>' : $article->category,
+                    'result' => $article->category === null ? '<span class="no-results">Not assigned</span>' : $article->category->name,
                     'icon' => 'fa-regular fa-folder'
                 ],
                 [

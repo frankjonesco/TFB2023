@@ -2,7 +2,7 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/35.3.2/super-build/ckeditor.js"></script>
     <div class="flex">
 
-        <div class="w-2/3 pr-10">
+        <div class="w-3/4 pr-10">
 
             <x-edit-article-buttons :article="$article" />
             <h2>Edit article text</h2>
@@ -127,7 +127,7 @@
         
         </div>
 
-        <div class="w-1/3">
+        <div class="w-1/4">
             <x-module-article-details :details="$article->details" />
         </div>
 

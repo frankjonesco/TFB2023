@@ -164,6 +164,7 @@ class ArticleController extends Controller
 
     // ADMIN: Delete options
     public function deleteOptions(Article $article){
+        $article->details = compileArticleDetails($article);
         return view('dashboard.articles.delete-options', [
             'article' => $article
         ]);
