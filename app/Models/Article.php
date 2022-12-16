@@ -98,4 +98,9 @@ class Article extends Model
 
         return asset('images/articles/'.$this->hex.'/tn-'.$this->image);
     }
+
+    // Split tags (into Array)
+    public function splitTags(){
+        return explode(',', $this->tags);
+    }
 }

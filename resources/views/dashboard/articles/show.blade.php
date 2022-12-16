@@ -62,6 +62,22 @@
                 {!!$article->body!!}
             </div>
 
+            <div class="article-tags text-sm">
+                <i class="fa-solid fa-tags mr-2"></i>
+                Tags: 
+                <ul>
+                    @foreach($article->splitTags() as $tag)
+                        <li>
+                            <a href="">
+                                {{$tag}}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+
+            
+
         </div>
 
         <div class="w-1/4">

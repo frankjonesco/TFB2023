@@ -445,5 +445,28 @@
         @apply py-4;
     }
 
+    .article-tags{
+        @apply px-2;
+        @apply flex;
+        @apply items-center;
+    }
+
+    .article-tags>ul{
+        @apply flex;
+        @apply ml-5;
+    }
+
+    .article-tags>ul>li{
+        @apply mr-3;
+    }
+
+    .article-tags>ul>li>a{
+        @apply border;
+        @apply border-zinc-500;
+        @apply rounded;
+        @apply px-4;
+        @apply py-1.5;
+    }
+
 
 }
