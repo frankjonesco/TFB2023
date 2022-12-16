@@ -1,4 +1,5 @@
 <x-dashboard-layout>
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.3.2/super-build/ckeditor.js"></script>
     <div class="flex">
 
         <div class="w-2/3 pr-10">
@@ -77,8 +78,9 @@
 
                 <div class="form-block">
                     <label for="description">Article body</label>
+                    @include('includes._ck-editor-styles')
                     <textarea 
-                        id="body" 
+                        id="editor" 
                         name="body" 
                         rows="4" 
                         placeholder="Main article body..."
@@ -130,5 +132,7 @@
         </div>
 
     </div>
+
+    @include('includes._ck-editor-settings')
     
 </x-dashboard-layout>

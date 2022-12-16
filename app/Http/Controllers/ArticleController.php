@@ -53,7 +53,6 @@ class ArticleController extends Controller
         // Validate form
         $request->validate([
             'title' => 'required',
-            'category_id' => 'required',
             'status' => 'required'
         ]);
 
