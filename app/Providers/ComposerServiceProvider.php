@@ -44,7 +44,8 @@ class ComposerServiceProvider extends ServiceProvider
         //     //get the data however you want it!
         //     $view->with('global', Setting::find(1));
         // });
-
-        Config::set(['date_format' => Setting::find(1)->date_format]);
+        $settings = Setting::find(1);
+        Config::set(['date_format' => $settings->date_format]);
+        Config::set(['time_format' => $settings->time_format]);
     }
 }

@@ -46,12 +46,12 @@ use Illuminate\Support\Facades\Config;
                 ],
                 [
                     'label' => 'Created at',
-                    'result' => showDate($article->created_at),
+                    'result' => showDateTime($article->created_at),
                     'icon' => 'fa-regular fa-calendar'
                 ],
                 [
                     'label' => 'Updated at',
-                    'result' => showDate($article->updated_at),
+                    'result' => showDateTime($article->updated_at),
                     'icon' => 'fa-regular fa-calendar'
                 ],
                 [
@@ -116,6 +116,36 @@ use Illuminate\Support\Facades\Config;
                     'label' => 'Owner',
                     'result' => $company->user->full_name,
                     'icon' => 'fa-regular fa-user'
+                ],
+                [
+                    'label' => 'Created at',
+                    'result' => showDateTime($company->created_at),
+                    'icon' => 'fa-regular fa-calendar'
+                ],
+                [
+                    'label' => 'Updated at',
+                    'result' => showDateTime($company->updated_at),
+                    'icon' => 'fa-regular fa-calendar'
+                ],
+                [
+                    'label' => 'Views',
+                    'result' => $company->views === null ? '<span class="no-results">None</span>' : $company->views,
+                    'icon' => 'fa-regular fa-eye'
+                ],
+                [
+                    'label' => 'Comments',
+                    'result' => count($company->comments) == 0 ? '<span class="no-results">None</span>' : count($company->comments),
+                    'icon' => 'fa-regular fa-comments'
+                ],
+                [
+                    'label' => 'Hex',
+                    'result' => $company->hex,
+                    'icon' => 'fa-solid fa-fingerprint'
+                ],
+                [
+                    'label' => 'Status',
+                    'result' => ucfirst($company->status),
+                    'icon' => 'fa-solid fa-lock'
                 ],
             ];
         }
