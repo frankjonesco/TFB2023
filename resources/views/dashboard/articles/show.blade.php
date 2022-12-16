@@ -2,7 +2,7 @@
 
     <div class="flex">
 
-        <div class="w-2/3 pr-10">
+        <div class="w-3/4 pr-10">
             
             <x-edit-article-buttons :article="$article" />
             <h2 class="grow">{{$article->title}}</h2>
@@ -28,7 +28,11 @@
                 </span>
             </span>
 
-            <img src="{{asset('images/articles/'.$article['hex'].'/'.$article['image'])}}" alt="" class="w-full mt-6">
+            <img src="{{$article->getImage()}}" alt="" class="w-full mt-6">
+
+            <div class="article-body">
+                {!!$article->body!!}
+            </div>
 
         </div>
 

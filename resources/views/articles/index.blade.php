@@ -7,8 +7,8 @@
                 @php
                     $article = $leading_articles[0];
                 @endphp
-                <div class="bg-no-repeat bg-cover px-7 py-8 flex flex-col justify-end h-[32rem]" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.85)),
-                url('{{asset('images/articles/'.$article->hex.'/'.$article->image)}}');" >
+                <div class="bg-no-repeat bg-center bg-cover px-7 py-8 flex flex-col justify-end h-[32rem]" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.85)),
+                url('{{$article->getImage()}}');" >
                     <span class="bg-indigo-500 w-max px-2 py-1 rounded-lg text-sm font-bold">
                         Top Stories
                     </span>
@@ -60,7 +60,7 @@
                             }
                         @endphp
                         <div class="bg-no-repeat bg-center bg-cover px-4 py-5 flex flex-col justify-end overflow-hidden" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.85)), url('{{asset('images/articles/'.$article->hex.'/'.$article->image)}}');">
-                            <div class="translate-y-[4.80rem]">
+                            <div class="translate-y-0">
                                 <span class="{{$color}} w-max px-2 py-1 rounded-lg text-xs font-bold">
                                     Top Stories
                                 </span>
@@ -79,9 +79,7 @@
                                         {{$article->views}}
                                     </span>
                                 </span>
-                                <p class="mt-3 text-sm">
-                                    All accessor methods return an Attribute instance which defines how the attribute will be accessed and, optionally, mutated.
-                                </p>
+                                
                             </div>
                         </div>
                     @endforeach  

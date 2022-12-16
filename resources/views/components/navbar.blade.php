@@ -6,7 +6,7 @@
     </span>
 
     <span class="date pre-navbar-item">
-        Sunday, Dec 11, 2022
+        {{date('l, d F Y', time())}}
     </span>
 
     <span class="links pre-navbar-item">
