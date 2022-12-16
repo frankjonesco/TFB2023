@@ -74,9 +74,26 @@ class User extends Authenticatable
         )->where('color_theme_id', Setting::find(1)->color_theme_id);
     }
 
+    // Relationship to articles
+    public function articles(){
+        return $this->hasMany(Article::class, 'user_id');
+    }
 
 
 
+
+
+    // ACCESSOR METHODS
+
+
+
+
+
+    // Accessor for profile pic
+    public function getUserTypeAttribute()
+    {   
+        return UserType::find($this->user_type_id)->name;
+    }
 
     // Accessor for profile pic
     public function getFullNameAttribute()

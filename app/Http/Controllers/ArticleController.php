@@ -77,7 +77,8 @@ class ArticleController extends Controller
 
         // dd($article->details);
         return view('dashboard.articles.show', [
-            'article' => $article
+            'article' => $article,
+            'author_articles' => Article::where('user_id', $article->user_id)->where('id', '!=', $article->id)->where('status', 'public')->take(4)->latest()->get()
         ]);
     }
 

@@ -338,6 +338,16 @@
 
     
 
+    .profile-pic-medium-round{
+        @apply w-36;
+        @apply h-36;
+        @apply mr-5;
+        @apply p-px;
+        @apply border;
+        @apply border-white;
+        @apply rounded-full;
+    }
+
     .profile-pic-small-round{
         @apply w-6;
         @apply h-6;
@@ -447,6 +457,7 @@
 
     .article-tags{
         @apply px-2;
+        @apply mb-12;
         @apply flex;
         @apply items-center;
     }
@@ -466,6 +477,20 @@
         @apply rounded;
         @apply px-4;
         @apply py-1.5;
+    }
+
+    .article-author{
+        @apply mt-6;
+    }
+
+    .article-author a.author-btn{
+        @apply block;
+        @apply w-full;
+        @apply py-2;
+        @apply bg-rose-500;
+        @apply hover:bg-rose-600;
+        @apply text-center;
+        @apply uppercase;
     }
 
 
