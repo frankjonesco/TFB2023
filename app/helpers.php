@@ -64,26 +64,26 @@ use Illuminate\Support\Facades\Config;
                     'result' => count($article->comments) == 0 ? '<span class="no-results">None</span>' : count($article->comments),
                     'icon' => 'fa-regular fa-comments'
                 ],
-                [
-                    'label' => 'Likes',
-                    'result' => $article->likes === null ? '<span class="no-results">None</span>' : $article->likes,
-                    'icon' => 'fa-regular fa-thumbs-up'
-                ],
-                [
-                    'label' => 'Dislikes',
-                    'result' => $article->dislikes === null ? '<span class="no-results">None</span>' : $article->dislikes,
-                    'icon' => 'fa-regular fa-thumbs-down'
-                ],
+                // [
+                //     'label' => 'Likes',
+                //     'result' => $article->likes === null ? '<span class="no-results">None</span>' : $article->likes,
+                //     'icon' => 'fa-regular fa-thumbs-up'
+                // ],
+                // [
+                //     'label' => 'Dislikes',
+                //     'result' => $article->dislikes === null ? '<span class="no-results">None</span>' : $article->dislikes,
+                //     'icon' => 'fa-regular fa-thumbs-down'
+                // ],
                 [
                     'label' => 'Hex',
                     'result' => $article->hex,
                     'icon' => 'fa-solid fa-fingerprint'
                 ],
-                [
-                    'label' => 'Sector',
-                    'result' => $article->sector === null ? '<span class="no-results">Not assigned</span>' : $article->sector,
-                    'icon' => 'fa-regular fa-building'
-                ],
+                // [
+                //     'label' => 'Sector',
+                //     'result' => $article->sector === null ? '<span class="no-results">Not assigned</span>' : $article->sector,
+                //     'icon' => 'fa-regular fa-building'
+                // ],
                 [
                     'label' => 'Category',
                     'result' => $article->category === null ? '<span class="no-results">Not assigned</span>' : $article->category->name,
@@ -96,13 +96,26 @@ use Illuminate\Support\Facades\Config;
                 ],
                 [
                     'label' => 'Tags',
-                    'result' => $article->tags === null ? '<span class="no-results">No tags added</span>' : $article->tags,
+                    'result' => $article->tags === null ? '<span class="no-results">No tags added</span>' : $article->renderTags(),
                     'icon' => 'fa-solid fa-tags'
                 ],
                 [
                     'label' => 'Status',
                     'result' => ucfirst($article->status),
                     'icon' => 'fa-regular fa-calendar'
+                ],
+            ];
+        }
+    }
+
+    // Compile company details
+    if(!function_exists('compileCompanyDetails')){
+        function compileCompanyDetails($company){
+            return [
+                [
+                    'label' => 'Owner',
+                    'result' => $company->user->full_name,
+                    'icon' => 'fa-regular fa-user'
                 ],
             ];
         }

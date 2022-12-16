@@ -188,4 +188,25 @@ class Company extends Model
         return $this;
         
     }
+
+
+    // RENDERING METHODS
+    
+    // Get image
+    public function getImage(){
+        if(!$this->image){
+            return asset('images/companies/no-image.png');
+        }
+
+        return asset('images/companies/'.$this->hex.'/'.$this->image);
+    }
+
+    // Get image thumbnail
+    public function getImageThumbnail(){
+        if(!$this->image){
+            return asset('images/companies/tn-no-image.png');
+        }
+
+        return asset('images/companies/'.$this->hex.'/tn-'.$this->image);
+    }
 }

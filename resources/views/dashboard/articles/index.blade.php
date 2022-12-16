@@ -19,7 +19,7 @@
         <table>
             <thead>
                 <tr>
-                    <th>Title</th>
+                    <th class="w-1/3">Title</th>
                     <th></th>
                     <th>Category</th>
                     <th class="text-center">Views</th>

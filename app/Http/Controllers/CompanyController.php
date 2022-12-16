@@ -59,6 +59,7 @@ class CompanyController extends Controller
 
     // ADMIN: Show single company
     public function adminShow(Company $company){
+        $company->details = compileCompanyDetails($company);
         return view('dashboard.companies.show', [
             'company' => $company
         ]);
@@ -66,6 +67,7 @@ class CompanyController extends Controller
 
     // ADMIN: Show edit text
     public function editText(Company $company, Site $site){
+        $company->details = compileCompanyDetails($company);
         return view('dashboard.companies.edit-text', [
             'company' => $company
         ]);
@@ -95,6 +97,7 @@ class CompanyController extends Controller
 
     // ADMIN: Show edit image
     public function editImage(Company $company){
+        $company->details = compileCompanyDetails($company);
         return view('dashboard.companies.edit-image', [
             'company' => $company
         ]);
@@ -139,6 +142,7 @@ class CompanyController extends Controller
 
     // ADMIN: Delete options
     public function deleteOptions(Company $company){
+        $company->details = compileCompanyDetails($company);
         return view('dashboard.companies.delete-options', [
             'company' => $company
         ]);

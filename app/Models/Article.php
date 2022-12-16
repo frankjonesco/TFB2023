@@ -103,4 +103,13 @@ class Article extends Model
     public function splitTags(){
         return explode(',', $this->tags);
     }
+
+    // Render tags (string with links)
+    public function renderTags(){
+        $tags = explode(',', $this->tags);
+        foreach($tags as $tag){
+            $tag_links[] = '<a href="/tags/'.$tag.'">'.$tag.'</a>';
+        }
+        return implode(', ', $tag_links);
+    }
 }
