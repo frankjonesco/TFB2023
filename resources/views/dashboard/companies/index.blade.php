@@ -1,7 +1,7 @@
 <x-dashboard-layout>
-    
-    <div class="flex flex-row items-center">
-        <h1 class="grow">Companies</h1>
+
+    <div class="flex justify-between items-center">
+        <h2>TOFAM Companies</h2>
         <a href="/dashboard/companies/create">
             <button>
                 <i class="fa-solid fa-plus"></i>
@@ -19,10 +19,11 @@
         <table class="table-fixed">
             <thead>
                 <tr>
-                    <th>Company name</th>
+                    <th class="w-1/4">Company name</th>
+                    <th></th>
                     <th>Sectors</th>
                     <th>Industries</th>
-                    <th>Owner</th>
+                    <th class="w-48">Owner</th>
                     <th>Visibility</th>
                     <th></th>
                 </tr>
@@ -33,6 +34,15 @@
                         <td>
                             <a href="/dashboard/companies/{{$company->hex}}">
                                 {{$company->registered_name}}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/dashboard/companies/{{$company->hex}}">
+                                <img 
+                                    src="{{$company->getImageThumbnail()}}"
+                                    alt="Top Family Business - {{$company->registered_name}}"
+                                    class="w-20 mr-4 rounded border border-indigo-100 hover:border-amber-300 cursor-pointer"
+                                >
                             </a>
                         </td>
                         <td>
@@ -47,8 +57,8 @@
                         </td>
                         <td>
 
-                            @if($company->industry_rows)
-                                @foreach($company->industry_rows as $industry)
+                            @if($company->grouped_industries)
+                                @foreach($company->grouped_industries as $industry)
                                     <a href="/dashboard/industries/{{$industry->hex}}">
                                         {{$industry->name}}
                                     </a>

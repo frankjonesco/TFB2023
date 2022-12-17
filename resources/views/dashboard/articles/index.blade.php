@@ -19,12 +19,13 @@
         <table>
             <thead>
                 <tr>
-                    <th class="w-1/3">Title</th>
+                    <th class="w-1/4">Title</th>
                     <th></th>
                     <th>Category</th>
                     <th class="text-center">Views</th>
                     <th class="text-center">Comments</th>
-                    <th>Owner</th>
+                    <th class="w-48">Owner</th>
+                    <th>Visibility</th>
                     <th></th>
                 </tr>
             </thead>
@@ -66,6 +67,9 @@
                         </td>
                         <td>
                             <x-user-profile-pic-full-name :user="$article->user" />
+                        </td>
+                        <td>
+                            {!!$article->statusInColor()!!}
                         </td>
                         <td class="text-right">
                             <a href="/dashboard/articles/{{$article->hex}}">

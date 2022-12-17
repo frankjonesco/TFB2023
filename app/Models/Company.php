@@ -195,7 +195,7 @@ class Company extends Model
     // Get image
     public function getImage(){
         if(!$this->image){
-            return asset('images/companies/no-image.png');
+            return asset('images/no-image.png');
         }
 
         return asset('images/companies/'.$this->hex.'/'.$this->image);
@@ -204,7 +204,7 @@ class Company extends Model
     // Get image thumbnail
     public function getImageThumbnail(){
         if(!$this->image){
-            return asset('images/companies/tn-no-image.png');
+            return asset('images/tn-no-image.png');
         }
 
         return asset('images/companies/'.$this->hex.'/tn-'.$this->image);

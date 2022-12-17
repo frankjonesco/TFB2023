@@ -22,7 +22,7 @@
             <table>
                 <tr>
                     <th>Company name</th>
-                    <th class="text-center">No. of Sectors</th>
+                    <th></th>
                     <th>Sectors</th>
                     <th class="text-center">No. of Industries</th>
                     <th>Industries</th>
@@ -51,8 +51,14 @@
                                     </div>
                                 </td>
                        
-                                <td class="text-center">
-                                    {{count($company->grouped_sectors)}}
+                                <td>
+                                    <a href="/dashboard/companies/{{$company->hex}}">
+                                        <img 
+                                            src="{{$company->getImageThumbnail()}}"
+                                            alt="Top Family Business - {{$company->english_name}}"
+                                            class="w-20 mr-4 rounded border border-indigo-100 hover:border-amber-300 cursor-pointer"
+                                        >
+                                    </a>
                                 </td>
                                 <td>
                                     <ul>

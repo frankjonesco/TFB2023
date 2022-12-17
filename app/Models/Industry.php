@@ -139,4 +139,25 @@ class Industry extends Model
         $this->image = $site->handleRenderedImage($data, 'industries', $this->hex, $this->image);
         return $this;
     }
+
+
+    // RENDERING METHODS
+    
+    // Get image
+    public function getImage(){
+        if(!$this->image){
+            return asset('images/no-image.png');
+        }
+
+        return asset('images/industries/'.$this->hex.'/'.$this->image);
+    }
+
+    // Get image thumbnail
+    public function getImageThumbnail(){
+        if(!$this->image){
+            return asset('images/tn-no-image.png');
+        }
+
+        return asset('images/industries/'.$this->hex.'/tn-'.$this->image);
+    }
 }

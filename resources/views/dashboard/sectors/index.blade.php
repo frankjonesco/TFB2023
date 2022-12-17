@@ -1,8 +1,8 @@
 <x-dashboard-layout>
-    
-    <div class="flex flex-row items-center">
-        <h1 class="grow">Sectors</h1>
-        <a href="/dashboard/sectors/create">
+
+    <div class="flex justify-between items-center">
+        <h2>TOFAM Sectors</h2>
+        <a href="/dashboard/sector/create">
             <button>
                 <i class="fa-solid fa-plus"></i>
                 Create sector
@@ -10,7 +10,9 @@
         </a>
     </div>
 
-    <p class="mb-6">List of sectors on the site.</p>
+    <p class="mb-6">Listing TOFAM sectors.</p>
+
+
 
     @if(count($sectors) < 1)
         
@@ -24,8 +26,8 @@
 
             <thead>
                 <tr>
-                    <th>Sector name</th>
-                    <th class="text-center">No. of Industries</th>
+                    <th class="w-1/4">Sector name</th>
+                    <th></th>
                     <th>Industries</th>
                     <th class="text-center">No. of Companies</th>
                     <th>Owner</th>
@@ -41,8 +43,14 @@
                                 {{$sector->english_name}}
                             </a>
                         </td>
-                        <td class="text-center">
-                            {{count($sector->grouped_industries)}}
+                        <td>
+                            <a href="/dashboard/sectors/{{$sector->hex}}">
+                                <img 
+                                    src="{{$sector->getImageThumbnail()}}"
+                                    alt="Top Family Business - {{$sector->english_name}}"
+                                    class="w-20 mr-4 rounded border border-indigo-100 hover:border-amber-300 cursor-pointer"
+                                >
+                            </a>
                         </td>
                         <td>
                             @if(count($sector->industries) > 0)

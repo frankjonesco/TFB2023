@@ -20,9 +20,9 @@
             <thead>
                 <tr>
                     <th>Industry name</th>
-                    <th class="text-center">No. of Sectors</th>
+                    <th></th>
                     <th>Sectors</th>
-                    <th class="text-center">No. of Companies</th>
+                    <th class="text-center">Companies</th>
                     <th>Owner</th>
                     <th></th>
                 </tr>
@@ -35,8 +35,14 @@
                                 {{$industry->english_name}}
                             </a>
                         </td>
-                        <td class="text-center">
-                            {{count($industry->grouped_sectors)}}
+                        <td>
+                            <a href="/dashboard/industries/{{$industry->hex}}">
+                                <img 
+                                    src="{{$industry->getImageThumbnail()}}"
+                                    alt="Top Family Business - {{$industry->english_name}}"
+                                    class="w-20 mr-4 rounded border border-indigo-100 hover:border-amber-300 cursor-pointer"
+                                >
+                            </a>
                         </td>
                         <td>
                             @if($industry->grouped_sectors)
