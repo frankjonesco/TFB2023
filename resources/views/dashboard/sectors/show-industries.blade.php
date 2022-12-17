@@ -2,18 +2,14 @@
     <div class="flex w-full">
         <div class="w-full pr-10">
             <x-edit-sector-buttons :sector="$sector" />
-            <h2 class="grow">Sector/industry</h2>
-            <p class="mb-6">
-                <a href="/dashboard/sectors/{{$sector->hex}}">
-                    {{$sector->english_name}} 
-                </a>
-                <span>-></span>
-                <a href="/dashboard/industry/{{$industry->hex}}">
-                    {{$industry->english_name}}
-                </a>
-            </p>
-            <x-alerts/>
-            @if(count($companies) > 0)
+            <h2 class="grow">Sector / industry: {{$sector->english_name}} / {{$industry->english_name}}</h2>
+            <x-alerts heading="List of companies in the '{{$sector->english_name}}' sector and '{{$industry->english_name}}' industry." />
+            @php
+                $extract = true;
+            @endphp
+            <x-table-companies :companies="$companies" :extract="$extract" />
+            
+            {{-- @if(count($companies) > 0)
                 <form>
                     @csrf
                     @method('PUT')
@@ -28,7 +24,7 @@
                         </tr>
                         @php
                             $i = 0;
-                        @endphp 
+                        @endphp
                         @foreach($companies as $company)
                             @php
                                 $company = $company[0];
@@ -57,7 +53,7 @@
                                     <ul>
                                         @foreach($company->grouped_sectors as $sector)
                                             <li>-
-                                                <a href="/dashboard/sectors">
+                                                <a href="/dashboard/sectors/{{$sector->hex}}">
                                                     {{$sector->english_name}}
                                                 </a>
                                             </li>
@@ -93,14 +89,14 @@
                         @endforeach
                     </table>
                 </form>
-                <x-with-selected-industries :sector="$sector" :sectors="$sectors" :users="$users" />
+                <x-with-selected-companies :sector="$sector" :industry="$industry" :sectors="$sectors" :users="$users" />
             @else
                 <x-nothing-to-display table="industries" />
                 <div class="my-5 flex items-start border p-5 border-gray-500 rounded-lg bg-slate-900">
                     <div class="grow"></div>
                     <x-quick-create-industry :sector="$sector" />
                 </div>
-            @endif
+            @endif --}}
         </div>
     </div>
 </x-dashboard-layout>

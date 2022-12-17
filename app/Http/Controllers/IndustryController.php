@@ -91,9 +91,8 @@ class IndustryController extends Controller
 
     // ADMIN:: Show sector industries
     public function showSectorIndustries(Map $map, Site $site){
-
+        $companies = $map->sector_industry_companies()->paginate(6);
         // dd($map->sector_industry_companies);
-
         return view('dashboard.sectors.show-industries', [
             'sector' => $map->sector,
             'sectors' => $site->allSectors(),

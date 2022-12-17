@@ -33,7 +33,7 @@ class Map extends Model
 
     // Relationship to industry
     public function industry(){
-        return $this->hasOneThrough(Industry::class, Map::class, 'id', 'id', 'sector_id', 'id');
+        return $this->hasOneThrough(Industry::class, Map::class, 'id', 'id', 'industry_id', 'id');
     }
 
     // Relationship to companies

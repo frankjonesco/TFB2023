@@ -17,7 +17,13 @@
             @php
                 $i = 0;
             @endphp 
-            @foreach($companies as $company)    
+            @foreach($companies as $company)
+                @if(isset($extract))
+                    @php
+                        $company = $company[0];
+                    @endphp
+                @endif
+                
                 <tr>
                     <td>
                         <input type="checkbox" name="industry_id_checkboxes[]" value="{{$company->id}}" onclick="handleClick(this)">
