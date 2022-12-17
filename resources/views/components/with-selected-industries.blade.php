@@ -1,5 +1,5 @@
 {{-- With selected --}}
-<div class="my-5 flex items-start border p-5 border-gray-500 rounded-lg bg-slate-900">
+<div class="my-5 flex items-start border p-5 border-gray-500 rounded-lg bg-stone-900">
     <form action="/dashboard/sectors/{{$sector->hex}}/industries/with-selected" method="POST" class="grow">
         @csrf
         @method('PUT')
@@ -23,7 +23,7 @@
                 <select name="sector_id" class="text-sm p-2" id="selectSector">
                     <option value="" disabled selected>Choose sector</option>
                     @foreach($sectors as $sector_item)
-                        <option value="{{$sector_item->id}}" {{old('sector_id') == $sector_item->id ? 'selected' : null}}>{{$sector_item->name}}</option>
+                        <option value="{{$sector_item->id}}" {{old('sector_id') == $sector_item->id ? 'selected' : null}}>{{$sector_item->english_name}}</option>
                     @endforeach
                 </select>
                 {{-- Select user --}}
@@ -35,7 +35,7 @@
                 </select>
             </span>
             {{-- Submit --}}
-            <button type="submit" class="!text-xs">Go</button>
+            <button type="submit">Go</button>
         </div>
     </form>
     <div>
@@ -52,3 +52,60 @@
         Select a sector.
     </p>
 @enderror
+
+<script>
+    window.addEventListener('load', 
+        function() { 
+            console.log('Enter: ');
+            var markedCheckbox = document.querySelectorAll('input[type="checkbox"]:checked');
+            for (var checkbox of markedCheckbox){
+                let industryIds = document.getElementById('industryIds');
+                industryIds.value = industryIds.value + ',' + checkbox.value;
+            }
+        }
+    );
+
+    function handleClick(checkbox) {
+        let industryIds = document.getElementById('industryIds').value;
+        const idsArrays = industryIds.split(',');
+        if(checkbox.checked){
+            var ids = idsArrays + ',' + checkbox.value;
+            ids = ids.replace(/(^,)|(,$)/g, '');
+            document.getElementById('industryIds').value=ids;
+        }
+        else{
+            var ids = idsArrays;
+            for( var i = 0; i < ids.length; i++){ 
+                if ( ids[i] === checkbox.value) { 
+                    ids.splice(i, 1); 
+                }
+            }
+            document.getElementById('industryIds').value=ids;
+        }
+    }
+
+    function changeWithSelectedAction(withSelected){
+        withSelected = withSelected.value;
+        // Change Sector
+        if(withSelected == 'change_sector'){
+            document.getElementById('selectSector').style.display="block";
+            document.getElementById('selectUser').style.display="none";
+            document.getElementById('to').style.display="block";
+            document.getElementById('selectorSpan').classList.add('mr-2.5');
+        }
+        // Change owner
+        if(withSelected == 'change_owner'){
+            document.getElementById('selectSector').style.display="none";
+            document.getElementById('selectUser').style.display="block";
+            document.getElementById('to').style.display="block";
+            document.getElementById('selectorSpan').classList.add('mr-2.5');
+        }
+        // Delete
+        if(withSelected == 'delete'){
+            document.getElementById('selectSector').style.display="none";
+            document.getElementById('selectUser').style.display="none";
+            document.getElementById('to').style.display="none";
+            document.getElementById('selectorSpan').classList.remove('mr-2.5');
+        }    
+    }
+</script>

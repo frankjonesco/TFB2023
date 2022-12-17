@@ -9,3 +9,9 @@
         {{session('warning')}}
     </div>
 @endif
+
+@if(!session()->has('success') && !session()->has('warning') && isset($heading))
+    <div class="alert-heading" role="alert">
+        {{$heading}}
+    </div>
+@endif

@@ -3,7 +3,7 @@
     <div class="flex">
         <input type="text" name="industry_name" placeholder="Enter new industry name" class="!w-64 mr-5 text-sm !p-2 @error('industry_name') !border !border-red-500 @enderror" value="{{old('industry_name')}}">
         <div class="self-center">
-            <button type="submit" class="!text-xs">
+            <button type="submit">
                 <i class="fa-solid fa-plus"></i>
                 Add new industry
             </button>

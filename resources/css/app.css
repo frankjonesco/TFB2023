@@ -306,6 +306,20 @@
         @apply mr-1.5;
     }
 
+    .alert-heading{
+        @apply alert;
+        @apply border-gray-700;
+        @apply bg-stone-900;
+        @apply text-gray-300;
+    }
+
+    .alert-heading::before{
+        font: var(--fa-font-solid);
+        content: "\f0f3"; /*  fa-bell */
+        @apply mr-1.5;
+        @apply text-sky-500;
+    }
+
     /*  Tables */
 
     table{

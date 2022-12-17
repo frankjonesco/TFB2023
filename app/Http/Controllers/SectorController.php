@@ -176,6 +176,8 @@ class SectorController extends Controller
         $industry->user_id = auth()->user()->id;
         $industry->name = $request->industry_name;
         $industry->slug = $site->slug($request->industry_name);
+        $industry->english_name = $request->industry_name;
+        $industry->english_slug = $site->slug($request->industry_name);
         $industry->status = 'public';
         $industry->save();
 

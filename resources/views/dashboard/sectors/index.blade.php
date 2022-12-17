@@ -10,31 +10,22 @@
         </a>
     </div>
 
-    <p class="mb-6">Listing TOFAM sectors.</p>
-
-
+    <x-alerts heading="Listing TOFAM sectors"/>
 
     @if(count($sectors) < 1)
-        
         <x-nothing-to-display table="sectors" />
-    
     @else
-    
-        <x-alerts/>
-        
         <table>
-
             <thead>
                 <tr>
                     <th class="w-1/4">Sector name</th>
                     <th></th>
                     <th>Industries</th>
-                    <th class="text-center">No. of Companies</th>
+                    <th class="text-center">Companies</th>
                     <th>Owner</th>
                     <th></th>
                 </tr>
             </thead>
-
             <tbody>
                 @foreach($sectors as $sector)
                     <tr>

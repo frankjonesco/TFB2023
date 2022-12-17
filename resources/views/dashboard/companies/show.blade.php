@@ -5,7 +5,7 @@
             <h2 class="grow">
                 {{$company->registered_name}}
             </h2>
-            <x-alerts/>
+            <x-alerts />
 
             <div class="flex">
                 <a href="/dashboard/companies/{{$company->hex}}/image/edit">

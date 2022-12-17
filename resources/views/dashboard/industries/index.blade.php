@@ -1,8 +1,8 @@
 <x-dashboard-layout>
-    
-    <div class="flex flex-row items-center">
-        <h1 class="grow">Industries</h1>
-        <a href="/dashboard/industries/create">
+
+    <div class="flex justify-between items-center">
+        <h2>TOFAM Industries</h2>
+        <a href="/dashboard/industry/create">
             <button>
                 <i class="fa-solid fa-plus"></i>
                 Create industry
@@ -10,7 +10,7 @@
         </a>
     </div>
 
-    <p class="mb-6">Manage your industries here.</p>
+    <p class="mb-6">Listing TOFAM industries.</p>
 
     @if(count($industries) < 1)
         <x-nothing-to-display table="industries" />
@@ -19,7 +19,7 @@
         <table>
             <thead>
                 <tr>
-                    <th>Industry name</th>
+                    <th class="w-1/4">Industry name</th>
                     <th></th>
                     <th>Sectors</th>
                     <th class="text-center">Companies</th>
