@@ -7,7 +7,7 @@
             </button>
         </a>
         <div class="flex justify-end buttons-ml">
-            <a href="/dashboard/sector/create">
+            <a href="/dashboard/sectors/create">
                 <button>
                     <i class="fa-solid fa-plus"></i>
                     Create sector
@@ -15,7 +15,7 @@
             </a>
         </div>
     </div>
-    <h2 class="grow">TOFAM Sectors</h2>      
-    <x-alerts heading="Listing TOFAM sectors."/>
+    <h2 class="grow">TOFAM Sectors</h2>   
+    <x-alerts heading="List of TOFAM sectors."/>
     <x-table-sectors :sectors="$sectors" />
 </x-dashboard-layout>

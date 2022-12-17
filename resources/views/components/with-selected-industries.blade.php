@@ -1,9 +1,9 @@
 {{-- With selected --}}
 <div class="my-5 flex items-start border p-5 border-gray-500 rounded-lg bg-stone-900">
-    <form action="/dashboard/sectors/{{$sector->hex}}/industries/with-selected" method="POST" class="grow">
+    <form action="/dashboard/sectors//industries/with-selected" method="POST" class="grow">
         @csrf
         @method('PUT')
-        <input type="hidden" name="current_sector_id" value="{{$sector->id}}">
+        <input type="hidden" name="current_sector_id" value="">
         <input type="hidden" id="industryIds" name="industry_ids" value="{{old('industry_ids')}}">
         <div class="flex flex-row items-center text-sm font-medium">
             <span class="mr-2.5">With selected</span>
@@ -39,7 +39,7 @@
         </div>
     </form>
     <div>
-        <x-quick-create-industry :sector="$sector" />
+        {{-- <x-quick-create-industry :sector="$sector" /> --}}
     </div>   
 </div>
 @error('industry_ids')

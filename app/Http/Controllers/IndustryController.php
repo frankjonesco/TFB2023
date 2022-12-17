@@ -30,7 +30,9 @@ class IndustryController extends Controller
         // dd($site->paginateAllIndustries()[0]);
 
         return view('dashboard.industries.index', [
-            'industries' => $site->paginateAllIndustries()
+            'industries' => $site->paginateAllIndustries(), 
+            'sectors' => $site->allSectors(),
+            'users' => $site->allUsers()
         ]);
     }
 

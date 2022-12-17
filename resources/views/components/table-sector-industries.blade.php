@@ -15,13 +15,15 @@
                 $i = 0;
             @endphp
             @foreach($industries as $industry)
-
+                @php
+                    $industry = $industry[0];
+                @endphp
                 <tr>
 
                     <td>
                         <div class="flex items-center">
                             <input type="checkbox" name="industry_id_checkboxes[]" value="{{$industry->id}}" onclick="handleClick(this)">
-                            <a href="/dashboard/industries/{{$industry->hex}}">
+                            <a href="/dashboard/sector-industries/{{$industry->pivot->hex}}">
                                 {{$industry->english_name}}
                             </a>
                         </div>
@@ -68,7 +70,7 @@
             {{-- End for each industry --}}
         </table>
     </form>
-    <x-with-selected-industries :sectors="$sectors" :users="$users" />
+    <x-with-selected-industries :sector="$sector" :sectors="$sectors" :users="$users" />
 @else
     <x-nothing-to-display table="industries" />
     <div class="my-5 flex items-start border p-5 border-gray-500 rounded-lg bg-slate-900">

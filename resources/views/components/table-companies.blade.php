@@ -17,7 +17,7 @@
             @php
                 $i = 0;
             @endphp 
-            {{-- {{dd($companies)}} --}}
+            
             @foreach($companies as $company)
                 @if(isset($extract))
                     @php
