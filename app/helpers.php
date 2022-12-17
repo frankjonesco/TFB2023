@@ -138,6 +138,11 @@ use Illuminate\Support\Facades\Config;
                     'icon' => 'fa-regular fa-comments'
                 ],
                 [
+                    'label' => 'ID',
+                    'result' => $company->id,
+                    'icon' => 'fa-solid fa-database'
+                ],
+                [
                     'label' => 'Hex',
                     'result' => $company->hex,
                     'icon' => 'fa-solid fa-fingerprint'

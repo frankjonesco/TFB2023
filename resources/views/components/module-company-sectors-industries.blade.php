@@ -3,7 +3,7 @@
     <span class="grow border-b border-zinc-500"></span>
 </div>
 <div class="grid grid-cols-[1fr_19fr] gap-0 text-sm mb-6">
-    @foreach($company->sectors as $key => $sector)
+    @foreach($company->grouped_sectors as $key => $sector)
         <div class="p-2 border-b border-gray-700">
             <i class="fa-regular fa-building"></i>
         </div>
@@ -12,7 +12,7 @@
                 {{$sector->name}}
             </a>
         </div>
-        @foreach($company->industries as $key => $industry)
+        @foreach($company->sector_industries as $key => $industry)
             <div class="p-2 border-b border-gray-700 text-zinc-500">
                 <i class="fa-regular fa-folder font-thin"></i>
             </div>
