@@ -8,7 +8,11 @@
             <x-alerts/>
 
             <div class="flex">
-                <img src="{{$company->getImageThumbnail()}}" alt="">
+                <a href="/dashboard/companies/{{$company->hex}}/image/edit">
+                    <div class="border border-zinc-500 p-1">
+                        <img src="{{$company->getImageThumbnail()}}" alt="">
+                    </div>
+                </a>
                 <div>
                     <span></span>
                 </div>
@@ -20,6 +24,7 @@
             </div>
         </div>
         <div class="w-1/4">
+            <x-module-company-sectors-industries :company="$company" />
             <x-module-company-details :details="$company->details" />
         </div>
     </div>

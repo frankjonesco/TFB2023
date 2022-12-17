@@ -1,14 +1,9 @@
 <x-dashboard-layout>
-
     <div class="flex w-full">
-
         <div class="w-3/4 pr-10">
-            
             <x-edit-article-buttons :article="$article" />
             <h2 class="grow">{{$article->title}}</h2>
-
             <x-alerts/>
-            
             <span class="text-sm italic">
                 <span class="mr-6">
                     <i class="fa-regular fa-clock mr-1"></i>
@@ -27,7 +22,6 @@
                     {{$article->views}}
                 </span>
             </span>
-
             <div class="bg-no-repeat bg-center bg-cover px-7 py-8 mt-6 border border-zinc-500 flex flex-col justify-end h-[32rem]" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.85)),
             url('{{$article->getImage()}}');" >
                 <span class="bg-indigo-500 w-max px-2 py-1 rounded-lg text-sm font-bold">
@@ -57,11 +51,9 @@
                     </span>
                 </span>
             </div>
-
             <div class="article-body">
                 {!!$article->body!!}
             </div>
-
             @if($article->tags)
                 <div class="article-tags text-sm">
                     <i class="fa-solid fa-tags mr-2"></i>
@@ -77,7 +69,6 @@
                     </ul>
                 </div>
             @endif
-
             <div class="article-author">
                 <div class="flex">
                     <div class="w-1/2">
@@ -99,7 +90,6 @@
                         </a>
                     </div>
                 </div>
-                
                 <div id="authorCard">
                     <div class="flex items-center bg-slate-700 p-7">
                         <x-user-profile-pic :user="$article->user" />
@@ -115,7 +105,6 @@
                         </div>
                     </div>
                 </div>
-                
                 <div id="authorArticles" class="hidden">
                     <div class="flex items-center bg-slate-700 p-2 py-4">
                         @foreach($author_articles as $author_article)
@@ -137,41 +126,29 @@
                                             <i class="fa-regular fa-eye mr-1"></i>
                                             {{$author_article->views}}
                                         </span>
-                                    </span>
-                                    
+                                    </span>       
                             </div>
                         @endforeach
                     </div>
                 </div>
             </div>
-
             <script>
                 const authorCard = document.getElementById('authorCard');
                 const authorArticles = document.getElementById('authorArticles');
-
                 document.getElementById("btnAuthorCard").addEventListener("click", function(event){
                     event.preventDefault();
                     authorCard.classList.remove('hidden');
                     authorArticles.classList.add('hidden');
                 });
-
                 document.getElementById("btnAuthorArticles").addEventListener("click", function(event){
                     event.preventDefault();
                     authorCard.classList.add('hidden');
                     authorArticles.classList.remove('hidden');
                 });
             </script>
-            
-
         </div>
-
         <div class="w-1/4">
-            
             <x-module-article-details :details="$article->details" />
-
         </div>
-
     </div>
-        
-
 </x-dashboard-layout>

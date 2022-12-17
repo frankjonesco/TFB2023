@@ -1,4 +1,4 @@
-<div class="flex mb-7">
+<div class="flex mb-2">
     <h3 class="pl-1.5 pr-5 pb-3 border-b border-sky-500 uppercase text-lg">Company details</h3>
     <span class="grow border-b border-zinc-500"></span>
 </div>

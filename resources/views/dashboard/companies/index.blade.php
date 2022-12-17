@@ -36,8 +36,8 @@
                             </a>
                         </td>
                         <td>
-                            @if($company->sectors)
-                                @foreach($company->sectors as $sector)
+                            @if($company->grouped_sectors)
+                                @foreach($company->grouped_sectors as $sector)
                                     <a href="/dashboard/sectors/{{$sector->hex}}">
                                         {{$sector->name}}
                                     </a>
