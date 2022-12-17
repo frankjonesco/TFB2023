@@ -16,6 +16,7 @@
             @foreach($sectors as $sector)
                 <tr>
                     <td>
+                        <input type="checkbox" name="sector_id_checkboxes[]" value="{{$sector->id}}" onclick="handleClick(this)">
                         <a href="/dashboard/sectors/{{$sector->hex}}">
                             {{$sector->english_name}}
                         </a>

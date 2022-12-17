@@ -3,7 +3,7 @@
         <div class="w-full pr-10">
             <x-edit-sector-buttons :sector="$sector" />
             <h2 class="grow">Sector / industry: {{$sector->english_name}} / {{$industry->english_name}}</h2>
-            <x-alerts heading="List of companies in the '{{$sector->english_name}}' sector and '{{$industry->english_name}}' industry." />
+            <x-alerts heading="List of companies in the '{!!$sector->english_name!!}' sector and '{!!$industry->english_name!!}' industry." />
             @php
                 $extract = true;
             @endphp

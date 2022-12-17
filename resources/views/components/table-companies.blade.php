@@ -17,6 +17,7 @@
             @php
                 $i = 0;
             @endphp 
+            {{-- {{dd($companies)}} --}}
             @foreach($companies as $company)
                 @if(isset($extract))
                     @php
@@ -26,10 +27,12 @@
                 
                 <tr>
                     <td>
-                        <input type="checkbox" name="industry_id_checkboxes[]" value="{{$company->id}}" onclick="handleClick(this)">
-                        <a href="/dashboard/companies/{{$company->hex}}">
-                            {{$company->registered_name}}
-                        </a>
+                        <div class="flex items-center">
+                            <input type="checkbox" name="industry_id_checkboxes[]" value="{{$company->id}}" onclick="handleClick(this)">
+                            <a href="/dashboard/companies/{{$company->hex}}">
+                                {{$company->registered_name}}
+                            </a>
+                        </div>
                     </td>
                     <td>
                         <a href="/dashboard/companies/{{$company->hex}}">
