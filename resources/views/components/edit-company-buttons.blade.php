@@ -1,8 +1,8 @@
 <div class="flex justify-between mt-4">
-    <a href="/dashboard/companies">   
+    <a href="javascript:history.back()">   
         <button>
             <i class="fa-solid fa-arrow-left"></i>
-            Back to companies
+            Back
         </button>
     </a>
     <div class="flex justify-start buttons-mr">

@@ -75,6 +75,11 @@ use Illuminate\Support\Facades\Config;
                 //     'icon' => 'fa-regular fa-thumbs-down'
                 // ],
                 [
+                    'label' => 'ID',
+                    'result' => $article->id,
+                    'icon' => 'fa-solid fa-database'
+                ],
+                [
                     'label' => 'Hex',
                     'result' => $article->hex,
                     'icon' => 'fa-solid fa-fingerprint'
