@@ -9,7 +9,7 @@
     }
     .ck-editor__editable{
         min-height: 150px !important;
-        max-height: 400px !important;
+        max-height: 800px !important;
         background-color: #374151 !important;
         font-size: 0.875rem;
         line-height: 1.25rem;

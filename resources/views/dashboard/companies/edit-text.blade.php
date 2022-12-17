@@ -1,4 +1,5 @@
 <x-dashboard-layout>
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.3.2/super-build/ckeditor.js"></script>
     <div class="flex w-full">
         <div class="w-3/4 pr-10">
             <x-edit-company-buttons :company="$company" />
@@ -46,8 +47,9 @@
                 {{-- Description --}}
                 <div class="form-block">
                     <label for="description">Description</label>
+                    @include('includes._ck-editor-styles')
                     <textarea 
-                        id="description" 
+                        id="editor" 
                         name="description" 
                         rows="4" 
                         placeholder="How would you describe this company?"
@@ -81,4 +83,5 @@
             <x-company-modules :company="$company" />
         </div>
     </div>
+    @include('includes._ck-editor-settings')
 </x-dashboard-layout>
