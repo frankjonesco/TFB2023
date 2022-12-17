@@ -51,6 +51,20 @@
                     @enderror
                 </div>
 
+                {{-- Parent organisation --}}
+                <div class="form-block">
+                    <label for="parent_organization">Parent organisation</label>
+                    <input 
+                        type="text" 
+                        name="parent_organization" 
+                        placeholder="Parent organisation" 
+                        value="{{old('parent_organization')}}" 
+                    >
+                    @error('parent_organization')
+                        <p class="text-error">{{$message}}</p>
+                    @enderror
+                </div>
+
                 {{-- Description --}}
                 <div class="form-block">
                     <label for="description">Description</label>
@@ -61,6 +75,34 @@
                         rows="4" 
                         placeholder="How would you describe this company?"
                     >{{old('description')}}</textarea>
+                </div>
+
+                {{-- Website --}}
+                <div class="form-block">
+                    <label for="website">Website</label>
+                    <input 
+                        type="text" 
+                        name="website" 
+                        placeholder="Website" 
+                        value="{{old('website')}}" 
+                    >
+                    @error('website')
+                        <p class="text-error">{{$message}}</p>
+                    @enderror
+                </div>
+
+                {{-- Headquarters --}}
+                <div class="form-block">
+                    <label for="headquarters">Headquarters</label>
+                    <input 
+                        type="text" 
+                        name="headquarters" 
+                        placeholder="Headquarters" 
+                        value="{{old('headquarters')}}" 
+                    >
+                    @error('headquarters')
+                        <p class="text-error">{{$message}}</p>
+                    @enderror
                 </div>
 
                 {{-- Visibility --}}
