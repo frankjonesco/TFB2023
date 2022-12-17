@@ -24,8 +24,7 @@
             </div>
         </div>
         <div class="w-1/4">
-            <x-module-company-sectors-industries :company="$company" />
-            <x-module-company-details :details="$company->details" />
+            <x-company-modules :company="$company" />
         </div>
     </div>
 </x-dashboard-layout>
