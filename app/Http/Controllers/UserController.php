@@ -105,22 +105,33 @@ class UserController extends Controller
 
         // Validate form
         $request->validate([
-            'name' => 'required',
-            'status' => 'required'
+            'first_name' => 'required|min:2',
+            'last_name' => 'required|min:2',
+            'email' => ['required', 'email', Rule::unique('users', 'email')],
+            'username' => ['required', 'min:4', 'regex:/([A-Za-z0-9_])+/', Rule::unique('users', 'username')],
+            'password' => 'required|confirmed|min:6',
+            'user_type_id' => 'required',
         ]);
 
         // Form data to model
         $user->hex = Str::random(11);
-        $user->user_id = 1;
-        $user->name = $request->name;
-        $user->slug = $request->slug;
-        $user->english_name = $request->english_name;
-        $user->english_slug = $request->english_slug;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->gender = $request->gender;
+        $user->email = $request->email;
+        $user->username = $request->username;
+        $user->password = bcrypt($request->password);
         $user->description = $request->description;
-        $user->status = $request->status;
+        $user->user_type_id = $request->user_type_id;
+        $user->phone = $request->phone;
+        $user->country_iso = $request->country_iso;
+        $user->color_fill_id = $request->color_fill_id;
+
+        $user->email_verified_at = date('Y-m-d H:i:s', time());
+        $user->remember_token = Str::random(10);
 
         // Save changes
-        $user->saveText();
+        $user->save();
 
         return redirect('dashboard/users/'.$user->hex)->with('success', 'User created!');
     }
