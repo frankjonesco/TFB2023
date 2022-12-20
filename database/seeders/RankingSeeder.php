@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
+use App\Models\Company;
 use App\Models\Ranking;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
@@ -21,13 +23,19 @@ class RankingSeeder extends Seeder
 
         // Foreach rankings
         foreach($rankings as $ranking){
+
+            $company = Company::where('old_id', $ranking->company_id)->first();
+            $company_id = $company ? $company->id : null; 
+
+            $user = User::where('old_id', $ranking->user_id)->first();
+            $user_id = $user ? $user->id : 1; 
             
             // Create ranking
             Ranking::insert([
                 'old_id' => $ranking->id,
                 'hex' => Str::random(11),
-                'user_id' => $ranking->user_id ?? 1,
-                'company_id' => $ranking->company_id,
+                'user_id' => $user_id,
+                'company_id' => $company_id,
                 'year' => $ranking->year,
                 'is_latest' => $ranking->latest,
                 'turnover' => $ranking->turnover,
