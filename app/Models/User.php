@@ -86,13 +86,10 @@ class User extends Authenticatable
     // ACCESSOR METHODS
 
 
-
-
-
     // Accessor for profile pic
     public function getUserTypeAttribute()
     {   
-        return UserType::find($this->user_type_id)->name;
+        return UserType::find($this->user_type_id);
     }
 
     // Accessor for profile pic

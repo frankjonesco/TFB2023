@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('old_id')->nullable();
             $table->string('hex', 11);
-            $table->tinyInteger('user_type_id', $autoIncrement = false, $unsigned = false)->length(1);
+            $table->tinyInteger('user_type_id', $autoIncrement = false, $unsigned = false)->length(1)->nullable();
             $table->string('first_name');
             $table->string('last_name');
             $table->string('username')->unique()->nullable();
