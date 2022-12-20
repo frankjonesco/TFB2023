@@ -86,6 +86,7 @@ class UserController extends Controller
 
     // ADMIN: Show all users
     public function adminIndex(Site $site){
+        
         return view('dashboard.users.index', [
             'users' => $site->paginateAllUsers()
         ]);

@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -62,7 +63,7 @@ class User extends Authenticatable
 
     // Relationship to companies
     public function companies(){
-        return $this->hasMany(User::class, 'user_id');
+        return $this->hasMany(Company::class, 'user_id');
     }
 
     // User's color
@@ -71,7 +72,7 @@ class User extends Authenticatable
             Color::class, 
             'color_fill_id', 
             'fill_id'
-        )->where('color_theme_id', Setting::find(1)->color_theme_id);
+        )->where('color_theme_id', Config::get(['color_theme_id']));
     }
 
     // Relationship to articles
@@ -79,6 +80,11 @@ class User extends Authenticatable
         return $this->hasMany(Article::class, 'user_id');
     }
 
+
+    // Relationship to comments
+    public function comments(){
+        return $this->hasMany(Comment::class, 'user_id');
+    }
 
 
 
@@ -101,11 +107,10 @@ class User extends Authenticatable
     // Accessor for profile pic
     public function getProfilePicAttribute()
     {   
-        if($this->image){
-            return asset('images/users/'.$this->hex.'/'.$this->image);
-        }
-        else{
+        if(empty($this->image)){
             return asset('images/users/profile-pic-male.jpg');
         }
+
+        return asset('images/users/'.$this->hex.'/'.$this->image);
     }
 }

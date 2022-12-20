@@ -1,7 +1,6 @@
 <x-dashboard-layout>
     <script src="https://cdn.ckeditor.com/ckeditor5/35.3.2/super-build/ckeditor.js"></script>
 
-    
     <div class="flex">
 
         <div class="w-3/4 pr-10">

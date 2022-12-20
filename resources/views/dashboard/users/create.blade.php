@@ -182,7 +182,7 @@
                 {{-- Color fill ID --}}
                 <div class="form-block">
                     <label for="color_fill_id">Color: {{$colors[0]->name}}</label>
-                    <input type="hidden" id="colorFillIdInput" value="{{old('color_fill_id') ?? $colors[0]->fill_id}}">
+                    <input type="hidden" id="colorFillIdInput" name="color_fill_id" value="{{old('color_fill_id') ?? $colors[0]->fill_id}}">
                     <div id="colorSquares" class="flex">
                         @foreach($colors as $key => $color)
                             @php 

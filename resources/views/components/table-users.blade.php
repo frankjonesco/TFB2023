@@ -5,7 +5,11 @@
     <table>
         <thead>
             <tr>
-                <th>Name</th>
+                <th class="w-1/4">Name</th>
+                <th class="text-center">Companies</th>
+                <th class="text-center">Articles</th>
+                <th class="text-center">Comments</th>
+                <th>User type</th>
                 <th>Last updated</th>
                 <th></th>
             </tr>
@@ -16,10 +20,20 @@
                     <td>
                         <div class="flex items-center">
                             <input type="checkbox" name="user_id_checkboxes[]" value="{{$user->id}}" onclick="handleClick(this)">
-                            <a href="/dashboard/users/{{$user->hex}}">
-                                {{$user->full_name}}
-                            </a>
+                            <x-user-profile-pic-full-name :user="$user" />
                         </div>
+                    </td>
+                    <td class="text-center">
+                        {{count($user->companies)}}
+                    </td>
+                    <td class="text-center">
+                        {{count($user->articles)}}
+                    </td>
+                    <td class="text-center">
+                        {{count($user->comments)}}
+                    </td>
+                    <td>
+                        {{$user->user_type->name}}
                     </td>
                     <td>
                         {{$user->updated_at}}
