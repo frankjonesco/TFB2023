@@ -1,6 +1,5 @@
 <x-layout>
     <x-container>
-        {{-- Featured articles --}}
         <div class="flex">
             <div class="mt-6 pl-3 pr-12 w-2/3 border-r border-zinc-500">                
                 <div class="flex mb-7">
