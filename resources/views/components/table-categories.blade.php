@@ -16,9 +16,12 @@
             @foreach($categories as $category)
                 <tr>
                     <td>
-                        <a href="/dashboard/categories/{{$category->hex}}">
-                            {{$category->name}}
-                        </a>
+                        <div class="flex items-center">
+                            <input type="checkbox" name="category_id_checkboxes[]" value="{{$category->id}}" onclick="handleClick(this)">
+                            <a href="/dashboard/categories/{{$category->hex}}">
+                                {{$category->name}}
+                            </a>
+                        </div>
                     </td>
                     <td>
                         <a href="/dashboard/sectors/{{$category->sector->hex}}">

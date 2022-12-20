@@ -16,6 +16,6 @@
         </div>
     </div>
     <h2 class="grow">TOFAM Sectors</h2>   
-    <x-alerts heading="List of TOFAM sectors."/>
+    <x-alerts heading="List of TOFAM sectors (where industries are stored)."/>
     <x-table-sectors :sectors="$sectors" />
 </x-dashboard-layout>

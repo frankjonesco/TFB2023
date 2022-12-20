@@ -16,7 +16,7 @@
         </div>
     </div>
     <h2 class="grow">TOFAM Industries</h2>   
-    <x-alerts heading="List of TOFAM industries."/>
+    <x-alerts heading="List of TOFAM industries (where companies are stored)."/>
     @php
         $extract = false;
     @endphp

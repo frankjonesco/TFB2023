@@ -16,7 +16,7 @@
         </div>
     </div>
     <h2 class="grow">TOFAM Articles</h2>   
-    <x-alerts heading="List of TOFAM categories (for articles)."/>
+    <x-alerts heading="List of TOFAM articles."/>
     <x-table-articles :articles="$articles" />
 </x-dashboard-layout>
 
