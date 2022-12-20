@@ -4,7 +4,7 @@
         <div class="w-3/4 pr-10">
         
             <x-edit-article-buttons :article="$article" />
-            <h2>Change image</h2>
+            <h2>Change article image</h2>
             <x-alerts/>
 
             <form id="form" action="/dashboard/articles/{{$article->hex}}/image/update" method="POST" enctype="multipart/form-data">

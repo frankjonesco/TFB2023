@@ -3,7 +3,7 @@
         <div class="w-3/4 pr-10">
             <x-edit-company-buttons :company="$company" />
             <h2 class="grow">
-                Change image
+                Change company logo
             </h2>
             <x-alerts/>
             <form id="form" action="/dashboard/companies/{{$company->hex}}/image/update" method="POST" enctype="multipart/form-data">

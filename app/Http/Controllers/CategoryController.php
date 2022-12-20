@@ -97,6 +97,7 @@ class CategoryController extends Controller
 
     // ADMIN: Show edit image
     public function editImage(Category $category){
+        $category->details = compileCategoryDetails($category);
         return view('dashboard.categories.edit-image', [
             'category' => $category
         ]);
