@@ -80,6 +80,11 @@ class Site extends Model
         return Company::where('status', 'public')->orderBy('registered_name', 'ASC')->get();
     }
 
+    // Paginate public companies
+    public function paginatePublicCompanies(){
+        return Company::where('status', 'public')->orderBy('registered_name', 'ASC')->paginate(20);
+    }
+
 
 
     // CATEGORIES

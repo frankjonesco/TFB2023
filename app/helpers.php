@@ -1,7 +1,10 @@
 <?php
 
+use App\Models\Company;
 use App\Models\Sponsor;
 use Illuminate\Support\Facades\Config;
+
+    // FORMATTERS
 
     // Show date
     if(!function_exists('showDate')){
@@ -20,13 +23,6 @@ use Illuminate\Support\Facades\Config;
         }
     }
 
-    // Nav sponsors
-    if(!function_exists('navSponsors')) {
-        function navSponsors(){
-            return Sponsor::where('show_in_navbar', true)->get();
-        }
-    }
-
     // Linkify
     if(!function_exists('linkify')){
         function linkify($text) {
@@ -34,6 +30,48 @@ use Illuminate\Support\Facades\Config;
         }
     }
 
+    //  Format tags
+    if(!function_exists('formatTags')){
+        function formatTags($tags){
+            $tags = explode(',', $tags);
+            $trimmed_tags = [];
+            foreach($tags as $tag){
+                $tag = preg_replace('/[^A-Za-z0-9\, ]/', '', $tag);
+                $words = explode(' ', $tag);
+                $tag = [];
+                foreach($words as $word){
+                    $tag[] = $word;
+                }
+                $tag = implode(' ', array_filter($tag));
+                $trimmed_tags[] = trim($tag);
+            }
+            $tags = implode(',', array_filter($trimmed_tags));
+
+            return $tags;
+        }
+    }
+
+
+
+    // FETCHERS
+
+    // Nav sponsors
+    if(!function_exists('navSponsors')) {
+        function navSponsors(){
+            return Sponsor::where('show_in_navbar', true)->get();
+        }
+    }
+
+    // Nav sponsors
+    if(!function_exists('matchbirdPartners')) {
+        function matchbirdPartners(){
+            return Company::where('matchbird_partner', 1)->take(9)->orderBy(DB::raw('RAND()'))->get();
+        }
+    }
+
+    
+
+    // COMPILERS
 
     // Compile company details
     if(!function_exists('compileCategoryDetails')){
@@ -72,7 +110,6 @@ use Illuminate\Support\Facades\Config;
             ];
         }
     }
-
 
     // Compile article details
     if(!function_exists('compileArticleDetails')){
@@ -200,26 +237,7 @@ use Illuminate\Support\Facades\Config;
         }
     }
 
-    //  Format tags
-    if(!function_exists('formatTags')){
-        function formatTags($tags){
-            $tags = explode(',', $tags);
-            $trimmed_tags = [];
-            foreach($tags as $tag){
-                $tag = preg_replace('/[^A-Za-z0-9\, ]/', '', $tag);
-                $words = explode(' ', $tag);
-                $tag = [];
-                foreach($words as $word){
-                    $tag[] = $word;
-                }
-                $tag = implode(' ', array_filter($tag));
-                $trimmed_tags[] = trim($tag);
-            }
-            $tags = implode(',', array_filter($trimmed_tags));
 
-            return $tags;
-        }
-    }
 
 
     
