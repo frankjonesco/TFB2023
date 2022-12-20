@@ -14,7 +14,8 @@ class CompanyController extends Controller
     // Show all public companies
     public function index(Site $site){
         return view('companies.index', [
-            'companies' => $site->paginatePublicCompanies()
+            // 'companies' => $site->paginatePublicCompanies()
+            'companies' => $site->paginatePublicCompaniesAndRankingsByYear()
         ]);
     }
     

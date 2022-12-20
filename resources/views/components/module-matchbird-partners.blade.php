@@ -9,7 +9,7 @@
             <img 
                 src="{{$matchbird_partner->getImageThumbnail()}}"
                 alt="Top Family Business - {{$matchbird_partner->registered_name}}"
-                class="rounded cursor-pointer"
+                class="rounded cursor-pointer w-full h-full"
             >
         </div>
     @endforeach

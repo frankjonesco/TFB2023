@@ -69,7 +69,10 @@ class Company extends Model
         )->distinct();
     }
 
-     
+    // Relationship to rankings
+    public function rankings(){
+        return $this->hasMany(Ranking::class, 'company_id');
+    }
 
     // Relationship to contacts
     public function contacts(){
@@ -101,6 +104,20 @@ class Company extends Model
             get: fn ($value, $attributes) => $attributes['trading_name'] ?: $attributes['registered_name']
         );
     }
+
+    /**
+     * Get the user's first name.
+     *
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    protected function ranking(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value, $attributes) => Ranking::find($this->ranking_id)
+        );
+    }
+
+    
 
     // // Accessor for sectors
     // public function getSectorsAttribute($value)

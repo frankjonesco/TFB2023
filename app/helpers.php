@@ -2,6 +2,7 @@
 
 use App\Models\Company;
 use App\Models\Sponsor;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Config;
 
     // FORMATTERS
@@ -48,6 +49,29 @@ use Illuminate\Support\Facades\Config;
             $tags = implode(',', array_filter($trimmed_tags));
 
             return $tags;
+        }
+    }
+
+     // Format turnover
+     if(!function_exists('formatTurnover')){
+        function formatTurnover($turnover){
+            return number_format(round($turnover / 1000000), 0, '.' , ',' ).' Mio.';
+        }
+    }
+
+    // Format employees
+    if(!function_exists('formatEmployees')){
+        function formatEmployees($employees){
+            return number_format(round($employees), 0, '.' , ',' );
+        }
+    }
+
+    // Format training rate
+    if(!function_exists('formatTrainingRate')){
+        function formatTrainingRate($training_rate){
+            if(!empty($training_rate)){
+                return $training_rate.'%';
+            }
         }
     }
 
