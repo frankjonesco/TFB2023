@@ -82,7 +82,19 @@ class ArticleSeeder extends Seeder
                 $user_id = $user ? $user->id : $random_user_id;
             }           
 
-            $site = new Site();
+            // Wrap main_text in <p> if it does not containe html tags
+            $body = $article->main_text;
+            if(!preg_match ('/<[^>]*>/', $body)){
+                $body = '<p>'.$body.'</p>';
+            }
+
+            if($article->teaser){
+                $body = '<blockquote>'.$article->teaser.'</blockquote>'.$body;
+            }
+
+            if($article->caption){
+                $body = '<p><strong>'.$article->caption.'</strong></p>'.$body;
+            }
 
             // Create article
             Article::insert([
@@ -93,11 +105,11 @@ class ArticleSeeder extends Seeder
                 'sponsor_id' => $article->sponsor,
                 'title' => $article->title,
                 'slug' => $article->url_title,
-                'caption' => $article->caption,	
-                'teaser' => $article->teaser,	
-                'body' => $article->main_text,	
-                'image' => $article->image,	
-                'image_caption' => $article->image_caption,	
+                'caption' => $article->caption,
+                'teaser' => $article->teaser,
+                'body' => $body,
+                'image' => $article->image,
+                'image_caption' => $article->image_caption,
                 'image_copyright' => $article->image_copyright,
                 'views' => $article->views,
                 'created_at' => date('Y-m-d H:i:s', $article->created),
