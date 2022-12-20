@@ -15,7 +15,7 @@
             </a>
         </div>
     </div>
-    <h2 class="grow">TOFAM companies</h2>   
+    <h2 class="grow">TOFAM Companies</h2>   
     <x-alerts heading="List of TOFAM companies."/>
     <x-table-companies :companies="$companies" />
 </x-dashboard-layout>

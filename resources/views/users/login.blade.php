@@ -1,6 +1,6 @@
 <x-layout>
     <x-container>
-        <h1>Log in</h1>
+        <h2>Log in</h2>
         
         <form action="/users/authenticate" method="POST" class="w-1/4">
             @csrf
