@@ -4,7 +4,7 @@
     
     <div class="flex">
 
-        <div class="w-2/3 pr-10">
+        <div class="w-3/4 pr-10">
 
             <div class="flex justify-start buttons-mr mt-4">
                 <a href="/dashboard/articles">   
@@ -39,7 +39,7 @@
                     @enderror
                 </div>
 
-                <div class="form-block">
+                {{-- <div class="form-block">
                     <label for="caption">Caption</label>
                     <input 
                         type="text" 
@@ -69,7 +69,7 @@
                             {{$message}}
                         </p>
                     @enderror
-                </div>
+                </div> --}}
 
                 @if(count($categories) > 0)
                     <div class="form-block">
@@ -136,7 +136,8 @@
         
         </div>
 
-        <div class="w-1/3">
+        <div class="w-1/4">
+
         </div>
 
     </div>

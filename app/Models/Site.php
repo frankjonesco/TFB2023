@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -14,6 +15,15 @@ class Site extends Model
     use HasFactory;
 
     // START: RETRIEVAL METHODS
+
+    // COLORS
+
+    // Site colors
+    public function allColors(){
+        return Color::where('color_theme_id', 1)->orderBy('fill_id', 'ASC')->get();
+    }
+
+
     
     // SECTORS
         

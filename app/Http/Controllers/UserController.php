@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Site;
 use App\Models\User;
+use App\Models\Country;
+use App\Models\UserType;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -90,8 +92,12 @@ class UserController extends Controller
     }
 
     // ADMIN: Show create form
-    public function create(){
-        return view('dashboard.users.create');
+    public function create(Site $site){
+        return view('dashboard.users.create', [
+            'user_types' => UserType::get(),
+            'countries' => Country::get(),
+            'colors' => $site->allColors()
+        ]);
     }
 
     // ADMIN: Store new user
