@@ -91,7 +91,7 @@ use Illuminate\Support\Facades\Config;
                 // ],
                 [
                     'label' => 'Category',
-                    'result' => $article->category === null ? '<span class="no-results">Not assigned</span>' : $article->category->name,
+                    'result' => $article->category === null ? '<span class="no-results">Not assigned</span>' : '<a href="/dashboard/categories/'.$article->category->hex.'">'.$article->category->name.'</a>',
                     'icon' => 'fa-regular fa-folder'
                 ],
                 [
