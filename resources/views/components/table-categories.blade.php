@@ -1,7 +1,6 @@
 @if(count($categories) < 1)
     <x-nothing-to-display table="categories" />
 @else
-    <x-alerts/>
     <table>
         <thead>
             <tr>

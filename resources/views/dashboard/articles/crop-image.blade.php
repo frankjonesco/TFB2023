@@ -6,7 +6,7 @@
 
     
             <x-edit-article-buttons :article="$article" />
-            <h2>Crop image</h2>
+            <h2>Crop article image</h2>
             <x-alerts/>
 
             <div class="mb-4">

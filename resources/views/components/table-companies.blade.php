@@ -28,7 +28,7 @@
                 <tr>
                     <td>
                         <div class="flex items-center">
-                            <input type="checkbox" name="industry_id_checkboxes[]" value="{{$company->id}}" onclick="handleClick(this)">
+                            <input type="checkbox" name="company_id_checkboxes[]" value="{{$company->id}}" onclick="handleClick(this)">
                             <a href="/dashboard/companies/{{$company->hex}}">
                                 {{$company->registered_name}}
                             </a>

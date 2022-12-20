@@ -121,6 +121,7 @@ class CategoryController extends Controller
 
     // ADMIN: Crop image
     public function cropImage(Category $category){
+        $category->details = compileCategoryDetails($category);
         return view('dashboard.categories.crop-image', [
             'category' => $category
         ]);
@@ -142,6 +143,7 @@ class CategoryController extends Controller
 
     // ADMIN: Delete options
     public function deleteOptions(Category $category){
+        $category->details = compileCategoryDetails($category);
         return view('dashboard.categories.delete-options', [
             'category' => $category
         ]);

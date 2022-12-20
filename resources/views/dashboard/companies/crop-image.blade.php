@@ -1,7 +1,7 @@
 <x-dashboard-layout>
     
     <div class="flex flex-row items-center">
-        <h1 class="grow">Crop image</h1>
+        <h1 class="grow">Crop company logo</h1>
         <x-edit-company-buttons :company="$company" />
     </div>
 

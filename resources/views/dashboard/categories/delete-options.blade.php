@@ -1,24 +1,33 @@
 <x-dashboard-layout>
     
-    <div class="flex flex-row items-center">
-        <h1 class="grow">Delete category</h1>
-        <x-edit-category-buttons :category="$category" />
-    </div>
+    <div class="flex">
 
-    <x-alerts/>
+        <div class="w-3/4 pr-10">
+    
+            <x-edit-category-buttons :category="$category" />
+            <h2>Delete category</h2>
+            <x-alerts/>
 
-    <form action="/dashboard/categories/{{$category->hex}}/delete" method="POST">
-        @csrf
-        @method('DELETE')
+            <form action="/dashboard/categories/{{$category->hex}}/delete" method="POST">
+                @csrf
+                @method('DELETE')
+                
+                <p class="mb-4">Are you sure you want to delete this category?</p>
+                
+                <div class="mb-6">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa-regular fa-trash-alt"></i>
+                        Yes, delete this category
+                    </button>
+                </div>
+            </form> 
         
-        <p class="mb-4">Are you sure you want to delete this category?</p>
-        
-        <div class="mb-6">
-            <button type="submit" class="btn">
-                <i class="fa-regular fa-trash-alt"></i>
-                Yes, delete this sector
-            </button>
         </div>
-    </form>   
+
+        <div class="w-1/4">
+            
+            <x-module-category-details :details="$category->details" />
+    
+        </div>
     
 </x-dashboard-layout>
