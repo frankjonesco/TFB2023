@@ -1,0 +1,1 @@
+<x-module-article-details :details="$article->details" />

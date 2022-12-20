@@ -66,6 +66,7 @@ class CategoryController extends Controller
 
     // ADMIN: Show edit text
     public function editText(Category $category){
+        $category->details = compileCategoryDetails($category);
         return view('dashboard.categories.edit-text', [
             'category' => $category
         ]);

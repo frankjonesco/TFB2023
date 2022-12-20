@@ -1,0 +1,1 @@
+<x-module-category-details :details="$category->details" />

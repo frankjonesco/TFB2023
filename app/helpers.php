@@ -35,6 +35,45 @@ use Illuminate\Support\Facades\Config;
     }
 
 
+    // Compile company details
+    if(!function_exists('compileCategoryDetails')){
+        function compileCategoryDetails($category){
+            return [
+                [
+                    'label' => 'Owner',
+                    'result' => $category->user->full_name,
+                    'icon' => 'fa-regular fa-user'
+                ],
+                [
+                    'label' => 'Created at',
+                    'result' => showDateTime($category->created_at),
+                    'icon' => 'fa-regular fa-calendar'
+                ],
+                [
+                    'label' => 'Updated at',
+                    'result' => showDateTime($category->updated_at),
+                    'icon' => 'fa-regular fa-calendar'
+                ],
+                [
+                    'label' => 'ID',
+                    'result' => $category->id,
+                    'icon' => 'fa-solid fa-database'
+                ],
+                [
+                    'label' => 'Hex',
+                    'result' => $category->hex,
+                    'icon' => 'fa-solid fa-fingerprint'
+                ],
+                [
+                    'label' => 'Status',
+                    'result' => ucfirst($category->status),
+                    'icon' => 'fa-solid fa-lock'
+                ],
+            ];
+        }
+    }
+
+
     // Compile article details
     if(!function_exists('compileArticleDetails')){
         function compileArticleDetails($article) {
