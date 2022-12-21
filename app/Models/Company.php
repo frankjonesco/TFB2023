@@ -238,25 +238,31 @@ class Company extends Model
     public function chartDataForTurnover(){
         $array = [];
         foreach($this->rankings()->orderBy('year', 'ASC')->get() as $ranking){
-            $array[] = number_format(round($ranking->turnover / 1000000), 0, ',' , '.' );
+            $array[] = round($ranking->turnover);
         }
         return implode(',', $array);
     }
 
-    public function lowestTurnover(){
+    public function lowestTurnover($format = 'rounded'){
         $turnover = Ranking::where('company_id', $this->id)->orderBy('turnover', 'ASC')->first()->turnover;
         $turnover = floor($turnover/100000000)*100000000;
-        return $turnover/1000000;
+        if($format === 'full'){
+            return $turnover;
+        }
+        return $turnover;
     }
 
-    public function highestTurnover(){
+    public function highestTurnover($format = 'rounded'){
         $turnover = Ranking::where('company_id', $this->id)->orderBy('turnover', 'DESC')->first()->turnover;
         $turnover = ceil($turnover/100000000)*100000000;
-        return $turnover/1000000;
+        if($format === 'full'){
+            return $turnover;
+        }
+        return $turnover;
     }
 
     public function turnoverRange(){
-        $range = $this->highestTurnover() - $this->lowestTurnover();
+        $range = $this->highestTurnover('full') - $this->lowestTurnover('full');
         return $range;
     }
 
@@ -265,11 +271,11 @@ class Company extends Model
         $ticks = $ticks - 1;
         $interval = $this->turnoverRange() / $ticks;
 
-        $first = $this->lowestTurnover();
-        $second = $this->lowestTurnover() + $interval;
-        $third = $this->lowestTurnover() + ($interval * 2);
-        $forth = $this->lowestTurnover() + ($interval * 3);
-        $fifth = $this->highestTurnover();
+        $first = $this->lowestTurnover('full');
+        $second = $this->lowestTurnover('full') + $interval;
+        $third = $this->lowestTurnover('full') + ($interval * 2);
+        $forth = $this->lowestTurnover('full') + ($interval * 3);
+        $fifth = $this->highestTurnover('full');
 
         $first = $first * 1;
         $second = $second * 1;
@@ -278,14 +284,28 @@ class Company extends Model
         $fifth = $fifth * 1;
 
         
-        $first = number_format(round($first / 1), 0, ',' , '.' );
-        $second = number_format(round($second / 1), 0, ',' , '.' );
-        $third = number_format(round($third / 1), 0, ',' , '.' );
-        $forth = number_format(round($forth / 1), 0, ',' , '.' );
-        $fifth = number_format(round($fifth / 1), 0, ',' , '.' );
+        // $first = number_format(round($first / 1), 0, ',' , '.' );
+        // $second = number_format(round($second / 1), 0, ',' , '.' );
+        // $third = number_format(round($third / 1), 0, ',' , '.' );
+        // $forth = number_format(round($forth / 1), 0, ',' , '.' );
+        // $fifth = number_format(round($fifth / 1), 0, ',' , '.' );
         
         $values = $first.','.$second.','.$third.','.$forth.','.$fifth;
         return $values;
+    }
+
+    public function rankingYears(){
+        $years = Ranking::where('company_id', $this->id)->orderBy('year', 'ASC')->pluck('year')->toArray();
+        // $years = ['2013', '2014', '2015', '2016', '2017', '2018'];
+        // dd($years);
+        return implode(',', $years);
+    }
+
+    public function rankingTurnovers(){
+        $turnovers = Ranking::where('company_id', $this->id)->orderBy('turnover', 'ASC')->pluck('turnover')->toArray();
+        // $years = ['2013', '2014', '2015', '2016', '2017', '2018'];
+        // dd($years);
+        return implode(',', $turnovers);
     }
 
     
