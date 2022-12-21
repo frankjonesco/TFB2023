@@ -242,4 +242,36 @@ class Company extends Model
         }
         return implode(',', $array);
     }
+
+    public function turnoverRange(){
+        $lower_turnover = Ranking::where('company_id', $this->id)->orderBy('turnover', 'ASC')->first()->turnover;
+        $higher_turnover = Ranking::where('company_id', $this->id)->orderBy('turnover', 'DESC')->first()->turnover;
+        $range = $higher_turnover - $lower_turnover;
+        $rounded_range = ceil(($range/1000)*1000);
+        return floor($rounded_range / 1000000);
+    }
+
+    public function ranking_y_axis_rounder(){
+        // dd($this->turnoverRange());
+        if($this->turnoverRange() > 10000){
+            return 10000;
+        }
+
+        elseif($this->turnoverRange() > 1000){
+            return 1000;
+        }
+
+        elseif($this->turnoverRange() > 100){
+            return 10;
+        }
+
+        elseif($this->turnoverRange() > 10){
+            return 10;
+        }
+
+        return 1;
+    }
+    
+
+
 }

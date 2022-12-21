@@ -61,6 +61,7 @@
 
                         {{-- Chart for turnover --}}
                         {{-- <div id="chart_div"></div> --}}
+                        {{$company->turnoverRange()}}
                         <div class="bg-white">
                             <div id="turnoverChart"></div>
                         </div>
@@ -146,7 +147,7 @@
                     tick: {
                         count: 4,
                         // format: d3.format('$,')
-                        format: function (d) { return thousands_separators(Math.round(d/1000)*1000) + ' Mio.'; },
+                        format: function (d) { return thousands_separators(Math.round(d/{{$company->ranking_y_axis_rounder()}})*{{$company->ranking_y_axis_rounder()}}) + ' Mio.'; },
                         outer: false,
                         // values: []
                     }

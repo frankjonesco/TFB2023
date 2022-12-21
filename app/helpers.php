@@ -56,7 +56,7 @@ use Illuminate\Support\Facades\Config;
      // Format turnover
      if(!function_exists('formatTurnover')){
         function formatTurnover($turnover){
-            return number_format(round($turnover / 1000000), 0, '.' , ',' ).' Mio.';
+            return number_format(round($turnover / 1000000), 0, ',' , '.' ).' Mio.';
         }
     }
 
