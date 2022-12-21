@@ -99,24 +99,70 @@
 
     <script>
 
+        function thousands_separators(num){
+            var num_parts = num.toString().split(",");
+            num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            return num_parts.join(",");
+        }
+
         var chart = c3.generate({
+
             bindto: document.getElementById('turnoverChart'),
+
             data: {
-              columns: [
-                ['data1', 30, 200, 100, 400, 150, 250],
-                ['data2', 50, 20, 10, 40, 15, 25]
-              ]
+                
+                names: {
+                    data1: 'Turnover',
+                    data2: 'Employees'
+                },
+                
+                columns: [
+                    ['data1', {{$company->chartDataForTurnover()}}],
+                ],
+                
+            },
+
+            axis: {
+                x: {
+                    show: true,
+                    categories: ['Category 1', 'Category 2'],
+                    tick: {
+                        count: 3,
+                        center: 0,
+                        // format: function (x) { return x; }
+                        // values: ['2013','2014','2015','2016','2017','2018'],
+                        centered: true
+                    }
+                },
+                y: {
+                    // min: 0,
+                    // max: 1000,
+                    // center: 0,
+                    show: true,
+                    label: {
+                        text: 'Turnover (in €)',
+                        position: 'outer-middle'
+                    },
+                    tick: {
+                        count: 4,
+                        // format: d3.format('$,')
+                        format: function (d) { return thousands_separators(Math.round(d/1000)*1000) + ' Mio.'; },
+                        outer: false,
+                        // values: []
+                    }
+                },
             },
 
             size: {
                 // width: 640
                 // height: 480
             },
+
             padding: {
                 top: 30,
                 right: 50,
                 bottom: 20,
-                left: 50,
+                left: 90,
             },
 
             color: {
@@ -125,9 +171,11 @@
                     '#aec7e8'
                 ]
             },
+
             transition: {
                 duration: 1000
-            }
+            },
+
 
 
             

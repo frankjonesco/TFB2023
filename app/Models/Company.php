@@ -227,11 +227,19 @@ class Company extends Model
         return asset('images/companies/'.$this->hex.'/tn-'.$this->image);
     }
 
+    // public function chartDataForTurnover(){
+    //     $array = [];
+    //     foreach($this->rankings as $ranking){
+    //         $array[] = [$ranking->year, $ranking->turnover / 1000000];
+    //     }
+    //     return json_encode($array);
+    // }
+
     public function chartDataForTurnover(){
         $array = [];
         foreach($this->rankings as $ranking){
-            $array[] = ['bok', $ranking->turnover / 1000000, 'as'];
+            $array[] = $ranking->turnover / 1000000;
         }
-        return json_encode($array);
+        return implode(',', $array);
     }
 }
