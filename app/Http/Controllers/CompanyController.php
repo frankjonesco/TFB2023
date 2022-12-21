@@ -21,6 +21,7 @@ class CompanyController extends Controller
 
     // Show single company
     public function show(Company $company){
+        $company->rankings = $company->rankings()->orderBy('year', 'DESC')->get();
         return view('companies.show', [
             'company' => $company
         ]);
