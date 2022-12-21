@@ -86,6 +86,19 @@ class Site extends Model
     }
 
     // Paginate public companies
+    public function paginatePublicCompaniesAndRankingsLatest(){
+        return Company::with('rankings')
+        ->join('rankings', 'rankings.company_id', '=', 'companies.id')
+        ->where('rankings.is_latest', true)
+        ->where('rankings.turnover', '>=', 250000000)
+        ->where('companies.family_business', 1)
+        ->where('companies.tofam_status', 'in')
+        ->select('companies.*', 'rankings.id AS ranking_id') // Avoid selecting everything from the stocks table
+        ->orderBy('rankings.turnover', 'DESC')
+        ->paginate(20);
+    }
+
+    // Paginate public companies
     public function paginatePublicCompaniesAndRankingsByYear($year = 2014){
         return Company::with('rankings')
         ->join('rankings', 'rankings.company_id', '=', 'companies.id')

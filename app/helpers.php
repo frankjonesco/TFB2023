@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Company;
+use App\Models\Ranking;
 use App\Models\Sponsor;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Config;
@@ -90,6 +91,17 @@ use Illuminate\Support\Facades\Config;
     if(!function_exists('matchbirdPartners')) {
         function matchbirdPartners(){
             return Company::where('matchbird_partner', 1)->take(9)->orderBy(DB::raw('RAND()'))->get();
+        }
+    }
+
+    if(!function_exists('rankingYears')){
+        function rankingYears(){
+            $years = Ranking::select('rankings.year')->orderBy('rankings.year', 'DESC')->groupBy('rankings.year')->get();
+            $yearsArray = [];
+            foreach($years as $ranking){
+                $yearsArray[] = $ranking->year;
+            }
+            return $yearsArray;
         }
     }
 

@@ -8,14 +8,13 @@
             <th class="text-center">Year</th>
             <th class="text-center">Turnover</th>
             <th class="text-center">Employees</th>
-            <th class="text-center">Training rate</th>
             <th class="text-center">Growth</th>
         </thead>
         <tbody>
-            @foreach($companies as $company)
+            @foreach($companies as $key => $company)
                 {{-- {{dd($company)}} --}}
                 <tr>
-                    <td></td>
+                    <td>{{$companies->firstItem() + $key}}</td>
                     <td>
                         <div class="flex items-center">
                             <img 
@@ -29,8 +28,7 @@
                     <td class="text-center">{{$company->ranking->year}}</td>
                     <td class="text-center">{{formatTurnover($company->ranking->turnover)}}</td>
                     <td class="text-center">{{formatEmployees($company->ranking->employees)}}</td>
-                    <td class="text-center">{{formatTrainingRate($company->ranking->training_rate)}}</td>
-                    <td class="text-center"></td>
+                    <td class="text-center">{{$company->ranking->calculateGrowth()}}</td>
                 </tr>
             @endforeach
         </tbody>
