@@ -31,14 +31,29 @@
                             <span class="p-2 font-bold border-b border-stone-400">Highest turnover:</span>
                             <span class="p-2 font-light border-b border-stone-400">{{$company->highestTurnover()}}</span>
 
+                            <span class="p-2 font-bold border-b border-stone-400">Lowest turnover (Rounded Mio.):</span>
+                            <span class="p-2 font-light border-b border-stone-400">{{formatTurnover($company->lowestTurnover())}}</span>
+
+                            <span class="p-2 font-bold border-b border-stone-400">Highest turnover (Rounded Mio.):</span>
+                            <span class="p-2 font-light border-b border-stone-400">{{formatTurnover($company->lowestTurnover())}}</span>
+
                             <span class="p-2 font-bold border-b border-stone-400">Range:</span>
                             <span class="p-2 font-light border-b border-stone-400">{{$company->turnoverRange()}}</span>
+
+                            <span class="p-2 font-bold border-b border-stone-400">Range (Rounded Mio.):</span>
+                            <span class="p-2 font-light border-b border-stone-400">{{formatTurnover($company->turnoverRange())}}</span>
 
                             <span class="p-2 font-bold border-b border-stone-400">Turnover values:</span>
                             <span class="p-2 font-light border-b border-stone-400">{{$company->chartDataForTurnover()}}</span>
 
                             <span class="p-2 font-bold border-b border-stone-400">Y axis ticks:</span>
                             <span class="p-2 font-light border-b border-stone-400">{{$company->turnover_y_axis_values()}}</span>
+
+                            <span class="p-2 font-bold border-b border-stone-400">Set low Y axis:</span>
+                            <span class="p-2 font-light border-b border-stone-400">{{floor(197000000000/10000000000)*10000000000}}</span>
+
+                            <span class="p-2 font-bold border-b border-stone-400">Set high Y axis:</span>
+                            <span class="p-2 font-light border-b border-stone-400">{{ceil(235800000000/10000000000)*10000000000}}</span>
 
                             
                         </div>
@@ -83,7 +98,7 @@
                 x: 'x',
                 columns: [
                     ['x', {{$company->rankingYears()}}],
-                    ['Umsatz (In Mio. €)', {{$company->rankingTurnovers()}}]
+                    ['Turnover', {{$company->rankingTurnovers()}}]
                 ]
             },
 
@@ -98,15 +113,19 @@
                     }
                 },
                 y: {
-                    min: {{$company->lowestTurnover()}},
-                    max: {{$company->highestTurnover()}},
+                    min: {{floor(197000000000/10000000000)*10000000000}},
+                    max: {{ceil(235800000000/10000000000)*10000000000}},
                     // center: 0,
                     show: true,
                     tick: {
-                        count: 5,
-                        format: function (d) { return thousands_separators(Math.floor(d/1000000)) + ' Mio.'; },
+                        count: 3,
+                        format: function (d) { return thousands_separators(Math.floor(d/1000000)) + ' Mio. €'; },
                         // values:[{{$company->turnover_y_axis_values()}}]
                         
+                    },
+                    padding: {
+                        top:0,
+                        bottom:0,
                     }
                 },
             },
