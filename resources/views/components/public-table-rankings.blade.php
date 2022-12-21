@@ -15,7 +15,7 @@
                 {{-- {{dd($company)}} --}}
                 <tr>
                     <td>{{$companies->firstItem() + $key}}</td>
-                    <td>
+                    <td>{{$company->lowestTurnover()}}
                         <div class="flex items-center">
                             <img 
                                 src="{{$company->getImageThumbnail()}}"

@@ -237,19 +237,66 @@ class Company extends Model
 
     public function chartDataForTurnover(){
         $array = [];
-        foreach($this->rankings as $ranking){
-            $array[] = $ranking->turnover / 1000000;
+        foreach($this->rankings()->orderBy('year', 'ASC')->get() as $ranking){
+            $array[] = number_format(round($ranking->turnover / 1000000), 0, ',' , '.' );
         }
         return implode(',', $array);
     }
 
-    public function turnoverRange(){
-        $lower_turnover = Ranking::where('company_id', $this->id)->orderBy('turnover', 'ASC')->first()->turnover;
-        $higher_turnover = Ranking::where('company_id', $this->id)->orderBy('turnover', 'DESC')->first()->turnover;
-        $range = $higher_turnover - $lower_turnover;
-        $rounded_range = ceil(($range/1000)*1000);
-        return floor($rounded_range / 1000000);
+    public function lowestTurnover(){
+        $turnover = Ranking::where('company_id', $this->id)->orderBy('turnover', 'ASC')->first()->turnover;
+        $turnover = floor($turnover/100000000)*100000000;
+        return $turnover/1000000;
     }
+
+    public function highestTurnover(){
+        $turnover = Ranking::where('company_id', $this->id)->orderBy('turnover', 'DESC')->first()->turnover;
+        $turnover = ceil($turnover/100000000)*100000000;
+        return $turnover/1000000;
+    }
+
+    public function turnoverRange(){
+        $range = $this->highestTurnover() - $this->lowestTurnover();
+        return $range;
+    }
+
+    public function turnover_y_axis_values($ticks = 5){
+        
+        $ticks = $ticks - 1;
+        $interval = $this->turnoverRange() / $ticks;
+
+        $first = $this->lowestTurnover();
+        $second = $this->lowestTurnover() + $interval;
+        $third = $this->lowestTurnover() + ($interval * 2);
+        $forth = $this->lowestTurnover() + ($interval * 3);
+        $fifth = $this->highestTurnover();
+
+        $first = $first * 1;
+        $second = $second * 1;
+        $third = $third * 1;
+        $forth = $forth * 1;
+        $fifth = $fifth * 1;
+
+        
+        $first = number_format(round($first / 1), 0, ',' , '.' );
+        $second = number_format(round($second / 1), 0, ',' , '.' );
+        $third = number_format(round($third / 1), 0, ',' , '.' );
+        $forth = number_format(round($forth / 1), 0, ',' , '.' );
+        $fifth = number_format(round($fifth / 1), 0, ',' , '.' );
+        
+        $values = $first.','.$second.','.$third.','.$forth.','.$fifth;
+        return $values;
+    }
+
+    
+
+    // public function turnoverRange(){
+    //     $lower_turnover = Ranking::where('company_id', $this->id)->orderBy('turnover', 'ASC')->first()->turnover;
+    //     $higher_turnover = Ranking::where('company_id', $this->id)->orderBy('turnover', 'DESC')->first()->turnover;
+    //     $range = $higher_turnover - $lower_turnover;
+    //     $rounded_range = ceil(($range/1000)*1000);
+    //     return floor($rounded_range / 1000000);
+    // }
 
     public function ranking_y_axis_rounder(){
         // dd($this->turnoverRange());
@@ -258,15 +305,19 @@ class Company extends Model
         }
 
         elseif($this->turnoverRange() > 1000){
-            return 1000;
+            return 100;
         }
 
         elseif($this->turnoverRange() > 100){
             return 10;
         }
 
+        elseif($this->turnoverRange() > 30){
+            return 5;
+        }
+
         elseif($this->turnoverRange() > 10){
-            return 10;
+            return 5;
         }
 
         return 1;

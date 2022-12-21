@@ -61,7 +61,24 @@
 
                         {{-- Chart for turnover --}}
                         {{-- <div id="chart_div"></div> --}}
-                        {{$company->turnoverRange()}}
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <span>Highest turnover:</span>
+                            <span>{{$company->highestTurnover()}}</span>
+
+                            <span>Lowest turnover:</span>
+                            <span>{{$company->lowestTurnover()}}</span>
+
+                            <span>Range:</span>
+                            <span>{{$company->turnoverRange()}}</span>
+
+                            <span>Turnover values</span>
+                            <span>{{$company->chartDataForTurnover()}}</span>
+
+                            <span>Y axis values</span>
+                            <span>{{$company->turnover_y_axis_values()}}</span>
+                        </div>
+                        
                         <div class="bg-white">
                             <div id="turnoverChart"></div>
                         </div>
@@ -80,7 +97,7 @@
                                 @foreach($company->rankings as $ranking)
                                     <tr>
                                         <td class="text-center">{{$ranking->year}}</td>
-                                        <td class="text-center">{{formatEmployees   ($ranking->employees)}}</td>
+                                        <td class="text-center">{{formatEmployees($ranking->employees)}}</td>
                                         <td class="text-center">{{$ranking->calculateGrowth('employees')}}</td>
                                         <td>{{$ranking->sourceText()}}</td>
                                     </tr>
@@ -136,8 +153,8 @@
                     }
                 },
                 y: {
-                    // min: 0,
-                    // max: 1000,
+                    min: 100,
+                    max: 300,
                     // center: 0,
                     show: true,
                     label: {
@@ -145,11 +162,10 @@
                         position: 'outer-middle'
                     },
                     tick: {
-                        count: 4,
-                        // format: d3.format('$,')
-                        format: function (d) { return thousands_separators(Math.round(d/{{$company->ranking_y_axis_rounder()}})*{{$company->ranking_y_axis_rounder()}}) + ' Mio.'; },
-                        outer: false,
-                        // values: []
+                        count: 5,
+                        format: function (d) { return thousands_separators(d + ' Mio.'); },
+                        values:[{{$company->turnover_y_axis_values()}}]
+                        
                     }
                 },
             },

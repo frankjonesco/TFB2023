@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use Illuminate\Http\Request;
 
 class SiteController extends Controller
@@ -40,4 +41,12 @@ class SiteController extends Controller
     public function showPrivacy(){
         return view('privacy.show');
     }
-}
+
+
+    // SANDBOX
+    public function showSandbox(Company $company){
+        return view('sandbox.show', [
+            'company' => $company
+        ]);
+    }
+}   

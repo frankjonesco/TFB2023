@@ -38,6 +38,8 @@ Route::controller(SiteController::class)->group(function(){
     Route::get('/contact', 'showContact');
     Route::get('/blog', 'showBlog');
     Route::get('/forum', 'showForum');
+    
+    Route::get('/sandbox/{company}', 'showSandbox');
 });
 
 
@@ -123,7 +125,7 @@ Route::controller(CompanyController::class)->middleware('auth')->group(function(
 // Public routes for CompanyController
 Route::controller(CompanyController::class)->group(function(){
     Route::get('/rankings', 'index');
-    
+
     Route::get('/companies/{company}/{slug}', 'show');
 });
 
