@@ -18,6 +18,13 @@ class CompanyController extends Controller
             'companies' => $site->paginatePublicCompaniesAndRankingsLatest()
         ]);
     }
+
+    // Show single company
+    public function show(Company $company){
+        return view('companies.show', [
+            'company' => $company
+        ]);
+    }
     
 
     // ADMIN METHODS

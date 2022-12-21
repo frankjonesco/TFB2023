@@ -22,7 +22,7 @@
                                 alt="Top Family Business - {{$company->registered_name}}"
                                 class="w-6 mr-4 rounded border border-indigo-100 hover:border-amber-300 cursor-pointer"
                             >
-                            <a href="#">{{$company->show_name}}</a>
+                            <a href="/companies/{{$company->hex}}/{{$company->slug}}">{{$company->show_name}}</a>
                         </div>
                     </td>
                     <td class="text-center">{{$company->ranking->year}}</td>

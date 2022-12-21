@@ -123,6 +123,8 @@ Route::controller(CompanyController::class)->middleware('auth')->group(function(
 // Public routes for CompanyController
 Route::controller(CompanyController::class)->group(function(){
     Route::get('/rankings', 'index');
+    
+    Route::get('/companies/{company}/{slug}', 'show');
 });
 
 
