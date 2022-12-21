@@ -230,7 +230,7 @@ class Company extends Model
     public function chartDataForTurnover(){
         $array = [];
         foreach($this->rankings as $ranking){
-            $array[] = [$ranking->year, $ranking->turnover / 1000000];
+            $array[] = ['bok', $ranking->turnover / 1000000, 'as'];
         }
         return json_encode($array);
     }

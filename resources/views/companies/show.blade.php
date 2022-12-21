@@ -1,6 +1,6 @@
 <x-layout>
     {{-- For Google Charts --}}
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    {{-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> --}}
     
     {{-- For C3 Charts --}}
     <link href="{{asset('c3/c3.css')}}" rel="stylesheet">
@@ -60,9 +60,9 @@
                         {{-- End: Table for turnover --}}
 
                         {{-- Chart for turnover --}}
-                        <div id="chart_div"></div>
+                        {{-- <div id="chart_div"></div> --}}
                         <div class="bg-white">
-                            <div id="chart"></div>
+                            <div id="turnoverChart"></div>
                         </div>
                         {{-- End: Chart for turnover --}}
 
@@ -98,89 +98,84 @@
     </x-container>
 
     <script>
-    var chart = c3.generate({
-        bindto: '#chart',
-        data:{
-            columns:[
-                ['data1', 30, 200, 100, 400, 150, 250],
-            ],
-            axes:{
-                data2: 'y2'
-            }
-        },
-        axis:{
-            x:{
-                label:{
-                    text: 'X Label',
-                    position: 'bottom-center'
-                },
-                type: 'category',
-                categories: ['2013','2014','2015','2016','2017','2018'],
-                tick: {
-                  centered: true
-                }
-            },
-            y: {
-                label:{
-                    text: 'Y Label',
-                    position: 'outer-middle'
-                }
-            },
-        },
-        legend:{
 
-        },
-        tooltip:{
-            show: true,
-            format:{
-                title: function (x, index) { return 'Turnover ' + x; },
-                name: function (name, ratio, id, index) { return name; },
-                value: function (value, ratio, id, index) { return value; }
+        var chart = c3.generate({
+            bindto: document.getElementById('turnoverChart'),
+            data: {
+              columns: [
+                ['data1', 30, 200, 100, 400, 150, 250],
+                ['data2', 50, 20, 10, 40, 15, 25]
+              ]
+            },
+
+            size: {
+                // width: 640
+                // height: 480
+            },
+            padding: {
+                top: 30,
+                right: 50,
+                bottom: 20,
+                left: 50,
+            },
+
+            color: {
+                pattern: [
+                    '#1f77b4',
+                    '#aec7e8'
+                ]
+            },
+            transition: {
+                duration: 1000
             }
-        }
-    });
+
+
+            
+        });
+
     </script>
 
     <script>
-    google.charts.load('current', {packages: ['corechart', 'line']});
-    google.charts.setOnLoadCallback(drawBasic);
+        // google.charts.load('current', {'packages':['corechart']});
+        //   google.charts.setOnLoadCallback(drawChart);
 
-    function drawBasic() {
+        //   function drawChart() {
+        //     var dataTable = new google.visualization.DataTable();
+        //     dataTable.addColumn('number', 'Year');
+        //     dataTable.addColumn('number', 'Sales');
+        //     // A column for custom tooltip content
+        //     dataTable.addColumn({type: 'string', role: 'tooltip'});
+        //     dataTable.addRows([
+        //       [2010, 600, '$600K in our first year!'],
+        //       [2011, 1500, 'Sunspot activity made this our best year ever!'],
+        //       [2012, 800, '$800K in 2012.'],
+        //       [2013, 1000, '$1M in sales last year.']
+        //     ]);
 
-        var data = new google.visualization.DataTable();
-        data.addColumn('number', 'Year');
-        data.addColumn('number', 'Turnover');
+        //     var options = { legend: 'none' };
+        //     var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        //     chart.draw(dataTable, options);
+        //   }
 
-        data.addRows({{$company->chartDataForTurnover()}});
-
-        // data.addRows([
-        //     [2009, 10],
-        //     [2010, 15],
-        //     [2011, 3],
-        //     [2012, 5]
-        // ]);
-
-        var options = {
-            hAxis: {
-                title: 'Year',
-                format: '####'
-            },
-            vAxis: {
-                title: 'Turnover',
-                format: '###,### Mio €',
-            },
-            tooltip: {
-                format: {
-                    title: function (d) { return d; },
-                    value: function (y) { return formatNumber(y); }
-                }
-            
-            },
-        };
-
-        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-
-        chart.draw(data, options);
-    }
+        // google.charts.load('current', {'packages':['corechart']});
+        // google.charts.setOnLoadCallback(drawChart);
+        // function drawChart() {
+        //     var data = google.visualization.arrayToDataTable([
+        //         ['Year', 'Turnover'],
+        //         ['2015', 325653],
+        //         ['2016', 390343],
+        //         ['2017', 509876],
+        //         ['2018', 455622],
+        //         ['2019', 566987],
+        //     ]);
+        //     var options = {
+        //         tooltip: { isHtml: true },    // CSS styling affects only HTML tooltips.
+        //         legend: { position: 'none' },
+        //         bar: { groupWidth: '90%' },
+        //         colors: ['#A61D4C']
+        //     };
+        //     var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        //     chart.draw(data, options);
+        // }
     </script>
 </x-layout>
