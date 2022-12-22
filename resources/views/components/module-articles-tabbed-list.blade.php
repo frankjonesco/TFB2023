@@ -1,21 +1,21 @@
-<div class="mt-12">
-    
-    <ul class="flex w-full text-xs font-medium border-b-2 border-red-700" style="font-size:.75rem;" id="myTab">
-        <li class="w-1/3 p-3 bg-zinc-900 bg-red-700 text-center uppercase" id="tabPopular">
-            <a href="#" id="tabbedArticlesPopular" data-toggle="tab">Popular</a>
+<div class="mt-12 w-full">
+    <ul class="flex w-full text-xs font-medium border-b-2 border-red-500" style="font-size:.75rem;" id="myTab">
+        <li class="w-1/3 p-3 bg-red-500 text-white font-bold text-center uppercase" id="tabPopular">
+            <a href="#" id="tabbedArticlesPopular" class="text-white" data-toggle="tab">Popular</a>
         </li>
         <li class="w-1/3 p-3 border-l border-r border-zinc-400 bg-zinc-900 text-center uppercase">
-            <a href="#" id="tabbedArticlesRecent" data-toggle="tab" id="tabRecent">Recent</a>
+            <a href="#" id="tabbedArticlesRecent" class="text-white" data-toggle="tab" id="tabRecent">Recent</a>
         </li>
         <li class="w-1/3 p-3 bg-zinc-900 text-center uppercase">
-            <a href="#"  id="tabbedArticlesTop" data-toggle="tab" id="tabTop">Top Reviews</a>
+            <a href="#"  id="tabbedArticlesTop" class="text-white" data-toggle="tab" id="tabTop">Top Reviews</a>
         </li>
     </ul>
     <div class="tab-content">
+
         <div class="tab-pane active" id="popularArticles">
             <ul class="list-posts">
                 @foreach($articles['popular'] as $article)
-                    <li class="p-4 px-6 flex items-center border-b bg-gray-900">
+                    <li class="p-4 px-6 flex items-center border-b bg-slate-50">
                         <div class="bg-no-repeat bg-cover bg-center w-32 h-20 mr-6" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.50)), url('{{asset($article->getImageThumbnail())}}');">
                             
                         </div>
@@ -34,6 +34,7 @@
                 @endforeach
             </ul>
         </div>
+
         <div class="tab-pane hidden" id="recentArticles">
             <ul class="list-posts">
                 @foreach($articles['recent'] as $article)
@@ -56,6 +57,7 @@
                 @endforeach                
             </ul>										
         </div>
+
         <div class="tab-pane hidden" id="topArticles">
             <ul class="list-posts">
                 @foreach($articles['top'] as $article)
@@ -79,7 +81,6 @@
             </ul>										
         </div>
 
-        
     </div>
 
     <a href="/news">

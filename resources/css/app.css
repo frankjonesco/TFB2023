@@ -1,4 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400&display=swap');
 @import "@fortawesome/fontawesome-free/css/all.css";
 
 @tailwind base;
@@ -10,6 +10,7 @@
     /* Body */
 
     body{
+        font-family: 'Lato', sans-serif;
         @apply text-black;
         @apply bg-white;
         @apply dark:text-white;

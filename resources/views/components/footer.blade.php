@@ -42,11 +42,23 @@
             </div>
         </div>
     </div>
-    <div class="text-xs ml-12">
-        <span>Matchbird GmbH &copy; {{date('Y', time())}}</span>
-        <span class="text-zinc-400 mx-1"> | </span>
-        <a href="/terms" class="text-zinc-200">Terms</a>
-        <span class="text-zinc-400 mx-1"> | </span>
-        <a href="/privacy" class="text-zinc-200">Privacy</a>
+    <div class="text-xs mx-12">
+        <div class="flex">
+            <div class="grow">
+                <span>Matchbird GmbH &copy; {{date('Y', time())}}</span>
+                <span class="text-zinc-400 mx-1"> | </span>
+                <a href="/terms" class="text-zinc-200">Terms</a>
+                <span class="text-zinc-400 mx-1"> | </span>
+                <a href="/privacy" class="text-zinc-200">Privacy</a>
+            </div>
+            <div>
+                <a href="/" class="text-zinc-200">Home</a>
+                <span class="text-zinc-400 mx-1"> | </span>
+                <a href="/about" class="text-zinc-200">About</a>
+                <span class="text-zinc-400 mx-1"> | </span>
+                <a href="/contact" class="text-zinc-200">Contact</a>
+            </div>
+        </div>
+        
     </div>
 </footer>

@@ -1,14 +1,159 @@
 <div class="flex mb-7">
-    <h3 class="pl-1.5 pr-5 pb-3 border-b border-sky-500 uppercase text-lg">Stay connected</h3>
-    <span class="grow border-b border-zinc-500"></span>
+    <h3 class="pr-2 pb-3 border-b border-red-500 uppercase text-sm text-gray-800">Stay connected</h3>
+    <span class="grow border-b border-gray-200"></span>
 </div>
-<span class="socials content-center">
-    <ul class="flex space-x-8 text-5xl w-min mx-auto">
-        <li class="facebook"><a href="https://www.facebook.com/Matchbird-GmbH-1050852385302281" target="_blank" class="text-zinc-100 hover:!text-zinc-300"><i class="fab fa-center fa-facebook-f"></i></a></li>
-        <li class="twitter"><a href="https://twitter.com/matchbirdgmbh" target="_blank" class="text-zinc-100 hover:!text-zinc-300"><i class="fa-brands fa-center fa-twitter"></i></a></li>
-        <li class="instagram"><a href="https://www.instagram.com/matchbird.gmbh/" target="_blank" class="text-zinc-100 hover:!text-zinc-300"><i class="fa-brands fa-center fa-instagram"></i></a></li>
-        <li class="linkedin"><a href="https://www.linkedin.com/company/matchbird" target="_blank" class="text-zinc-100 hover:!text-zinc-300"><i class="fa-brands fa-center fa-linkedin-in"></i></a></li>
-        <li class="xing"><a href="https://www.xing.com/pages/matchbirdgmbh" target="_blank" class="text-zinc-100 hover:!text-zinc-300"><i class="fa-brands fa-center fa-xing"></i></a></li>
-        <li class="youtube"><a href="https://www.youtube.com/channel/UC4GnbbnwvAnl80_cVXJRuMA" target="_blank" class="text-zinc-100 hover:!text-zinc-300"><i class="fa-brands fa-center fa-youtube"></i></a></li>
-    </ul>
-</span>
+<style>
+
+ul.social-share li a.facebook {
+    background: #436feb;
+}
+
+ul.social-share li a {
+    display: inline-block;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    float: left;
+    width: 40px;
+    height: 40px;
+    color: #ffffff;
+    text-align: center;
+    position: relative;
+    line-height: 40px;
+    font-size: 14px;
+    margin-right: 16px;
+}
+ul.social-share li a:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    margin-top: -4px;
+    left: 100%;
+    width: 0;
+    height: 0;
+}
+
+/* Facebook */
+ul.social-share li a.facebook {
+    background: #436feb;
+}
+
+ul.social-share li a.facebook:after {
+    border: 4px solid #436feb;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-top-color: transparent;
+}
+
+/* Twitter */
+ul.social-share li a.twitter {
+    background: #1da1f2;
+}
+
+ul.social-share li a.twitter:after {
+    border: 4px solid #1da1f2;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-top-color: transparent;
+}
+
+/* Linkedin */
+ul.social-share li a.linkedin {
+    background: #0a66c2;
+}
+
+ul.social-share li a.linkedin:after {
+    border: 4px solid #0a66c2;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-top-color: transparent;
+}
+
+/* Instagram */
+ul.social-share li a.instagram {
+    background: #c32aa3;
+}
+
+ul.social-share li a.instagram:after {
+    border: 4px solid #c32aa3;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-top-color: transparent;
+}
+
+/* Xing */
+ul.social-share li a.xing {
+    background: #126567;
+}
+
+ul.social-share li a.xing:after {
+    border: 4px solid #126567;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-top-color: transparent;
+}
+
+/* Youtube */
+ul.social-share li a.youtube {
+    background: #ff0000;
+}
+
+ul.social-share li a.youtube:after {
+    border: 4px solid #ff0000;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-top-color: transparent;
+}
+
+
+
+</style>
+
+<ul class="social-share grid grid-cols-2 gap-4 text-gray-600 text-xs">
+    <li class="bg-sky-50 flex items-center">
+        <a href="https://www.facebook.com/Matchbird-GmbH-1050852385302281/" class="facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <div>
+            <span class="block text-gray-600 font-bold">11.644</span>
+            <span class="font-light">Followers</span>
+        </div>
+    </li>
+    <li class="bg-sky-50 flex items-center">
+        <a href="https://www.instagram.com/matchbird.gmbh/" class="instagram"><i class="fa-brands fa-instagram"></i></a>
+        <div>
+            <span class="block text-gray-600 font-bold">3.490</span>
+            <span class="font-light">Followers</span>
+        </div>
+    </li>
+    <li class="bg-sky-50 flex items-center">
+        <a href="https://twitter.com/matchbirdgmbh/" class="twitter"><i class="fa-brands fa-twitter"></i></a>
+        <div>
+            <span class="block text-gray-600 font-bold">5.326</span>
+            <span class="font-light">Followers</span>
+        </div>
+    </li>
+    <li class="bg-sky-50 flex items-center">
+        <a href="https://www.linkedin.com/company/matchbird/" class="linkedin"><i class="fa-brands fa-linkedin-in"></i></a>
+        <div>
+            <span class="block text-gray-600 font-bold">1.983</span>
+            <span class="font-light">Connections</span>
+        </div>
+    </li>
+    
+    <li class="bg-sky-50 flex items-center">
+        <a href="https://www.youtube.com/channel/UC4GnbbnwvAnl80_cVXJRuMA" class="youtube"><i class="fa-brands fa-youtube"></i></a>
+        <div>
+            <span class="block text-gray-600 font-bold">4.387</span>
+            <span class="font-light">Subscribers</span>
+        </div>
+    </li>
+    <li class="bg-sky-50 flex items-center">
+        <a href="https://www.xing.com/pages/matchbirdgmbh" class="xing"><i class="fa-brands fa-xing"></i></a>
+        <div>
+            <span class="block text-gray-600 font-bold">897</span>
+            <span class="font-light">Followers</span>
+        </div>
+    </li>
+    
+</ul>

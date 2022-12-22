@@ -1,7 +1,8 @@
 <x-layout>
-    <x-container>
+    
+    <x-container-full-w>
         {{-- News grid --}}
-        <div class="grid grid-cols-2 gap-3 my-3">
+        <div class="grid grid-cols-2 gap-3 m-3">
             {{-- Leading articles --}}
             <div class="w-full">
                 @php
@@ -88,82 +89,77 @@
         </div>
 
         {{-- Featured articles --}}
-        <div class="flex">
-            <div class="mt-6 pl-3 pr-12 w-2/3 border-r border-zinc-500">
+        <div class="bg-repeat" style="background-image:url('../images/bg.png');">
+            <div class="flex w-3/4 mx-auto px-12 bg-white">
+                <div class="mt-3 pl-3 pr-4 w-2/3 border-r border-gray-200">
 
-                <div class="flex mb-7">
-                    <h3 class="pl-1.5 pb-3 border-b border-sky-500 uppercase text-lg">Today's featured</h3>
-                    <span class="grow border-b border-zinc-500"></span>
-                </div>
+                    <div class="flex mb-7">
+                        <h3 class="pr-2 pb-3 border-b border-red-500 uppercase text-sm text-gray-800">Today's features</h3>
+                        <span class="grow border-b border-gray-200"></span>
+                    </div>
 
-                <div class="flex">
-                    <div class="mr-6">
-                        @foreach($highlighted_feature_articles as $article)
-                            <div class="bg-no-repeat bg-cover bg-center px-4 py-5 mb-6 flex flex-col justify-end overflow-hidden w-96 h-72" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.85)), url('{{asset('images/articles/'.$article->hex.'/'.$article->image)}}');">
-                                <div class="flex flex-col justify-center items-center h-full">
-                                    <span class="bg-lime-600 w-max px-2 py-1 rounded-lg text-xs font-bold">
-                                        Top Stories
-                                    </span>
-                                    <h3 class="pt-3 pb-3 text-center">
-                                        <a href="/news/articles/{{$article->hex}}/{{$article->slug}}" class="text-zinc-100 hover:!text-zinc-100 hover:!text-opacity-80">
-                                            {{$article->title}}
-                                        </a>
-                                    </h3>
-                                    <span class="text-xs italic">
-                                        <span class="mr-3">
+                    <div class="flex">
+                        <div class="w-1/2 mr-6">
+                            @foreach($highlighted_feature_articles as $article)
+                                <div class="bg-no-repeat bg-cover bg-center px-4 py-5 mb-6 flex flex-col justify-end overflow-hidden h-72" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.85)), url('{{asset('images/articles/'.$article->hex.'/'.$article->image)}}');">
+                                    <div class="flex flex-col justify-center items-center h-full">
+                                        <span class="bg-lime-600 w-max px-2 py-1 rounded text-xs font-bold">
+                                            Top Stories
+                                        </span>
+                                        <h3 class="pt-3 pb-3 text-center">
+                                            <a href="/news/articles/{{$article->hex}}/{{$article->slug}}" class="text-zinc-100 hover:!text-zinc-100 hover:!text-opacity-80">
+                                                {{$article->title}}
+                                            </a>
+                                        </h3>
+                                        <span class="text-xs italic">
+                                            <span class="mr-3">
+                                                <i class="fa-regular fa-clock mr-1"></i>
+                                                {{showDate($article->created_at)}}
+                                            </span>
+                                            <span>
+                                                <i class="fa-regular fa-eye mr-1"></i>
+                                                {{$article->views}}
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="w-1/2">
+                            @foreach($featured_articles as $article)
+                                <div class="flex pb-2.5 mb-2.5 w-full border-b border-gray-200">
+                                    <div>
+                                        <div class="w-28 h-20 bg-no-repeat bg-cover bg-center px-4 flex flex-col justify-end overflow-hidden" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.85)), url('{{asset('images/articles/'.$article->hex.'/'.$article->image)}}');"></div>
+                                    </div>
+                                    <div class="flex flex-col pl-4 self-center">
+                                        <span class="text-gray-400 text-xs italic">
+                                            Top Stories
+                                        </span> 
+                                        <h4 class="pt-1 pb-2 text-gray-500 text-xs font-bold">
+                                            <a href="/news/articles/{{$article->hex}}/{{$article->slug}}" class="text-slate-900 hover:!text-red-500">
+                                                {{$article->title}}
+                                            </a>
+                                            </h4>
+                                        <span class="text-xs text-gray-400 italic">
                                             <i class="fa-regular fa-clock mr-1"></i>
                                             {{showDate($article->created_at)}}
                                         </span>
-                                        <span>
-                                            <i class="fa-regular fa-eye mr-1"></i>
-                                            {{$article->views}}
-                                        </span>
-                                    </span>
+                                    </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                            {{-- <button class="w-full mt-2">View all articles</button> --}}
+                        </div>
                     </div>
-                    <div class="w-full">
-                        @foreach($featured_articles as $article)
-                            <div class="flex pb-2 mb-2 w-full border-b border-zinc-700 border-dotted">
-                                <div class="w-36 h-28 bg-no-repeat bg-cover bg-center px-4 flex flex-col justify-end overflow-hidden" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.85)), url('{{asset('images/articles/'.$article->hex.'/'.$article->image)}}');"></div>
-                                <div class="flex flex-col pl-4 self-center">
-                                    <span class="{{$color}} w-max px-1.5 py-0.5 rounded-lg text-xs font-bold">
-                                        Top Stories
-                                    </span>
-                                    <h4 class="pt-1 pb-2">{{$article->title}}</h4>
-                                    <span class="text-xs text-zinc-500 italic">
-                                        <i class="fa-regular fa-clock mr-1"></i>
-                                        {{showDate($article->created_at)}}
-                                    </span>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
+
+                </div>
+
+                <div class="mt-3 pl-4 w-1/3">
+                    <x-module-socials />
+                    <x-module-articles-tabbed-list :articles="$tabbed_articles" />
+                    <x-module-comments :comments="$comments" />
                 </div>
 
             </div>
-
-            <div class="mt-6 px-12 w-1/3">
-                <div class="flex mb-7">
-                    <h3 class="pl-1.5 pr-5 pb-3 border-b border-sky-500 uppercase text-lg">Stay connected</h3>
-                    <span class="grow border-b border-zinc-500"></span>
-                </div>
-
-                <span class="socials content-center">
-                    <ul class="flex space-x-8 text-5xl w-min mx-auto">
-                        <li class="facebook"><a href="https://www.facebook.com/Matchbird-GmbH-1050852385302281" target="_blank" class="text-zinc-100 hover:!text-zinc-300"><i class="fab fa-center fa-facebook-f"></i></a></li>
-                        <li class="twitter"><a href="https://twitter.com/matchbirdgmbh" target="_blank" class="text-zinc-100 hover:!text-zinc-300"><i class="fa-brands fa-center fa-twitter"></i></a></li>
-                        <li class="instagram"><a href="https://www.instagram.com/matchbird.gmbh/" target="_blank" class="text-zinc-100 hover:!text-zinc-300"><i class="fa-brands fa-center fa-instagram"></i></a></li>
-                        <li class="linkedin"><a href="https://www.linkedin.com/company/matchbird" target="_blank" class="text-zinc-100 hover:!text-zinc-300"><i class="fa-brands fa-center fa-linkedin-in"></i></a></li>
-                        <li class="xing"><a href="https://www.xing.com/pages/matchbirdgmbh" target="_blank" class="text-zinc-100 hover:!text-zinc-300"><i class="fa-brands fa-center fa-xing"></i></a></li>
-                        <li class="youtube"><a href="https://www.youtube.com/channel/UC4GnbbnwvAnl80_cVXJRuMA" target="_blank" class="text-zinc-100 hover:!text-zinc-300"><i class="fa-brands fa-center fa-youtube"></i></a></li>
-                    </ul>
-                </span>
-
-                <x-module-comments :comments="$comments" />
-            </div>
-
         </div>
 
     </x-container>
