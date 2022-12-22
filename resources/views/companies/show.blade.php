@@ -168,6 +168,14 @@
             transition: {
                 duration: 1000
             },
+            grid: {
+                x: {
+                    show: true
+                },
+                y: {
+                    show: true
+                }
+            }
         });
 
         // EMPLOYEES CHART
@@ -218,6 +226,14 @@
             transition: {
                 duration: 1000
             },
+            grid: {
+                x: {
+                    show: true
+                },
+                y: {
+                    show: true
+                }
+            }
         });
     </script>
 </x-layout>
