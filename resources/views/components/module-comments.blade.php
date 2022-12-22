@@ -1,12 +1,51 @@
 <div class="flex mb-7 mt-16">
-    <h3 class="pl-1.5 pr-5 pb-3 border-b border-sky-500 uppercase text-lg">Recent comments</h3>
-    <span class="grow border-b border-zinc-500"></span>
+    <h3 class="pr-2 pb-3 border-b border-red-500 uppercase text-sm text-gray-800">Recent comments</h3>
+    <span class="grow border-b border-gray-200"></span>
 </div>
+
+<style>
+.comment-bubble{
+    margin-bottom:1rem;
+    padding:1rem;
+    position: relative;
+    background: #fafafa;
+    border: 1px solid #f0f0f0;
+    width: 250px;
+    height: 350px;
+}
+
+.comment-bubble:after, .comment-bubble:before {
+    right: 100%;
+    top: 31px;
+    border: 1px solid #f0f0f0;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.comment-bubble:after {
+    border-color: rgba(136, 183, 213, 0);
+    border-right-color: #fafafa;
+    border-width: 15px;
+    margin-top: -15px;
+}
+
+.comment-bubble:before {
+    border-color: rgba(194, 225, 245, 0);
+    border-right-color: #f0f0f0;
+    border-width: 17px;
+    margin-top: -17px;
+}
+
+
+</style>
 
 @foreach($comments as $comment)
     <div class="flex">
-        <img src="{{asset('images/users/'.$comment->user->hex.'/tn-'.$comment->user->image)}}" alt="{{$comment->user->full_name}}" class="w-10 h-10 mr-4 rounded-full border border-lime-400">
-        <div class="p-4 mb-5 text-zinc-400 text-sm bg-gray-800 border border-zinc-900 rounded-md overflow-hidden">
+        <img src="{{asset('images/users/'.$comment->user->hex.'/tn-'.$comment->user->image)}}" alt="{{$comment->user->full_name}}" class="w-16 h-16 mr-4 rounded-full border border-gray-400">
+        <div class="comment-bubble rounded w-full ml-3">
             {!!linkify($comment->body)!!}
         </div>
     </div>
