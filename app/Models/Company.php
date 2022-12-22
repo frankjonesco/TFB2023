@@ -227,22 +227,31 @@ class Company extends Model
         return asset('images/companies/'.$this->hex.'/tn-'.$this->image);
     }
 
-    // public function chartDataForTurnover(){
-    //     $array = [];
-    //     foreach($this->rankings as $ranking){
-    //         $array[] = [$ranking->year, $ranking->turnover / 1000000];
-    //     }
-    //     return json_encode($array);
-    // }
+    
 
-    public function chartDataForTurnover(){
-        $array = [];
-        foreach($this->rankings()->orderBy('year', 'ASC')->get() as $ranking){
-            $array[] = round($ranking->turnover);
-        }
-        return implode(',', $array);
+    // Functions for turnover and employees charts
+
+    // Fetch array of 'years' where this company has turnover data
+    public function turnoverYears(){
+        $years = Ranking::where('company_id', $this->id)
+            ->where('turnover', '!=', null)
+            ->orderBy('year', 'ASC')
+            ->pluck('year')
+            ->toArray();
+        return implode(',', $years);
     }
 
+     // Fetch array of 'turnovers' for this company
+    public function rankingTurnovers(){
+        $turnovers = Ranking::where('company_id', $this->id)
+            ->where('turnover', '!=', null)
+            ->orderBy('turnover', 'ASC')
+            ->pluck('turnover')
+            ->toArray();
+        return implode(',', $turnovers);
+    }
+
+    // Find the lowest turnover for this company
     public function lowestTurnover($format = 'rounded'){
         $turnover = Ranking::where('company_id', $this->id)->orderBy('turnover', 'ASC')->first()->turnover;
         $turnover = floor($turnover/100000000)*100000000;
@@ -252,6 +261,7 @@ class Company extends Model
         return $turnover;
     }
 
+    // Find the highest turnover for this company
     public function highestTurnover($format = 'rounded'){
         $turnover = Ranking::where('company_id', $this->id)->orderBy('turnover', 'DESC')->first()->turnover;
         $turnover = ceil($turnover/100000000)*100000000;
@@ -261,11 +271,13 @@ class Company extends Model
         return $turnover;
     }
 
+    // Find the range between the highest and lowest turnovers for this company
     public function turnoverRange(){
         $range = $this->highestTurnover('full') - $this->lowestTurnover('full');
         return $range;
     }
 
+    // Round the value for the lower scale of the Y axis
     public function turnover_low_y_axis(){
         $digits = strlen($this->turnoverRange());
         if($digits >= 11){
@@ -280,6 +292,7 @@ class Company extends Model
         return floor($this->lowestTurnover()/$rounder)*$rounder;
     }
 
+    // Round the value for the higher scale of the Y axis
     public function turnover_high_y_axis(){
         $digits = strlen($this->turnoverRange());
         if($digits >= 11){
@@ -294,83 +307,96 @@ class Company extends Model
         return ceil($this->highestTurnover()/$rounder)*$rounder;
     }
 
-    public function turnover_y_axis_values($ticks = 5){
-        
-        $ticks = $ticks - 1;
-        $interval = $this->turnoverRange() / $ticks;
 
-        $first = $this->lowestTurnover('full');
-        $second = $this->lowestTurnover('full') + $interval;
-        $third = $this->lowestTurnover('full') + ($interval * 2);
-        $forth = $this->lowestTurnover('full') + ($interval * 3);
-        $fifth = $this->highestTurnover('full');
 
-        $first = $first * 1;
-        $second = $second * 1;
-        $third = $third * 1;
-        $forth = $forth * 1;
-        $fifth = $fifth * 1;
 
-        
-        // $first = number_format(round($first / 1), 0, ',' , '.' );
-        // $second = number_format(round($second / 1), 0, ',' , '.' );
-        // $third = number_format(round($third / 1), 0, ',' , '.' );
-        // $forth = number_format(round($forth / 1), 0, ',' , '.' );
-        // $fifth = number_format(round($fifth / 1), 0, ',' , '.' );
-        
-        $values = $first.','.$second.','.$third.','.$forth.','.$fifth;
-        return $values;
-    }
 
-    public function rankingYears(){
-        $years = Ranking::where('company_id', $this->id)->orderBy('year', 'ASC')->pluck('year')->toArray();
-        // $years = ['2013', '2014', '2015', '2016', '2017', '2018'];
-        // dd($years);
+
+
+
+    // Fetch array of 'years' where this company has employees data
+    public function employeesYears(){
+        $years = Ranking::where('company_id', $this->id)
+            ->where('employees', '!=', null)
+            ->orderBy('year', 'ASC')
+            ->pluck('year')
+            ->toArray();
         return implode(',', $years);
     }
 
-    public function rankingTurnovers(){
-        $turnovers = Ranking::where('company_id', $this->id)->orderBy('turnover', 'ASC')->pluck('turnover')->toArray();
-        // $years = ['2013', '2014', '2015', '2016', '2017', '2018'];
-        // dd($years);
-        return implode(',', $turnovers);
+     // Fetch array of 'employees' for this company
+    public function rankingEmployees(){
+        $employees = Ranking::where('company_id', $this->id)
+            ->where('employees', '!=', null)
+            ->orderBy('year', 'ASC')
+            ->pluck('employees')
+            ->toArray();
+        return implode(',', $employees);
     }
+
+    // Find the lowest employees for this company
+    public function lowestEmployees($format = 'rounded'){
+        $employees = Ranking::where('company_id', $this->id)->orderBy('employees', 'ASC')->first()->employees;
+        if($format === 'full'){
+            return $employees;
+        }
+        return floor($employees/100)*100;
+    }
+
+    // Find the highest employees for this company
+    public function highestEmployees($format = 'rounded'){
+        $employees = Ranking::where('company_id', $this->id)->orderBy('turnover', 'DESC')->first()->employees;
+        if($format === 'full'){
+            return $employees;
+        }
+        return ceil($employees/100)*100;
+    }
+
+    // Find the range between the highest and lowest turnovers for this company
+    public function employeesRange(){
+        $range = $this->highestEmployees('full') - $this->lowestEmployees('full');
+        return $range;
+    }
+
+    // Round the value for the lower scale of the Y axis
+    public function employees_low_y_axis(){
+        $digits = strlen($this->employeesRange());
+        if($digits >= 11){
+            $rounder = 10000000000;
+        }
+        elseif($digits >= 5){
+            $rounder = 10000;
+        }
+        else{
+            $rounder = 1;
+        }
+        return floor($this->lowestEmployees()/$rounder)*$rounder;
+    }
+
+    // Round the value for the higher scale of the Y axis
+    public function employees_high_y_axis(){
+        $digits = strlen($this->employeesRange());
+        if($digits >= 11){
+            $rounder = 10000000000;
+        }
+        if($digits >= 5){
+            $rounder = 10000;
+        }
+        else{
+            $rounder = 1;
+        }
+        
+        return ceil($this->highestEmployees()/$rounder)*$rounder;
+    }
+
+
+
 
     
 
-    // public function turnoverRange(){
-    //     $lower_turnover = Ranking::where('company_id', $this->id)->orderBy('turnover', 'ASC')->first()->turnover;
-    //     $higher_turnover = Ranking::where('company_id', $this->id)->orderBy('turnover', 'DESC')->first()->turnover;
-    //     $range = $higher_turnover - $lower_turnover;
-    //     $rounded_range = ceil(($range/1000)*1000);
-    //     return floor($rounded_range / 1000000);
-    // }
-
-    public function ranking_y_axis_rounder(){
-        // dd($this->turnoverRange());
-        if($this->turnoverRange() > 10000){
-            return 10000;
-        }
-
-        elseif($this->turnoverRange() > 1000){
-            return 100;
-        }
-
-        elseif($this->turnoverRange() > 100){
-            return 10;
-        }
-
-        elseif($this->turnoverRange() > 30){
-            return 5;
-        }
-
-        elseif($this->turnoverRange() > 10){
-            return 5;
-        }
-
-        return 1;
-    }
     
+
+
 
 
 }

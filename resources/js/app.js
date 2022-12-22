@@ -67,3 +67,5 @@ window.updateCompanySlug = function (input, slug, inputField){
         }
     }
 }
+
+
