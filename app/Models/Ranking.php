@@ -16,6 +16,9 @@ class Ranking extends Model
         if($percentChange){
             return number_format($percentChange, 2);
         }
+        if($previous){
+            return number_format(0, 2);
+        }
     }
 
     

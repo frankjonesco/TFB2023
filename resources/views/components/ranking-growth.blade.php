@@ -10,11 +10,11 @@
         <span class="text-xs">%</span> 
         <i class="fa-solid fa-arrow-up text-xs"></i>
     </div>   
-    @elseif($growth === 0)
+@elseif(!empty($growth))
     <div class="text-gray-400 text-xs">
         {{$growth}}
         <span class="text-xs">%</span> 
-        <i class="fa-solid fa-arrow-up text-xs"></i>
+        <i class="fa-solid fa-arrow-right"></i>
     </div>   
 @endif
 

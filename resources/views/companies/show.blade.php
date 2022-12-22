@@ -46,14 +46,19 @@
                         
                         <table class="text-sm">
                             <thead class="p-0">
-                                <th class="p-0 py-2 text-center">Year</th>
+                                <th class="px-0.5 pl-2 py-2">Year</th>
                                 <th class="p-0 py-2 px-8">Turnover</th>
                                 <th class="p-0 py-2">Growth</th>
                             </thead>
                             <tbody>
                                 @foreach($company->rankings as $ranking)
                                     <tr>
-                                        <td class="px-0.5 pl-2 py-2 text-center text-xs !font-normal text-white">{{$ranking->year}}</td>
+                                        <td class="px-0.5 pl-2 py-2 text-xs !font-normal text-white">
+                                            {{$ranking->year}}
+                                            @if($ranking->confirmed_by_company)
+                                                <span class="text-xs">*</span>
+                                            @endif
+                                        </td>
                                         <td class="py-2 px-8 text-xs">{{formatTurnover($ranking->turnover)}}</td>
                                         <td class="px-0.5 py-2 text-right text-xs">
                                             <x-ranking-growth growth="{{$ranking->calculateGrowth('turnover')}}" />
@@ -63,6 +68,10 @@
                             </tbody>
                         </table>
                         {{-- End: Table for turnover --}}
+                        <div class="mt-5 text-zinc-100 text-xs font-thin no-results flex flex-col">
+                            <span class="mr-2 font-light">Source:</span>
+                            <span class="grow">{!!$company->rankingSources()!!}</span> 
+                        </div>
                     </div>
                     <div class="w-3/4">
                         {{-- Chart for turnover --}}                        
@@ -80,14 +89,19 @@
                     <div class="w-1/4 mr-10">
                         <table class="text-sm">
                             <thead class="p-0">
-                                <th class="p-0 py-2 text-center">Year</th>
+                                <th class="px-0.5 pl-2 py-2">Year</th>
                                 <th class="p-0 py-2 px-8">Employees</th>
                                 <th class="p-0 py-2">Growth</th>
                             </thead>
                             <tbody>
                                 @foreach($company->rankings as $ranking)
                                     <tr>
-                                        <td class="px-0.5 pl-2 py-2 text-center text-xs !font-normal text-white">{{$ranking->year}}</td>
+                                        <td class="px-0.5 pl-2 py-2 text-xs !font-normal text-white">
+                                            {{$ranking->year}}
+                                            @if($ranking->confirmed_by_company)
+                                                <span class="text-xs">*</span>
+                                            @endif
+                                        </td>
                                         <td class="py-2 px-8 text-xs">{{formatEmployees($ranking->employees)}}</td>
                                         <td class="px-0.5 py-2 text-right text-xs">
                                             <x-ranking-growth growth="{{$ranking->calculateGrowth('employees')}}" />
@@ -97,6 +111,10 @@
                             </tbody>
                         </table>
                         {{-- End: Table for employees --}}
+                        <div class="mt-5 text-zinc-100 text-xs font-thin no-results flex flex-col">
+                            <span class="mr-2 font-light">Source:</span>
+                            <span class="grow">{!!$company->rankingSources()!!}</span> 
+                        </div>
                     </div>
 
                     <div class="w-3/4">
@@ -175,6 +193,11 @@
                 y: {
                     show: true
                 }
+            },
+            tooltip: {
+                format: {
+                    title: function (x, index) { return 'Turnover ' + x; }
+                }
             }
         });
 
@@ -228,12 +251,21 @@
             },
             grid: {
                 x: {
-                    show: true
+                    show: true,
+                    
                 },
                 y: {
                     show: true
                 }
+            },
+            tooltip: {
+                format: {
+                    title: function (x, index) { return 'Employees ' + x; },
+                    name: function (name, ratio, id, index) { return name; }
+                },
+                
             }
+            
         });
     </script>
 </x-layout>

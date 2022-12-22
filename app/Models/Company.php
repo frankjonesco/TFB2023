@@ -231,6 +231,26 @@ class Company extends Model
 
     // Functions for turnover and employees charts
 
+    public function rankingSources(){
+        if($this->rankings){
+            $confirmed = true;
+            if(!Ranking::where('company_id', $this->id)->where('confirmed_by_company', true)->get()){
+                return 'Matchbird research';
+            }
+
+            elseif(!Ranking::where('company_id', $this->id)->where('confirmed_by_company', false)->get()){
+                return $this->show_name;
+            }
+
+            else{
+                return '<ul><li class="p-0.5">'.$this->show_name.' *</li><li class="p-0.5">Matchbird research</li></ul>';
+            }
+
+        }
+        
+        
+    }
+
     // Fetch array of 'years' where this company has turnover data
     public function turnoverYears(){
         $years = Ranking::where('company_id', $this->id)
