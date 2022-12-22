@@ -20,9 +20,6 @@ class CommentSeeder extends Seeder
         // Import comments
         $comments = Comment::on('mysql_import')->get();
 
-
-        
-
         foreach($comments as $comment){
 
             $user_id = User::where('old_id', $comment->user_id)->first() ? User::where('old_id', $comment->user_id)->first()->id : null;
@@ -36,8 +33,14 @@ class CommentSeeder extends Seeder
                     'body' => $comment->comment
                 ]);
             }
-            
-            
         }
+
+        // DUMMY ARTICLE COMMENTS
+        Comment::create([
+            'user_id' => $user_id,
+            'resource_type' => $comment->resource_type,
+            'resource_id' => $resource_id,
+            'body' => $comment->comment
+        ]);
     }
 }

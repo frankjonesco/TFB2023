@@ -61,5 +61,124 @@ class UserSeeder extends Seeder
             public_path('import_images/users/default-profile-pic-female.jpg'),
             public_path('images/users/profile-pic-female.jpg')
         );
+
+
+        // DUMMY PUBLIC USERS
+
+        //Jennifer Wilcox
+        User::create([
+            'hex' => 'gZTl3cNBLPt',
+            'user_type_id' => 1,
+            'first_name' => 'Jennifer',
+            'last_name' => 'Wilcox',
+            'username' => 'jWils92',
+            'email' => 'jennifer.wilcox@gmail.com',
+            'email_verified_at' => time(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password,
+            'remember_token' => Str::random(10),
+            'image' => 'sngAwi5o9o9.jpg',
+            'gender' => 'female',
+            'country_iso' => 'US',
+            'color_fill_id' => 10,
+        ]);
+
+        File::makeDirectory(public_path('images/users/gZTl3cNBLPt/'), 0777, true, true);
+
+        File::copy(
+            public_path('import_images/users/dummies/jwilcox.jpg'),
+            public_path('images/users/gZTl3cNBLPt/sngAwi5o9o9.jpg')
+        );
+        
+        File::copy(
+            public_path('import_images/users/dummies/jwilcox.jpg'),
+            public_path('images/users/gZTl3cNBLPt/tn-sngAwi5o9o9.jpg')
+        );
+
+        // Julian Thorpe
+        User::create([
+            'hex' => 'S3dTl8DfkJ7',
+            'user_type_id' => 1,
+            'first_name' => 'Julian',
+            'last_name' => 'Thorpe',
+            'username' => 'thorpomatic',
+            'email' => 'julian.thorpe@gmail.com',
+            'email_verified_at' => time(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password,
+            'remember_token' => Str::random(10),
+            'image' => 'gjUTZnwoVV2.jpg',
+            'gender' => 'male',
+            'country_iso' => 'NO',
+            'color_fill_id' => 7,
+        ]);
+
+        File::makeDirectory(public_path('images/users/S3dTl8DfkJ7/'), 0777, true, true);
+
+        File::copy(
+            public_path('import_images/users/dummies/jthorpe.jpg'),
+            public_path('images/users/S3dTl8DfkJ7/gjUTZnwoVV2.jpg')
+        );
+        
+        File::copy(
+            public_path('import_images/users/dummies/jthorpe.jpg'),
+            public_path('images/users/S3dTl8DfkJ7/tn-gjUTZnwoVV2.jpg')
+        );
+
+        // Sara Gerber
+        User::create([
+            'hex' => 'x5DQYTBOA44',
+            'user_type_id' => 1,
+            'first_name' => 'Sara',
+            'last_name' => 'Gerber',
+            'username' => 'GerbilQueen',
+            'email' => 'sara.gerber@gmail.com',
+            'email_verified_at' => time(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password,
+            'remember_token' => Str::random(10),
+            'image' => 'fiwgKJCXmmr.jpg',
+            'gender' => 'male',
+            'country_iso' => 'NO',
+            'color_fill_id' => 7,
+        ]);
+
+        File::makeDirectory(public_path('images/users/x5DQYTBOA44/'), 0777, true, true);
+
+        File::copy(
+            public_path('import_images/users/dummies/sgerber.jpg'),
+            public_path('images/users/x5DQYTBOA44/fiwgKJCXmmr.jpg')
+        );
+        
+        File::copy(
+            public_path('import_images/users/dummies/sgerber.jpg'),
+            public_path('images/users/x5DQYTBOA44/tn-fiwgKJCXmmr.jpg')
+        );
+
+        // Alex Sterling
+        User::create([
+            'hex' => 'PvIhVLMPUff',
+            'user_type_id' => 1,
+            'first_name' => 'Alex',
+            'last_name' => 'Sterling',
+            'username' => 'sterling_castle983',
+            'email' => 'alex.sterling@gmail.com',
+            'email_verified_at' => time(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password,
+            'remember_token' => Str::random(10),
+            'image' => 'aDBGLkNf8O1.jpg',
+            'gender' => 'male',
+            'country_iso' => 'NL',
+            'color_fill_id' => 12,
+        ]);
+
+        File::makeDirectory(public_path('images/users/PvIhVLMPUff/'), 0777, true, true);
+
+        File::copy(
+            public_path('import_images/users/dummies/asterling.jpg'),
+            public_path('images/users/PvIhVLMPUff/aDBGLkNf8O1.jpg')
+        );
+        
+        File::copy(
+            public_path('import_images/users/dummies/asterling.jpg'),
+            public_path('images/users/PvIhVLMPUff/tn-aDBGLkNf8O1.jpg')
+        );
     }
 }

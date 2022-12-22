@@ -16,6 +16,11 @@ class Comment extends Model
         return $this->belongsTo(Company::class, 'company_id');
     }
 
+    // Relationship to article
+    public function article(){
+        return $this->belongsTo(Article::class, 'resource_id');
+    }
+
     // Relationship to user
     public function user(){
         return $this->belongsTo(User::class);

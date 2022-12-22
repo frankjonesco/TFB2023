@@ -43,10 +43,11 @@
 </style>
 
 @foreach($comments as $comment)
-    <div class="flex">
+    <div class="flex text-gray-600 text-xs">
         <img src="{{asset('images/users/'.$comment->user->hex.'/tn-'.$comment->user->image)}}" alt="{{$comment->user->full_name}}" class="w-16 h-16 mr-4 rounded-full border border-gray-400">
-        <div class="comment-bubble rounded w-full ml-3">
+        <div class="comment-bubble rounded w-full ml-3 italic">
             {!!linkify($comment->body)!!}
         </div>
+        {{$comment->article->title}}
     </div>
 @endforeach
