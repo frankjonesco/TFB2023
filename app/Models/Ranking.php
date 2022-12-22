@@ -14,7 +14,7 @@ class Ranking extends Model
         $previous = Ranking::where(['company_id' => $this->company_id, 'year' => $this->year - 1])->first();
         $percentChange = ($previous ? (($this->$column - $previous->$column) / (($this->$column + $previous->$column) / 2)) * 100 : null);
         if($percentChange){
-            return number_format($percentChange, 2).'%';
+            return number_format($percentChange, 2);
         }
     }
 

@@ -385,7 +385,8 @@ class Company extends Model
         else{
             $rounder = 1;
         }
-        
+        // dd($this->highestEmployees('full'));
+        // dd(ceil($this->highestEmployees()/$rounder)*$rounder);
         return ceil($this->highestEmployees()/$rounder)*$rounder;
     }
 

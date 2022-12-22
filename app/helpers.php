@@ -63,7 +63,7 @@ use Illuminate\Support\Facades\Config;
     // Format employees
     if(!function_exists('formatEmployees')){
         function formatEmployees($employees){
-            return number_format(round($employees), 0, '.' , ',' );
+            return number_format(round($employees), 0, ',' , '.' );
         }
     }
 

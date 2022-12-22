@@ -16,8 +16,14 @@
                 </div>
                 {{-- Company layout --}}
                 <div class="flex">
-                
-                    <div class="">
+                    <div class="w-1/4 mr-10">
+                        <img 
+                            src="{{$company->getImageThumbnail()}}"
+                            alt="Top Family Business - {{$company->registered_name}}"
+                            class="w-full mr-4 rounded border border-indigo-100 hover:border-amber-300 cursor-pointer"
+                        >
+                    </div>
+                    <div class="w-3/4">
                         <h2>{{$company->show_name}}</h2>
                         <div class="flex mb-5">
                             <div class="w-1/2">
@@ -33,24 +39,25 @@
                     </div>
                 </div>
 
+                <h2 class="mt-12">Turnover</h2>
                 <div class="flex">
                     <div class="w-1/4 mr-10">
                         {{-- Table for turnover --}}
-                        <h2>Turnover</h2>
+                        
                         <table class="text-sm">
                             <thead class="p-0">
-                                <th class="p-0 text-center">Year</th>
-                                <th class="p-0 w-full text-center">Turnover</th>
-                                <th class="p-0 text-right">Growth</th>
-                                <th></th>
+                                <th class="p-0 py-2 text-center">Year</th>
+                                <th class="p-0 py-2 px-8">Turnover</th>
+                                <th class="p-0 py-2">Growth</th>
                             </thead>
                             <tbody>
                                 @foreach($company->rankings as $ranking)
                                     <tr>
-                                        <td class="px-0.5 pl-2 py-2 text-center text-sm">{{$ranking->year}}</td>
-                                        <td class="px-0.5 py-2 text-center text-sm">{{formatTurnover($ranking->turnover)}}</td>
-                                        <td class="px-0.5 py-2 text-right text-sm">{{$ranking->calculateGrowth('turnover')}}</td>
-                                        <td class="px-0.5 pr-2 py-2 text-right text-xs"><i class="fa-solid fa-fire {{$ranking->sourceIconColor()}}"></i></td>
+                                        <td class="px-0.5 pl-2 py-2 text-center text-xs !font-normal text-white">{{$ranking->year}}</td>
+                                        <td class="py-2 px-8 text-xs">{{formatTurnover($ranking->turnover)}}</td>
+                                        <td class="px-0.5 py-2 text-right text-xs">
+                                            <x-ranking-growth growth="{{$ranking->calculateGrowth('turnover')}}" />
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -59,33 +66,40 @@
                     </div>
                     <div class="w-3/4">
                         {{-- Chart for turnover --}}                        
-                        <div class="mt-6 mb-12 pb-6 rounded-lg bg-white">
+                        <div class="mb-12 pb-6 rounded-lg bg-white">
                             <div id="turnoverChart"></div>
                         </div>
                         {{-- End: Chart for turnover --}}
+                    </div>
+                </div>
 
-                        {{-- Table for employees --}}
-                        <h2>Employees</h2>
-                        <table>
-                            <thead>
-                                <th class="text-center">Year</th>
-                                <th class="text-center">Employees</th>
-                                <th class="text-center">Growth</th>
-                                <th></th>
+
+
+                <h2 class="mt-12">Employees</h2>
+                <div class="flex">
+                    <div class="w-1/4 mr-10">
+                        <table class="text-sm">
+                            <thead class="p-0">
+                                <th class="p-0 py-2 text-center">Year</th>
+                                <th class="p-0 py-2 px-8">Employees</th>
+                                <th class="p-0 py-2">Growth</th>
                             </thead>
                             <tbody>
                                 @foreach($company->rankings as $ranking)
                                     <tr>
-                                        <td class="text-center">{{$ranking->year}}</td>
-                                        <td class="text-center">{{formatEmployees($ranking->employees)}}</td>
-                                        <td class="text-center">{{$ranking->calculateGrowth('employees')}}</td>
-                                        <td>{{$ranking->sourceText()}}</td>
+                                        <td class="px-0.5 pl-2 py-2 text-center text-xs !font-normal text-white">{{$ranking->year}}</td>
+                                        <td class="py-2 px-8 text-xs">{{formatEmployees($ranking->employees)}}</td>
+                                        <td class="px-0.5 py-2 text-right text-xs">
+                                            <x-ranking-growth growth="{{$ranking->calculateGrowth('employees')}}" />
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
                         {{-- End: Table for employees --}}
+                    </div>
 
+                    <div class="w-3/4">
                         {{-- Chart for employees --}}                        
                         <div class="mt-6 mb-12 pb-6 rounded-lg bg-white">
                             <div id="employeesChart"></div>
