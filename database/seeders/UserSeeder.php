@@ -180,5 +180,63 @@ class UserSeeder extends Seeder
             public_path('import_images/users/dummies/asterling.jpg'),
             public_path('images/users/PvIhVLMPUff/tn-aDBGLkNf8O1.jpg')
         );
+
+        // Gordon Fuller
+        User::create([
+            'hex' => 'mDWQsA15bfP',
+            'user_type_id' => 1,
+            'first_name' => 'Gordon',
+            'last_name' => 'Fuller',
+            'username' => 'GF1985',
+            'email' => 'gordon.fuller@gmail.com',
+            'email_verified_at' => time(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password,
+            'remember_token' => Str::random(10),
+            'image' => 'xgrLHgc6QeK.jpg',
+            'gender' => 'male',
+            'country_iso' => 'DE',
+            'color_fill_id' => 4,
+        ]);
+
+        File::makeDirectory(public_path('images/users/mDWQsA15bfP/'), 0777, true, true);
+
+        File::copy(
+            public_path('import_images/users/dummies/gfuller.jpg'),
+            public_path('images/users/mDWQsA15bfP/xgrLHgc6QeK.jpg')
+        );
+        
+        File::copy(
+            public_path('import_images/users/dummies/gfuller.jpg'),
+            public_path('images/users/mDWQsA15bfP/tn-xgrLHgc6QeK.jpg')
+        );
+
+        // Elly Holms
+        User::create([
+            'hex' => '2kmnwhNsLHu',
+            'user_type_id' => 1,
+            'first_name' => 'Elly',
+            'last_name' => 'Holms',
+            'username' => 'EH198475',
+            'email' => 'elly.holms@gmail.com',
+            'email_verified_at' => time(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password,
+            'remember_token' => Str::random(10),
+            'image' => 'aKlU3CPOaBg.jpg',
+            'gender' => 'female',
+            'country_iso' => 'US',
+            'color_fill_id' => 2,
+        ]);
+
+        File::makeDirectory(public_path('images/users/2kmnwhNsLHu/'), 0777, true, true);
+
+        File::copy(
+            public_path('import_images/users/dummies/gfuller.jpg'),
+            public_path('images/users/2kmnwhNsLHu/aKlU3CPOaBg.jpg')
+        );
+        
+        File::copy(
+            public_path('import_images/users/dummies/gfuller.jpg'),
+            public_path('images/users/2kmnwhNsLHu/tn-aKlU3CPOaBg.jpg')
+        );
     }
 }
