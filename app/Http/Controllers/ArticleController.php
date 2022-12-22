@@ -24,7 +24,7 @@ class ArticleController extends Controller
             'featured_articles' => Article::latest()->skip(9)->take(6)->get(),
             'tabbed_articles' => $tabbed_articles,
             'articles' => $site->publicArticles(),
-            'comments' => Comment::latest()->take(6)->get()
+            'comments' => Comment::where('resource_type', 'article')->latest()->take(6)->get()
         ]);
     }
 
