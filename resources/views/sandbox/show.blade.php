@@ -50,10 +50,10 @@
                             <span class="p-2 font-light border-b border-stone-400">{{$company->turnover_y_axis_values()}}</span>
 
                             <span class="p-2 font-bold border-b border-stone-400">Set low Y axis:</span>
-                            <span class="p-2 font-light border-b border-stone-400">{{floor(197000000000/10000000000)*10000000000}}</span>
+                            <span class="p-2 font-light border-b border-stone-400">{{$company->turnover_low_y_axis()}}</span>
 
                             <span class="p-2 font-bold border-b border-stone-400">Set high Y axis:</span>
-                            <span class="p-2 font-light border-b border-stone-400">{{ceil(235800000000/10000000000)*10000000000}}</span>
+                            <span class="p-2 font-light border-b border-stone-400">{{$company->turnover_high_y_axis()}}</span>
 
                             
                         </div>
@@ -113,8 +113,10 @@
                     }
                 },
                 y: {
-                    min: {{floor(197000000000/10000000000)*10000000000}},
-                    max: {{ceil(235800000000/10000000000)*10000000000}},
+                    // min: {{floor($company->lowestTurnover('full')/1000000000)*1000000000}},
+                    // max: {{ceil($company->highestTurnover('full')/1000000000)*1000000000}},
+                    min: {{$company->turnover_low_y_axis()}},
+                    max: {{$company->turnover_high_y_axis()}},
                     // center: 0,
                     show: true,
                     tick: {

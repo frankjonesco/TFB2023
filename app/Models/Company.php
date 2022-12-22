@@ -266,6 +266,34 @@ class Company extends Model
         return $range;
     }
 
+    public function turnover_low_y_axis(){
+        $digits = strlen($this->turnoverRange());
+        if($digits >= 11){
+            $rounder = 10000000000;
+        }
+        elseif($digits >= 10){
+            $rounder = 1000000000;
+        }
+        elseif($digits >= 9){
+            $rounder = 100000000;
+        }
+        return floor($this->lowestTurnover()/$rounder)*$rounder;
+    }
+
+    public function turnover_high_y_axis(){
+        $digits = strlen($this->turnoverRange());
+        if($digits >= 11){
+            $rounder = 10000000000;
+        }
+        if($digits >= 10){
+            $rounder = 1000000000;
+        }
+        elseif($digits >= 9){
+            $rounder = 100000000;
+        }
+        return ceil($this->highestTurnover()/$rounder)*$rounder;
+    }
+
     public function turnover_y_axis_values($ticks = 5){
         
         $ticks = $ticks - 1;
