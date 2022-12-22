@@ -9,6 +9,7 @@
             </div>
             <div class="mt-6 px-12 w-1/3">
                 <x-module-socials />
+                <x-module-articles-tabbed-list :articles="$articles" />
             </div>
         </div>
     </x-container>

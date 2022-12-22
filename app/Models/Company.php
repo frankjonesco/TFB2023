@@ -235,15 +235,15 @@ class Company extends Model
         if($this->rankings){
             $confirmed = true;
             if(!Ranking::where('company_id', $this->id)->where('confirmed_by_company', true)->get()){
-                return 'Matchbird research';
+                return '<span class="mr-2 font-light">Source:</span><ul><li class="p-0.5">Matchbird research</li></ul>';
             }
 
             elseif(!Ranking::where('company_id', $this->id)->where('confirmed_by_company', false)->get()){
-                return $this->show_name;
+                return '<span class="mr-2 font-light">Source:</span><ul><li class="p-0.5">'.$this->show_name.' *</li></ul>';
             }
 
             else{
-                return '<ul><li class="p-0.5">'.$this->show_name.' *</li><li class="p-0.5">Matchbird research</li></ul>';
+                return '<span class="mr-2 font-light">Sources:</span><ul><li class="p-0.5">'.$this->show_name.' *</li><li class="p-0.5">Matchbird research</li></ul>';
             }
 
         }

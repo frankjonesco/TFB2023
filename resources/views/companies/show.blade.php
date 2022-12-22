@@ -22,6 +22,11 @@
                             alt="Top Family Business - {{$company->registered_name}}"
                             class="w-full mr-4 rounded border border-indigo-100 hover:border-amber-300 cursor-pointer"
                         >
+                        <div class="flex flex-col">
+                            <div>
+                                {{$company->website}}
+                            </div>
+                        </div>
                     </div>
                     <div class="w-3/4">
                         <h2>{{$company->show_name}}</h2>
@@ -69,7 +74,6 @@
                         </table>
                         {{-- End: Table for turnover --}}
                         <div class="mt-5 text-zinc-100 text-xs font-thin no-results flex flex-col">
-                            <span class="mr-2 font-light">Source:</span>
                             <span class="grow">{!!$company->rankingSources()!!}</span> 
                         </div>
                     </div>
@@ -112,7 +116,6 @@
                         </table>
                         {{-- End: Table for employees --}}
                         <div class="mt-5 text-zinc-100 text-xs font-thin no-results flex flex-col">
-                            <span class="mr-2 font-light">Source:</span>
                             <span class="grow">{!!$company->rankingSources()!!}</span> 
                         </div>
                     </div>

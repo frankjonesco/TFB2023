@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Company;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,15 @@ class SiteController extends Controller
 {
     // Show homepage
     public function home(){
-        return view('home');
+        
+        $articles['popular'] = Article::take(5)->latest()->get();
+        $articles['recent'] = Article::skip(5)->take(5)->latest()->get();
+        $articles['top'] = Article::skip(10)->take(5)->latest()->get();
+
+        return view('home', [
+            'articles' => $articles
+        ]);
+
     }
 
     // Show about
