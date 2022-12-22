@@ -35,4 +35,21 @@ class Ranking extends Model
 
         return $text;
     }
+
+
+    public function sourceIconColor(){
+
+        switch ($this->source) {
+            case 0:
+                $icon = 'text-red-500';
+                break;
+            case 1:
+                $icon = 'text-lime-700';
+                break;
+            default:
+                $icon = 'text-sky-700';
+        }
+
+        return $icon;
+    }
 }
