@@ -28,7 +28,7 @@
 
                 <hr>
                 
-                <h3>Datenverarbeitung durch den Besuch unserer Website<h3>
+                <h3>Datenverarbeitung durch den Besuch unserer Website</h3>
                 <p>Wenn Sie unsere Webseiten aufrufen, ist es technisch notwendig, dass über Ihren Internetbrowser Daten an unseren Webserver übermittelt werden. Folgende Daten werden während einer laufenden Verbindung zur Kommunikation zwischen Ihrem Internetbrowser und unserem Webserver aufgezeichnet:</p>
                 
                 <ul>
