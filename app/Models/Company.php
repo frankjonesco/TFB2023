@@ -345,7 +345,7 @@ class Company extends Model
 
     // Find the highest employees for this company
     public function highestEmployees($format = 'rounded'){
-        $employees = Ranking::where('company_id', $this->id)->orderBy('turnover', 'DESC')->first()->employees;
+        $employees = Ranking::where('company_id', $this->id)->orderBy('employees', 'DESC')->first()->employees;
         if($format === 'full'){
             return $employees;
         }
