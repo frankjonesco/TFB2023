@@ -44,10 +44,10 @@ class SiteController extends Controller
 
 
     // SANDBOX
-    public function showSandbox(Company $company){
-        $company->rankings = $company->rankings()->orderBy('year', 'DESC')->get();
-        return view('sandbox.show', [
-            'company' => $company
-        ]);
-    }
+    // public function showSandbox(Company $company){
+    //     $company->rankings = $company->rankings()->orderBy('year', 'DESC')->get();
+    //     return view('sandbox.show', [
+    //         'company' => $company
+    //     ]);
+    // }
 }   

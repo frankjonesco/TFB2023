@@ -39,7 +39,7 @@ Route::controller(SiteController::class)->group(function(){
     Route::get('/blog', 'showBlog');
     Route::get('/forum', 'showForum');
     
-    Route::get('/sandbox/{company}', 'showSandbox');
+    // Route::get('/sandbox/{company}', 'showSandbox');
 });
 
 
