@@ -175,6 +175,8 @@
                         <button class="btn btn-plain"><i class="fa-solid fa-refresh mr-1.5"></i> View more features</button>
                     </div>
 
+
+                    <x-layout-articles-grid :articles="$grid_articles" />
                 </div>
 
                 <div class="mt-3 pl-4 w-1/3">

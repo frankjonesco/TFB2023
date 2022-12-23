@@ -3,6 +3,7 @@
 use App\Models\Company;
 use App\Models\Ranking;
 use App\Models\Sponsor;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Config;
 
@@ -29,6 +30,13 @@ use Illuminate\Support\Facades\Config;
     if(!function_exists('linkify')){
         function linkify($text) {
             return preg_replace('@(https?://([-\w\.]+)+(:\d+)?(/([\w/_\.%-=#]*(\?\S+)?)?)?)@', '<a href="$1">$1</a>', $text);
+        }
+    }
+
+    // Truncate
+    if(!function_exists('truncate')){
+        function truncate($str, $limit = 45) {
+            return Str::limit($str, $limit);
         }
     }
 

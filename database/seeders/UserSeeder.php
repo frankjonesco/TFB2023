@@ -230,12 +230,12 @@ class UserSeeder extends Seeder
         File::makeDirectory(public_path('images/users/2kmnwhNsLHu/'), 0777, true, true);
 
         File::copy(
-            public_path('import_images/users/dummies/gfuller.jpg'),
+            public_path('import_images/users/dummies/eholms.jpg'),
             public_path('images/users/2kmnwhNsLHu/aKlU3CPOaBg.jpg')
         );
         
         File::copy(
-            public_path('import_images/users/dummies/gfuller.jpg'),
+            public_path('import_images/users/dummies/eholms.jpg'),
             public_path('images/users/2kmnwhNsLHu/tn-aKlU3CPOaBg.jpg')
         );
     }

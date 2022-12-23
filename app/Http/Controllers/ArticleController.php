@@ -13,9 +13,9 @@ class ArticleController extends Controller
 {
     // Show all public articles
     public function index(Site $site){
-        $tabbed_articles['popular'] = Article::take(5)->latest()->get();
-        $tabbed_articles['recent'] = Article::skip(5)->take(5)->latest()->get();
-        $tabbed_articles['top'] = Article::skip(10)->take(5)->latest()->get();
+        $tabbed_articles['popular'] = Article::latest()->skip(15)->take(5)->get();
+        $tabbed_articles['recent'] = Article::latest()->skip(20)->take(5)->get();
+        $tabbed_articles['top'] = Article::latest()->skip(25)->take(5)->get();
 
         return view('articles.index', [
             'leading_articles' => Article::latest()->take(3)->get(),
@@ -23,7 +23,7 @@ class ArticleController extends Controller
             'highlighted_feature_articles' => Article::latest()->skip(7)->take(2)->get(),
             'featured_articles' => Article::latest()->skip(9)->take(6)->get(),
             'tabbed_articles' => $tabbed_articles,
-            'articles' => $site->publicArticles(),
+            'grid_articles' => Article::latest()->skip(30)->take(6)->get(),
             'comments' => Comment::where('resource_type', 'article')->latest()->take(6)->get()
         ]);
     }
