@@ -1,3 +1,14 @@
+<script>
+    function gridMouseOver(id) {
+        document.getElementById('title_' + id).classList.remove('bg-zinc-900', 'bg-opacity-70');
+        document.getElementById('title_' + id).classList.add('bg-red-500', 'bg-opacity-90');
+    } 
+    function gridMouseOut(id) {
+        document.getElementById('title_' + id).classList.remove('bg-red-500', 'bg-opacity-90');
+        document.getElementById('title_' + id).classList.add('bg-zinc-900', 'bg-opacity-70');
+    } 
+</script>
+
 <div class="flex mb-7 mt-16">
     <h3 class="pr-2 pb-3 border-b border-red-500 uppercase text-sm text-gray-800">Articles grid</h3>
     <span class="grow border-b border-gray-200"></span>
@@ -21,13 +32,3 @@
         </a>
     @endforeach
 </div>
-<script>
-    function gridMouseOver(id) {
-        document.getElementById('title_' + id).classList.remove('bg-zinc-900', 'bg-opacity-70');
-        document.getElementById('title_' + id).classList.add('bg-red-500', 'bg-opacity-90');
-    } 
-    function gridMouseOut(id) {
-        document.getElementById('title_' + id).classList.remove('bg-red-500', 'bg-opacity-90');
-        document.getElementById('title_' + id).classList.add('bg-zinc-900', 'bg-opacity-70');
-    } 
-</script>

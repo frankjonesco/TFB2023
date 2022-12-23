@@ -184,6 +184,7 @@
                 <div class="mt-3 pl-4 w-1/3">
                     <x-module-socials />
                     <x-module-articles-tabbed-list :articles="$tabbed_articles" />
+                    <x-module-features :articles="$random_articles" />
                     <x-module-comments :comments="$comments" />
                 </div>
 
