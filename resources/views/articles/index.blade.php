@@ -185,6 +185,7 @@
                     <x-module-socials />
                     <x-module-articles-tabbed-list :articles="$tabbed_articles" />
                     <x-module-features :articles="$random_articles" />
+                    <x-module-subscribe />
                     <x-module-comments :comments="$comments" />
                 </div>
 
