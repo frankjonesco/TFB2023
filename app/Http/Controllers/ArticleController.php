@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\File;
 
 class ArticleController extends Controller
 {
-    // Show all public articles
+    // Show main news page
     public function index(Site $site){
         $tabbed_articles['popular'] = Article::latest()->skip(15)->take(5)->get();
         $tabbed_articles['recent'] = Article::latest()->skip(20)->take(5)->get();
@@ -33,6 +33,13 @@ class ArticleController extends Controller
             'list_articles' => Article::latest()->skip(48)->paginate(4),
             'random_articles' => Article::orderBy(DB::raw('RAND()'))->take(3)->get(),
             'comments' => Comment::where('resource_type', 'article')->latest()->take(6)->get()
+        ]);
+    }
+
+    // Show article index
+    public function articleIndex(Site $site){
+        return view('articles.article-index', [
+            'articles' => Article::latest()->paginate(10),
         ]);
     }
 

@@ -68,6 +68,7 @@ Route::controller(ArticleController::class)->middleware('auth')->group(function(
 // Public routes for ArticleController
 Route::controller(ArticleController::class)->group(function(){
     Route::get('/news', 'index');
+    Route::get('/news/articles', 'articleIndex');
     Route::get('/news/articles/{article}/{slug}', 'show');
 });
 

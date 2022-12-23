@@ -1,4 +1,4 @@
-<div class="flex mb-7 mt-16">
+<div class="flex mb-7">
     <h3 class="pr-2 pb-3 border-b border-red-500 uppercase text-sm text-gray-800">Latest articles</h3>
     <span class="grow border-b border-gray-200"></span>
 </div>
