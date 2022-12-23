@@ -96,8 +96,8 @@
         @apply text-stone-500;
         @apply text-xs;
         @apply !bg-gray-100;
-        @apply hover:!bg-stone-200;
-        @apply hover:!text-stone-600;
+        @apply hover:!bg-yellow-50;
+        @apply hover:!text-stone-500;
         @apply border;
         @apply border-stone-300;
     }

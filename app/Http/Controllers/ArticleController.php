@@ -29,6 +29,7 @@ class ArticleController extends Controller
             'tabbed_articles' => $tabbed_articles,
             'grid_articles' => Article::latest()->skip(30)->take(6)->get(),
             'slide_table_articles' => $slide_table_articles,
+            'list_articles' => Article::latest()->skip(48)->paginate(4),
             'comments' => Comment::where('resource_type', 'article')->latest()->take(6)->get()
         ]);
     }
