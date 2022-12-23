@@ -10,7 +10,7 @@
                 <div id="{{$article->hex}}" onmouseover="gridMouseOver(this.id)" onmouseout="gridMouseOut(this.id)" class="w-72 h-56 mr-6 bg-no-repeat bg-cover bg-center flex flex-col justify-end overflow-hidden" style="background-image: url('{{asset('images/articles/'.$article->hex.'/'.$article->image)}}');"></div>
             </a>
             <div>
-                <h3 class="py-2">
+                <h3 class="pt-0 pb-2">
                     <a href="/news/articles/{{$article->hex}}/{{$article->slug}}" class="text-slate-700 hover:!text-red-500">{{$article->title}}</a>
                 </h3>
                 <span class="text-xs italic">
@@ -40,4 +40,4 @@
     @endforeach
 </div>
 
-<x-pagination table="articles" :results="$articles" />
+<x-pagination-public table="articles" :results="$articles" />
