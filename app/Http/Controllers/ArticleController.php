@@ -17,6 +17,10 @@ class ArticleController extends Controller
         $tabbed_articles['recent'] = Article::latest()->skip(20)->take(5)->get();
         $tabbed_articles['top'] = Article::latest()->skip(25)->take(5)->get();
 
+        $slide_table_articles['first'] = Article::latest()->skip(36)->take(4)->get();
+        $slide_table_articles['second'] = Article::latest()->skip(40)->take(4)->get();
+        $slide_table_articles['third'] = Article::latest()->skip(44)->take(4)->get();
+
         return view('articles.index', [
             'leading_articles' => Article::latest()->take(3)->get(),
             'latest_articles' => Article::latest()->skip(3)->take(4)->get(),
@@ -24,6 +28,7 @@ class ArticleController extends Controller
             'featured_articles' => Article::latest()->skip(9)->take(6)->get(),
             'tabbed_articles' => $tabbed_articles,
             'grid_articles' => Article::latest()->skip(30)->take(6)->get(),
+            'slide_table_articles' => $slide_table_articles,
             'comments' => Comment::where('resource_type', 'article')->latest()->take(6)->get()
         ]);
     }

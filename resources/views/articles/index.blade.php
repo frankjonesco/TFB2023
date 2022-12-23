@@ -177,6 +177,7 @@
 
 
                     <x-layout-articles-grid :articles="$grid_articles" />
+                    <x-layout-articles-slide-table :articles="$slide_table_articles" />
                 </div>
 
                 <div class="mt-3 pl-4 w-1/3">
