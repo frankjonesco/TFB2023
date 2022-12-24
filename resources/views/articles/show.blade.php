@@ -32,10 +32,9 @@
                         {{$article->image_caption}}
                     </span>
                     {!!$article->body!!}
-                    <div class="flex mb-7">
-                        <h3 class="pl-1.5 pr-4 pb-3 border-b border-sky-500 uppercase text-lg">You may also like</h3>
-                        <span class="grow border-b border-zinc-500"></span>
-                    </div>
+                    
+
+                    <x-layout-articles-comments />
                 </div>
                 <div class="mt-3 pl-4 w-1/3">
                     <x-module-socials />
