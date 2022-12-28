@@ -1,42 +1,45 @@
-<x-layout-heading heading="Comments" class="heading-mt" />
-<div id="commentsList">
-    @foreach($article->comments as $comment)
-        <div class="flex text-gray-600 text-sm mb-6">
-            <img src="" alt="" class="w-14 h-14 mr-3 rounded-full border border-gray-400">
-            <div>
-                <div class="comment-bubble rounded w-full ml-3 mb-2.5 px-4 py-2 italic bg-slate-50 !border-stone-200">
-                    {!!linkify($comment->body)!!}
-                </div>
-                <div class="ml-7 text-xs">
-                    <div class="mt-1 text-xs italic text-gray-400"><i class="fa-solid fa-user mr-1.5"></i>{{$comment->author_name}} - {{showDateTime($comment->created_at)}}</div>
+
+@if(count($article->publicComments) > 0)
+    <x-layout-heading heading="Comments" class="heading-mt" />
+    <div id="commentsList">
+        @foreach($article->publicComments as $comment)
+            <div class="flex text-gray-600 text-sm mb-6">
+                <img src="{{$comment->authorImage()}}" alt="" class="w-14 h-14 mr-3 rounded-full border border-gray-400">
+                <div>
+                    <div class="comment-bubble rounded ml-3 mb-2.5 px-4 py-2 italic bg-slate-50 !border-stone-200">
+                        {!!linkify($comment->body)!!}
+                    </div>
+                    <div class="ml-7 text-xs">
+                        <div class="mt-1 text-xs italic text-gray-400"><i class="fa-solid fa-user mr-1.5"></i>{{$comment->author_name}} - {{showDateTime($comment->created_at)}}</div>
+                    </div>
                 </div>
             </div>
-        </div>
-    @endforeach
-</div>
+        @endforeach
+    </div>
+@endif
 
 <x-layout-heading heading="Leave a comment" class="heading-mt" />
 
-<form id="commentForm" action="/news/articles/post-comment" x-data="submitComment()" method="POST" @submit.prevent="submitData()">
+<form id="commentForm" action="/news/articles/post-comment" method="POST" x-data="submitComment()" @submit.prevent="submitData()">
     @csrf
     <input type="hidden" name="hex" x-model="formData.hex" value="{{$article->hex}}">
     <div class="flex flex-col mb-3">
         <div class="form-block flex">
             <div class="w-1/2 mr-2">
                 <label for="name" class="text-gray-600">Name</label>
-                <input type="text" name="name" placeholder="Your name" x-model="formData.name" class="!bg-gray-50 !rounded !border !border-gray-300 focus:!border-sky-400 !p-2 !text-sm !text-gray-500 !outline-0 !placeholder-gray-400">
+                <input id="commentName" type="text" name="name" placeholder="Your name" x-model="formData.name" class="!bg-gray-50 !rounded !border !border-gray-300 focus:!border-sky-400 !p-2 !text-sm !text-gray-500 !outline-0 !placeholder-gray-400">
             </div>
             <div class="w-1/2">
                 <label for="name" class="text-gray-600">Email</label>
-                <input type="email" name="email" placeholder="Email address" x-model="formData.email" class="!bg-gray-50 !rounded !border !border-gray-300 focus:!border-sky-400 !p-2 !text-sm !text-gray-500 !outline-0 !placeholder-gray-400">
+                <input id="commentEmail" type="email" name="email" placeholder="Email address" x-model="formData.email" class="!bg-gray-50 !rounded !border !border-gray-300 focus:!border-sky-400 !p-2 !text-sm !text-gray-500 !outline-0 !placeholder-gray-400">
             </div>
         </div>
         <div class="form-block">
             <label for="comment">Comment</label>
-            <textarea name="body" rows="5" placeholder="Type your comment" x-model="formData.comment" class="!bg-gray-50 !rounded !border !border-gray-300 focus:!border-sky-400 !p-2 !text-sm !text-gray-500 !outline-0 !placeholder-gray-400"></textarea>
+            <textarea id="commentBody" name="body" rows="5" placeholder="Type your comment" x-model="formData.body" class="!bg-gray-50 !rounded !border !border-gray-300 focus:!border-sky-400 !p-2 !text-sm !text-gray-500 !outline-0 !placeholder-gray-400"></textarea>
         </div>
         <div class="form-block">
-            <button type="submit" class="btn btn-plain mt-3">
+            <button id="commentSubmitBtn" type="submit" class="btn btn-plain mt-3">
                 <i class="fa-solid fa-comments mr-1"></i>
                 Leave comment
             </button>
@@ -66,16 +69,12 @@
                 })
                 .then(response => response.json())
                 .then(result => {
-                    console.log('Success:', result.created_at);
-                    // document.getElementById('commentsList').innerHTML += '<b>'+result.body+'</b>';
-                    document.getElementById('commentsList').innerHTML += '<div class="flex text-gray-600 text-sm mb-6"><img src="" alt="" class="w-14 h-14 mr-3 rounded-full border border-gray-400"><div><div class="comment-bubble rounded w-full ml-3 mb-2.5 px-4 py-2 italic bg-slate-50 !border-stone-200">{!!linkify("' + result.body + '")!!}</div><div class="ml-7 text-xs"><div class="mt-1 text-xs italic text-gray-400"><i class="fa-solid fa-user mr-1.5"></i>' + result.author_name + ' - </div></div></div></div>';
-                    //   this.message = 'likes: ' + result;
-                    // document.getElementById('likeCount').textContent=result;
-                    // document.getElementById('likeForm').classList.add('d-none');
-                    // document.getElementById('unlikeForm').classList.remove('d-none');
-
-
-                                      
+                    // console.log('Success:', result);
+                    document.getElementById('commentsList').innerHTML += '<div class="flex text-gray-600 text-sm mb-6"><img src="" alt="" class="w-14 h-14 mr-3 rounded-full border border-gray-400"><div><div class="comment-bubble rounded w-full ml-3 mb-2.5 px-4 py-2 italic bg-slate-50 !border-stone-200">{!!linkify("' + result.body + '")!!}</div><div class="ml-7 text-xs"><div class="mt-1 text-xs italic text-gray-400"><i class="fa-solid fa-user mr-1.5"></i>' + result.author_name + ' - Just now</div></div></div></div>';
+                    document.getElementById('commentName').value = null;
+                    document.getElementById('commentEmail').value = null;
+                    document.getElementById('commentBody').value = null;
+                    document.getElementById('commentSubmitBtn').blur();
                 })
                 .catch(() => {
                     console.log('Ooops! Something went wrong!');

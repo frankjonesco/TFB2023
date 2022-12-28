@@ -62,11 +62,11 @@ class ArticleController extends Controller
         $request->validate([
             'name' => 'required|min:2',
             'email' => 'required|email',
-            'comment' => 'required',
+            'body' => 'required',
         ]);
 
         $article = Article::where('hex', $request->hex)->first();
-
+        
         $comment = new Comment();
 
         $comment->resource_type = 'article';
@@ -74,8 +74,10 @@ class ArticleController extends Controller
         $comment->author_name = $request->name;
         $comment->author_email = $request->email;
         $comment->body = $request->body;
+        $comment->status = 'public';
 
         if($comment->save()){
+            $comment = Comment::find($comment->id);
             session()->put('commentPosted', true);
             return json_encode($comment);
         }

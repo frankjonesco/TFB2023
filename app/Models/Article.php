@@ -37,6 +37,11 @@ class Article extends Model
         return $this->hasMany(Comment::class, 'resource_id');
     }
 
+    // Relationship to comments
+    public function publicComments(){
+        return $this->hasMany(Comment::class, 'resource_id')->where('status', 'public');
+    }
+
 
     // ACCESSOR METHODS
 

@@ -28,4 +28,12 @@ class Comment extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+
+    // RETRIEVAL METHODS
+
+    // Get comment author image
+    public function authorImage(){
+        return asset('images/users/profile-pic-male.jpg');
+    }
 }
