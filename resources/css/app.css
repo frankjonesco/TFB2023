@@ -34,8 +34,8 @@
     h3{
         @apply text-xl;
         @apply font-semibold;
-        @apply pt-5;
-        @apply pb-5;
+        @apply pt-3;
+        @apply pb-3;
     }
 
     /* Buttons */
@@ -264,8 +264,8 @@
     }
 
     hr{
-        @apply my-4;
-        @apply border-zinc-500;
+        @apply my-8;
+        @apply border-gray-200;
     }
 
     a{
