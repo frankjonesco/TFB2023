@@ -9,6 +9,9 @@ class Comment extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['resource_type', 'resource_id', 'author_name', 'author_email', 'body'];
+    
+
     // RELATIONSHIPS
 
     // Relationship to company

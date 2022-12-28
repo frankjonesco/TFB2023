@@ -33,7 +33,7 @@
         </div>
         <div class="form-block">
             <label for="comment">Comment</label>
-            <textarea name="comment" rows="5" placeholder="Type your comment" x-model="formData.comment" class="!bg-gray-50 !rounded !border !border-gray-300 focus:!border-sky-400 !p-2 !text-sm !text-gray-500 !outline-0 !placeholder-gray-400"></textarea>
+            <textarea name="body" rows="5" placeholder="Type your comment" x-model="formData.comment" class="!bg-gray-50 !rounded !border !border-gray-300 focus:!border-sky-400 !p-2 !text-sm !text-gray-500 !outline-0 !placeholder-gray-400"></textarea>
         </div>
         <div class="form-block">
             <button type="submit" class="btn btn-plain mt-3">
@@ -66,7 +66,7 @@
                 })
                 .then(response => response.json())
                 .then(result => {
-                    console.log('Success:', result.author_name);
+                    console.log('Success:', result.created_at);
                     // document.getElementById('commentsList').innerHTML += '<b>'+result.body+'</b>';
                     document.getElementById('commentsList').innerHTML += '<div class="flex text-gray-600 text-sm mb-6"><img src="" alt="" class="w-14 h-14 mr-3 rounded-full border border-gray-400"><div><div class="comment-bubble rounded w-full ml-3 mb-2.5 px-4 py-2 italic bg-slate-50 !border-stone-200">{!!linkify("' + result.body + '")!!}</div><div class="ml-7 text-xs"><div class="mt-1 text-xs italic text-gray-400"><i class="fa-solid fa-user mr-1.5"></i>' + result.author_name + ' - </div></div></div></div>';
                     //   this.message = 'likes: ' + result;

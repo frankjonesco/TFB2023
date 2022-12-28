@@ -73,12 +73,13 @@ class ArticleController extends Controller
         $comment->resource_id = $article->id;
         $comment->author_name = $request->name;
         $comment->author_email = $request->email;
-        $comment->body = $request->comment;
+        $comment->body = $request->body;
 
         if($comment->save()){
             session()->put('commentPosted', true);
             return json_encode($comment);
         }
+
         return false;
     }
 
