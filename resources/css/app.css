@@ -269,8 +269,8 @@
     }
 
     a{
-        @apply text-amber-700;
-        @apply hover:!text-amber-900;
+        @apply text-gray-500;
+        @apply hover:!text-zinc-500;
     }
 
     .text-error{
@@ -365,20 +365,20 @@
 
     th{
         @apply border-b;
-        @apply border-slate-400;
+        @apply border-gray-300;
         @apply font-medium;
+        @apply text-sm;
         @apply p-4;
         @apply pl-8;
         @apply pt-0;
         @apply pb-3;
         @apply text-left;
-        @apply text-white;
+        @apply text-gray-500;
     }
 
     tr{
         @apply border-b;
-        @apply border-slate-700;
-        @apply text-slate-400;
+        @apply border-gray-200;
     }
 
     td{

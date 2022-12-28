@@ -20,7 +20,7 @@
                             <img 
                                 src="{{$company->getImageThumbnail()}}"
                                 alt="Top Family Business - {{$company->registered_name}}"
-                                class="w-6 mr-4 rounded border border-indigo-100 hover:border-amber-300 cursor-pointer"
+                                class="w-6 mr-4 rounded border border-indigo-100 hover:border-blue-300 cursor-pointer"
                             >
                             <a href="/companies/{{$company->hex}}/{{$company->slug}}">{{$company->show_name}}</a>
                         </div>
@@ -33,5 +33,5 @@
             @endforeach
         </tbody>
     </table>
-    <x-pagination table="companies" :results="$companies" />
+    <x-pagination-public table="companies" :results="$companies" />
 @endif
