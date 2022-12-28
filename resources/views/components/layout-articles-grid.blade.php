@@ -9,10 +9,7 @@
     } 
 </script>
 
-<div class="flex mb-7 mt-16">
-    <h3 class="pr-2 pb-3 border-b border-red-500 uppercase text-sm text-gray-800">Articles grid</h3>
-    <span class="grow border-b border-gray-200"></span>
-</div>
+<x-layout-heading heading="Articles grid" class="heading-mt" />
 
 <div class="grid grid-cols-3 gap-8 border-b border-gray-100 mb-3">
     

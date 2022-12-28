@@ -1,7 +1,4 @@
-<div class="flex mb-7">
-    <h3 class="pr-2 pb-3 border-b border-red-500 uppercase text-sm text-gray-800">Stay connected</h3>
-    <span class="grow border-b border-gray-200"></span>
-</div>
+<x-layout-heading heading="Stay connected" />
 <style>
 
 ul.social-share li a.facebook {
@@ -112,28 +109,28 @@ ul.social-share li a.youtube:after {
 </style>
 
 <ul class="social-share grid grid-cols-2 gap-4 text-gray-600 text-xs">
-    <li class="bg-sky-50 flex items-center">
+    <li class="bg-zinc-50 flex items-center">
         <a href="https://www.facebook.com/Matchbird-GmbH-1050852385302281/" class="facebook"><i class="fa-brands fa-facebook-f"></i></a>
         <div>
             <span class="block text-gray-600 font-bold">11.644</span>
             <span class="font-light">Followers</span>
         </div>
     </li>
-    <li class="bg-sky-50 flex items-center">
+    <li class="bg-zinc-50 flex items-center">
         <a href="https://www.instagram.com/matchbird.gmbh/" class="instagram"><i class="fa-brands fa-instagram"></i></a>
         <div>
             <span class="block text-gray-600 font-bold">3.490</span>
             <span class="font-light">Followers</span>
         </div>
     </li>
-    <li class="bg-sky-50 flex items-center">
+    <li class="bg-zinc-50 flex items-center">
         <a href="https://twitter.com/matchbirdgmbh/" class="twitter"><i class="fa-brands fa-twitter"></i></a>
         <div>
             <span class="block text-gray-600 font-bold">5.326</span>
             <span class="font-light">Followers</span>
         </div>
     </li>
-    <li class="bg-sky-50 flex items-center">
+    <li class="bg-zinc-50 flex items-center">
         <a href="https://www.linkedin.com/company/matchbird/" class="linkedin"><i class="fa-brands fa-linkedin-in"></i></a>
         <div>
             <span class="block text-gray-600 font-bold">1.983</span>
@@ -141,14 +138,14 @@ ul.social-share li a.youtube:after {
         </div>
     </li>
     
-    <li class="bg-sky-50 flex items-center">
+    <li class="bg-zinc-50 flex items-center">
         <a href="https://www.youtube.com/channel/UC4GnbbnwvAnl80_cVXJRuMA" class="youtube"><i class="fa-brands fa-youtube"></i></a>
         <div>
             <span class="block text-gray-600 font-bold">4.387</span>
             <span class="font-light">Subscribers</span>
         </div>
     </li>
-    <li class="bg-sky-50 flex items-center">
+    <li class="bg-zinc-50 flex items-center">
         <a href="https://www.xing.com/pages/matchbirdgmbh" class="xing"><i class="fa-brands fa-xing"></i></a>
         <div>
             <span class="block text-gray-600 font-bold">897</span>

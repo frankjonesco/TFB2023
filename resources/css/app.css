@@ -544,5 +544,9 @@
         @apply uppercase;
     }
 
+    .heading-mt{
+        @apply mt-10;
+    }
+
 
 }

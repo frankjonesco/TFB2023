@@ -1,7 +1,4 @@
-<div class="flex mb-7 mt-16">
-    <h3 class="pr-2 pb-3 border-b border-red-500 uppercase text-sm text-gray-800">Slide tables</h3>
-    <span class="grow border-b border-gray-200"></span>
-</div>
+<x-layout-heading heading="Slide tables" class="heading-mt" />
 
 <div class="grid grid-cols-2 gap-8 border-b border-gray-100 mb-3">
     <div>

@@ -1,7 +1,4 @@
-<div class="flex mb-7">
-    <h3 class="pr-2 pb-3 border-b border-red-500 uppercase text-sm text-gray-800">Latest articles</h3>
-    <span class="grow border-b border-gray-200"></span>
-</div>
+<x-layout-heading heading="Latest articles" class="heading-mt" />
 
 <div class="flex flex-col border-b border-gray-100 mb-3">
     @foreach($articles as $article)
