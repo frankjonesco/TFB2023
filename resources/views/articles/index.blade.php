@@ -24,7 +24,7 @@
                         
                             <div class="bg-no-repeat bg-cover bg-center px-4 py-5 flex flex-col justify-end overflow-hidden h-72" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.85)), url('{{asset('images/articles/'.$article->hex.'/'.$article->image)}}');">
                                 <div class="flex flex-col justify-center items-center h-full">
-                                    <span class="{{$color}} w-max px-2 py-1 rounded text-xs font-bold">
+                                    <span class="{{$color}} w-max px-2 py-1 rounded text-xs font-bold text-zinc-100">
                                         Top Stories
                                     </span>
                                     <h3 class="pt-3 pb-3 text-center">
@@ -32,7 +32,7 @@
                                             {{$article->title}}
                                         </a>
                                     </h3>
-                                    <span class="text-xs italic">
+                                    <span class="text-xs italic text-zinc-100">
                                         <span class="mr-3">
                                             <i class="fa-regular fa-clock mr-1"></i>
                                             {{showDate($article->created_at)}}
@@ -91,6 +91,7 @@
         </x-layout-main-area>
 
         <x-layout-sidebar>
+            <x-module-ranking-table :companies="$companies" />
             <x-module-socials />
             <x-module-articles-tabbed-list :articles="$tabbed_articles" />
             <x-module-features :articles="$random_articles" />

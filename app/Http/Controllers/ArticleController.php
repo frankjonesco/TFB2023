@@ -32,7 +32,8 @@ class ArticleController extends Controller
             'slide_table_articles' => $slide_table_articles,
             'list_articles' => Article::latest()->skip(48)->paginate(4),
             'random_articles' => Article::orderBy(DB::raw('RAND()'))->take(3)->get(),
-            'comments' => Comment::where('resource_type', 'article')->latest()->take(6)->get()
+            'comments' => Comment::where('resource_type', 'article')->latest()->take(6)->get(),
+            'companies' => $site->paginatePublicCompaniesAndRankingsLatest(12)
         ]);
     }
 
@@ -45,8 +46,13 @@ class ArticleController extends Controller
 
     // Show single article
     public function show(Article $article, $slug){
+        $article->views = ($article->views + 1);
+        $article->save();
+        
+        $site = new Site();
         return view('articles.show', [
             'article' => $article,
+            'companies' => $site->paginatePublicCompaniesAndRankingsLatest(12)
         ]);
     }
     

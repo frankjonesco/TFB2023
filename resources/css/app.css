@@ -548,5 +548,7 @@
         @apply mt-10;
     }
 
-
+    .sidebar-module{
+        @apply mb-12;
+    }
 }

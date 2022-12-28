@@ -33,7 +33,8 @@
             <x-layout-articles-comments />
         </x-layout-main-area>
         <x-layout-sidebar>
-                <x-module-socials />
+            <x-module-ranking-table :companies="$companies" />
+            <x-module-socials />
         </x-layout-sidebar>
     </x-container>
 </x-layout>

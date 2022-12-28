@@ -86,7 +86,7 @@ class Site extends Model
     }
 
     // Paginate public companies
-    public function paginatePublicCompaniesAndRankingsLatest(){
+    public function paginatePublicCompaniesAndRankingsLatest($take = 20){
         return Company::with('rankings')
         ->join('rankings', 'rankings.company_id', '=', 'companies.id')
         ->where('rankings.is_latest', true)
@@ -95,7 +95,7 @@ class Site extends Model
         ->where('companies.tofam_status', 'in')
         ->select('companies.*', 'rankings.id AS ranking_id') // Avoid selecting everything from the stocks table
         ->orderBy('rankings.turnover', 'DESC')
-        ->paginate(20);
+        ->paginate($take);
     }
 
     // Paginate public companies

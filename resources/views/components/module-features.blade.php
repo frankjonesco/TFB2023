@@ -63,53 +63,56 @@
 
 
 </style>
-<div class="slider mt-7 w-full h-72 bg-red-300">
-    @foreach($articles as $article)
-        <div class="slide">
-            <div class="bg-no-repeat bg-cover bg-center px-12 py-5 mb-1.5 flex flex-col justify-end overflow-hidden h-72" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.40)), url('{{asset('images/articles/'.$article->hex.'/'.$article->image)}}');">
-                <div class="flex flex-col justify-center items-center h-full">
-                    <h3 class="pt-3 pb-3 text-center">
-                        <a href="/news/articles/{{$article->hex}}/{{$article->slug}}" class="text-zinc-100 hover:!text-zinc-100 hover:!text-opacity-80">
-                            {{$article->title}}
-                        </a>
-                    </h3>
-                    <span class="text-xs italic">
-                        <span class="mr-3">
-                            <i class="fa-regular fa-clock mr-1"></i>
-                            {{showDate($article->created_at)}}
+
+<div class="sidebar-module">
+    <div class="slider mt-7 w-full h-72 bg-red-300">
+        @foreach($articles as $article)
+            <div class="slide">
+                <div class="bg-no-repeat bg-cover bg-center px-12 py-5 mb-1.5 flex flex-col justify-end overflow-hidden h-72" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.40)), url('{{asset('images/articles/'.$article->hex.'/'.$article->image)}}');">
+                    <div class="flex flex-col justify-center items-center h-full">
+                        <h3 class="pt-3 pb-3 text-center">
+                            <a href="/news/articles/{{$article->hex}}/{{$article->slug}}" class="text-zinc-100 hover:!text-zinc-100 hover:!text-opacity-80">
+                                {{$article->title}}
+                            </a>
+                        </h3>
+                        <span class="text-xs italic">
+                            <span class="mr-3">
+                                <i class="fa-regular fa-clock mr-1"></i>
+                                {{showDate($article->created_at)}}
+                            </span>
+                            <span class="mr-6">
+                                <i class="fa-regular fa-user mr-1"></i>
+                                by {{$article->user->full_name}}
+                            </span>
+                            <span>
+                                <i class="fa-regular fa-eye mr-1"></i>
+                                {{$article->views}}
+                            </span>
                         </span>
-                        <span class="mr-6">
-                            <i class="fa-regular fa-user mr-1"></i>
-                            by {{$article->user->full_name}}
-                        </span>
-                        <span>
-                            <i class="fa-regular fa-eye mr-1"></i>
-                            {{$article->views}}
-                        </span>
-                    </span>
+                    </div>
                 </div>
             </div>
-        </div>
-    @endforeach
-
-    
-
-    <!-- Control buttons -->
-    <button class="btn-carousel btn-next px-1.5 py-1 bg-white bg-opacity-40 hover:bg-yellow-50 hover:bg-opacity-30 text-gray-200 hover:!text-white" id="next">></button>
-    <button class="btn-carousel btn-prev px-1.5 py-1 bg-white bg-opacity-40 hover:bg-yellow-50 hover:bg-opacity-30 text-gray-200 hover:!text-white" id="prev"><</button>
-
-    {{-- Indicators --}}
-    <div class="indicators">
-        @foreach($articles as $article)
-            @if($loop->first)
-                <span class="!bg-red-500"></span>
-            @else
-                <span></span>
-            @endif
         @endforeach
-    </div>
 
-  </div>
+        
+
+        <!-- Control buttons -->
+        <button class="btn-carousel btn-next px-1.5 py-1 bg-white bg-opacity-40 hover:bg-yellow-50 hover:bg-opacity-30 text-gray-200 hover:!text-white" id="next">></button>
+        <button class="btn-carousel btn-prev px-1.5 py-1 bg-white bg-opacity-40 hover:bg-yellow-50 hover:bg-opacity-30 text-gray-200 hover:!text-white" id="prev"><</button>
+
+        {{-- Indicators --}}
+        <div class="indicators">
+            @foreach($articles as $article)
+                @if($loop->first)
+                    <span class="!bg-red-500"></span>
+                @else
+                    <span></span>
+                @endif
+            @endforeach
+        </div>
+
+    </div>
+</div>
 
   <script>
     // Select all slides
