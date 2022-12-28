@@ -135,6 +135,22 @@
         @apply focus:border-blue-500;
     }
 
+    input[type=text].public-input,
+    input[type=email].public-input,
+    input[type=password].public-input{
+        @apply !bg-gray-50;
+        @apply !rounded;
+        @apply !border;
+        @apply !border-gray-300;
+        @apply focus:!border-sky-400;
+        @apply !p-2;
+        @apply !text-sm;
+        @apply !text-gray-500;
+        @apply !outline-0;
+    }
+
+    
+
     input[type=file]{
         @apply block;
         @apply w-full;
@@ -244,8 +260,8 @@
     }
 
     a{
-        @apply text-sky-100;
-        @apply hover:!text-amber-300;
+        @apply text-amber-700;
+        @apply hover:!text-amber-900;
     }
 
     .text-error{
