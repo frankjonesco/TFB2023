@@ -52,7 +52,8 @@ class ArticleController extends Controller
         $site = new Site();
         return view('articles.show', [
             'article' => $article,
-            'companies' => $site->paginatePublicCompaniesAndRankingsLatest(12)
+            'companies' => $site->paginatePublicCompaniesAndRankingsLatest(12),
+            'author_articles' => Article::where('user_id', $article->user_id)->where('id', '!=', $article->id)->where('status', 'public')
         ]);
     }
 
