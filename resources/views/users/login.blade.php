@@ -1,13 +1,10 @@
 <x-layout>
     <x-container>
-        
-        <x-layout-main-area>
-            
-            <x-layout-heading heading="Log in" />
 
+        <x-layout-main-area>
+            <x-layout-heading heading="Log in" />
             <form action="/users/authenticate" method="POST">
                 @csrf
-
                 {{-- Email input --}}
                 <div class="form-block">
                     <label for="last_name">
@@ -20,7 +17,6 @@
                         </p>
                     @enderror
                 </div>
-
                 {{-- Password input --}}
                 <div class="form-block">
                     <label for="password">
@@ -33,7 +29,6 @@
                         </p>
                     @enderror
                 </div>
-
                 {{-- Submit --}}
                 <div class="form-block">
                     <button type="submit" class="mr-1.5">
@@ -46,7 +41,6 @@
                         </a>
                     </span>
                 </div>
-
             </form>
         </x-layout-main-area>
 

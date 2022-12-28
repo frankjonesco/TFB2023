@@ -1,4 +1,4 @@
-<footer class="mt-12 p-4 pt-12 pb-6 text-sm text-zinc-200 bg-slate-700 border-t border-t-zinc-600">
+<footer class="mt-0 px-4 pt-12 pb-6 text-sm text-zinc-200 bg-slate-700 border-t border-t-zinc-600">
     <div class="flex justify-between border-b border-zinc-500 mx-12 mb-4">
         <div class="flex flex-col">
             <a href="/">
