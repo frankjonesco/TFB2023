@@ -5,7 +5,7 @@
     <script src="{{asset('c3/c3.min.js')}}"></script>
     <x-container>
         <x-layout-main-area>
-            <x-layout-heading heading="Company rankings" />
+            <x-layout-heading heading="Company information" />
             {{-- Company layout --}}
             <div class="flex">
                 <div class="w-1/4 mr-10">
@@ -14,14 +14,31 @@
                         alt="Top Family Business - {{$company->registered_name}}"
                         class="w-full mr-4 rounded border border-indigo-100 hover:border-amber-300 cursor-pointer"
                     >
-                    <div class="flex flex-col">
-                        <div>
-                            {{$company->website}}
-                        </div>
-                    </div>
+                    <ul class="flex flex-col text-sm mt-6">
+                        <li class="flex my-1 py-1 border-b border-gray-200">
+                            <span class="grow">Family business</span>
+                            <span><i class="fa-solid fa-check text-green-700"></i></span>
+                        </li>
+                        <li class="flex my-1 py-1 border-b border-gray-200">
+                            <span class="grow">Generations</span>
+                            <span>{{$company->family_generations}}</span>
+                        </li>
+                        <li class="flex my-1 py-1 border-b border-gray-200">
+                            <span class="grow">Family executive</span>
+                            <span><i class="fa-solid fa-check text-green-700"></i></span>
+                        </li>
+                        <li class="flex my-1 py-1 border-b border-gray-200">
+                            <span class="grow">Female executive</span>
+                            <span><i class="fa-solid fa-check text-green-700"></i></span>
+                        </li>
+                        <li class="flex my-1 py-1 border-b border-gray-200">
+                            <span class="grow">Stock listed</span>
+                            <span><i class="fa-solid fa-check text-green-700"></i></span>
+                        </li>
+                    </ul>
                 </div>
                 <div class="w-3/4">
-                    <h2>{{$company->show_name}}</h2>
+                    <h2 class="pt-0">{{$company->show_name}}</h2>
                     <div class="flex mb-5">
                         <div class="w-1/2">
                             <span>Registered name</span><br>
@@ -31,95 +48,96 @@
                             <span>Parent organisation:</span><br>
                             <span class="font-thin">{{$company->parent_organization}}</span>
                         </div>
+                        
                     </div>
-                    <p class="text-sm">{{$company->description}}</p>
+                    <a href="{{$company->website}}" target="_blank">
+                        <button class="btn btn-plain">
+                            <i class="fa-solid fa-globe mr-1 text-green-700"></i>
+                            Company website
+                        </button>
+                    </a>
+                    <p class="mt-6 text-sm">{{$company->description}}</p>
+
+                    <h2>Turnover</h2>
+                    <div class="flex flex-col">
+                        <table class="text-sm">
+                            <thead class="p-0 text-center">
+                                <th class="px-0.5 pl-2 py-2">Year</th>
+                                <th class="p-0 py-2 px-8">Turnover</th>
+                                <th class="p-0 py-2 text-right">Growth</th>
+                            </thead>
+                            <tbody>
+                                @foreach($company->rankings as $ranking)
+                                    <tr>
+                                        <td class="px-0.5 pl-2 py-2 text-xs !font-normal">
+                                            {{$ranking->year}}
+                                            @if($ranking->confirmed_by_company)
+                                                <span class="text-xs">*</span>
+                                            @endif
+                                        </td>
+                                        <td class="py-2 px-8 text-xs">{{formatTurnover($ranking->turnover)}}</td>
+                                        <td class="px-0.5 py-2 text-right text-xs">
+                                            <x-ranking-growth growth="{{$ranking->calculateGrowth('turnover')}}" />
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        {{-- End: Table for turnover --}}
+                        <div class="mt-5 text-xs no-results flex flex-col">
+                            <span class="grow">{!!$company->rankingSources()!!}</span> 
+                        </div>
+                        {{-- Chart for turnover --}}                        
+                        <div class="mt-6 mb-12 pb-6 rounded-lg border border-gray-200">
+                            <div id="turnoverChart"></div>
+                        </div>
+                        {{-- End: Chart for turnover --}}
+                    </div>
+
+                    <h2>Employees</h2>
+                    <div class="flex flex-col">
+                        <table class="text-sm text-center">
+                            <thead class="p-0 text-center">
+                                <th class="px-0.5 pl-2 py-2 text-center">Year</th>
+                                <th class="p-0 py-2 px-8 text-center">Employees</th>
+                                <th class="p-0 py-2 text-right">Growth</th>
+                            </thead>
+                            <tbody>
+                                @foreach($company->rankings as $ranking)
+                                    <tr>
+                                        <td class="px-0.5 pl-2 py-2 text-xs !font-normal">
+                                            {{$ranking->year}}
+                                            @if($ranking->confirmed_by_company)
+                                                <span class="text-xs">*</span>
+                                            @endif
+                                        </td>
+                                        <td class="py-2 px-8 text-xs">{{formatEmployees($ranking->employees)}}</td>
+                                        <td class="px-0.5 py-2 text-right text-xs">
+                                            <x-ranking-growth growth="{{$ranking->calculateGrowth('employees')}}" />
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        {{-- End: Table for employees --}}
+                        <div class="mt-5 text-xs no-results flex flex-col">
+                            <span class="grow">{!!$company->rankingSources()!!}</span> 
+                        </div>
+
+                        {{-- Chart for employees --}}                        
+                        <div class="mt-6 mb-12 pb-6 rounded-lg border border-gray-200">
+                            <div id="employeesChart"></div>
+                        </div>
+                        {{-- End: Chart for employees --}}
+                    </div>
                 </div>
             </div>
 
-            <h2 class="mt-12">Turnover</h2>
-            <div class="flex">
-                <div class="w-1/4 mr-10">
-                    {{-- Table for turnover --}}
-                    
-                    <table class="text-sm">
-                        <thead class="p-0">
-                            <th class="px-0.5 pl-2 py-2">Year</th>
-                            <th class="p-0 py-2 px-8">Turnover</th>
-                            <th class="p-0 py-2">Growth</th>
-                        </thead>
-                        <tbody>
-                            @foreach($company->rankings as $ranking)
-                                <tr>
-                                    <td class="px-0.5 pl-2 py-2 text-xs !font-normal text-white">
-                                        {{$ranking->year}}
-                                        @if($ranking->confirmed_by_company)
-                                            <span class="text-xs">*</span>
-                                        @endif
-                                    </td>
-                                    <td class="py-2 px-8 text-xs">{{formatTurnover($ranking->turnover)}}</td>
-                                    <td class="px-0.5 py-2 text-right text-xs">
-                                        <x-ranking-growth growth="{{$ranking->calculateGrowth('turnover')}}" />
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    {{-- End: Table for turnover --}}
-                    <div class="mt-5 text-zinc-100 text-xs font-thin no-results flex flex-col">
-                        <span class="grow">{!!$company->rankingSources()!!}</span> 
-                    </div>
-                </div>
-                <div class="w-3/4">
-                    {{-- Chart for turnover --}}                        
-                    <div class="mb-12 pb-6 rounded-lg bg-white">
-                        <div id="turnoverChart"></div>
-                    </div>
-                    {{-- End: Chart for turnover --}}
-                </div>
-            </div>
+            
 
 
 
-            <h2 class="mt-12">Employees</h2>
-            <div class="flex">
-                <div class="w-1/4 mr-10">
-                    <table class="text-sm">
-                        <thead class="p-0">
-                            <th class="px-0.5 pl-2 py-2">Year</th>
-                            <th class="p-0 py-2 px-8">Employees</th>
-                            <th class="p-0 py-2">Growth</th>
-                        </thead>
-                        <tbody>
-                            @foreach($company->rankings as $ranking)
-                                <tr>
-                                    <td class="px-0.5 pl-2 py-2 text-xs !font-normal text-white">
-                                        {{$ranking->year}}
-                                        @if($ranking->confirmed_by_company)
-                                            <span class="text-xs">*</span>
-                                        @endif
-                                    </td>
-                                    <td class="py-2 px-8 text-xs">{{formatEmployees($ranking->employees)}}</td>
-                                    <td class="px-0.5 py-2 text-right text-xs">
-                                        <x-ranking-growth growth="{{$ranking->calculateGrowth('employees')}}" />
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    {{-- End: Table for employees --}}
-                    <div class="mt-5 text-zinc-100 text-xs font-thin no-results flex flex-col">
-                        <span class="grow">{!!$company->rankingSources()!!}</span> 
-                    </div>
-                </div>
-
-                <div class="w-3/4">
-                    {{-- Chart for employees --}}                        
-                    <div class="mt-6 mb-12 pb-6 rounded-lg bg-white">
-                        <div id="employeesChart"></div>
-                    </div>
-                    {{-- End: Chart for employees --}}
-                </div>
-            </div>
+            
         </x-layout-main-area>
         <x-layout-sidebar>
             <x-module-socials />
@@ -167,10 +185,10 @@
                 height: 420
             },
             padding: {
-                top: 65,
-                right: 60,
-                bottom: 10,
-                left: 120,
+                top: 50,
+                right: 50,
+                bottom: 10  ,
+                left: 110,
             },
             color: {
                 pattern: [
@@ -230,10 +248,10 @@
                 height: 420
             },
             padding: {
-                top: 65,
-                right: 60,
-                bottom: 10,
-                left: 120,
+                top: 50,
+                right: 50,
+                bottom: 10  ,
+                left: 110,
             },
             color: {
                 pattern: [
