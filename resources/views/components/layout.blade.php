@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Top Family Business 2023</title>
+
     {{-- Alpine.js --}}
     <script src="//unpkg.com/alpinejs" defer></script>
+
+    {{-- Local scripts --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <title>Top Family Business 2023</title>
+
 </head>
 <body>
     <div class="flex flex-col h-screen">
