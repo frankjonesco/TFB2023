@@ -69,6 +69,7 @@ Route::controller(ArticleController::class)->middleware('auth')->group(function(
 Route::controller(ArticleController::class)->group(function(){
     Route::get('/news', 'index');
     Route::get('/news/articles', 'articleIndex');
+    Route::post('/news/articles/post-comment', 'postComment');
     Route::get('/news/articles/{article}/{slug}', 'show');
 });
 

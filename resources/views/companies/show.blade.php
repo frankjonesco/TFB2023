@@ -12,7 +12,7 @@
                     <img 
                         src="{{$company->getImageThumbnail()}}"
                         alt="Top Family Business - {{$company->registered_name}}"
-                        class="w-full mr-4 rounded border border-indigo-100 hover:border-amber-300 cursor-pointer"
+                        class="w-full mr-4"
                     >
                     <ul class="flex flex-col text-sm mt-6">
                         <li class="flex my-1 py-1 border-b border-gray-200">
@@ -52,7 +52,7 @@
                     </div>
                     <a href="{{$company->website}}" target="_blank">
                         <button class="btn btn-plain">
-                            <i class="fa-solid fa-globe mr-1 text-green-700"></i>
+                            <i class="fa-solid fa-globe mr-1 text-sky-600"></i>
                             Company website
                         </button>
                     </a>

@@ -55,6 +55,34 @@ class ArticleController extends Controller
             'companies' => $site->paginatePublicCompaniesAndRankingsLatest(12)
         ]);
     }
+
+    // Post comment to article
+    public function postComment(Request $request){
+        
+        $request->validate([
+            'name' => 'required|min:2',
+            'email' => 'required|email',
+            'comment' => 'required',
+        ]);
+
+        $article = Article::where('hex', $request->hex)->first();
+
+        $comment = new Comment();
+
+        $comment->resource_type = 'article';
+        $comment->resource_id = $article->id;
+        $comment->author_name = $request->name;
+        $comment->author_email = $request->email;
+        $comment->body = $request->comment;
+
+        if($comment->save()){
+            session()->put('commentPosted', true);
+            return json_encode($comment);
+        }
+        return false;
+    }
+
+
     
 
     // ADMIN METHODS

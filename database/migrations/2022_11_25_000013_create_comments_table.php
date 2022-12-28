@@ -19,6 +19,8 @@ return new class extends Migration
             $table->integer('parent_id')->nullable();
             $table->string('resource_type');
             $table->integer('resource_id');
+            $table->string('author_name')->nullable();
+            $table->string('author_email')->nullable();
             $table->string('title')->nullable();
             $table->text('body');
             $table->timestamps();
