@@ -30,6 +30,7 @@
                 {{$article->image_caption}}
             </span>
             {!!$article->body!!}
+            <x-layout-articles-tags :article="$article" />
             <x-layout-articles-comments :article="$article" />
         </x-layout-main-area>
         <x-layout-sidebar>

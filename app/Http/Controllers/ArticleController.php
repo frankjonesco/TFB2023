@@ -78,6 +78,7 @@ class ArticleController extends Controller
 
         if($comment->save()){
             $comment = Comment::find($comment->id);
+            $comment['image'] = $comment->authorImage();
             session()->put('commentPosted', true);
             return json_encode($comment);
         }

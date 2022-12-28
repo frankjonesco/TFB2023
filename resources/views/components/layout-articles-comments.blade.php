@@ -10,7 +10,7 @@
                         {!!linkify($comment->body)!!}
                     </div>
                     <div class="ml-7 text-xs">
-                        <div class="mt-1 text-xs italic text-gray-400"><i class="fa-solid fa-user mr-1.5"></i>{{$comment->author_name}} - {{showDateTime($comment->created_at)}}</div>
+                        <div class="mt-1 text-xs italic text-gray-400"><i class="fa-solid fa-user mr-1.5"></i>{{$comment->authorName()}} - {{showDateTime($comment->created_at)}}</div>
                     </div>
                 </div>
             </div>
@@ -46,6 +46,7 @@
         </div>
     </div>
 </form>
+
 <script>
     function submitComment() {
         return {
@@ -70,7 +71,7 @@
                 .then(response => response.json())
                 .then(result => {
                     console.log('Success:', result);
-                    document.getElementById('commentsList').innerHTML += '<div class="flex text-gray-600 text-sm mb-6"><img src="{{$comment->authorImage()}}" alt="" class="w-14 h-14 mr-3 rounded-full border border-gray-400"><div><div class="comment-bubble rounded w-full ml-3 mb-2.5 px-4 py-2 italic bg-slate-50 !border-stone-200">{!!linkify("' + result.body + '")!!}</div><div class="ml-7 text-xs"><div class="mt-1 text-xs italic text-gray-400"><i class="fa-solid fa-user mr-1.5"></i>' + result.author_name + ' - Just now</div></div></div></div>';
+                    document.getElementById('commentsList').innerHTML += '<div class="flex text-gray-600 text-sm mb-6"><img src="'+ result.image +'" alt="" class="w-14 h-14 mr-3 rounded-full border border-gray-400"><div><div class="comment-bubble rounded w-full ml-3 mb-2.5 px-4 py-2 italic bg-slate-50 !border-stone-200">{!!linkify("' + result.body + '")!!}</div><div class="ml-7 text-xs"><div class="mt-1 text-xs italic text-gray-400"><i class="fa-solid fa-user mr-1.5"></i>' + result.author_name + ' - Just now</div></div></div></div>';
                     document.getElementById('commentName').value = null;
                     document.getElementById('commentEmail').value = null;
                     document.getElementById('commentBody').value = null;

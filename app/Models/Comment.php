@@ -34,6 +34,21 @@ class Comment extends Model
 
     // Get comment author image
     public function authorImage(){
+        if($this->user_id){
+            if($this->user->image){
+                return asset('images/users/'.$this->user->hex.'/tn-'.$this->user->image);
+            }
+        }
         return asset('images/users/profile-pic-male.jpg');
+    }
+
+    // Get comment author image
+    public function authorName(){
+        if($this->user_id){
+            if($this->user->first_name && $this->user->last_name){
+                return $this->user->full_name;
+            }
+        }
+        return $this->author_name;
     }
 }

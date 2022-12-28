@@ -508,6 +508,7 @@
 
     .article-tags{
         @apply px-2;
+        @apply mt-12;
         @apply mb-12;
         @apply flex;
         @apply items-center;
@@ -524,9 +525,10 @@
 
     .article-tags>ul>li>a{
         @apply border;
-        @apply border-zinc-500;
+        @apply border-zinc-200;
+        @apply hover:bg-amber-50;
         @apply rounded;
-        @apply px-4;
+        @apply px-3;
         @apply py-1.5;
     }
 
