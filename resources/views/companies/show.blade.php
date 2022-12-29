@@ -1,8 +1,9 @@
 <x-layout>
-    {{-- For C3 Charts --}}
-    <link href="{{asset('c3/c3.css')}}" rel="stylesheet">
-    <script src="{{asset('c3/c3-js.js')}}" charset="utf-8"></script>
-    <script src="{{asset('c3/c3.min.js')}}"></script>
+
+    <x-container-h-min>
+        <x-layout-articles-breaking />
+    </x-container-h-min>
+
     <x-container>
         <x-layout-main-area>
             <x-layout-heading heading="Company information" />
@@ -71,8 +72,7 @@
             
         </x-layout-main-area>
         <x-layout-sidebar>
-            <x-module-companies-turnover :company="$company" />
-            <x-module-companies-employees :company="$company" />
+            <x-module-companies-ranking-charts :company="$company" />
             <x-module-socials />
             <x-module-matchbird-partners />
         </x-layout-sidebar>

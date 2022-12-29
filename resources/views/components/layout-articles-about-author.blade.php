@@ -1,5 +1,5 @@
-<div class="article-author">
-    <div class="flex">
+<div>
+    <div class="flex tabs mt-6">
         <div class="w-1/2 border-b-2 border-red-500">
             <a
                 href="#"

@@ -566,11 +566,7 @@
         @apply py-1.5;
     }
 
-    .article-author{
-        @apply mt-6;
-    }
-
-    .article-author a.author-btn{
+    .tabs a.author-btn{
         @apply block;
         @apply w-full;
         @apply py-2;
