@@ -7,6 +7,7 @@
             <h2 class="pt-1 pb-2 !text-3xl">
                 {{$article->title}}
             </h2>
+            <b class="block mb-2">{{$article->caption}}</b>
             <span class="text-sm italic" style="font-size:0.82rem;">
                 <span class="mr-6">
                     <i class="fa-regular fa-clock mr-1"></i>

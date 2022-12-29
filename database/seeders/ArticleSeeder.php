@@ -93,7 +93,9 @@ class ArticleSeeder extends Seeder
             }
 
             if($article->caption){
-                $body = '<p><strong>'.$article->caption.'</strong></p>'.$body;
+                if($article->caption == ''){
+                    $article->caption = null;
+                }
             }
 
             // Create article
@@ -106,7 +108,6 @@ class ArticleSeeder extends Seeder
                 'title' => $article->title,
                 'slug' => $article->url_title,
                 'caption' => $article->caption,
-                'teaser' => $article->teaser,
                 'body' => $body,
                 'image' => $article->image,
                 'image_caption' => $article->image_caption,

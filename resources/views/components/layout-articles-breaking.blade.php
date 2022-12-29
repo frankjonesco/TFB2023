@@ -60,45 +60,6 @@
     let nextItem = 0;
     let lastItem = bulletins.length - 1;
 
-    setInterval(function() {
-        if(currentItem === lastItem){
-            nextItem = currentItem--;
-        }else{
-            nextItem = currentItem++;
-        }
-        setVisibleItem(nextItem);
-    }, 8000);
-
-    btnPause.addEventListener('click', function () {
-        btnPause.classList.add('hidden');
-        btnPlay.classList.remove('hidden');
-    });
-
-    btnPlay.addEventListener('click', function () {
-        btnPlay.classList.add('hidden');
-        btnPause.classList.remove('hidden');
-    });
-
-    btnNext.addEventListener('click', function () {
-        // If current item is last item, reset to first item
-        if(currentItem === lastItem) {
-            currentItem = 0;
-        }else{
-            currentItem++;
-        }
-        setVisibleItem(currentItem);
-    });
-
-    btnPrevious.addEventListener('click', function () {
-        // If current item is first item, reset to last item
-        if(currentItem === 0) {
-            currentItem = lastItem;
-        }else{
-            currentItem--;
-        }
-        setVisibleItem(currentItem);
-    });
-
     function setVisibleItem(item){
         // For each bulletins
         bulletins.forEach((bulletin, index) => {
@@ -112,18 +73,57 @@
         });
     }
 
+    function play(){
+        bulletinMotion = setInterval(function() {
+            if(currentItem === lastItem){
+                nextItem = currentItem--;
+            }else{
+                nextItem = currentItem++;
+            }
+            setVisibleItem(nextItem);
+        }, 5000);
+    }
 
-    // function playPause(btn){
-    //     btn.blur();
-    //     console.log('play/pause');
-    // }
-    // function previousBulletin(btn){
-    //     btn.blur();
-    //     console.log('previous');
-    // }
-    // function nextBulletin(btn){
-    //     btn.blur();
-    //     console.log('next');
-    // }
+    // Autostart 
+    play();
+
+    // Pause button
+    btnPause.addEventListener('click', function () {
+        clearInterval(bulletinMotion);
+        btnPause.classList.add('hidden');
+        btnPlay.classList.remove('hidden');
+    });
+
+    // Play button
+    btnPlay.addEventListener('click', function () {
+        play();
+        btnPlay.classList.add('hidden');
+        btnPause.classList.remove('hidden');
+    });
+
+    // Next button
+    btnNext.addEventListener('click', function () {
+        // If current item is last item, reset to first item
+        if(currentItem === lastItem) {
+            currentItem = 0;
+        }else{
+            currentItem++;
+        }
+        setVisibleItem(currentItem);
+        btnNext.blur()
+    });
+
+    // Previous button
+    btnPrevious.addEventListener('click', function () {
+        // If current item is first item, reset to last item
+        if(currentItem === 0) {
+            currentItem = lastItem;
+        }else{
+            currentItem--;
+        }
+        setVisibleItem(currentItem);
+        btnPrevious.blur()
+    });
+
 </script>
 
