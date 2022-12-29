@@ -399,7 +399,17 @@
         @apply rounded-full;
     }
 
-    .profile-pic-small-round{
+    .profile-pic-sm-round{
+        @apply w-16;
+        @apply h-16;
+        @apply mr-5;
+        @apply p-px;
+        @apply border-2;
+        @apply border-white;
+        @apply rounded-full;
+    }
+
+    .profile-pic-xs-round{
         @apply w-6;
         @apply h-6;
         @apply mr-5;
