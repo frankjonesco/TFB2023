@@ -66,16 +66,16 @@
 
 <div class="sidebar-module">
     <div class="slider mt-7 w-full h-72 bg-red-300">
-        @foreach($articles as $article)
+        @foreach(randomArticles(3) as $article)
             <div class="slide">
-                <div class="bg-no-repeat bg-cover bg-center px-12 py-5 mb-1.5 flex flex-col justify-end overflow-hidden h-72" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.40)), url('{{asset('images/articles/'.$article->hex.'/'.$article->image)}}');">
+                <div class="bg-no-repeat bg-cover bg-center px-12 py-5 mb-1.5 flex flex-col justify-end overflow-hidden h-72" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.50)), url('{{asset('images/articles/'.$article->hex.'/'.$article->image)}}');">
                     <div class="flex flex-col justify-center items-center h-full">
                         <h3 class="pt-3 pb-3 text-center">
                             <a href="/news/articles/{{$article->hex}}/{{$article->slug}}" class="text-zinc-100 hover:!text-zinc-100 hover:!text-opacity-80">
                                 {{$article->title}}
                             </a>
                         </h3>
-                        <span class="text-xs italic">
+                        <span class="text-xs italic text-zinc-100">
                             <span class="mr-3">
                                 <i class="fa-regular fa-clock mr-1"></i>
                                 {{showDate($article->created_at)}}
@@ -102,7 +102,7 @@
 
         {{-- Indicators --}}
         <div class="indicators">
-            @foreach($articles as $article)
+            @foreach(randomArticles(3) as $article)
                 @if($loop->first)
                     <span class="!bg-red-500"></span>
                 @else

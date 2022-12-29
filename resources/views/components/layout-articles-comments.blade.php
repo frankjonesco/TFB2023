@@ -20,6 +20,10 @@
 
 <x-layout-heading heading="Leave a comment" class="heading-mt" />
 
+@if(count($article->publicComments) === 0)
+    <div id="commentsList"></div>
+@endif
+
 <form id="commentForm" action="/news/articles/post-comment" method="POST" x-data="submitComment()" @submit.prevent="submitData()">
     @csrf
     <input type="hidden" name="hex" x-model="formData.hex" value="{{$article->hex}}">
@@ -77,8 +81,8 @@
                     document.getElementById('commentBody').value = null;
                     document.getElementById('commentSubmitBtn').blur();
                 })
-                .catch(() => {
-                    console.log('Ooops! Something went wrong!');
+                .catch(err => {
+                    console.log('Ooops! Something went wrong! '+err.message);
                     this.message = 'Ooops! Something went wrong!';
                 })
             }

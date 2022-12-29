@@ -31,7 +31,6 @@ class ArticleController extends Controller
             'grid_articles' => Article::latest()->skip(30)->take(6)->get(),
             'slide_table_articles' => $slide_table_articles,
             'list_articles' => Article::latest()->skip(48)->paginate(4),
-            'random_articles' => Article::orderBy(DB::raw('RAND()'))->take(3)->get(),
             'comments' => Comment::where('resource_type', 'article')->latest()->take(6)->get(),
             'companies' => $site->paginatePublicCompaniesAndRankingsLatest(12)
         ]);

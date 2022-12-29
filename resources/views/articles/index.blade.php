@@ -93,8 +93,8 @@
         <x-layout-sidebar>
             <x-module-ranking-table :companies="$companies" />
             <x-module-socials />
-            <x-module-articles-tabbed-list :articles="$tabbed_articles" />
-            <x-module-features :articles="$random_articles" />
+            <x-module-articles-tabbed-list />
+            <x-module-articles-features />
             <x-module-subscribe />
             <x-module-comments :comments="$comments" />
         </x-layout-sidebar>

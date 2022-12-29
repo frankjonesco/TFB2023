@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Article;
 use App\Models\Company;
 use App\Models\Ranking;
 use App\Models\Sponsor;
@@ -112,6 +113,36 @@ use Illuminate\Support\Facades\Config;
             return $yearsArray;
         }
     }
+
+
+
+    // ARTICLE FETCHERS
+
+    // Tabbed articles
+    if(!function_exists('tabbedArticles')){
+        function tabbedArticles(){
+            $tabbed_articles['popular'] = Article::where('status', 'public')->latest()->skip(15)->take(5)->get();
+            $tabbed_articles['recent'] = Article::where('status', 'public')->latest()->skip(20)->take(5)->get();
+            $tabbed_articles['top'] = Article::where('status', 'public')->latest()->skip(25)->take(5)->get();
+            return $tabbed_articles;
+        }
+    }
+
+    // Random articles
+    if(!function_exists('randomArticles')){
+        function randomArticles($number = 3){
+            return Article::where('status', 'public')->orderBy(DB::raw('RAND()'))->take($number)->get();
+        }
+    }
+
+    // Bulletin messages
+    if(!function_exists('bulletinMessages')){
+        function bulletinMessages($number = 3){
+            return Article::where('status', 'public')->latest()->take($number)->get();
+        }
+    }
+    
+
 
     
 

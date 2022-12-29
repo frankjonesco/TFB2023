@@ -15,7 +15,7 @@
 
             <div class="tab-pane active" id="popularArticles">
                 <ul class="list-posts">
-                    @foreach($articles['popular'] as $article)
+                    @foreach(tabbedArticles()['popular'] as $article)
                         <li class="p-4 px-6 flex items-center border-b bg-slate-50">
                             <a href="/news/articles/{{$article->hex}}/{{$article->slug}}">
                                 <div class="bg-no-repeat bg-cover bg-center w-20 h-16 mr-6 border hover:border-gray-400" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.50)), url('{{asset($article->getImageThumbnail())}}');"></div>
@@ -40,7 +40,7 @@
 
             <div class="tab-pane hidden" id="recentArticles">
                 <ul class="list-posts">
-                    @foreach($articles['recent'] as $article)
+                    @foreach(tabbedArticles()['recent'] as $article)
                     <li class="p-4 px-6 flex items-center border-b bg-slate-50">
                         <a href="/news/articles/{{$article->hex}}/{{$article->slug}}">
                             <div class="bg-no-repeat bg-cover bg-center w-20 h-16 mr-6 border hover:border-gray-400" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.50)), url('{{asset($article->getImageThumbnail())}}');"></div>
@@ -65,7 +65,7 @@
 
             <div class="tab-pane hidden" id="topArticles">
                 <ul class="list-posts">
-                    @foreach($articles['top'] as $article)
+                    @foreach(tabbedArticles()['top'] as $article)
                         <li class="p-4 px-6 flex items-center border-b bg-slate-50">
                             <a href="/news/articles/{{$article->hex}}/{{$article->slug}}">
                                 <div class="bg-no-repeat bg-cover bg-center w-20 h-16 mr-6 border hover:border-gray-400" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.50)), url('{{asset($article->getImageThumbnail())}}');"></div>

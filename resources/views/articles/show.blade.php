@@ -1,10 +1,10 @@
 <x-layout>
+    <x-container-h-min>
+        <x-layout-articles-breaking />
+    </x-container-h-min>
     <x-container>
         <x-layout-main-area>
-            <span class="bg-indigo-500 w-max px-2 py-1 rounded-lg text-sm font-bold">
-                Top Stories
-            </span>
-            <h2>
+            <h2 class="pt-1">
                 {{$article->title}}
             </h2>
             <span class="text-sm italic">
@@ -18,7 +18,7 @@
                 </span>
                 <span class="mr-6">
                     <i class="fa-regular fa-comments mr-1"></i>
-                    {{count($article->comments)}} comments
+                    {{count($article->publicComments)}} comments
                 </span>
                 <span>
                     <i class="fa-regular fa-eye mr-1"></i>
@@ -40,6 +40,9 @@
         <x-layout-sidebar>
             <x-module-ranking-table :companies="$companies" />
             <x-module-socials />
+            <x-module-articles-features />
+            <x-module-articles-tabbed-list />
+            <x-module-subscribe />
         </x-layout-sidebar>
     </x-container>
 </x-layout>
