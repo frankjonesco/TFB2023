@@ -1,19 +1,19 @@
 <div class="article-author">
     <div class="flex">
-        <div class="w-1/2">
+        <div class="w-1/2 border-b-2 border-red-500">
             <a
                 href="#"
                 id="btnAuthorCard"
-                class="author-btn !text-zinc-100 hover:!text-zinc-100 text-sm"
+                class="author-btn !bg-red-500 hover:!bg-red-500"
             >
                 About the author
             </a>
         </div>
-        <div class="w-1/2">
+        <div class="w-1/2 border-b-2 border-red-500">
             <a 
                 href="#" 
                 id="btnAuthorArticles"
-                class="author-btn !bg-zinc-200 text-zinc-700 hover:!text-zinc-800 hover:!bg-zinc-200 text-sm"
+                class="author-btn !bg-gray-900 hover:!bg-red-500"
             >
                 More from the author
             </a>
@@ -67,14 +67,24 @@
 <script>
     const authorCard = document.getElementById('authorCard');
     const authorArticles = document.getElementById('authorArticles');
+    const btnAuthorCard = document.getElementById('btnAuthorCard');
+    const btnAuthorArticles = document.getElementById('btnAuthorArticles');
     document.getElementById("btnAuthorCard").addEventListener("click", function(event){
         event.preventDefault();
         authorCard.classList.remove('hidden');
         authorArticles.classList.add('hidden');
+        btnAuthorCard.classList.add('!bg-red-500');
+        btnAuthorCard.classList.remove('!bg-gray-900');
+        btnAuthorArticles.classList.add('!bg-gray-900');
+        btnAuthorArticles.classList.remove('!bg-red-500');
     });
     document.getElementById("btnAuthorArticles").addEventListener("click", function(event){
         event.preventDefault();
         authorCard.classList.add('hidden');
         authorArticles.classList.remove('hidden');
+        btnAuthorCard.classList.remove('!bg-red-500');
+        btnAuthorCard.classList.add('!bg-gray-900');
+        btnAuthorArticles.classList.remove('!bg-gray-900');
+        btnAuthorArticles.classList.add('!bg-red-500');
     });
 </script>
