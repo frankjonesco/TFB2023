@@ -1,6 +1,6 @@
 <div class="sidebar-module">
     <div class="p-8 px-5 bg-stone-800">
-        <h5 class=" font-bold uppercase mb-3">Subscribe to our newsletter</h5>
+        <h5 class="text-gray-400 font-bold uppercase mb-3">Subscribe to our newsletter</h5>
         <div class="flex items-center">
             <input type="text" placeholder="Email" class="!bg-gray-50 !rounded !border focus:!border-sky-400 !p-2 !text-sm !text-gray-500 !outline-0">
             <button type="submit" class="!rounded-full !ml-3 !text-xs !bg-red-500 !h-6 !w-7 !p-0"><i class="fa-solid fa-arrow-right"></i></button>
