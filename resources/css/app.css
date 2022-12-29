@@ -51,7 +51,7 @@
         @apply focus:ring-1;
         @apply focus:ring-blue-300;
         @apply font-normal;
-        @apply rounded-lg;
+        @apply rounded;
         @apply text-sm;
         @apply px-3;
         @apply py-1;
@@ -98,6 +98,18 @@
         @apply hover:!text-stone-500;
         @apply !border;
         @apply !border-stone-300;
+    }
+
+    .btn-black{
+        @apply !text-white;
+        @apply !text-sm;
+        @apply !bg-gray-900;
+        @apply hover:!bg-gray-800;
+        @apply hover:!text-gray-100;
+        @apply !border;
+        @apply !border-stone-300;
+        @apply !py-2;
+        @apply !uppercase;
     }
 
 

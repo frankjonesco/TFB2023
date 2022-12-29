@@ -39,9 +39,9 @@
             <textarea id="commentBody" name="body" rows="5" placeholder="Type your comment" x-model="formData.body" class="!bg-gray-50 !rounded !border !border-gray-300 focus:!border-sky-400 !p-2 !text-sm !text-gray-500 !outline-0 !placeholder-gray-400"></textarea>
         </div>
         <div class="form-block">
-            <button id="commentSubmitBtn" type="submit" class="btn btn-plain mt-3">
+            <button id="commentSubmitBtn" type="submit" class="btn btn-black mt-3">
                 <i class="fa-solid fa-comments mr-1"></i>
-                Leave comment
+                Post comment
             </button>
         </div>
     </div>
