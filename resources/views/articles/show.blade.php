@@ -4,10 +4,10 @@
     </x-container-h-min>
     <x-container>
         <x-layout-main-area>
-            <h2 class="pt-1">
+            <h2 class="pt-1 pb-2 !text-3xl">
                 {{$article->title}}
             </h2>
-            <span class="text-sm italic">
+            <span class="text-sm italic" style="font-size:0.82rem;">
                 <span class="mr-6">
                     <i class="fa-regular fa-clock mr-1"></i>
                     {{showDate($article->created_at)}}
@@ -25,10 +25,13 @@
                     {{$article->views}}
                 </span>
             </span>
-            <img src="{{asset('images/articles/'.$article['hex'].'/'.$article['image'])}}" alt="" class="w-full mt-6">
-            <span>
-                {{$article->image_caption}}
-            </span>
+
+            <div class="bg-no-repeat bg-center bg-cover my-3 mb-6 flex flex-col justify-end h-[423px]" style="background-image: url('{{$article->getImage()}}');">
+                <div class="bg-black px-3 py-2 bg-opacity-40 text-xs text-white flex items-center border-t border-t-white border-opacity-40">
+                    <span class="grow">{{$article->image_caption}}</span>
+                    <span class="grow text-right"><span class="mr-1">&copy;</span>{{$article->image_copyright}}</span>
+                </div>
+            </div>
             {!!$article->body!!}
             <x-layout-articles-tags :article="$article" />
             <x-layout-articles-share :article="$article" />
