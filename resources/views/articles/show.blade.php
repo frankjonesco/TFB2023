@@ -28,10 +28,14 @@
             </span>
 
             <div class="bg-no-repeat bg-center bg-cover my-3 mb-6 flex flex-col justify-end h-[423px]" style="background-image: url('{{$article->getImage()}}');">
-                <div class="bg-black px-3 py-2 bg-opacity-40 text-xs text-white flex items-center border-t border-t-white border-opacity-40">
-                    <span class="grow">{{$article->image_caption}}</span>
-                    <span class="grow text-right"><span class="mr-1">&copy;</span>{{$article->image_copyright}}</span>
-                </div>
+                @if($article->image_caption || $article->image_copyright)
+                    <div class="bg-black px-3 py-2 bg-opacity-40 text-xs text-white flex items-center border-t border-t-white border-opacity-40">
+                        <span class="grow">{{$article->image_caption}}</span>
+                        @if($article->image_copyright)
+                            <span class="grow text-right"><span class="mr-1">&copy;</span>{{$article->image_copyright}}</span>
+                        @endif
+                    </div>
+                @endif
             </div>
             {!!$article->body!!}
             <x-layout-articles-tags :article="$article" />
