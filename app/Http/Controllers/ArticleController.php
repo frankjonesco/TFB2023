@@ -53,7 +53,8 @@ class ArticleController extends Controller
         return view('articles.show', [
             'article' => $article,
             'companies' => $site->paginatePublicCompaniesAndRankingsLatest(12),
-            'author_articles' => Article::where('user_id', $article->user_id)->where('id', '!=', $article->id)->where('status', 'public')->latest()->take(4)->get()
+            'author_articles' => Article::where('user_id', $article->user_id)->where('id', '!=', $article->id)->where('status', 'public')->latest()->take(4)->get(),
+            'similar_articles' => Article::where('status', 'public')->orderBy(DB::raw('RAND()'))->take(3)->get()
         ]);
     }
 

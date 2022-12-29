@@ -85,7 +85,7 @@
             </div>
 
 
-            <x-layout-articles-grid :articles="$grid_articles" />
+            <x-layout-articles-grid heading="Articles grid" :articles="$grid_articles" />
             <x-layout-articles-slide-table :articles="$slide_table_articles" />
             <x-layout-articles-list :articles="$list_articles" />
         </x-layout-main-area>

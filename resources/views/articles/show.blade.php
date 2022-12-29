@@ -33,6 +33,7 @@
             <x-layout-articles-tags :article="$article" />
             <x-layout-articles-share :article="$article" />
             <x-layout-articles-about-author :article="$article" :authorArticles="$author_articles" />
+            <x-layout-articles-grid heading="You may also like" :articles="$similar_articles" />
             <x-layout-articles-comments :article="$article" />
         </x-layout-main-area>
         <x-layout-sidebar>

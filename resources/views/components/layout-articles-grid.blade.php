@@ -9,9 +9,9 @@
     } 
 </script>
 
-<x-layout-heading heading="Articles grid" class="heading-mt" />
+<x-layout-heading :heading="$heading" class="heading-mt" />
 
-<div class="grid grid-cols-3 gap-8 border-b border-gray-100 mb-3">
+<div class="grid grid-cols-3 gap-3 border-b border-gray-100 mb-3">
     
     @foreach($articles as $article)
         <a href="/news/articles/{{$article->hex}}/{{$article->slug}}" class="!text-gray-200 hover:!text-gray-200">
