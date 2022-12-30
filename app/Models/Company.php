@@ -113,14 +113,14 @@ class Company extends Model
         );
     }
 
-    protected function logo(): Attribute
+    protected function logoImage(): Attribute
     {
         return Attribute::make(
             get: fn ($value, $attributes) => $attributes['image'] ? asset('images/companies/'.$attributes['hex'].'/'.$attributes['image']) : asset('images/no-image.png')
         );
     }
 
-    protected function logoThumbnail(): Attribute
+    protected function logoImageThumbnail(): Attribute
     {
         return Attribute::make(
             get: fn ($value, $attributes) => $attributes['image'] ? asset('images/companies/'.$attributes['hex'].'/tn-'.$attributes['image']) : asset('images/tn-no-image.png')

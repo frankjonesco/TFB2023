@@ -10,31 +10,32 @@
             {{-- Company layout --}}
             <div class="flex">
                 <div class="w-1/4 mr-10">
-                    <div class="h-32 p-2 border border-gray-200 flex items-center">
+                    <div class="max-h-min p-2 border border-gray-200 flex items-center" style="min-height:8rem;">
                         <img 
                             src="{{$company->getImageThumbnail()}}"
                             alt="Top Family Business - {{$company->registered_name}}"
-                            class="w-full mr-4"
+                            class="mx-auto"
+                            style="max-height:6.5rem;"
                         >
                     </div>
                     <ul class="flex flex-col text-sm mt-6">
-                        <li class="flex my-1 py-1 border-b border-gray-200">
+                        <li class="flex my-1 py-1 border-b border-gray-200 px-1.5">
                             <span class="grow">Family business</span>
                             <span><i class="fa-solid fa-check text-green-700"></i></span>
                         </li>
-                        <li class="flex my-1 py-1 border-b border-gray-200">
+                        <li class="flex my-1 py-1 border-b border-gray-200 px-1.5">
                             <span class="grow">Generations</span>
                             <span>{{$company->family_generations}}</span>
                         </li>
-                        <li class="flex my-1 py-1 border-b border-gray-200">
+                        <li class="flex my-1 py-1 border-b border-gray-200 px-1.5">
                             <span class="grow">Family executive</span>
                             <span><i class="fa-solid fa-check text-green-700"></i></span>
                         </li>
-                        <li class="flex my-1 py-1 border-b border-gray-200">
+                        <li class="flex my-1 py-1 border-b border-gray-200 px-1.5">
                             <span class="grow">Female executive</span>
                             <span><i class="fa-solid fa-check text-green-700"></i></span>
                         </li>
-                        <li class="flex my-1 py-1 border-b border-gray-200">
+                        <li class="flex my-1 py-1 border-b border-gray-200 px-1.5">
                             <span class="grow">Stock listed</span>
                             <span><i class="fa-solid fa-check text-green-700"></i></span>
                         </li>
@@ -44,8 +45,8 @@
                     <h2 class="pt-0">{{$company->show_name}}</h2>
                     <div class="flex mb-5">
                         <div class="w-1/2">
-                            <span>Registered name</span><br>
-                            <span class="font-thin">{{$company->registered_name}}</span>
+                            <span>Turnover</span><br>
+                            <span class="font-thin">{{formatTurnover($company->latest_turnover)}} €</span>
                         </div>
                         <div class="w-1/2">
                             <span>Parent organisation:</span><br>
@@ -62,9 +63,90 @@
 
                     <hr>
 
-                    <h3>Sectors</h3>
+
+
+
+                    <h3>Details</h3>
+
+                    <table>
+                        <tbody>
+                            {{-- Registered name --}}
+                            @if($company->registered_name)
+                                <tr>
+                                    <td class="px-0 text-center">
+                                        <i class="fa-regular fa-registered text-orange-500"></i>
+                                    </td>
+                                    <td class="px-0">Registered name</td>
+                                    <td class="px-0">{{$company->registered_name}}</td>
+                                </tr>
+                            @endif
+                            {{-- Trading name --}}
+                            @if($company->trading_name)
+                                <tr>
+                                    <td class="px-0 text-center">
+                                        <i class="fa-solid fa-trademark text-blue-500"></i>
+                                    </td>
+                                    <td class="px-0">Trading name</td>
+                                    <td class="px-0">{{$company->trading_name}}</td>
+                                </tr>
+                            @endif
+                            {{-- Parent organisation --}}
+                            @if($company->parent_organization)
+                                <tr>
+                                    <td class="px-0 text-center">
+                                        <i class="fa-regular fa-building text-lime-500"></i>
+                                    </td>
+                                    <td class="px-0">Parent organisation</td>
+                                    <td class="px-0">{{$company->parent_organization}}</td>
+                                </tr>
+                            @endif
+                            {{-- Founded in --}}
+                            @if($company->founded_in)
+                                <tr>
+                                    <td class="px-0 text-center">
+                                        <i class="fa-regular fa-calendar text-yellow-500"></i>
+                                    </td>
+                                    <td class="px-0">Founded in</td>
+                                    <td class="px-0">{{$company->founded_in}}</td>
+                                </tr>
+                            @endif
+                            {{-- Founded by --}}
+                            @if($company->founded_by)
+                                <tr>
+                                    <td class="px-0 text-center">
+                                        <i class="fa-regular fa-copyright text-green-500"></i>
+                                    </td>
+                                    <td class="px-0">Founded by</td>
+                                    <td class="px-0">{{$company->founded_by}}</td>
+                                </tr>
+                            @endif
+                            {{-- Headquarters --}}
+                            @if($company->headquarters)
+                                <tr>
+                                    <td class="px-0 text-center">
+                                        <i class="fa-regular fa-map text-pink-500"></i>
+                                    </td>
+                                    <td class="px-0">Headquarters</td>
+                                    <td class="px-0">{{$company->headquarters}}</td>
+                                </tr>
+                            @endif
+                            {{-- Family name --}}
+                            @if($company->family_name)
+                                <tr>
+                                    <td class="px-0 text-center">
+                                        <i class="fa-solid fa-people-roof text-purple-500"></i>
+                                    </td>
+                                    <td class="px-0">Family name</td>
+                                    <td class="px-0">{{$company->family_name}}</td>
+                                </tr>
+                            @endif
+                        </tbody>
+                    </table>
+
+                    
 
                     @if($company->sectors)
+                        <h3>Sectors</h3>
                         <div class="flex w-full">
                             @foreach($company->sectors as $sector)
                                 <div class="w-1/3 m-1 border border-gray-200 p-2.5 bg-zinc-50">
@@ -87,39 +169,39 @@
                         </div>
                     @endif    
                     
+                    @if(count($company->associated_articles) > 0)
                     
-                    <h3>Associated articles</h3>
-
-                    @if($company->associated_articles)
-                        <div class="flex w-full">
-                            @foreach($company->associated_articles as $article)
-                            @if($loop->last)
-                                <div class="flex mb-3 w-full border-0">
-                            @else
-                                <div class="flex pb-3 mb-3 w-full border-b border-gray-100">
-                            @endif
-                                
-                                <div>
-                                    <a href="/news/articles/{{$article->hex}}/{{$article->slug}}">
-                                        <div class="w-24 h-20 bg-no-repeat bg-cover bg-center px-4 flex flex-col justify-end overflow-hidden border hover:border-gray-300" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.85)), url('{{asset('images/articles/'.$article->hex.'/'.$article->image)}}');"></div>
-                                    </a>
-                                </div>
-                                <div class="flex flex-col pl-4 self-center">
-                                    <span class="text-gray-400 text-xs italic">
-                                        Top Stories
-                                    </span> 
-                                    <h4 class="pt-1 pb-1 text-gray-500 text-xs font-bold">
-                                        <a href="/news/articles/{{$article->hex}}/{{$article->slug}}" class="text-slate-900 hover:!text-red-500">
-                                            {{$article->title}}
-                                        </a>
-                                    </h4>
-                                    <span class="text-xs text-gray-400 italic">
-                                        <i class="fa-regular fa-clock mr-1"></i>
-                                        {{showDate($article->created_at)}}
-                                    </span>
-                                </div>
-                            </div>
-                            @endforeach
+                        <h3>Associated articles</h3>
+                    
+                        <div class="grid grid-cols-2 gap-3 w-full">
+                        
+                            
+                                @foreach($company->associated_articles as $article)
+                                <div class="flex w-full">
+                                    <div class="bg-no-repeat bg-center bg-cover px-4 py-5 m- flex flex-col justify-end overflow-hidden" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.85)), url('{{asset('images/articles/'.$article->hex.'/'.$article->image)}}');">
+                                        <div class="translate-y-0">
+                                            <span class="bg-lime-500 w-max px-2 py-1 rounded-lg text-xs font-bold text-zinc-100">
+                                                Top Stories
+                                            </span>
+                                            <h3 class="pt-1.5 pb-1">
+                                                <a href="/news/articles/{{$article->hex}}/{{$article->slug}}" class="text-zinc-100 hover:!text-zinc-100 hover:!text-opacity-80">
+                                                    {{$article->title}}
+                                                </a>
+                                            </h3>
+                                            <span class="text-xs italic text-zinc-100">
+                                                <span class="mr-3">
+                                                    <i class="fa-regular fa-clock mr-1"></i>
+                                                    {{showDate($article->created_at)}}
+                                                </span>
+                                                <span>
+                                                    <i class="fa-regular fa-eye mr-1"></i>
+                                                    {{$article->views}}
+                                                </span>
+                                            </span>
+                                        
+                                        </div>
+                                    </div></div>
+                                @endforeach
                         </div>
                     @endif    
 
