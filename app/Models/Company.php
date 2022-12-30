@@ -49,7 +49,7 @@ class Company extends Model
     public function industries(){
         return $this->belongsToMany(
             Industry::class,
-            'maps',
+            'maps'
         );
     }
 
@@ -57,7 +57,7 @@ class Company extends Model
     public function grouped_industries(){
         return $this->belongsToMany(
             Industry::class,
-            'maps',
+            'maps'
         )->distinct();
     }
 
@@ -65,13 +65,21 @@ class Company extends Model
     public function sector_industries(){
         return $this->belongsToMany(
             Industry::class,
-            'maps',
+            'maps'
         )->distinct();
     }
 
     // Relationship to rankings
     public function rankings(){
         return $this->hasMany(Ranking::class, 'company_id');
+    }
+
+    // Relationship to associated articles
+    public function associated_articles(){
+        return $this->belongsToMany(
+            Article::class,
+            'associations'
+        );
     }
 
     // Relationship to contacts

@@ -2,8 +2,8 @@
     <x-layout-heading heading="Associated companies" class="heading-mt" />
 
     @foreach($companies as $company)
-        <div class="flex flex-row border-b border-gray-100">
-            <div class="w-1/4 mr-10 mb-6">
+        <div class="flex flex-row border-b border-gray-100 mb-6 pb-6">
+            <div class="w-1/4 mr-10">
                 <div class="h-32 p-2 border border-gray-200 flex items-center">
                     <a href="/companies/{{$company->hex}}/{{$company->slug}}">
                         <img 
