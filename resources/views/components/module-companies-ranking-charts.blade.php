@@ -3,7 +3,7 @@
 <script src="{{asset('c3/c3-js.js')}}" charset="utf-8"></script>
 <script src="{{asset('c3/c3.min.js')}}"></script>
 
-<div class="company-ranking-charts mt-0">
+<div class="company-ranking-charts mb-12">
     <div class="flex tabs ">
         <div class="w-1/2 border-b-2 border-red-500">
             <a
@@ -47,7 +47,7 @@
                                         <span class="text-xs">*</span>
                                     @endif
                                 </td>
-                                <td class="py-2 px-8 text-xs">{{formatTurnover($ranking->turnover)}}</td>
+                                <td class="py-2 px-8 text-xs">{{formatTurnover($ranking->turnover)}} €</td>
                                 <td class="px-0.5 py-2 text-right text-xs">
                                     <x-ranking-growth growth="{{$ranking->calculateGrowth('turnover')}}" />
                                 </td>

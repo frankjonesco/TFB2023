@@ -6,15 +6,17 @@
 
     <x-container>
         <x-layout-main-area>
-            <x-layout-heading heading="Company information" />
+            {{-- <x-layout-heading heading="Company information" /> --}}
             {{-- Company layout --}}
             <div class="flex">
                 <div class="w-1/4 mr-10">
-                    <img 
-                        src="{{$company->getImageThumbnail()}}"
-                        alt="Top Family Business - {{$company->registered_name}}"
-                        class="w-full mr-4"
-                    >
+                    <div class="h-32 p-2 border border-gray-200 flex items-center">
+                        <img 
+                            src="{{$company->getImageThumbnail()}}"
+                            alt="Top Family Business - {{$company->registered_name}}"
+                            class="w-full mr-4"
+                        >
+                    </div>
                     <ul class="flex flex-col text-sm mt-6">
                         <li class="flex my-1 py-1 border-b border-gray-200">
                             <span class="grow">Family business</span>
@@ -59,9 +61,33 @@
                     </a>
                     <p class="mt-6 text-sm">{{$company->description}}</p>
 
-                    
+                    <hr>
 
-                    
+                    <h3>Sectors</h3>
+
+                    @if($company->sectors)
+                        <div class="flex w-full">
+                            @foreach($company->sectors as $sector)
+                                <div class="w-1/3 m-1 border border-gray-200 p-2.5 bg-zinc-50">
+                                    <a href="/sectors/{{$sector->hex}}/{{$sector->slug}}">
+                                        <img src="{{asset('images/sectors/'.$sector->hex.'/'.$sector->image)}}">
+                                    </a>
+                                    <h5 class="font-bold text-sm mt-2">
+                                        <a href="/sectors/{{$sector->hex}}/{{$sector->slug}}">
+                                            {{$sector->name}}
+                                        </a>
+                                    </h5>
+                                    <span class="text-xs">
+                                        <a href="/sectors/{{$sector->hex}}/{{$sector->slug}}">
+                                            {{count($sector->companies)}} companies
+                                        </a>
+                                    </span>
+                                </div>
+                                
+                            @endforeach
+                        </div>
+                    @endif                   
+
                 </div>
             </div>
 
