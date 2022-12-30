@@ -44,13 +44,19 @@
                 <div class="w-3/4">
                     <h2 class="pt-0">{{$company->show_name}}</h2>
                     <div class="flex mb-5">
-                        <div class="w-1/2">
+                        <div class="w-1/3">
                             <span>Turnover</span><br>
-                            <span class="font-thin">{{formatTurnover($company->latest_turnover)}} €</span>
+                            <span class="font-light">{{formatTurnover($company->latest_ranking->turnover)}} €</span>
                         </div>
-                        <div class="w-1/2">
-                            <span>Parent organisation:</span><br>
-                            <span class="font-thin">{{$company->parent_organization}}</span>
+                        <div class="w-1/3">
+                            <span>Employees</span><br>
+                            <span class="font-light">{{formatEmployees($company->latest_ranking->employees)}}</span>
+                        </div>
+                        <div class="w-1/3">
+                            <span>Growth</span><br>
+                            <span class="font-light">
+                                <x-ranking-growth growth="{{$company->latest_ranking->calculateGrowth('turnover')}}" class="text-base" />
+                            </span>
                         </div>
                     </div>
                     <a href="{{$company->website}}" target="_blank">

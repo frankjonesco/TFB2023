@@ -28,7 +28,7 @@
                     <td class="text-center">{{$company->ranking->year}}</td>
                     <td class="text-center">{{formatTurnover($company->ranking->turnover)}}</td>
                     <td class="text-center">{{formatEmployees($company->ranking->employees)}}</td>
-                    <td class="text-center">{{$company->ranking->calculateGrowth()}}</td>
+                    <td class="text-center"><x-ranking-growth growth="{{$company->latest_ranking->calculateGrowth('turnover')}}" class="text-sm" /></td>
                 </tr>
             @endforeach
         </tbody>

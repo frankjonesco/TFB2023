@@ -139,17 +139,10 @@ class Company extends Model
         );
     }
 
-    protected function latestTurnover(): Attribute
+    protected function latestRanking(): Attribute
     {
         return Attribute::make(
-            get: fn ($value, $attributes) => Ranking::where('company_id', $this->id)->orderBy('year', 'DESC')->first()->turnover
-        );
-    }
-
-    protected function latestEmployees(): Attribute
-    {
-        return Attribute::make(
-            get: fn ($value, $attributes) => Ranking::where('company_id', $this->id)->orderBy('year', 'DESC')->first()->employees
+            get: fn ($value, $attributes) => Ranking::where('company_id', $this->id)->orderBy('year', 'DESC')->first()
         );
     }
 
@@ -301,7 +294,7 @@ class Company extends Model
     public function rankingTurnovers(){
         $turnovers = Ranking::where('company_id', $this->id)
             ->where('turnover', '!=', null)
-            ->orderBy('turnover', 'ASC')
+            ->orderBy('year', 'ASC')
             ->pluck('turnover')
             ->toArray();
         return implode(',', $turnovers);
