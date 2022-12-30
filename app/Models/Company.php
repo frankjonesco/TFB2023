@@ -105,6 +105,20 @@ class Company extends Model
         );
     }
 
+    protected function logo(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value, $attributes) => $attributes['image'] ? asset('images/companies/'.$attributes['hex'].'/'.$attributes['image']) : asset('images/no-image.png')
+        );
+    }
+
+    protected function logoThumbnail(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value, $attributes) => $attributes['image'] ? asset('images/companies/'.$attributes['hex'].'/tn-'.$attributes['image']) : asset('images/tn-no-image.png')
+        );
+    }
+
     /**
      * Get the user's first name.
      *
@@ -114,6 +128,20 @@ class Company extends Model
     {
         return Attribute::make(
             get: fn ($value, $attributes) => Ranking::find($this->ranking_id)
+        );
+    }
+
+    protected function latestTurnover(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value, $attributes) => Ranking::where('company_id', $this->id)->orderBy('year', 'DESC')->first()->turnover
+        );
+    }
+
+    protected function latestEmployees(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value, $attributes) => Ranking::where('company_id', $this->id)->orderBy('year', 'DESC')->first()->employees
         );
     }
 

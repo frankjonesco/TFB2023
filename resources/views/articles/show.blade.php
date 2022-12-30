@@ -1,4 +1,5 @@
 <x-layout>
+
     <x-container-h-min>
         <x-layout-articles-breaking />
     </x-container-h-min>
@@ -42,6 +43,7 @@
             <x-layout-articles-share :article="$article" />
             <x-layout-articles-split-thumbs :articles="$split_articles" />
             <x-layout-articles-about-author :article="$article" :authorArticles="$author_articles" />
+            <x-layout-articles-associated-companies :companies="$article->associated_companies" />
             <x-layout-articles-grid heading="You may also like" :articles="$similar_articles" />
             <x-layout-articles-comments :article="$article" />
         </x-layout-main-area>

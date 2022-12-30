@@ -37,9 +37,17 @@ class Article extends Model
         return $this->hasMany(Comment::class, 'resource_id');
     }
 
-    // Relationship to comments
+    // Relationship to public comments
     public function publicComments(){
         return $this->hasMany(Comment::class, 'resource_id')->where('status', 'public');
+    }
+
+    // Relationship to associated companies
+    public function associated_companies(){
+        return $this->belongsToMany(
+            Company::class,
+            'associations'
+        );
     }
 
 
