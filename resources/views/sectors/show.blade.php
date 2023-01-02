@@ -5,10 +5,10 @@
 
             <table class="mb-12">
                 <thead>
-                    <th class="text-center">No. of Companies</th>
-                    <th class="text-center">Total Turnover</th>
-                    <th class="text-center">Total Employees</th>
-                    <th class="text-center">Avg. Turnover per company</th>
+                    <th class="text-center font-bold">No. of Companies</th>
+                    <th class="text-center font-bold">Total Turnover</th>
+                    <th class="text-center font-bold">Total Employees</th>
+                    <th class="text-center font-bold">Avg. Turnover per company</th>
                 </thead>
                 <tbody>
                     <tr>
@@ -19,10 +19,6 @@
                     </tr>
                 </tbody>
             </table>
-
-
-            
-
             
             <x-layout-heading heading="Companies in the {{$sector->name}} Sector" />
             {{-- Companies --}}

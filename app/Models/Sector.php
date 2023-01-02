@@ -79,6 +79,10 @@ class Sector extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function color(){
+        return $this->hasOne(Color::class, 'id', 'color_id');
+    }
+
 
     // Paginate public companies
     public function paginatePublicCompaniesAndRankingsLatest($take = 20){
