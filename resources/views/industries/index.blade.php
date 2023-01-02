@@ -1,7 +1,7 @@
 <x-layout>
     <x-container>
         <x-layout-main-area>
-            <x-layout-heading heading="Sectors & Industries" />
+            <x-layout-heading heading="Sectors" />
 
             {{-- Sectors --}}
             @if($sectors)

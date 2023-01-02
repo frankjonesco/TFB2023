@@ -55,6 +55,9 @@
                         <a href="/rankings" aria-current="page">Ranking</a>
                     </li>
                     <li>
+                        <a href="/sectors" aria-current="page">Sectors</a>
+                    </li>
+                    <li>
                         <a href="/industries" aria-current="page">Industries</a>
                     </li>
                     <li>
