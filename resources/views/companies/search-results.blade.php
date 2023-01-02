@@ -9,7 +9,7 @@
                     <label for="term">
                         Company name
                     </label>
-                    <input type="text" name="term" placeholder="Company name" value="{{old('term')}}" class="public-input">
+                    <input type="text" name="term" placeholder="Company name" value="{{old('term') ?: $term}}" class="public-input">
                     @error('term')
                         <p class="text-error">
                             {{$message}}

@@ -26,6 +26,36 @@ class CompanyController extends Controller
             'company' => $company
         ]);
     }
+
+    // Search ping 
+    public function searchPing(Request $request){
+        $term = $request->term;
+        $year = $request->year;
+        $order_by = $request->order_by;
+        $sort_direction = $request->sort_direction;
+        return redirect('rankings/search/'.$term.'/'.$year.'/'.$order_by.'/'.$sort_direction);
+    }
+
+    // Search results
+    public function searchResults($term, $year, $order_by, $sort_direction){
+
+        $companies = Company::with('rankings')
+            ->join('rankings', 'rankings.company_id', '=', 'companies.id')
+            ->where('rankings.is_latest', true)
+            ->where('rankings.turnover', '>=', 250000000)
+            ->where('companies.family_business', 1)
+            ->where('companies.tofam_status', 'in')
+            ->where('registered_name', 'like', '%'.$term.'%')
+            ->select('companies.*', 'rankings.id AS ranking_id') // Avoid selecting everything from the stocks table
+            ->orderBy($order_by, $sort_direction)
+            ->paginate(10);
+
+        
+        return view('companies.search-results', [
+            'companies' => $companies, 
+            ''
+        ]);
+    }
     
 
     // ADMIN METHODS

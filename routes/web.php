@@ -127,7 +127,8 @@ Route::controller(CompanyController::class)->middleware('auth')->group(function(
 // Public routes for CompanyController
 Route::controller(CompanyController::class)->group(function(){
     Route::get('/rankings', 'index');
-
+    Route::get('/rankings/search/{term}/{year}/{order_by}/{sort_direction}', 'searchResults');
+    Route::post('/rankings/search', 'searchPing');
     Route::get('/companies/{company}/{slug}', 'show');
 });
 

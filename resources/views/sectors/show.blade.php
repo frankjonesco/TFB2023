@@ -2,7 +2,29 @@
     <x-container>
         <x-layout-main-area>
             <x-layout-heading heading="{{$sector->name}} Sector" />
-                
+
+            <table class="mb-12">
+                <thead>
+                    <th class="text-center">No. of Companies</th>
+                    <th class="text-center">Total Turnover</th>
+                    <th class="text-center">Total Employees</th>
+                    <th class="text-center">Avg. Turnover per company</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center">{{count($sector->companies)}}</td>
+                        <td class="text-center">{{formatTurnover($sector->totalTurnoverOfSectorCompanies())}} €</td>
+                        <td class="text-center">{{formatEmployees($sector->totalEmployeesOfSectorCompanies())}}</td>
+                        <td class="text-center">{{formatTurnover($sector->totalTurnoverOfSectorCompanies() / count($sector->companies))}} €</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            
+
+            
+            <x-layout-heading heading="Companies in the {{$sector->name}} Sector" />
             {{-- Companies --}}
             @if($companies)
                 <div class="grid grid-cols-4 gap-3 w-full">
