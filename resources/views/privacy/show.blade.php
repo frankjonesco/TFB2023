@@ -3,8 +3,8 @@
         <x-layout-main-area>
             <x-layout-heading heading="Privacy policy" />
 
-            <div class="flex">
-                <div class=" w-1/2">
+            <div class="flex text-sm">
+                <div class="w-1/2 mr-2">
                     <h3>SITZ DER GESELLSCHAFT</h3>
                     <p>
                         <b>Angaben gemäß §5 TMG:</b><br>

@@ -1,12 +1,7 @@
 <x-layout>
 
-    <x-container-h-min>
-        <x-layout-articles-breaking />
-    </x-container-h-min>
-
     <x-container>
         <x-layout-main-area>
-            {{-- <x-layout-heading heading="Company information" /> --}}
             {{-- Company layout --}}
             <div class="flex">
                 <div class="w-1/4 mr-10">
@@ -72,7 +67,7 @@
 
 
 
-                    <h3>Details</h3>
+                    <h3 class="pt-0 mt-0">Details</h3>
 
                     <table>
                         <tbody>
@@ -149,13 +144,14 @@
                         </tbody>
                     </table>
 
-                    
+                    <hr>
 
                     @if($company->sectors)
                         <h3>Sectors</h3>
                         <div class="flex w-full">
                             @foreach($company->sectors as $sector)
                                 <div class="w-1/3 m-1 border border-gray-200 p-2.5 bg-zinc-50">
+                                
                                     <a href="/sectors/{{$sector->hex}}/{{$sector->slug}}">
                                         <img src="{{asset('images/sectors/'.$sector->hex.'/'.$sector->image)}}">
                                     </a>
@@ -177,7 +173,7 @@
                     
                     @if(count($company->associated_articles) > 0)
                     
-                        <h3>Associated articles</h3>
+                        <h3>Articles about {{$company->show_name}}</h3>
                     
                         <div class="grid grid-cols-2 gap-3 w-full">
                         

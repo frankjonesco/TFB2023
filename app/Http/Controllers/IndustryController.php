@@ -17,6 +17,7 @@ class IndustryController extends Controller
     // Show all public industries
     public function index(Site $site){
         return view('industries.index', [
+            'sectors' => $site->publicSectors(),
             'industries' => $site->publicIndustries()
         ]);
     }
