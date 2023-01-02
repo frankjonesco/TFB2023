@@ -25,7 +25,8 @@ class SectorController extends Controller
     // Show single sector
     public function show(Sector $sector){
         return view('sectors.show', [
-            'sector' => $sector
+            'sector' => $sector,
+            'companies' => $sector->companies
         ]);
     }
     

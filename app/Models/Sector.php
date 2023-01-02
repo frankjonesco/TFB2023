@@ -44,8 +44,16 @@ class Sector extends Model
     public function companies(){
         return $this->belongsToMany(
             Company::class,
-            'maps',
-        )->withPivot('id', 'hex', 'sector_id', 'industry_id', 'company_id');
+            'maps',)
+            ->withPivot('id', 'hex', 'sector_id', 'industry_id', 'company_id')
+            ->with('rankings')
+            ->join('rankings', 'rankings.company_id', '=', 'companies.id')
+            ->where('rankings.is_latest', true)
+            ->where('rankings.turnover', '>=', 250000000)
+            ->where('companies.family_business', 1)
+            ->where('companies.tofam_status', 'in')
+            ->select('companies.*', 'rankings.id AS ranking_id') // Avoid selecting everything from the stocks table
+            ->orderBy('rankings.turnover', 'DESC');
     }
 
     // Relationship to companies (grouped)
@@ -69,6 +77,20 @@ class Sector extends Model
     // Relationship to users
     public function user(){
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+
+    // Paginate public companies
+    public function paginatePublicCompaniesAndRankingsLatest($take = 20){
+        return Company::with('rankings')
+        ->join('rankings', 'rankings.company_id', '=', 'companies.id')
+        ->where('rankings.is_latest', true)
+        ->where('rankings.turnover', '>=', 250000000)
+        ->where('companies.family_business', 1)
+        ->where('companies.tofam_status', 'in')
+        ->select('companies.*', 'rankings.id AS ranking_id') // Avoid selecting everything from the stocks table
+        ->orderBy('rankings.turnover', 'DESC')
+        ->paginate($take);
     }
 
 
