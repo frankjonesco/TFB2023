@@ -11,6 +11,7 @@ use App\Models\Industry;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
 class SectorController extends Controller
@@ -26,6 +27,7 @@ class SectorController extends Controller
     public function show(Sector $sector){
         return view('sectors.show', [
             'sector' => $sector,
+            'other_sectors' => Sector::where('id', '!=', $sector->id)->orderBy(DB::Raw('RAND()'))->take(6)->get(),
             'companies' => $sector->companies
         ]);
     }

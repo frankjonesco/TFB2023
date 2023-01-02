@@ -37,6 +37,7 @@
 
         </x-layout-main-area>
         <x-layout-sidebar>
+            <x-module-sectors-list :other-sectors="$other_sectors" />
             <x-module-socials />
             <x-module-articles-features />
             <x-module-subscribe />
