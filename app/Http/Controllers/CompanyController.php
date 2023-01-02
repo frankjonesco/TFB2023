@@ -15,7 +15,11 @@ class CompanyController extends Controller
     public function index(Site $site){
         return view('companies.index', [
             // 'companies' => $site->paginatePublicCompanies()
-            'companies' => $site->paginatePublicCompaniesAndRankingsLatest()
+            'companies' => $site->paginatePublicCompaniesAndRankingsLatest(),
+            'search_term' => null,
+            'search_year' => null,
+            'search_order_by' => null,
+            'search_sort_direction' => null
         ]);
     }
 
@@ -27,33 +31,37 @@ class CompanyController extends Controller
         ]);
     }
 
-    // Search ping 
-    public function searchPing(Request $request){
-        $term = $request->term;
-        $year = $request->year;
-        $order_by = $request->order_by;
-        $sort_direction = $request->sort_direction;
-        return redirect('rankings/search/'.$term.'/'.$year.'/'.$order_by.'/'.$sort_direction);
-    }
-
     // Search results
-    public function searchResults($term, $year, $order_by, $sort_direction){
+    public function searchResults(Request $request){
+
+        $search_term = $request->search_term;
+        $search_year = $request->search_year;
+        $search_order_by = $request->search_order_by;
+        $search_sort_direction = $request->search_sort_direction;
+
+        if($search_year === 'all'){
+            $search_year = rankingYears();
+        }
 
         $companies = Company::with('rankings')
             ->join('rankings', 'rankings.company_id', '=', 'companies.id')
             ->where('rankings.is_latest', true)
             ->where('rankings.turnover', '>=', 250000000)
+            ->where('rankings.year', $search_year)
             ->where('companies.family_business', 1)
             ->where('companies.tofam_status', 'in')
-            ->where('registered_name', 'like', '%'.$term.'%')
+            ->where('registered_name', 'like', '%'.$search_term.'%')
             ->select('companies.*', 'rankings.id AS ranking_id') // Avoid selecting everything from the stocks table
-            ->orderBy($order_by, $sort_direction)
-            ->paginate(10);
+            ->orderBy($search_order_by, $search_sort_direction)
+            ->paginate(20);
 
         
         return view('companies.search-results', [
             'companies' => $companies, 
-            ''
+            'search_term' => $search_term,
+            'search_year' => $search_year,
+            'search_order_by' => $search_order_by,
+            'search_sort_direction' => $search_sort_direction,
         ]);
     }
     
