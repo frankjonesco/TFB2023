@@ -21,6 +21,13 @@ class SectorController extends Controller
             'sectors' => $site->publicSectors()
         ]);
     }
+
+    // Show single sector
+    public function show(Sector $sector){
+        return view('sectors.show', [
+            'sector' => $sector
+        ]);
+    }
     
 
     // ADMIN METHODS

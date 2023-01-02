@@ -161,6 +161,7 @@ Route::controller(SectorController::class)->middleware('auth')->group(function()
 // Public routes for SectorController
 Route::controller(SectorController::class)->group(function(){
     Route::get('/sectors', 'index');
+    Route::get('/sectors/{sector}/{slug}', 'show');
 });
 
 
