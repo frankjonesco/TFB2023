@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('partners', function (Blueprint $table) {
             $table->id();
+            $table->integer('old_id');
             $table->string('hex', 11);
             $table->foreignId('article_id')->nullable();
             $table->string('name');

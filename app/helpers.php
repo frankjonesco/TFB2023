@@ -4,7 +4,6 @@ use App\Models\Article;
 use App\Models\Company;
 use App\Models\Partner;
 use App\Models\Ranking;
-use App\Models\Sponsor;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Config;
@@ -98,8 +97,8 @@ use Illuminate\Support\Facades\Config;
     // FETCHERS
 
     // Nav sponsors
-    if(!function_exists('navSponsors')) {
-        function navSponsors(){
+    if(!function_exists('navPartners')) {
+        function navPartners(){
             return Partner::where('show_in_navbar', true)->get();
         }
     }

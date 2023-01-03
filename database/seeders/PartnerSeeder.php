@@ -19,6 +19,7 @@ class PartnerSeeder extends Seeder
     {
         $partners = [
             [
+                'old_id' => 1,
                 'hex' => Str::random(11),
                 'article_id' => 290,
                 'name' => 'PricewaterhouseCoopers',
@@ -29,6 +30,7 @@ class PartnerSeeder extends Seeder
                 'active' => 1
             ],
             [
+                'old_id' => 2,
                 'hex' => Str::random(11),
                 'article_id' => 136,
                 'name' => 'Matchbird',
@@ -39,6 +41,7 @@ class PartnerSeeder extends Seeder
                 'active' => 1
             ],
             [
+                'old_id' => 3,
                 'hex' => Str::random(11),
                 'article_id' => 122,
                 'name' => 'Headgate',
@@ -48,6 +51,7 @@ class PartnerSeeder extends Seeder
                 'active' => 1
             ],
             [
+                'old_id' => 4,
                 'hex' => Str::random(11),
                 'article_id' => 137,
                 'name' => 'Top Family Business',

@@ -36,10 +36,10 @@
                 <img src="{{asset('images/top-family-business-logo.png')}}" class="py-4 mr-3 pr-10 w-80" alt="Top Family Business Logo" />
             </a>
 
-            @foreach(navSponsors() as $nav_sponsors)
+            @foreach(navPartners() as $nav_partner)
 
-                <a href="{{$nav_sponsors->url}}" class="flex items-center mr-10" target="_blank">
-                    <img src="{{asset('images/sponsors/'.$nav_sponsors->logo)}}" alt="{{$nav_sponsors->name}}" class="h-9" />
+                <a href="{{$nav_partner->url}}" class="flex items-center mr-10" target="_blank">
+                    <img src="{{asset('images/partners/'.$nav_partner->hex.'/'.$nav_partner->logo)}}" alt="{{$nav_partner->name}}" class="h-9" />
                 </a>
 
             @endforeach
@@ -61,7 +61,7 @@
                         <a href="/industries" aria-current="page" class="no-underline">Industries</a>
                     </li>
                     <li>
-                        <a href="/partners" aria-current="page" class="no-underline">Partners</a>
+                        <a href="/partners" aria-current="page" class="no-underline">TOFAM Partners</a>
                     </li>
                 </ul>
             </div>
