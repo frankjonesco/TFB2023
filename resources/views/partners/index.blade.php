@@ -3,7 +3,7 @@
         <x-layout-main-area>
             <x-layout-heading heading="TOFAM Partners" />
 
-            <div class="flex w-full gap-2 mb-6 items-center">
+            <div class="flex w-full gap-4 mb-6 items-center">
                 @foreach($partners as $partner)
                     <a href="/news/articles/{{$partner->article->hex}}/{{$partner->article->slug}}" class="w-1/4 p-7 text-center bg-slate-500 border-b-8 border-b-orange-300 border-t-8 border-t-orange-300 hover:bg-slate-600">
                         <img src="{{asset('images/partners/'.$partner->hex.'/'.$partner->logo)}}" alt="" class="max-h-8 mx-auto">

@@ -29,32 +29,32 @@
                 @else
                     <tr>
                 @endif
-                    <td>{{$companies->firstItem() + $key}}</td>
-                    <td>
+                    <td class="py-3.5">{{$companies->firstItem() + $key}}</td>
+                    <td class="py-0">
                         <div class="flex items-center">
                             <img 
                                 src="{{$company->getImageThumbnail()}}"
                                 alt="Top Family Business - {{$company->registered_name}}"
                                 class="w-6 mr-4 rounded border border-indigo-100 hover:border-blue-300 cursor-pointer"
                             >
-                            <a href="/companies/{{$company->hex}}/{{$company->slug}}" class="plain">{{$company->show_name}}</a>
+                            <a href="/companies/{{$company->hex}}/{{$company->slug}}" class="plain hover:!underline">{{$company->show_name}}</a>
                         </div>
                     </td>
                     @if($search_order_by === 'companies.family_name')
-                        <td>{{$company->family_name}}</td>
-                        <td class="text-center">{{$company->ranking->year}}</td>
-                        <td class="text-center whitespace-nowrap">{{formatTurnover($company->ranking->turnover)}}</td>
+                        <td class="py-0">{{$company->family_name}}</td>
+                        <td class="py-0 text-center">{{$company->ranking->year}}</td>
+                        <td class="py-0 text-center whitespace-nowrap">{{formatTurnover($company->ranking->turnover)}}</td>
                     @elseif($search_order_by === 'companies.founded_in')
-                        <td class="text-center">{{$company->founded_in}}</td>
-                        <td class="text-center"><div style="white-space: nowrap; overflow: hidden;">{{$company->ranking->year}}</div></td>
-                        <td class="text-center whitespace-nowrap">{{formatTurnover($company->ranking->turnover)}}</td>
+                        <td class="py-0 text-center">{{$company->founded_in}}</td>
+                        <td class="py-0 text-center"><div style="white-space: nowrap; overflow: hidden;">{{$company->ranking->year}}</div></td>
+                        <td class="py-0 text-center whitespace-nowrap">{{formatTurnover($company->ranking->turnover)}}</td>
                     @else
-                        <td class="text-center">{{$company->ranking->year}}</td>
-                        <td class="text-center whitespace-nowrap">{{formatTurnover($company->ranking->turnover)}}</td>
-                        <td class="text-center">{{formatEmployees($company->ranking->employees)}}</td>
+                        <td class="py-0 text-center">{{$company->ranking->year}}</td>
+                        <td class="py-0 text-center whitespace-nowrap">{{formatTurnover($company->ranking->turnover)}}</td>
+                        <td class="py-0 text-center">{{formatEmployees($company->ranking->employees)}}</td>
                     @endif
                     
-                    <td class="text-center whitespace-nowrap"><x-ranking-growth growth="{{$company->latest_ranking->calculateGrowth('turnover')}}" class="text-sm" /></td>
+                    <td class="py-0 text-center whitespace-nowrap"><x-ranking-growth growth="{{$company->latest_ranking->calculateGrowth('turnover')}}" class="text-sm" /></td>
                 </tr>
             @endforeach
         </tbody>

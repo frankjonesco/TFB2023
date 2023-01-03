@@ -5,20 +5,20 @@
 
 <div class="company-ranking-charts mb-12">
     <div class="flex tabs ">
-        <div class="w-1/2 border-b-2 border-red-500">
+        <div class="w-1/2 border-b-4 border-red-500">
             <a
                 href="#"
                 id="btnTurnover"
-                class="author-btn !bg-red-500 hover:!bg-red-500"
+                class="author-btn !bg-red-500 hover:!bg-red-500 no-underline"
             >
                 Turnover
             </a>
         </div>
-        <div class="w-1/2 border-b-2 border-red-500">
+        <div class="w-1/2 border-b-4 border-red-500">
             <a 
                 href="#" 
                 id="btnEmployees"
-                class="author-btn !bg-gray-900 hover:!bg-red-500"
+                class="author-btn !bg-gray-900 hover:!bg-red-500 no-underline"
             >
                 Employees
             </a>

@@ -90,8 +90,8 @@
 
         </div>
 
-        <a href="/news/articles">
-            <button class="mt-4 w-full btn btn-plain">
+        <a href="/news">
+            <button class="mt-4 w-full btn-plain">
                 <i class="fa-solid fa-newspaper mr-1"></i>
                 View more articles
             </button>
