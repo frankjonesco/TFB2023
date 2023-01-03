@@ -33,7 +33,8 @@ class UserController extends Controller
             'last_name' => 'required|min:2',
             'gender' => 'required',
             'email' => ['required', 'email', Rule::unique('users', 'email')],
-            'password' => 'required|confirmed|min:6'
+            'password' => 'required|confirmed|min:6',
+            'terms_agreed' => 'required'
         ]);
 
         // Create user

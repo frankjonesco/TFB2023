@@ -56,6 +56,18 @@
                         <input type="password" name="password_confirmation" placeholder="Confirm password" class="public-input">
                     </div>
 
+                    <div class="w-full text-sm mb-6 pb-5 border-b border-b-gray-200">
+                        <div class="flex items-center w-full">
+                            <input type="checkbox" name="terms_agreed" class="ml-2 !mr-3" {{old('terms_agreed') ? 'checked' : null}}>
+                            <span class="font-light">
+                                I agree to the <a href="/terms">terms & conditions</a>
+                            </span>
+                        </div>
+                        @error('terms_agreed')
+                            <p class="text-red-500 text-xs mt-1">Please agree to the terms & conditions</p>
+                        @enderror
+                    </div>
+
                     <div class="form-block w-full">
                         <button type="submit" class="btn-black mr-2.5">Sign up</button>
                         <span class="text-sm">
@@ -68,12 +80,12 @@
 
                 </form>
 
-                <x-layout-articles-split-thumbs :articles="$split_articles" />
+                {{-- <x-layout-articles-split-thumbs :articles="$split_articles" /> --}}
         </x-layout-main-area>
         
         <x-layout-sidebar>
             <x-module-articles-features />
-            <x-module-subscribe />
+            {{-- <x-module-subscribe /> --}}
             {{-- <x-module-ranking-table :companies="$companies" /> --}}
             
         </x-layout-sidebar>

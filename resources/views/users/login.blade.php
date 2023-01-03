@@ -29,9 +29,14 @@
                         </p>
                     @enderror
                 </div>
+
+                <div class="w-full text-sm mb-6 pb-5 border-b border-b-gray-200">
+                    
+                </div>
+
                 {{-- Submit --}}
                 <div class="form-block">
-                    <button type="submit" class="mr-1.5">
+                    <button type="submit" class="btn-black mr-2.5">
                         Log in
                     </button>
                     <span class="text-sm">
