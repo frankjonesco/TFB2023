@@ -30,11 +30,11 @@
                         @if($loop->first)
                             <x-card-articles-small-list-item :article="$article" class="p-3 mb-0 pt-0 !border-0" />
                         @elseif($key === 1)
-                            <x-card-articles-small-list-item :article="$article" class="bg-yellow-50 border border-gray-200 p-3 mb-0" />
+                            <x-card-articles-small-list-item :article="$article" class="bg-orange-50 rounded border border-gray-200 p-3 mb-0 !font-bold" />
                         @elseif($loop->last)
-                            <x-card-articles-small-list-item :article="$article" class="!border-0 p-3" />
+                            <x-card-articles-small-list-item :article="$article" class="!border-0 p-3 mb-0" />
                         @else
-                            <x-card-articles-small-list-item :article="$article" class="p-3 mb-0 p-3" />
+                            <x-card-articles-small-list-item :article="$article" class="p-3 px-0 mb-0 mx-3" />
                         @endif
                     @endforeach
                     {{-- <button class="w-full mt-2">View all articles</button> --}}
