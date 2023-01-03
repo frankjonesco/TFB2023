@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Company;
+use App\Models\Message;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class SiteController extends Controller
@@ -29,6 +31,26 @@ class SiteController extends Controller
     // Show contact
     public function showContact(){
         return view('contact.show');
+    }
+
+    // Contact send message
+    public function contactSendMessage(Request $request){
+        $request->validate([
+            'first_name' => 'required|min:2:max:20',
+            'last_name' => 'required|min:2:max:20',
+            'email' => 'required|email|max:191',
+            'message' => 'required'
+        ]);
+
+        Message::create([
+            'hex' => Str::random(11), 
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'message' => $request->message,
+        ]);
+
+        return back()->with('success', 'Your message has been sent!');
     }
 
     // Show blog

@@ -336,15 +336,15 @@
         @apply p-4;
         @apply mb-4;
         @apply text-sm;
-        @apply rounded-lg;
+        @apply rounded-md;
         @apply border;
     }
 
     .alert-success{
         @apply alert;
-        @apply border-green-900;
-        @apply bg-green-300;
-        @apply text-green-900;
+        @apply border-zinc-200;
+        @apply bg-green-100;
+        @apply text-green-700;
     }
 
     .alert-success::before{

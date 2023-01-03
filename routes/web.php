@@ -36,6 +36,7 @@ Route::controller(SiteController::class)->group(function(){
     Route::get('/privacy', 'showPrivacy');
     Route::get('/about', 'showAbout');
     Route::get('/contact', 'showContact');
+    Route::post('/contact/send-message', 'contactSendMessage');
     Route::get('/blog', 'showBlog');
     Route::get('/forum', 'showForum');
     
