@@ -38,7 +38,7 @@
             </div>
             <div class="w-3/4">
                 <h2 class="pt-0">
-                    <a href="/companies/{{$company->hex}}/{{$company->slug}}">{{$company->show_name}}</a>
+                    <a href="/companies/{{$company->hex}}/{{$company->slug}}" class="plain">{{$company->show_name}}</a>
                 </h2>
                 <div class="flex mb-5">
                     <div class="w-1/3">

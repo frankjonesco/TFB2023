@@ -37,6 +37,7 @@ Route::controller(SiteController::class)->group(function(){
     Route::get('/about', 'showAbout');
     Route::get('/contact', 'showContact');
     Route::post('/contact/send-message', 'contactSendMessage');
+    Route::post('/subscribe/save', 'saveSubscriber');
     Route::get('/blog', 'showBlog');
     Route::get('/forum', 'showForum');
     

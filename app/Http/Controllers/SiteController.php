@@ -67,6 +67,31 @@ class SiteController extends Controller
         return back()->with('success', 'Your message has been sent!');
     }
 
+    // Save subscriber
+    public function saveSubscriber(Request $request){
+
+        if(DB::table('subscribers')->where('email', $request->email)->count() > 0){
+            if($request->no_refresh){
+                return json_encode('fail');
+            }
+            return back()->with('success', 'Your email is already in our mailing list.');
+        }
+
+        $request->validate([
+            'email' => 'required|email|min:4|max:191',
+        ]);
+
+        DB::table('subscribers')->insert([
+            'email' => $request->email,
+            'created_at' => date('Y-m-d H:i:s', time()),
+            'updated_at' => date('Y-m-d H:i:s', time())
+        ]);
+        if($request->no_refresh){
+            return json_encode('success');
+        }
+        return back()->with('success', 'Your email has been save to our mailing list!');
+    }
+
     // Show blog
     public function showBlog(){
         return view('blog.index');
