@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Site;
 use App\Models\Article;
 use App\Models\Company;
 use App\Models\Message;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SiteController extends Controller
 {
@@ -25,7 +27,19 @@ class SiteController extends Controller
 
     // Show about
     public function showAbout(){
-        return view('about.show');
+        $article = Article::find(137);
+        $article->views = ($article->views + 1);
+        $article->save();
+        
+        $site = new Site();
+
+        return view('articles.show', [
+            'article' => $article,
+            'companies' => $site->paginatePublicCompaniesAndRankingsLatest(12),
+            'author_articles' => Article::where('user_id', $article->user_id)->where('id', '!=', $article->id)->where('status', 'public')->latest()->take(4)->get(),
+            'similar_articles' => Article::where('status', 'public')->orderBy(DB::raw('RAND()'))->take(3)->get(),
+            'split_articles' => Article::where('status', 'public')->orderBy(DB::raw('RAND()'))->take(2)->get()
+        ]);
     }
 
     // Show contact

@@ -11,9 +11,9 @@
 
     <span class="links pre-navbar-item">
         <ul>
-            <li><a href="/signup">Sign up / Register</a></li>
-            <li><a href="/blog">Blog</a></li>
-            <li><a href="/forum">Forum</a></li>
+            <li><a href="/signup" class="no-underline">Sign up / Register</a></li>
+            <li><a href="/blog" class="no-underline">Blog</a></li>
+            <li><a href="/forum" class="no-underline">Forum</a></li>
         </ul>
     </span>
 
@@ -49,19 +49,19 @@
             <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
                 <ul class="flex flex-col space-x-8 rounded-lg md:flex-row">
                     <li>
-                        <a href="/news" aria-current="page">News</a>
+                        <a href="/news" aria-current="page" class="no-underline">News</a>
                     </li>
                     <li>
-                        <a href="/rankings" aria-current="page">Ranking</a>
+                        <a href="/rankings" aria-current="page" class="no-underline">Ranking</a>
                     </li>
                     <li>
-                        <a href="/sectors" aria-current="page">Sectors</a>
+                        <a href="/sectors" aria-current="page" class="no-underline">Sectors</a>
                     </li>
                     <li>
-                        <a href="/industries" aria-current="page">Industries</a>
+                        <a href="/industries" aria-current="page" class="no-underline">Industries</a>
                     </li>
                     <li>
-                        <a href="/partners" aria-current="page">Partners</a>
+                        <a href="/partners" aria-current="page" class="no-underline">Partners</a>
                     </li>
                 </ul>
             </div>
@@ -78,31 +78,31 @@
             <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
                 <ul class="flex flex-col space-x-4 rounded-lg md:flex-row">
                     <li>
-                        <a href="/" aria-current="page">Home</a>
+                        <a href="/" aria-current="page" class="no-underline">Home</a>
                     </li>
                     <li>
-                        <a href="/about">About</a>
+                        <a href="/about" class="no-underline">About</a>
                     </li>
                     <li>
-                        <a href="/contact">Contact</a>
+                        <a href="/contact" class="no-underline">Contact</a>
                     </li>
                     @auth
                         <li>
-                            <a href="/dashboard">Dashboard</a>
+                            <a href="/dashboard" class="no-underline">Dashboard</a>
                         </li>
                         <li>
                             <form action="/logout" class="inline" method="POST">
                                 @csrf
-                                <a href="#" onclick="this.parentNode.submit()" class="bg-transparent block py-2 pl-3 pr-4 rounded md:p-0">Logout</a>
+                                <a href="#" onclick="this.parentNode.submit()" class="bg-transparent block py-2 pl-3 pr-4 rounded md:p-0 no-underline">Logout</a>
                             </form>
                             
                         </li>
                     @else
                         <li>
-                            <a href="/login">Login</a>
+                            <a href="/login" class="no-underline">Login</a>
                         </li>
                         <li>
-                            <a href="/signup">Sign up</a>
+                            <a href="/signup" class="no-underline">Sign up</a>
                         </li>
                     @endauth
                     {{-- <li>

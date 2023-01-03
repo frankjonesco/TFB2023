@@ -15,7 +15,7 @@
                                 alt="Top Family Business - {{$company->registered_name}}"
                                 class="w-4 mr-4 rounded border border-indigo-100 hover:border-blue-300 cursor-pointer"
                             >
-                            <a href="/companies/{{$company->hex}}/{{$company->slug}}">{{$company->show_name}}</a>
+                            <a href="/companies/{{$company->hex}}/{{$company->slug}}" class="plain">{{$company->show_name}}</a>
                         </div>
                     </td>
                     <td class="p-2 m-0 text-right">{{formatTurnover($company->ranking->turnover)}}</td>

@@ -2,7 +2,7 @@
     <a href="/companies/{{$company->hex}}/{{$company->slug}}">
         <img src="{{$company->logoImageThumbnail}}" alt="{{$company->show_name}}" title="{{$company->show_name}}" class="w-5 mr-1.5">
     </a>
-    <a href="/companies/{{$company->hex}}/{{$company->slug}}">
+    <a href="/companies/{{$company->hex}}/{{$company->slug}}" class="plain">
         {{$company->show_name}}
     </a>
 </div>

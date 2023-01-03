@@ -9,7 +9,7 @@
             </a>
             <div>
                 <h3 class="pt-0 pb-2">
-                    <a href="/news/articles/{{$article->hex}}/{{$article->slug}}" class="text-slate-700 hover:!text-red-500">{{$article->title}}</a>
+                    <a href="/news/articles/{{$article->hex}}/{{$article->slug}}" class="text-slate-700 hover:!text-amber-700 no-underline">{{$article->title}}</a>
                 </h3>
                 <span class="text-xs italic">
                     <span class="mr-6">

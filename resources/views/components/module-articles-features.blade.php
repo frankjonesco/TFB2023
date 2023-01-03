@@ -71,7 +71,7 @@
                 <div class="bg-no-repeat bg-cover bg-center px-12 py-5 mb-1.5 flex flex-col justify-end overflow-hidden h-72" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.50)), url('{{asset('images/articles/'.$article->hex.'/'.$article->image)}}');">
                     <div class="flex flex-col justify-center items-center h-full">
                         <h3 class="pt-3 pb-3 text-center">
-                            <a href="/news/articles/{{$article->hex}}/{{$article->slug}}" class="text-zinc-100 hover:!text-zinc-100 hover:!text-opacity-80">
+                            <a href="/news/articles/{{$article->hex}}/{{$article->slug}}" class="text-zinc-100 hover:!text-zinc-100 hover:!text-opacity-80 no-underline">
                                 {{$article->title}}
                             </a>
                         </h3>

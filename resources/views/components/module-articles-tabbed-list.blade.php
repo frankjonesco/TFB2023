@@ -2,13 +2,13 @@
     <div class="w-full">
         <ul class="flex w-full text-xs font-medium border-b-2 border-red-500" style="font-size:.75rem;" id="myTab">
             <li class="w-1/3 p-3 bg-red-500 text-white font-bold text-center uppercase" id="tabPopular">
-                <a href="#" id="tabbedArticlesPopular" class="text-white" data-toggle="tab">Popular</a>
+                <a href="#" id="tabbedArticlesPopular" class="text-white no-underline" data-toggle="tab">Popular</a>
             </li>
             <li class="w-1/3 p-3 mx-0.5 bg-zinc-900 font-bold text-center uppercase" style="margin: 0 1px;">
-                <a href="#" id="tabbedArticlesRecent" class="text-white" data-toggle="tab" id="tabRecent">Recent</a>
+                <a href="#" id="tabbedArticlesRecent" class="text-white no-underline" data-toggle="tab" id="tabRecent">Recent</a>
             </li>
             <li class="w-1/3 p-3 bg-zinc-900 font-bold text-center uppercase">
-                <a href="#"  id="tabbedArticlesTop" class="!text-white" data-toggle="tab" id="tabTop">Top Reviews</a>
+                <a href="#"  id="tabbedArticlesTop" class="!text-white no-underline" data-toggle="tab" id="tabTop">Top Reviews</a>
             </li>
         </ul>
         <div class="tab-content text-gray-600">
@@ -24,7 +24,7 @@
                             <div class="post-content overflow-hidden">
                                 <div class="text-sm p-0 mb-2">
                                     <h4 class="text-gray-500 text-xs font-bold">
-                                        <a href="/news/articles/{{$article->hex}}/{{$article->slug}}" class="text-slate-900 hover:!text-red-500">
+                                        <a href="/news/articles/{{$article->hex}}/{{$article->slug}}" class="text-slate-900 hover:!text-red-500 no-underline">
                                             {{$article->title}}
                                         </a>
                                     </h4>
