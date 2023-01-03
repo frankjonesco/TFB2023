@@ -30,7 +30,7 @@ use Illuminate\Support\Facades\Config;
     // Linkify
     if(!function_exists('linkify')){
         function linkify($text) {
-            return preg_replace('@(https?://([-\w\.]+)+(:\d+)?(/([\w/_\.%-=#]*(\?\S+)?)?)?)@', '<a href="$1">$1</a>', $text);
+            return preg_replace('@(https?://([-\w\.]+)+(:\d+)?(/([\w/_\.%-=#]*(\?\S+)?)?)?)@', '<a href="$1">$1&nbsp;<i class="fa-solid fa-arrow-up-right-from-square text-xs" style="font-size:0.55rem; position:relative; top:-5px;"></i></a>', $text);
         }
     }
 
