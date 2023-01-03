@@ -11,7 +11,7 @@
                                 {{$article->title}}
                             </a>
                         </h3>
-                        <span class="text-xs italic">
+                        <span class="text-xs italic text-zinc-100 font-light">
                             <span class="mr-3">
                                 <i class="fa-regular fa-clock mr-1"></i>
                                 {{showDate($article->created_at)}}
@@ -60,7 +60,7 @@
                                 {{$article->title}}
                             </a>
                         </h3>
-                        <span class="text-xs italic">
+                        <span class="text-xs italic text-zinc-100 font-light">
                             <span class="mr-3">
                                 <i class="fa-regular fa-clock mr-1"></i>
                                 {{showDate($article->created_at)}}
