@@ -38,7 +38,7 @@
                             </div>
                             </a>
                             <h5 class="font-bold text-sm mt-2">
-                                <a href="/companies/{{$company->hex}}/{{$company->slug}}">
+                                <a href="/companies/{{$company->hex}}/{{$company->slug}}" class="plain">
                                     {{$company->show_name}}
                                 </a>
                             </h5>

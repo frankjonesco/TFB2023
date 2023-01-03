@@ -49,7 +49,7 @@
             <hr>
             
             <h3>Externe Links</h3>
-            <p>Unsere Website enthält u. U. Links zu externen Internetseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter beziehungsweise Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Werden uns Rechtsverletzungen bekannt, werden derartige Links umgehend entfernt. Externe Links erkennt man an der Kennzeichnung “  “.</p>
+            <p>Unsere Website enthält u. U. Links zu externen Internetseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter beziehungsweise Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Werden uns Rechtsverletzungen bekannt, werden derartige Links umgehend entfernt. Externe Links erkennt man an der Kennzeichnung <i class="fa-solid fa-arrow-up-right-from-square"></i>.</p>
 
             <hr>
             

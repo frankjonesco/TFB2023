@@ -34,6 +34,13 @@ use Illuminate\Support\Facades\Config;
         }
     }
 
+    // Linkify HTML 
+    if(!function_exists('linkifyHtml')){
+        function linkifyHtml($html){
+            return preg_replace('/<a.*?href=\"(.*?)\".*?>(.*?)<\/a>/', '<a href="$1">$2&nbsp;<i class="fa-solid fa-arrow-up-right-from-square text-xs" style="font-size:0.55rem; position:relative; top:-5px;"></i></a>', $html);
+        }
+    }
+
     // Truncate
     if(!function_exists('truncate')){
         function truncate($str, $limit = 45) {

@@ -34,7 +34,7 @@
                     </div>
                 @endif
             </div>
-            {!!$article->body!!}
+            {!!linkifyHtml($article->body)!!}
             <x-layout-articles-tags :article="$article" />
             <x-layout-articles-share :article="$article" />
             <x-layout-articles-split-thumbs :articles="$split_articles" />

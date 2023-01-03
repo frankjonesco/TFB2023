@@ -12,17 +12,17 @@
                                 <img src="{{asset('images/sectors/'.$sector->hex.'/'.$sector->image)}}">
                             </a>
                             <h5 class="font-bold text-sm mt-2">
-                                <a href="/sectors/{{$sector->hex}}/{{$sector->slug}}">
+                                <a href="/sectors/{{$sector->hex}}/{{$sector->slug}}" class="plain">
                                     {{$sector->name}}
                                 </a>
                             </h5>
                             <span class="text-xs block">
-                                <a href="/sectors/{{$sector->hex}}/{{$sector->slug}}/industries">
+                                <a href="/sectors/{{$sector->hex}}/{{$sector->slug}}/industries" class="plain">
                                     {{count($sector->industries)}} industries
                                 </a>
                             </span>
                             <span class="text-xs block">
-                                <a href="/sectors/{{$sector->hex}}/{{$sector->slug}}">
+                                <a href="/sectors/{{$sector->hex}}/{{$sector->slug}}" class="plain">
                                     {{count($sector->companies)}} companies
                                 </a>
                             </span>
