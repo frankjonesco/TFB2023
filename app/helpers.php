@@ -2,6 +2,7 @@
 
 use App\Models\Article;
 use App\Models\Company;
+use App\Models\Partner;
 use App\Models\Ranking;
 use App\Models\Sponsor;
 use Illuminate\Support\Str;
@@ -99,7 +100,7 @@ use Illuminate\Support\Facades\Config;
     // Nav sponsors
     if(!function_exists('navSponsors')) {
         function navSponsors(){
-            return Sponsor::where('show_in_navbar', true)->get();
+            return Partner::where('show_in_navbar', true)->get();
         }
     }
 

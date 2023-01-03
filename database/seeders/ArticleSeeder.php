@@ -104,7 +104,7 @@ class ArticleSeeder extends Seeder
                 'old_id' => $article->id,
                 'hex' => Str::random(11),
                 'user_id' => $user_id,
-                'sponsor_id' => $article->sponsor,
+                'partner_id' => $article->sponsor,
                 'title' => $article->title,
                 'slug' => $article->url_title,
                 'caption' => $article->caption,

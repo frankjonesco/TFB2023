@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             ColorThemeSeeder::class,
             ColorSeeder::class,
-            SponsorSeeder::class,
+            PartnerSeeder::class,
             SectorSeeder::class,
             IndustrySeeder::class,
             CompanySeeder::class,

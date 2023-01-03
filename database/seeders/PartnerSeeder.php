@@ -3,12 +3,12 @@
 namespace Database\Seeders;
 
 use App\Models\Site;
-use App\Models\Sponsor;
+use App\Models\Partner;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class SponsorSeeder extends Seeder
+class PartnerSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,9 +17,10 @@ class SponsorSeeder extends Seeder
      */
     public function run()
     {
-        $sponsors = [
+        $partners = [
             [
                 'hex' => Str::random(11),
+                'article_id' => 290,
                 'name' => 'PricewaterhouseCoopers',
                 'slug' => 'pwc',
                 'logo' => 'pricewaterhousecoopers.png',
@@ -29,6 +30,7 @@ class SponsorSeeder extends Seeder
             ],
             [
                 'hex' => Str::random(11),
+                'article_id' => 136,
                 'name' => 'Matchbird',
                 'slug' => 'matchbird',
                 'logo' => 'matchbird.png',
@@ -38,6 +40,7 @@ class SponsorSeeder extends Seeder
             ],
             [
                 'hex' => Str::random(11),
+                'article_id' => 122,
                 'name' => 'Headgate',
                 'slug' => 'headgate',
                 'logo' => 'headgate.png',
@@ -46,6 +49,7 @@ class SponsorSeeder extends Seeder
             ],
             [
                 'hex' => Str::random(11),
+                'article_id' => 137,
                 'name' => 'Top Family Business',
                 'slug' => 'top-family-business',
                 'logo' => 'top-family-business.png',
@@ -53,10 +57,10 @@ class SponsorSeeder extends Seeder
             ]
         ];
 
-        collect($sponsors)->each(function($sponsor){ Sponsor::create($sponsor); });
+        collect($partners)->each(function($partner){ Partner::create($partner); });
 
         // HANDLE IMAGE TRANSFER
         $site = new Site();
-        $site->handleImageTransfer('companies', Sponsor::all());
+        $site->handleImageTransfer('partners', Partner::all());
     }
 }

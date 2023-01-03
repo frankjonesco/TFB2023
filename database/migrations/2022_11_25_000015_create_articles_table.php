@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('user_id')->nullable();
             $table->foreignId('sector_id')->nullable()->constrained();
             $table->foreignId('category_id')->nullable()->constrained();
-            $table->foreignId('sponsor_id')->nullable()->constrained();
+            $table->foreignId('partner_id')->nullable()->constrained();
             $table->string('title');
             $table->string('slug');
             $table->string('caption')->nullable();

@@ -168,6 +168,15 @@ class Site extends Model
         return User::where('user_type_id', '>=', 6)->orderBy('first_name', 'ASC')->get();
     }
 
+
+
+    // PARTNERS
+
+    // Public sponsors
+    public function publicPartners(){
+        return Partner::where('active', 1)->orderBy('id', 'ASC')->get();
+    }
+
     // END: RETRIEVAL METHODS
 
 
