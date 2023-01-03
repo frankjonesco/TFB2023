@@ -1,6 +1,6 @@
 <form action="/rankings/search" method="POST">
     @csrf
-    <label for="search_term">
+    <label for="search_term" class="font-bold">
         Company name
     </label>
     <input type="text" name="search_term" placeholder="Company name" value="{{old('search_term') ?: $search_term}}" class="public-input">
@@ -12,7 +12,7 @@
                         
     <div class="grid grid-cols-3 gap-3 my-3">
         <div>
-            <label for="search_year">
+            <label for="search_year" class="font-bold">
                 Year
             </label>
             <select name="search_year" class="public-select">
@@ -28,7 +28,7 @@
             @enderror
         </div>
         <div>
-            <label for="search_order_by">
+            <label for="search_order_by" class="font-bold">
                 Order by
             </label>
             <select name="search_order_by" class="public-select">
@@ -45,7 +45,7 @@
             @enderror
         </div>
         <div>
-            <label for="search_sort_direction">
+            <label for="search_sort_direction" class="font-bold">
                 Sort direction
             </label>
             <select name="search_sort_direction" class="public-select">
@@ -59,8 +59,8 @@
             @enderror
         </div>
     </div>
-    <button type="submit" class="">
-        <i class="fa-solid fa-magnifying-glass"></i>
+    <button type="submit" class="btn-black mt-1.5">
+        <i class="fa-solid fa-magnifying-glass mr-1.5"></i>
         Search
     </button>
 </form>

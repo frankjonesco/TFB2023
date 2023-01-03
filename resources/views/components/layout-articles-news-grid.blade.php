@@ -11,7 +11,7 @@
                 Top Stories
             </span>
             <h2 class="py-3">
-                <a href="/news/articles/{{$article->hex}}/{{$article->slug}}" class="text-zinc-100 hover:!text-zinc-100 hover:!text-opacity-80">
+                <a href="/news/articles/{{$article->hex}}/{{$article->slug}}" class="text-zinc-100 hover:!text-zinc-100 hover:!text-opacity-80 no-underline">
                     {{$article->title}}
                 </a>
             </h2>
@@ -63,7 +63,7 @@
                             Top Stories
                         </span>
                         <h3 class="pt-1.5 pb-1">
-                            <a href="/news/articles/{{$article->hex}}/{{$article->slug}}" class="text-zinc-100 hover:!text-zinc-100 hover:!text-opacity-80">
+                            <a href="/news/articles/{{$article->hex}}/{{$article->slug}}" class="text-zinc-100 hover:!text-zinc-100 hover:!text-opacity-80 no-underline">
                                 {{$article->title}}
                             </a>
                         </h3>

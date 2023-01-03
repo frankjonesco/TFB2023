@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Site;
 use App\Models\Article;
+use App\Models\Comment;
 use App\Models\Company;
 use App\Models\Message;
 use Illuminate\Support\Str;
@@ -13,17 +14,31 @@ use Illuminate\Support\Facades\DB;
 class SiteController extends Controller
 {
     // Show homepage
-    public function home(){
-        
-        $articles['popular'] = Article::take(5)->latest()->get();
-        $articles['recent'] = Article::skip(5)->take(5)->latest()->get();
-        $articles['top'] = Article::skip(10)->take(5)->latest()->get();
+    public function home(Site $site){
+       
+
+        $slide_table_articles['first'] = Article::latest()->skip(36)->take(4)->get();
+        $slide_table_articles['second'] = Article::latest()->skip(40)->take(4)->get();
+        $slide_table_articles['third'] = Article::latest()->skip(44)->take(4)->get();
 
         return view('home', [
-            'articles' => $articles
+            'leading_articles' => Article::latest()->take(3)->get(),
+            'latest_articles' => Article::latest()->skip(3)->take(4)->get(),
+            'highlighted_feature_articles' => Article::latest()->skip(7)->take(2)->get(),
+            'featured_articles' => Article::latest()->skip(9)->take(6)->get(),
+            'grid_articles' => Article::latest()->skip(30)->take(6)->get(),
+            'slide_table_articles' => $slide_table_articles,
+            'list_articles' => Article::latest()->skip(48)->paginate(4),
+            'comments' => Comment::where('resource_type', 'article')->latest()->take(6)->get(),
+            'companies' => $site->paginatePublicCompaniesAndRankingsLatest(12),
+            'search_term' => null,
+            'search_year' => null,
+            'search_order_by' => null,
+            'search_sort_direction' => null
         ]);
-
     }
+
+    
 
     // Show about
     public function showAbout(){

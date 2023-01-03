@@ -1,30 +1,34 @@
 @if(empty($companies))
     <p class="no-results">Nothing to display.</p>
 @else
-    <table>
-        <thead>
-            <th>Rank</th>
-            <th>Company name</th>
+    <table class="mt-6">
+        <thead class="bg-slate-600">
+            <th class="py-3 text-gray-50 border-b-4 border-b-red-500">Rank</th>
+            <th class="py-3 text-gray-50 border-b-4 border-b-red-500">Company name</th>
 
             @if($search_order_by === 'companies.family_name')
-                <th>Family name</th>
-                <th class="text-center">Year</th>
-                <th class="text-center">Turnover</th>
+                <th class="py-3 text-gray-50 border-b-4 border-b-red-500">Family name</th>
+                <th class="py-3 text-gray-50 border-b-4 border-b-red-500 text-center">Year</th>
+                <th class="py-3 text-gray-50 border-b-4 border-b-red-500 text-center">Turnover</th>
             @elseif($search_order_by === 'companies.founded_in')
-                <th class="text-center whitespace-nowrap">Founded in</th>
-                <th class="text-center">Year</th>
-                <th class="text-center">Turnover</th>
+                <th class="py-3 text-gray-50 border-b-4 border-b-red-500 text-center whitespace-nowrap">Founded in</th>
+                <th class="py-3 text-gray-50 border-b-4 border-b-red-500 text-center">Year</th>
+                <th class="py-3 text-gray-50 border-b-4 border-b-red-500 text-center">Turnover</th>
             @else
-                <th class="text-center">Year</th>
-                <th class="text-center">Turnover</th>
-                <th class="text-center">Employees</th>
+                <th class="py-3 text-gray-50 border-b-4 border-b-red-500 text-center">Year</th>
+                <th class="py-3 text-gray-50 border-b-4 border-b-red-500 text-center">Turnover</th>
+                <th class="py-3 text-gray-50 border-b-4 border-b-red-500 text-center">Employees</th>
             @endif
-            <th class="text-center">Growth</th>
+            <th class="py-3 text-gray-50 border-b-4 border-b-red-500 text-center">Growth</th>
         </thead>
         <tbody>
             @foreach($companies as $key => $company)
                 {{-- {{dd($company)}} --}}
-                <tr>
+                @if($loop->iteration % 2 == 0)
+                    <tr class="bg-zinc-50">
+                @else
+                    <tr>
+                @endif
                     <td>{{$companies->firstItem() + $key}}</td>
                     <td>
                         <div class="flex items-center">
@@ -33,7 +37,7 @@
                                 alt="Top Family Business - {{$company->registered_name}}"
                                 class="w-6 mr-4 rounded border border-indigo-100 hover:border-blue-300 cursor-pointer"
                             >
-                            <a href="/companies/{{$company->hex}}/{{$company->slug}}">{{$company->show_name}}</a>
+                            <a href="/companies/{{$company->hex}}/{{$company->slug}}" class="plain">{{$company->show_name}}</a>
                         </div>
                     </td>
                     @if($search_order_by === 'companies.family_name')

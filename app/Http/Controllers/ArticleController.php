@@ -12,33 +12,11 @@ use Illuminate\Support\Facades\File;
 
 class ArticleController extends Controller
 {
-    // Show main news page
-    public function index(Site $site){
-        $tabbed_articles['popular'] = Article::latest()->skip(15)->take(5)->get();
-        $tabbed_articles['recent'] = Article::latest()->skip(20)->take(5)->get();
-        $tabbed_articles['top'] = Article::latest()->skip(25)->take(5)->get();
-
-        $slide_table_articles['first'] = Article::latest()->skip(36)->take(4)->get();
-        $slide_table_articles['second'] = Article::latest()->skip(40)->take(4)->get();
-        $slide_table_articles['third'] = Article::latest()->skip(44)->take(4)->get();
-
-        return view('articles.index', [
-            'leading_articles' => Article::latest()->take(3)->get(),
-            'latest_articles' => Article::latest()->skip(3)->take(4)->get(),
-            'highlighted_feature_articles' => Article::latest()->skip(7)->take(2)->get(),
-            'featured_articles' => Article::latest()->skip(9)->take(6)->get(),
-            'tabbed_articles' => $tabbed_articles,
-            'grid_articles' => Article::latest()->skip(30)->take(6)->get(),
-            'slide_table_articles' => $slide_table_articles,
-            'list_articles' => Article::latest()->skip(48)->paginate(4),
-            'comments' => Comment::where('resource_type', 'article')->latest()->take(6)->get(),
-            'companies' => $site->paginatePublicCompaniesAndRankingsLatest(12)
-        ]);
-    }
+    
 
     // Show article index
-    public function articleIndex(Site $site){
-        return view('articles.article-index', [
+    public function index(Site $site){
+        return view('articles.index', [
             'articles' => Article::latest()->paginate(10),
         ]);
     }

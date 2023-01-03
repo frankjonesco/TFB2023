@@ -24,9 +24,9 @@
                             <li>
                                 <a href="{{$results->url($i)}}"
                                     @if($results->currentPage() == $i)
-                                        class="px-3 py-2 mr-1.5 leading-tight bg-red-500 text-white hover:bg-red-600 hover:!text-white"
+                                        class="px-3 py-2 mr-1.5 leading-tight bg-red-500 text-white hover:bg-red-600 no-underline hover:!text-white"
                                     @else
-                                        class="px-3 py-2 mr-1.5 leading-tight bg-white text-gray-500 border border-gray-200 hover:bg-red-500 hover:!text-white"
+                                        class="px-3 py-2 mr-1.5 leading-tight bg-white text-gray-500 border border-gray-200 hover:bg-red-500 hover:!text-white no-underline"
                                     @endif
                                             
                                     >{{$i}}</a>
@@ -38,7 +38,7 @@
                     @endfor
 
                     <li>
-                        <a href="{{$results->nextPageUrl()}}" class="px-3 py-2 mr-1.5 leading-tight bg-white text-gray-500 border border-gray-200 hover:bg-red-500 hover:!text-white">
+                        <a href="{{$results->nextPageUrl()}}" class="px-3 py-2 mr-1.5 leading-tight bg-white text-gray-500 border border-gray-200 hover:bg-red-500 hover:!text-white no-underline">
                             Next
                         </a>
                     </li>
