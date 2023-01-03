@@ -4,19 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\Site;
 use App\Models\User;
+use App\Models\Article;
 use App\Models\Country;
 use App\Models\UserType;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
 
     // Show sign up form
-    public function showSignUp(){
-        return view('users.signup');
+    public function showSignUp(Site $site){
+        return view('users.signup', [
+            'companies' => $site->paginatePublicCompaniesAndRankingsLatest(12),
+            'split_articles' => Article::where('status', 'public')->orderBy(DB::raw('RAND()'))->take(2)->get()
+        ]);
     }
 
     // Store sign up

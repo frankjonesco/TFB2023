@@ -4,28 +4,28 @@
         <x-layout-main-area>
             <x-layout-heading heading="Sign up" />
 
-                <form action="/users/store" method="POST">
+                <form action="/users/store" method="POST" class="flex flex-wrap">
                     @csrf
 
-                    <div class="form-block">
+                    <div class="form-block w-1/2 pr-3">
                         <label for="first_name">First name</label>
-                        <input type="text" name="first_name" placeholder="First name" value="{{old('first_name')}}" class="public-input !w-1/2">
+                        <input type="text" name="first_name" placeholder="First name" value="{{old('first_name')}}" class="public-input">
                         @error('first_name')
                             <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                         @enderror
                     </div>
 
-                    <div class="form-block">
+                    <div class="form-block w-1/2">
                         <label for="last_name">Last name</label>
-                        <input type="text" name="last_name" placeholder="Last name" value="{{old('last_name')}}" class="public-input !w-1/2">
+                        <input type="text" name="last_name" placeholder="Last name" value="{{old('last_name')}}" class="public-input">
                         @error('last_name')
                             <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                         @enderror
                     </div>
 
-                    <div class="form-block">
+                    <div class="form-block w-1/2 pr-3">
                         <label for="first_name">Gender</label>
-                        <select name="gender" class="public-select !w-1/2">
+                        <select name="gender" class="public-select">
                             <option disabled selected>Select your gender</option>
                             <option value="male" {{old('gender') === 'male' ? 'selected' : null}}>Male</option>
                             <option value="female" {{old('gender') === 'female' ? 'selected' : null}}>Female</option>
@@ -35,29 +35,29 @@
                         @enderror
                     </div>
 
-                    <div class="form-block">
+                    <div class="form-block w-1/2">
                         <label for="last_name">Email</label>
-                        <input type="email" name="email" placeholder="Email" value="{{old('email')}}" class="public-input !w-1/2">
+                        <input type="email" name="email" placeholder="Email" value="{{old('email')}}" class="public-input">
                         @error('email')
                             <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                         @enderror
                     </div>
 
-                    <div class="form-block">
+                    <div class="form-block w-1/2 pr-3">
                         <label for="password">Password</label>
-                        <input type="password" name="password" placeholder="Password" class="public-input !w-1/2">
+                        <input type="password" name="password" placeholder="Password" class="public-input">
                         @error('password')
                             <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                         @enderror
                     </div>
 
-                    <div class="form-block">
+                    <div class="form-block w-1/2">
                         <label for="first_name">Confirm password</label>
-                        <input type="password" name="password_confirmation" placeholder="Confirm password" class="public-input !w-1/2">
+                        <input type="password" name="password_confirmation" placeholder="Confirm password" class="public-input">
                     </div>
 
-                    <div class="form-block">
-                        <button type="submit" class="mr-1.5">Sign up</button>
+                    <div class="form-block w-full">
+                        <button type="submit" class="btn-black mr-2.5">Sign up</button>
                         <span class="text-sm">
                             Already have an account?
                             <a href="/login" class="underline underline-offset-2 ml-1.5">
@@ -67,10 +67,15 @@
                     </div>
 
                 </form>
+
+                <x-layout-articles-split-thumbs :articles="$split_articles" />
         </x-layout-main-area>
         
         <x-layout-sidebar>
-            <x-module-socials />
+            <x-module-articles-features />
+            <x-module-subscribe />
+            {{-- <x-module-ranking-table :companies="$companies" /> --}}
+            
         </x-layout-sidebar>
     
     </x-container>
