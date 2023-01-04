@@ -1,19 +1,39 @@
-<div class="sidebar-module">
+<div class="sidebar-module tabbed-articles">
     <div class="w-full">
-        <ul class="flex w-full text-xs font-medium border-b-2 border-red-500" style="font-size:.75rem;" id="myTab">
-            <li class="w-1/3 p-3 bg-red-500 text-white font-bold text-center uppercase" id="tabPopular">
-                <a href="#" id="tabbedArticlesPopular" class="text-white no-underline" data-toggle="tab">Popular</a>
-            </li>
-            <li class="w-1/3 p-3 mx-0.5 bg-zinc-900 font-bold text-center uppercase" style="margin: 0 1px;">
-                <a href="#" id="tabbedArticlesRecent" class="text-white no-underline" data-toggle="tab" id="tabRecent">Recent</a>
-            </li>
-            <li class="w-1/3 p-3 bg-zinc-900 font-bold text-center uppercase">
-                <a href="#"  id="tabbedArticlesTop" class="!text-white no-underline" data-toggle="tab" id="tabTop">Top Reviews</a>
-            </li>
-        </ul>
+        <div class="flex mt-6">
+            <div class="w-1/3">
+                <a
+                    href="#"
+                    id="tabbedArticlesPopular"
+                    class="switch-tab focus"
+                >
+                    Popular
+                </a>
+            </div>
+            <div class="w-1/3">
+                <a 
+                    href="#" 
+                    id="tabbedArticlesRecent"
+                    class="switch-tab"
+                >
+                    Recent
+                </a>
+            </div>
+            <div class="w-1/3">
+                <a 
+                    href="#" 
+                    id="tabbedArticlesTop"
+                    class="switch-tab"
+                >
+                    Top reviews
+                </a>
+            </div>
+        </div>
+
+        
         <div class="tab-content text-gray-600">
 
-            <div class="tab-pane active" id="popularArticles">
+            <div class="tab-pane" id="popularArticles">
                 <ul class="list-posts">
                     @foreach(tabbedArticles()['popular'] as $article)
                         <li class="p-4 px-6 flex items-center border-b bg-slate-50">
@@ -99,49 +119,56 @@
     </div>
 
     <script>
-        const tabbedArticlesPopular = document.getElementById('tabbedArticlesPopular');
-        tabbedArticlesPopular.addEventListener('click', function(e){
-            e.preventDefault();
-            document.getElementById('popularArticles').classList.remove('hidden');
-            document.getElementById('recentArticles').classList.remove('hidden');
-            document.getElementById('topArticles').classList.remove('hidden');
-            document.getElementById('recentArticles').classList.add('hidden');
-            document.getElementById('topArticles').classList.add('hidden');
 
-            document.getElementById('tabPopular').classList.toggle('bg-red-700');
-            document.getElementById('tabRecent').classList.toggle('bg-red-700');
-            document.getElementById('tabTop').classList.toggle('bg-red-700');
-            return false;
-        });
+        
 
-        const tabbedArticlesRecent = document.getElementById('tabbedArticlesRecent');
-        tabbedArticlesRecent.addEventListener('click', function(e){
-            e.preventDefault();
-            document.getElementById('popularArticles').classList.remove('hidden');
-            document.getElementById('recentArticles').classList.remove('hidden');
-            document.getElementById('topArticles').classList.remove('hidden');
-            document.getElementById('popularArticles').classList.add('hidden');
-            document.getElementById('topArticles').classList.add('hidden');
 
-            document.getElementById('tabPopular').classList.toggle('bg-red-700');
-            document.getElementById('tabRecent').classList.toggle('bg-red-700');
-            document.getElementById('tabTop').classList.toggle('bg-red-700');
-            return false;
-        });
+        // SCRIPT FOR SWITCH TABS
+        
+        // Query selector of cradle element
+        let cradle = '.tabbed-articles';
+        
+        // Tabs within cradle
+        let switchTabs = document.querySelectorAll(cradle + ' a.switch-tab');
+        
+        // For each tab...
+        for (let i = 0; i < switchTabs.length; i++) {
 
-        const tabbedArticlesTop = document.getElementById('tabbedArticlesTop');
-        tabbedArticlesTop.addEventListener('click', function(e){
-            e.preventDefault();
-            document.getElementById('popularArticles').classList.remove('hidden');
-            document.getElementById('recentArticles').classList.remove('hidden');
-            document.getElementById('topArticles').classList.remove('hidden');
-            document.getElementById('popularArticles').classList.add('hidden');
-            document.getElementById('recentArticles').classList.add('hidden');
+            // Listen for click
+            switchTabs[i].addEventListener('click', function(e){
+                e.preventDefault();
 
-            document.getElementById('tabPopular').classList.toggle('bg-red-700');
-            document.getElementById('tabRecent').classList.toggle('bg-red-700');
-            document.getElementById('tabTop').classList.toggle('bg-red-700');
-            return false;
-        });
+                // Blur all switch tabs
+                switchTabs[i].classList.add('focus');
+                
+                // Tab panes
+                let tabPanes = document.querySelectorAll(cradle + ' .tab-content>div');
+                
+                // For each tab pane
+                for (var x = 0; x < tabPanes.length; x++) {
+                    // Hide tab pane
+                    tabPanes[x].classList.add('hidden');
+                }
+                // Show the pane for this switch tab
+                tabPanes[i].classList.remove('hidden');
+                
+                // Refocus tabs
+                refocusTabs(i);
+            });
+
+        }
+
+        function refocusTabs(tab){
+            // For each switch tab...
+            for (let i = 0; i < switchTabs.length; i++) {
+                // Blur all switch tabs
+                switchTabs[i].classList.remove('focus');
+            }
+            // Focus this tab
+            switchTabs[tab].classList.add('focus');
+        }
+
+
+
     </script>
 </div>

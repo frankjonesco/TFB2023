@@ -20,7 +20,7 @@
                         @else
                             <div class="mb-7">
                         @endif
-                            <x-card-articles-photo-fill :article="$article" />
+                            <x-card-articles-photo-fill :article="$article" class="border-b border-t" />
                         </div>
                     @endforeach
                 </div>
@@ -44,7 +44,7 @@
                 <button class="btn btn-plain"><i class="fa-solid fa-refresh mr-1.5"></i> View more features</button>
             </div>
             <hr>
-            <h2 class="font-black text-5xl mb-4">Das <span class="text-red-500">TOFAM-Ranking</span> listet alle Familienunternehmen mit mehr als 250 Millionen Euro Jahresumsatz.</h2>
+            <h2 class="font-black text-5xl mb-4 text-gray-800">Das <span class="text-red-500">TOFAM-Ranking</span> listet alle Familienunternehmen mit mehr als 250 Millionen Euro Jahresumsatz.</h2>
             @include('includes._rankings-search-form')
             @include('includes._rankings-table')
             {{-- <x-layout-articles-grid heading="Articles grid" :articles="$grid_articles" /> --}}

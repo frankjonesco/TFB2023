@@ -59,7 +59,7 @@
             @enderror
         </div>
     </div>
-    <button type="submit" class="btn-black mt-1.5">
+    <button type="submit" class="btn-black mt-1.5 !text-xs">
         <i class="fa-solid fa-magnifying-glass mr-1.5"></i>
         Search
     </button>

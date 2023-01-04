@@ -1,10 +1,10 @@
 <div>
-    <div class="flex tabs mt-6">
+    <div class="flex mt-6">
         <div class="w-1/2 border-b-2 border-red-500">
             <a
                 href="#"
                 id="btnAuthorCard"
-                class="author-btn !bg-red-500 hover:!bg-red-500 no-underline"
+                class="switch-tab !bg-red-500 hover:!bg-red-500 no-underline"
             >
                 About the author
             </a>
@@ -13,7 +13,7 @@
             <a 
                 href="#" 
                 id="btnAuthorArticles"
-                class="author-btn !bg-gray-900 hover:!bg-red-500 no-underline"
+                class="switch-tab !bg-gray-900 hover:!bg-red-500 no-underline"
             >
                 More from the author
             </a>

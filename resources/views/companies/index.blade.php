@@ -1,7 +1,6 @@
 <x-layout>
     <x-container>
         <x-layout-main-area>
-            <x-layout-heading heading="Company rankings" />
             {{-- Rankinsgs search --}}
             <div class="p-3 mb-8">
                 @include('includes._rankings-search-form')

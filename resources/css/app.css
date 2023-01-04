@@ -575,17 +575,30 @@
         @apply py-1.5;
     }
 
-    .tabs a.author-btn{
+    
+    /* Switch tabs */
+
+    .switch-tab{
         @apply block;
         @apply w-full;
         @apply py-2;
+        @apply bg-gray-900;
+        @apply hover:!bg-red-500;
+        @apply border-b-2;
+        @apply border-b-red-500;
         @apply text-center;
         @apply uppercase;
         @apply text-sm;
         @apply text-white;
         @apply hover:!text-white;
+        @apply no-underline;
     }
 
+    .switch-tab.focus{
+        @apply bg-red-500;
+    }
+
+    
     .heading-mt{
         @apply mt-10;
     }
