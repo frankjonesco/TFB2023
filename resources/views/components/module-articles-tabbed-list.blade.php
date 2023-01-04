@@ -120,55 +120,49 @@
 
     <script>
 
-        
-
-
         // SCRIPT FOR SWITCH TABS
         
         // Query selector of cradle element
-        let cradle = '.tabbed-articles';
+        let cradleTabbedArticles = '.tabbed-articles';
         
         // Tabs within cradle
-        let switchTabs = document.querySelectorAll(cradle + ' a.switch-tab');
+        let switchTabsTabbedArticles = document.querySelectorAll(cradleTabbedArticles + ' a.switch-tab');
         
         // For each tab...
-        for (let i = 0; i < switchTabs.length; i++) {
+        for (let i = 0; i < switchTabsTabbedArticles.length; i++) {
 
             // Listen for click
-            switchTabs[i].addEventListener('click', function(e){
+            switchTabsTabbedArticles[i].addEventListener('click', function(e){
                 e.preventDefault();
 
                 // Blur all switch tabs
-                switchTabs[i].classList.add('focus');
+                switchTabsTabbedArticles[i].classList.add('focus');
                 
                 // Tab panes
-                let tabPanes = document.querySelectorAll(cradle + ' .tab-content>div');
+                let tabPanesTabbedArticles = document.querySelectorAll(cradleTabbedArticles + ' .tab-content>div');
                 
                 // For each tab pane
-                for (var x = 0; x < tabPanes.length; x++) {
+                for (var x = 0; x < tabPanesTabbedArticles.length; x++) {
                     // Hide tab pane
-                    tabPanes[x].classList.add('hidden');
+                    tabPanesTabbedArticles[x].classList.add('hidden');
                 }
                 // Show the pane for this switch tab
-                tabPanes[i].classList.remove('hidden');
+                tabPanesTabbedArticles[i].classList.remove('hidden');
                 
                 // Refocus tabs
-                refocusTabs(i);
+                refocusTabsTabbedArticles(i);
             });
-
         }
 
-        function refocusTabs(tab){
+        function refocusTabsTabbedArticles(tab){
             // For each switch tab...
-            for (let i = 0; i < switchTabs.length; i++) {
+            for (let i = 0; i < switchTabsTabbedArticles.length; i++) {
                 // Blur all switch tabs
-                switchTabs[i].classList.remove('focus');
+                switchTabsTabbedArticles[i].classList.remove('focus');
             }
             // Focus this tab
-            switchTabs[tab].classList.add('focus');
+            switchTabsTabbedArticles[tab].classList.add('focus');
         }
-
-
 
     </script>
 </div>

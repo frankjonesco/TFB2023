@@ -3,102 +3,102 @@
 <script src="{{asset('c3/c3-js.js')}}" charset="utf-8"></script>
 <script src="{{asset('c3/c3.min.js')}}"></script>
 
-<div class="company-ranking-charts mb-12">
+<div class="company-ranking-charts mb-12 tabbed-charts">
     <div class="flex tabs ">
-        <div class="w-1/2 border-b-4 border-red-500">
+        <div class="w-1/2">
             <a
                 href="#"
-                id="btnTurnover"
-                class="author-btn !bg-red-500 hover:!bg-red-500 no-underline"
+                class="switch-tab focus"
             >
                 Turnover
             </a>
         </div>
-        <div class="w-1/2 border-b-4 border-red-500">
+        <div class="w-1/2">
             <a 
                 href="#" 
-                id="btnEmployees"
-                class="author-btn !bg-gray-900 hover:!bg-red-500 no-underline"
+                class="switch-tab"
             >
                 Employees
             </a>
         </div>
     </div>
-    <div id="turnoverCard">
-        <div class="flex items-center bg-gray-50 p-3 border-b border-gray-200">
-            <div class="flex flex-col w-full">
-                {{-- Chart for turnover --}}                        
-                <div class="mb-3 pb-3 rounded-lg bg-white border border-gray-200 w-full">
-                    <div id="turnoverChart"></div>
+    <div class="tab-content">
+        <div id="turnoverCard">
+            <div class="flex items-center bg-gray-50 p-3 border-b border-gray-200">
+                <div class="flex flex-col w-full">
+                    {{-- Chart for turnover --}}                        
+                    <div class="mb-3 pb-3 rounded-lg bg-white border border-gray-200 w-full">
+                        <div id="turnoverChart"></div>
+                    </div>
+                    {{-- End: Chart for turnover --}}
+                    <table class="text-sm">
+                        <thead class="p-0 text-center">
+                            <th class="px-0.5 pl-2 py-2 font-bold">Year</th>
+                            <th class="p-0 py-2 px-8 font-bold">Turnover</th>
+                            <th class="p-0 py-2 text-right font-bold">Growth</th>
+                        </thead>
+                        <tbody>
+                            @foreach($company->rankings as $ranking)
+                                <tr>
+                                    <td class="px-0.5 pl-2 py-2 text-xs !font-normal">
+                                        {{$ranking->year}}
+                                        @if($ranking->confirmed_by_company)
+                                            <span class="text-xs">*</span>
+                                        @endif
+                                    </td>
+                                    <td class="py-2 px-8 text-xs">{{formatTurnover($ranking->turnover)}} €</td>
+                                    <td class="px-0.5 py-2 text-right text-xs">
+                                        <x-ranking-growth growth="{{$ranking->calculateGrowth('turnover')}}" />
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    {{-- End: Table for turnover --}}
+                    <div class="mt-5 text-xs no-results flex flex-col">
+                        <span class="grow">{!!$company->rankingSources()!!}</span> 
+                    </div>
+            
                 </div>
-                {{-- End: Chart for turnover --}}
-                <table class="text-sm">
-                    <thead class="p-0 text-center">
-                        <th class="px-0.5 pl-2 py-2 font-bold">Year</th>
-                        <th class="p-0 py-2 px-8 font-bold">Turnover</th>
-                        <th class="p-0 py-2 text-right font-bold">Growth</th>
-                    </thead>
-                    <tbody>
-                        @foreach($company->rankings as $ranking)
-                            <tr>
-                                <td class="px-0.5 pl-2 py-2 text-xs !font-normal">
-                                    {{$ranking->year}}
-                                    @if($ranking->confirmed_by_company)
-                                        <span class="text-xs">*</span>
-                                    @endif
-                                </td>
-                                <td class="py-2 px-8 text-xs">{{formatTurnover($ranking->turnover)}} €</td>
-                                <td class="px-0.5 py-2 text-right text-xs">
-                                    <x-ranking-growth growth="{{$ranking->calculateGrowth('turnover')}}" />
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-                {{-- End: Table for turnover --}}
-                <div class="mt-5 text-xs no-results flex flex-col">
-                    <span class="grow">{!!$company->rankingSources()!!}</span> 
-                </div>
-        
             </div>
         </div>
-    </div>
-    <div id="employeesCard" class="hidden">
-        <div class="flex items-center bg-gray-50 p-3 border-b border-gray-200">
-            <div class="flex flex-col w-full">
-                {{-- Chart for employees --}}                        
-                <div class="mb-3 pb-3 rounded-lg bg-white border border-gray-200 w-full">
-                    <div id="employeesChart"></div>
+        <div id="employeesCard" class="hidden">
+            <div class="flex items-center bg-gray-50 p-3 border-b border-gray-200">
+                <div class="flex flex-col w-full">
+                    {{-- Chart for employees --}}                        
+                    <div class="mb-3 pb-3 rounded-lg bg-white border border-gray-200 w-full">
+                        <div id="employeesChart"></div>
+                    </div>
+                    {{-- End: Chart for employees --}}
+                    <table class="text-sm">
+                        <thead class="p-0 text-center">
+                            <th class="px-0.5 pl-2 py-2 font-bold">Year</th>
+                            <th class="p-0 py-2 px-8 font-bold">Employees</th>
+                            <th class="p-0 py-2 text-right font-bold">Growth</th>
+                        </thead>
+                        <tbody>
+                            @foreach($company->rankings as $ranking)
+                                <tr>
+                                    <td class="px-0.5 pl-2 py-2 text-xs !font-normal">
+                                        {{$ranking->year}}
+                                        @if($ranking->confirmed_by_company)
+                                            <span class="text-xs">*</span>
+                                        @endif
+                                    </td>
+                                    <td class="py-2 px-8 text-xs">{{formatEmployees($ranking->employees)}}</td>
+                                    <td class="px-0.5 py-2 text-right text-xs">
+                                        <x-ranking-growth growth="{{$ranking->calculateGrowth('employees')}}" />
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    {{-- End: Table for employees --}}
+                    <div class="mt-5 text-xs no-results flex flex-col">
+                        <span class="grow">{!!$company->rankingSources()!!}</span> 
+                    </div>
+            
                 </div>
-                {{-- End: Chart for employees --}}
-                <table class="text-sm">
-                    <thead class="p-0 text-center">
-                        <th class="px-0.5 pl-2 py-2 font-bold">Year</th>
-                        <th class="p-0 py-2 px-8 font-bold">Employees</th>
-                        <th class="p-0 py-2 text-right font-bold">Growth</th>
-                    </thead>
-                    <tbody>
-                        @foreach($company->rankings as $ranking)
-                            <tr>
-                                <td class="px-0.5 pl-2 py-2 text-xs !font-normal">
-                                    {{$ranking->year}}
-                                    @if($ranking->confirmed_by_company)
-                                        <span class="text-xs">*</span>
-                                    @endif
-                                </td>
-                                <td class="py-2 px-8 text-xs">{{formatEmployees($ranking->employees)}}</td>
-                                <td class="px-0.5 py-2 text-right text-xs">
-                                    <x-ranking-growth growth="{{$ranking->calculateGrowth('employees')}}" />
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-                {{-- End: Table for employees --}}
-                <div class="mt-5 text-xs no-results flex flex-col">
-                    <span class="grow">{!!$company->rankingSources()!!}</span> 
-                </div>
-        
             </div>
         </div>
     </div>
@@ -106,28 +106,49 @@
 </div>
 
 <script>
-    const turnoverCard = document.getElementById('turnoverCard');
-    const employeesCard = document.getElementById('employeesCard');
-    const btnTurnover = document.getElementById('btnTurnover');
-    const btnEmployees = document.getElementById('btnEmployees');
-    document.getElementById("btnTurnover").addEventListener("click", function(event){
-        event.preventDefault();
-        turnoverCard.classList.remove('hidden');
-        employeesCard.classList.add('hidden');
-        btnTurnover.classList.add('!bg-red-500');
-        btnTurnover.classList.remove('!bg-gray-900');
-        btnEmployees.classList.add('!bg-gray-900');
-        btnEmployees.classList.remove('!bg-red-500');
-    });
-    document.getElementById("btnEmployees").addEventListener("click", function(event){
-        event.preventDefault();
-        turnoverCard.classList.add('hidden');
-        employeesCard.classList.remove('hidden');
-        btnTurnover.classList.remove('!bg-red-500');
-        btnTurnover.classList.add('!bg-gray-900');
-        btnEmployees.classList.remove('!bg-gray-900');
-        btnEmployees.classList.add('!bg-red-500');
-    });
+    // SCRIPT FOR SWITCH TABS
+        
+    // Query selector of cradle element
+    const cradle = '.tabbed-charts';
+        
+    // Tabs within cradle
+    let switchTabs = document.querySelectorAll(cradle + ' a.switch-tab');
+        
+    // For each tab...
+    for (let i = 0; i < switchTabs.length; i++) {
+
+        // Listen for click
+        switchTabs[i].addEventListener('click', function(e){
+            e.preventDefault();
+            console.log('sd');
+            // Blur all switch tabs
+            switchTabs[i].classList.add('focus');
+                
+            // Tab panes
+            let tabPanes = document.querySelectorAll(cradle + ' .tab-content>div');
+                
+            // For each tab pane
+            for (var x = 0; x < tabPanes.length; x++) {
+                // Hide tab pane
+                tabPanes[x].classList.add('hidden');
+            }
+            // Show the pane for this switch tab
+            tabPanes[i].classList.remove('hidden');
+                
+            // Refocus tabs
+            refocusTabs(i);
+        });
+    }
+
+    function refocusTabs(tab){
+        // For each switch tab...
+        for (let i = 0; i < switchTabs.length; i++) {
+            // Blur all switch tabs
+            switchTabs[i].classList.remove('focus');
+        }
+        // Focus this tab
+        switchTabs[tab].classList.add('focus');
+    }
 </script>
 
 
