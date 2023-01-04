@@ -148,7 +148,28 @@ use Illuminate\Support\Facades\Config;
             return Article::where('status', 'public')->latest()->take($number)->get();
         }
     }
-    
+
+
+
+    // Thumbnail Sizes
+    if(!function_exists('thumbnailSize')){
+        function thumbnailSize($size = null){
+            switch ($size) {
+                case 'xs':
+                    return 'w-20 h-16';
+                    break;
+                // case 1:
+                //     echo "i equals 1";
+                //     break;
+                // case 2:
+                //     echo "i equals 2";
+                //     break;
+                default:
+                    return 'w-24 h-20';
+            }
+            
+        }
+    }
 
 
     
