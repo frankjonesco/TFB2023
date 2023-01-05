@@ -11,7 +11,7 @@
 
     .slide {
         width:25%;
-        height: 350px;
+        height:500px;
         position: absolute;
         transition: all 0.5s;
     }
@@ -67,21 +67,21 @@
 $bg_color = 'bg-amber-50';
 @endphp
 
-<div class="flex w-full {{$bg_color}} border-b border-b-gray-300 pt-6 pb-32 overflow-hidden">
-    <div class="{{$bg_color}} z-10 bg-opacity-70" style="width:12.5%;"></div>
-    <div class="w-3/4 overflow-visible z-0">
+<div class="flex w-full {{$bg_color}} border-b border-b-gray-300 h-[30rem] pt-6 pb-32 overflow-hidden">
+    <div class="{{$bg_color}} z-10 bg-opacity-80 pb-32" style="width:12.5%;"></div>
+    <div class="w-3/4 overflow-visible z-0 h-full">
         <div {{$attributes->merge(['class' => 'flex mb-7'])}}>
             <h3 class="pr-2 pb-3 border-b border-red-500 uppercase text-sm text-gray-800">Featured Articles</h3>
             <span class="grow border-b border-gray-300 text-right">
                 <!-- Control buttons -->
-                <button class="btn-carousel btn-prev px-1.5 py-1 hover:bg-yellow-50 bg-transparent border border-gray-400 text-gray-400 py-0" id="prev"><</button>
-                <button class="btn-carousel btn-next px-1.5 py-1 hover:bg-yellow-50 bg-transparent border border-gray-400 text-gray-400 py-0" id="next">></button>
+                <button class="btn-carousel btn-prev px-1.5 hover:bg-yellow-50 bg-transparent border border-gray-400 text-gray-400 py-0" id="prev"><</button>
+                <button class="btn-carousel btn-next px-1.5 hover:bg-yellow-50 bg-transparent border border-gray-400 text-gray-400 py-0" id="next">></button>
             </span>
         </div>
         
 
 
-        <div class="slider mt-7 h-72">
+        <div class="slider mt-7 h-full">
             @foreach($articles as $article)
                 <div class="slide border-r border-gray-200">
                     <x-card-articles-list-item-md :article="$article" />
@@ -91,7 +91,7 @@ $bg_color = 'bg-amber-50';
             
         </div>
     </div>
-    <div class="w-1/8 {{$bg_color}} bg-opacity-60 z-0" style="width:12.5%; "></div>
+    <div class="w-1/8 {{$bg_color}} bg-opacity-90 z-0" style="width:12.5%; "></div>
 </div>
 <script>
     // Select all slides
@@ -113,7 +113,7 @@ $bg_color = 'bg-amber-50';
     // current slide counter
     let curSlide = 1;
     // maximum number of slides
-    let maxSlide = slides.length - 3;
+    let maxSlide = slides.length - 4;
 
     // loop through slides and set each slides translateX property to index * 100% 
 
@@ -129,11 +129,12 @@ $bg_color = 'bg-amber-50';
                 curSlide++;
             }
             if(curSlide === maxSlide){
-                curSlide = 0;
+                curSlide = 1;
+                
             }
         }else{
-            if(curSlide == maxSlide){
-                curSlide = 0;
+            if(curSlide === maxSlide){
+                curSlide = 1;
             }
             else{
                 curSlide--;
