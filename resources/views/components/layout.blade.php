@@ -20,10 +20,11 @@
     {{-- Local scripts --}}
     @vite(['resources/css/app.css', 'resources/scss/app.scss', 'resources/js/app.js'])
     
-    {{-- <link rel="stylesheet" href="{{ asset('build/assets/app.54283ede.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('build/assets/app.c449fa42.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/app.dd9f1f38.css') }}">
     <script src="{{ asset('build/assets/app.ab424fc8.js') }}"></script>  --}}
    
+    
 
 
     <!-- Google tag (gtag.js) -->
@@ -37,22 +38,32 @@
     </script>
 
 </head>
-<body>
+<body style="background-image:url('{{asset('images/bg.png')}}')';" class="bg-repeat">
     <div class="flex flex-col h-screen">
         <x-navbar />
-
-        {{-- <div class="pop">
-            <h1>{{App::app()}} environment</h1>
-        </div> --}}
-
-        <div class="flex-grow">
-            <main class="h-full">
-                {{$slot}}
-            </main>
+        <div id="pageContent">
+            {{-- <div class="pop">
+                <h1>{{App::environment()}} environment</h1>
+            </div> --}}
+            <div class="flex-grow">
+                <main class="h-full">
+                    {{$slot}}
+                </main>
+            </div>
+            <x-footer />
         </div>
-        <x-footer />
     </div>
     <x-toast-message />
     <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
+
+    <div id="loader" class="center" ></div>
+    <script>
+        document.onreadystatechange = function() {
+            if (document.readyState == "complete") {
+                document.querySelector('#loader').classList.add('hidden');
+                document.querySelector('#pageContent').classList.remove('hidden');
+            }
+        };
+    </script>
 </body>
 </html>
