@@ -67,9 +67,9 @@
 $bg_color = 'bg-amber-50';
 @endphp
 
-<div class="flex w-full {{$bg_color}} border-b border-b-gray-300 h-[30rem] pt-6 pb-32 overflow-hidden">
-    <div class="{{$bg_color}} z-10 bg-opacity-80 pb-32" style="width:12.5%;"></div>
-    <div class="w-3/4 overflow-visible z-0 h-full">
+<div class="flex w-full {{$bg_color}} border-b border-b-gray-300 h-[30rem] overflow-hidden">
+    <div class="{{$bg_color}} z-10 bg-opacity-70 h-full" style="width:12.5%;"></div>
+    <div class="w-3/4 overflow-visible z-0 h-full pt-6 pb-32">
         <div {{$attributes->merge(['class' => 'flex mb-7'])}}>
             <h3 class="pr-2 pb-3 border-b border-red-500 uppercase text-sm text-gray-800">Featured Articles</h3>
             <span class="grow border-b border-gray-300 text-right">
@@ -81,7 +81,7 @@ $bg_color = 'bg-amber-50';
         
 
 
-        <div class="slider mt-7 h-full">
+        <div class="slider my-7 h-full">
             @foreach($articles as $article)
                 <div class="slide border-r border-gray-200">
                     <x-card-articles-list-item-md :article="$article" />
@@ -91,7 +91,7 @@ $bg_color = 'bg-amber-50';
             
         </div>
     </div>
-    <div class="w-1/8 {{$bg_color}} bg-opacity-90 z-0" style="width:12.5%; "></div>
+    <div class="w-1/8 {{$bg_color}} bg-opacity-70 z-0" style="width:12.5%;"></div>
 </div>
 <script>
     // Select all slides
