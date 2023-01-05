@@ -1,4 +1,5 @@
 <x-layout>
+    <x-layout-articles-news-full-w-slide :articles="$latest_articles" />
     <x-container>
         <x-layout-main-area>
             <form action="/news/search" method="POST">

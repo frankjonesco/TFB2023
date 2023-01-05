@@ -8,9 +8,9 @@
             @else
                 <div class="mt-4">
                     @if($loop->last)
-                        <x-card-articles-small-list-item :article="$article" thumbnail-size="xs" class="!border-0" />
+                        <x-card-articles-list-item-sm :article="$article" thumbnail-size="xs" class="!border-0" />
                     @else
-                        <x-card-articles-small-list-item :article="$article" thumbnail-size="xs" />
+                        <x-card-articles-list-item-sm :article="$article" thumbnail-size="xs" />
                     @endif
                 </div>
             @endif
@@ -24,9 +24,9 @@
             @else
                 <div class="mt-4">
                     @if($loop->last)
-                        <x-card-articles-small-list-item :article="$article" thumbnail-size="xs" class="!border-0" />
+                        <x-card-articles-list-item-sm :article="$article" thumbnail-size="xs" class="!border-0" />
                     @else
-                        <x-card-articles-small-list-item :article="$article" thumbnail-size="xs" />
+                        <x-card-articles-list-item-sm :article="$article" thumbnail-size="xs" />
                     @endif
                 </div>
             @endif

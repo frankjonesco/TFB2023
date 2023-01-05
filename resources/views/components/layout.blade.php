@@ -38,10 +38,10 @@
     </script>
 
 </head>
-<body style="background-image:url('{{asset('images/bg.png')}}')';" class="bg-repeat">
+<body style="background-image:url('{{asset('images/bg.png')}}')';" class="bg-repeat bg-cover">
     <div class="flex flex-col h-screen">
         <x-navbar />
-        <div id="pageContent">
+        <div id="pageContent" class="hidden">
             {{-- <div class="pop">
                 <h1>{{App::environment()}} environment</h1>
             </div> --}}

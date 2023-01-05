@@ -4,7 +4,7 @@
     $color = $colors[$random];
 @endphp
 
-<div {{$attributes->merge(['class' => 'bg-no-repeat bg-cover bg-center px-4 py-5 mb-1.5 flex flex-col justify-end overflow-hidden h-72'])}} style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.55)), url('{{$article->getImageThumbnail()}}');">
+<div {{$attributes->merge(['class' => 'bg-no-repeat bg-cover bg-center px-4 py-5 mb-1.5 flex flex-col justify-end overflow-hidden h-72'])}} style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.55)), url('{{$article->getImage()}}');">
     <div class="flex flex-col justify-center items-center h-full">
         <span class="{{$color}} w-max px-2 py-1 rounded text-xs font-bold text-zinc-100">
             Top Stories

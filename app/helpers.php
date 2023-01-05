@@ -156,16 +156,16 @@ use Illuminate\Support\Facades\Config;
         function thumbnailSize($size = null){
             switch ($size) {
                 case 'xs':
-                    return 'w-20 h-16';
+                    return 'width: 5rem; height: 4rem;';
                     break;
-                // case 1:
-                //     echo "i equals 1";
-                //     break;
+                case 'md':
+                    return 'width: 12rem; height: 5rem;';
+                    break;
                 // case 2:
                 //     echo "i equals 2";
                 //     break;
                 default:
-                    return 'w-24 h-20';
+                    return 'width: 6rem; height: 5rem;';
             }
             
         }

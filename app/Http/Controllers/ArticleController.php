@@ -17,7 +17,8 @@ class ArticleController extends Controller
     // Show article index
     public function index(Site $site){
         return view('articles.index', [
-            'articles' => Article::latest()->paginate(10),
+            'latest_articles' => Article::latest()->take(8)->get(),
+            'articles' => Article::latest()->skip(8)->paginate(10)
         ]);
     }
 
