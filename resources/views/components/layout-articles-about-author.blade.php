@@ -39,10 +39,10 @@
                     <p class="no-results">No articles to display.</p>
                 @else
                     @foreach($authorArticles as $author_article)
-                        <div class="bg-no-repeat bg-center bg-cover px-4 py-5 w-1/4 m-1 h-40 flex flex-col justify-end overflow-hidden" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.85)), url('{{asset('images/articles/'.$author_article->hex.'/'.$author_article->image)}}');">
+                        <div class="bg-no-repeat bg-center bg-cover px-4 py-5 w-1/4 m-1 h-40 flex flex-col justify-end overflow-hidden" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.85)), url('{{$author_article->getImageThumbnail()}}');">
                                 
                                 <h3 class="pt-1.5 pb-1 text-sm">
-                                    <a href="/dashboard/articles/{{$author_article->hex}}" class="text-zinc-100 hover:!text-zinc-100 hover:!text-opacity-80 no-underline">
+                                    <a href="{{$article->link()}}" class="text-zinc-100 hover:!text-zinc-100 hover:!text-opacity-80 no-underline">
                                         {{$author_article->title}}
                                     </a>
                                 </h3>

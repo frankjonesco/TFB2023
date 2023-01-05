@@ -8,7 +8,7 @@
             </h2>
             <x-alerts/>
     
-            <form action="/dashboard/categories/{{$category->hex}}/text/update" method="POST">
+            <form action="{{url('dashboard/categories/'.$category->hex.'/text/update')}}" method="POST">
                 @csrf
                 @method('PUT')
                 <input type="hidden" id="inputSlug" name="slug" value="{{old('slug') ?? $category->slug}}">

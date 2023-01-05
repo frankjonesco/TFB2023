@@ -18,13 +18,13 @@
                     <td>
                         <div class="flex items-center">
                             <input type="checkbox" name="category_id_checkboxes[]" value="{{$category->id}}" onclick="handleClick(this)">
-                            <a href="/dashboard/categories/{{$category->hex}}">
+                            <a href="{{url('dashboard/categories/'.$category->hex)}}">
                                 {{$category->name}}
                             </a>
                         </div>
                     </td>
                     <td>
-                        <a href="/dashboard/sectors/{{$category->sector->hex}}">
+                        <a href="{{url('dashboard/sectors/'.$category->sector->hex)}}">
                             {{$category->sector->name}}
                         </a>
                     </td>
@@ -36,7 +36,7 @@
                         {{$category->updated_at}}
                     </td>
                     <td class="text-right">
-                        <a href="/dashboard/categories/{{$category->hex}}">
+                        <a href="{{url('dashboard/categories/'.$category->hex)}}">
                             <button>
                                 <i class="fa-solid fa-info-circle"></i>
                                 Details

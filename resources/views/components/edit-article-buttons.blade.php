@@ -1,5 +1,5 @@
 <div class="flex justify-between mt-4">
-    <a href="/dashboard/articles">   
+    <a href="{{url('dashboard/articles')}}">   
         <button>
             <i class="fa-solid fa-arrow-left"></i>
             Back to articles
@@ -7,19 +7,19 @@
     </a>
     <div class="flex justify-start buttons-mr">
         
-        <a href="/dashboard/articles/{{$article->hex}}/text/edit">   
+        <a href="{{url('dashboard/articles/'.$article->hex.'/text/edit')}}">   
             <button>
                 <i class="fa-solid fa-marker"></i>
                 Edit
             </button>
         </a>
-        <a href="/dashboard/articles/{{$article->hex}}/image/edit">
+        <a href="{{url('dashboard/articles/'.$article->hex.'/image/edit')}}">
             <button>
                 <i class="fa-regular fa-image"></i>
                 Change image
             </button>
         </a>
-        <a href="/dashboard/articles/{{$article->hex}}/delete">
+        <a href="{{url('dashboard/articles/'.$article->hex.'/delete')}}">
             <button>
                 <i class="fa-regular fa-trash-alt"></i>
                 Delete

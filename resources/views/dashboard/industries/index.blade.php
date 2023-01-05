@@ -7,7 +7,7 @@
             </button>
         </a>
         <div class="flex justify-end buttons-ml">
-            <a href="/dashboard/industries/create">
+            <a href="{{url('dashboard/industries/create')}}">
                 <button>
                     <i class="fa-solid fa-plus"></i>
                     Create industry

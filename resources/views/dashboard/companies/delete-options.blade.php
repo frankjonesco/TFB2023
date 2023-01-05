@@ -6,7 +6,7 @@
                 Delete company
             </h2>
             <x-alerts/>
-            <form action="/dashboard/companies/{{$company->hex}}/delete" method="POST">
+            <form action="{{url('dashboard/companies/'.$company->hex.'/delete')}}" method="POST">
                 @csrf
                 @method('DELETE')
                 <p class="mb-4">Are you sure you want to delete this company?</p>

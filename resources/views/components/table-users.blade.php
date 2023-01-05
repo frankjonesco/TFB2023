@@ -39,7 +39,7 @@
                         {{$user->updated_at}}
                     </td>
                     <td class="text-right">
-                        <a href="/dashboard/users/{{$user->hex}}">
+                        <a href="{{url('dashboard/users/'.$user->hex)}}">
                             <button>
                                 <i class="fa-solid fa-info-circle"></i>
                                 Details

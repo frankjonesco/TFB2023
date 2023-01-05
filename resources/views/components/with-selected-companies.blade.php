@@ -1,6 +1,6 @@
 {{-- With selected --}}
 <div class="my-5 flex items-start border p-5 border-gray-500 rounded-lg bg-stone-900">
-    <form action="/dashboard/sectors/{{$sector->hex}}/industries/with-selected" method="POST" class="grow">
+    <form action="{{url('dashboard/sectors/'.$sector->hex.'/industries/with-selected')}}" method="POST" class="grow">
         @csrf
         @method('PUT')
         <input type="hidden" name="current_sector_id" value="{{$sector->id}}">

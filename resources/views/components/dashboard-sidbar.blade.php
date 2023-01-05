@@ -2,49 +2,49 @@
     <div class="overflow-y-auto m-4 px-3 py-4 border rounded-lg border-gray-600 bg-gray-50 dark:bg-gray-900">
         <ul class="space-y-2">
             <li>
-                <a href="/dashboard" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                <a href="{{url('dashboard')}}" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                     <i class="fa-solid fa-dashboard"></i>
                     <span class="ml-3">Dashboard</span>
                 </a>
             </li>
             <li>
-                <a href="/dashboard/sectors" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                <a href="{{url('dashboard/sectors')}}" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                     <i class="fa-solid fa-grip-horizontal"></i>
                     <span class="ml-3">Sectors</span>
                 </a>
             </li>
             <li>
-                <a href="/dashboard/industries" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                <a href="{{url('dashboard/industries')}}" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                     <i class="fa-solid fa-grip-horizontal"></i>
                     <span class="ml-3">Industries</span>
                 </a>
             </li>
             <li>
-                <a href="/dashboard/companies" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                <a href="{{url('dashboard/companies')}}" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                     <i class="fa-solid fa-grip-horizontal"></i>
                     <span class="ml-3">Companies</span>
                 </a>
             </li>
             <li>
-                <a href="/dashboard/categories" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                <a href="{{url('dashboard/categories')}}" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                     <i class="fa-solid fa-grip-horizontal"></i>
                     <span class="ml-3">Categories</span>
                 </a>
             </li>
             <li>
-                <a href="/dashboard/articles" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                <a href="{{url('dashboard/articles')}}" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                     <i class="fa-solid fa-grip-horizontal"></i>
                     <span class="ml-3">Articles</span>
                 </a>
             </li>
             <li>
-                <a href="/dashboard/users" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                <a href="{{url('dashboard/users')}}" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                     <i class="fa-solid fa-grip-horizontal"></i>
                     <span class="ml-3">Users</span>
                 </a>
             </li>
             <li>
-                <a href="/dashboard/maps" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                <a href="{{url('dashboard/maps')}}" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                     <i class="fa-solid fa-grip-horizontal"></i>
                     <span class="ml-3">Maps</span>
                 </a>

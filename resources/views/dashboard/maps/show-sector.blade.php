@@ -2,25 +2,25 @@
     
     <div class="flex flex-row items-center">
         <h1 class="grow">Maps</h1>
-        <a href="/dashboard/maps">
+        <a href="{{url('dashboard/maps')}}">
             <button>
                 <i class="fa-solid fa-plus"></i>
                 Maps
             </button>
         </a>
-        <a href="/dashboard/maps/sectors">
+        <a href="{{url('dashboard/maps/sectors')}}">
             <button>
                 <i class="fa-solid fa-plus"></i>
                 Sectors
             </button>
         </a>
-        <a href="/dashboard/maps/industries">
+        <a href="{{url('dashboard/maps/industries')}}">
             <button>
                 <i class="fa-solid fa-plus"></i>
                 Industries
             </button>
         </a>
-        <a href="/dashboard/maps/companies">
+        <a href="{{url('dashboard/maps/companies')}}">
             <button>
                 <i class="fa-solid fa-plus"></i>
                 Companies
@@ -54,7 +54,7 @@
                         {{$industry->id}}
                     </td>
                     <td>
-                        <a href="/dashboard/maps/industries/{{$industry->hex}}">
+                        <a href="{{url('dashboard/maps/industries/'.$industry->hex)}}">
                             {{$industry->english_name}}
                         </a>
                     </td>
@@ -65,7 +65,7 @@
                         <ul>
                             @foreach($industry->grouped_sectors as $sector)
                                 <li>- 
-                                    <a href="/dashboard/maps/sectors/{{$sector->hex}}">
+                                    <a href="{{url('dashboard/maps/sectors/'.$sector->hex)}}">
                                         {{$sector->english_name}}
                                     </a>
                                 </li>

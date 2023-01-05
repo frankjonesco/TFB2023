@@ -7,7 +7,7 @@
             </button>
         </a>
         <div class="flex justify-end buttons-ml">
-            <a href="/dashboard/categories/create">
+            <a href="{{url('dashboard/categories/create')}}">
                 <button>
                     <i class="fa-solid fa-plus"></i>
                     Create category

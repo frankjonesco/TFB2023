@@ -34,7 +34,7 @@
             <div class="tab-pane" id="popularArticles">
                 <ul class="list-posts">
                     @foreach(tabbedArticles()['popular'] as $article)
-                        <x-card-articles-small-list-item :article="$article" thumbnail-size="xs" class="p-5 mb-0" />
+                        <x-card-articles-list-item-sm :article="$article" thumbnail-size="xs" class="p-5 mb-0" />
                     @endforeach
                 </ul>
             </div>
@@ -42,7 +42,7 @@
             <div class="tab-pane hidden" id="recentArticles">
                 <ul class="list-posts">
                     @foreach(tabbedArticles()['recent'] as $article)
-                        <x-card-articles-small-list-item :article="$article" thumbnail-size="xs" class="p-5 mb-0" />
+                        <x-card-articles-list-item-sm :article="$article" thumbnail-size="xs" class="p-5 mb-0" />
                     @endforeach                
                 </ul>										
             </div>
@@ -50,7 +50,7 @@
             <div class="tab-pane hidden" id="topArticles">
                 <ul class="list-posts">
                     @foreach(tabbedArticles()['top'] as $article)
-                        <x-card-articles-small-list-item :article="$article" thumbnail-size="xs" class="p-5 mb-0" />
+                        <x-card-articles-list-item-sm :article="$article" thumbnail-size="xs" class="p-5 mb-0" />
                     @endforeach                
                 </ul>										
             </div>

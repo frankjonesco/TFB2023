@@ -7,7 +7,7 @@
 
     <x-alerts/>
 
-    <form id="form" action="/dashboard/categories/{{$category->hex}}/image/update" method="POST" enctype="multipart/form-data">
+    <form id="form" action="{{url('dashboard/categories/'.$category->hex.'/image/update')}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="form-block">

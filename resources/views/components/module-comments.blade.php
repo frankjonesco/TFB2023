@@ -9,7 +9,7 @@
                     {!!linkify($comment->body)!!}
                 </div>
                 <div class="ml-7 text-xs">
-                    <a href="/news/articles/{{$comment->article->hex}}/{{$comment->article->slug}}" class="text-slate-900 hover:!text-red-500 italic">
+                    <a href="{{$comment->article->link()}}" class="text-slate-900 hover:!text-red-500 italic">
                         {{$comment->article->title}}
                     </a>
                     <div class="mt-1 text-xs italic text-gray-400"><i class="fa-solid fa-user mr-1.5"></i>{{$comment->authorName()}}</div>

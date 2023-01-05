@@ -3,7 +3,7 @@
     <div class="flex">
         <div class="w-3/4 pr-10">
             <div class="flex justify-start buttons-mr mt-4">
-                <a href="/dashboard/users">   
+                <a href="{{url('dashboard/users')}}">   
                     <button>
                         <i class="fa-solid fa-arrow-left"></i>
                         Back to users
@@ -12,7 +12,7 @@
             </div>
             <h2>Create user</h2>
             <x-alerts/>
-            <form action="/dashboard/users/store" method="POST">
+            <form action="{{url('dashboard/users/store')}}" method="POST">
                 @csrf
 
                 {{-- First name --}}

@@ -7,7 +7,7 @@
 
     <x-alerts/>
 
-    <form action="/dashboard/industries/{{$industry->hex}}/delete" method="POST">
+    <form action="{{url('dashboard/industries/'.$industry->hex.'/delete')}}" method="POST">
         @csrf
         @method('DELETE')
         

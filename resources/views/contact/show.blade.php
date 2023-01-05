@@ -5,7 +5,7 @@
 
             <x-alerts />
 
-            <form action="/contact/send-message" method="POST">
+            <form action="{{url('contact/send-message')}}" method="POST">
                 @csrf
                 <div class="flex flex-col mb-3">
                     <div class="form-block flex">

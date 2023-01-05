@@ -8,21 +8,21 @@
                 <div class="grid grid-cols-4 gap-3 w-full">
                     @foreach($sectors as $sector)
                         <div class="w-full m-1 border border-gray-200 p-2.5 bg-zinc-50">
-                            <a href="/sectors/{{$sector->hex}}/{{$sector->slug}}">
-                                <img src="{{asset('images/sectors/'.$sector->hex.'/'.$sector->image)}}">
+                            <a href="{{$sector->link()}}">
+                                <img src="{{$sector->getImageThumbnail()}}">
                             </a>
                             <h5 class="font-bold text-sm mt-2">
-                                <a href="/sectors/{{$sector->hex}}/{{$sector->slug}}" class="plain">
+                                <a href="{{$sector->link()}}" class="plain">
                                     {{$sector->name}}
                                 </a>
                             </h5>
                             <span class="text-xs block">
-                                <a href="/sectors/{{$sector->hex}}/{{$sector->slug}}/industries" class="plain">
+                                <a href="{{url('sectors/'.$sector->hex.'/'.$sector->slug.'/industries')}}" class="plain">
                                     {{count($sector->industries)}} industries
                                 </a>
                             </span>
                             <span class="text-xs block">
-                                <a href="/sectors/{{$sector->hex}}/{{$sector->slug}}" class="plain">
+                                <a href="{{$sector->link()}}" class="plain">
                                     {{count($sector->companies)}} companies
                                 </a>
                             </span>

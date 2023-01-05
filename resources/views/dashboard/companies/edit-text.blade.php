@@ -7,7 +7,7 @@
                 Edit company
             </h2>
             <x-alerts/>
-            <form action="/dashboard/companies/store" method="POST">
+            <form action="{{url('dashboard/companies/store')}}" method="POST">
                 @csrf
                 <input type="hidden" id="inputSlug" name="slug" value="{{old('slug') ?? $company->slug}}">
 

@@ -29,13 +29,13 @@
                     <td>
                         <div class="flex items-center">
                             <input type="checkbox" name="company_id_checkboxes[]" value="{{$company->id}}" onclick="handleClick(this)">
-                            <a href="/dashboard/companies/{{$company->hex}}">
+                            <a href="{{url('dashboard/companies/'.$company->hex)}}">
                                 {{$company->registered_name}}
                             </a>
                         </div>
                     </td>
                     <td>
-                        <a href="/dashboard/companies/{{$company->hex}}">
+                        <a href="{{url('dashboard/companies/'.$company->hex)}}">
                             <img 
                                 src="{{$company->getImageThumbnail()}}"
                                 alt="Top Family Business - {{$company->registered_name}}"
@@ -46,7 +46,7 @@
                     <td>
                         @if($company->grouped_sectors)
                             @foreach($company->grouped_sectors as $sector)
-                                <a href="/dashboard/sectors/{{$sector->hex}}">
+                                <a href="{{url('dashboard/sectors/'.$sector->hex)}}">
                                     {{$sector->name}}
                                 </a>
                                 <br>
@@ -56,7 +56,7 @@
                     <td>
                         @if($company->grouped_industries)
                             @foreach($company->grouped_industries as $industry)
-                                <a href="/dashboard/industries/{{$industry->hex}}">
+                                <a href="{{url('dashboard/industries/'.$industry->hex)}}">
                                     {{$industry->name}}
                                 </a>
                                 <br>
@@ -70,7 +70,7 @@
                         {!!$company->statusInColor()!!}
                     </td>
                     <td class="text-right">
-                        <a href="/dashboard/companies/{{$company->hex}}">
+                        <a href="{{url('dashboard/companies/'.$company->hex)}}">
                             <button>
                                 <i class="fa-solid fa-info-circle"></i>
                                 Details

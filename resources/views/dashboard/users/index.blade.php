@@ -7,7 +7,7 @@
             </button>
         </a>
         <div class="flex justify-end buttons-ml">
-            <a href="/dashboard/users/create">
+            <a href="{{url('dashboard/users/create')}}">
                 <button>
                     <i class="fa-solid fa-plus"></i>
                     Create user

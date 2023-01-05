@@ -17,12 +17,12 @@
                 <tr>
                     <td>
                         <input type="checkbox" name="sector_id_checkboxes[]" value="{{$sector->id}}" onclick="handleClick(this)">
-                        <a href="/dashboard/sectors/{{$sector->hex}}">
+                        <a href="{{url('dashboard/sectors/'.$sector->hex)}}">
                             {{$sector->english_name}}
                         </a>
                     </td>
                     <td>
-                        <a href="/dashboard/sectors/{{$sector->hex}}">
+                        <a href="{{url('dashboard/sectors/'.$sector->hex)}}">
                             <img 
                                 src="{{$sector->getImageThumbnail()}}"
                                 alt="Top Family Business - {{$sector->english_name}}"
@@ -43,7 +43,7 @@
                                         $industry = $industry[0];
                                     @endphp
                                     <li>- 
-                                        <a href="/dashboard/sector-industries/{{$industry->pivot->hex}}">
+                                        <a href="{{url('dashboard/sector-industries/'.$industry->pivot->hex)}}">
                                             {{$industry->english_name}}
                                         </a>
                                     </li>
@@ -64,7 +64,7 @@
                     </td>
 
                     <td class="text-right">
-                        <a href="/dashboard/sectors/{{$sector->hex}}">
+                        <a href="{{url('dashboard/sectors/'.$sector->hex)}}">
                             <button>
                                 <i class="fa-solid fa-magnifying-glass"></i>
                                 Inspect

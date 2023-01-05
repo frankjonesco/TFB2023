@@ -24,7 +24,7 @@
     </div>
     
     {{-- Form --}}
-    <form action="/dashboard/sectors/{{$sector->hex}}/industries/delete" method="POST">
+    <form action="{{url('dashboard/sectors/'.$sector->hex.'/industries/delete')}}" method="POST">
         @csrf
         @method('DELETE')
 
@@ -129,7 +129,7 @@
                 <i class="fa-regular fa-trash-alt"></i>
                 Confirm delete
             </button>
-            <a href="/dashboard/sectors/{{$sector->hex}}">
+            <a href="{{url('dashboard/sectors/'.$sector->hex)}}">
                 <button type="button" class="btn-cancel">
                     Cancel
                 </button>

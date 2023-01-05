@@ -25,7 +25,7 @@
         @else
             <div class="bulletin-clips flex text-xs hidden">
         @endif
-            <span class="mr-2"><a href="/news/articles/{{$bulletin->hex}}/{{$bulletin->slug}}" class="text-red-700 hover:!text-red-700 no-underline">{{showDateTime($bulletin->created_at)}}</a></span><div class="typewriter"><span class="font-bold mr-2"><a href="/news/articles/{{$bulletin->hex}}/{{$bulletin->slug}}" class="plain">{{truncate($bulletin->title, 80)}}</a></span><span class="font-light italic"><a href="/news/articles/{{$bulletin->hex}}/{{$bulletin->slug}}" class="plain">{{truncate(strip_tags($bulletin->body), 60)}}</a></span></div>
+            <span class="mr-2"><a href="{{$bulletin->link()}}" class="text-red-700 hover:!text-red-700 no-underline">{{showDateTime($bulletin->created_at)}}</a></span><div class="typewriter"><span class="font-bold mr-2"><a href="{{$bulletin->link()}}" class="plain">{{truncate($bulletin->title, 80)}}</a></span><span class="font-light italic"><a href="{{$bulletin->link()}}" class="plain">{{truncate(strip_tags($bulletin->body), 60)}}</a></span></div>
         </div>
     @endforeach
 

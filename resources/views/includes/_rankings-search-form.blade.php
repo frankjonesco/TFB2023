@@ -1,4 +1,4 @@
-<form action="/rankings/search" method="POST">
+<form action="{{url('rankings/search')}}" method="POST">
     @csrf
     <label for="search_term" class="font-bold">
         Company name

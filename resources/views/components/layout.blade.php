@@ -10,7 +10,10 @@
     <script src="//unpkg.com/alpinejs" defer></script>
 
     {{-- Local scripts --}}
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+    <link rel="stylesheet" href="{{ asset('build/assets/app.45dfdf7d.css') }}"> <script src="{{ asset('build/assets/app.ab424fc8.js') }}"></script>
+
+
 
 </head>
 <body>

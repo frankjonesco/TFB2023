@@ -8,7 +8,7 @@
             <x-alerts />
 
             <div class="flex">
-                <a href="/dashboard/companies/{{$company->hex}}/image/edit">
+                <a href="{{url('dashboard/companies/'.$company->hex.'/image/edit')}}">
                     <div class="border border-zinc-500 p-1">
                         <img src="{{$company->getImageThumbnail()}}" alt="">
                     </div>

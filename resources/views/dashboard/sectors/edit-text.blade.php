@@ -7,7 +7,7 @@
 
     <x-alerts/>
     
-    <form action="/dashboard/sectors/{{$sector->hex}}/text/update" method="POST">
+    <form action="{{url('dashboard/sectors/'.$sector->hex.'/text/update')}}" method="POST">
         @csrf
         @method('PUT')
         <input type="hidden" id="inputSlug" name="slug" value="{{old('slug') ?? $sector->slug}}">

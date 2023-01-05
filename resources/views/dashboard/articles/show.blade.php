@@ -28,7 +28,7 @@
                     Top Stories
                 </span>
                 <h2 class="py-3">
-                    <a href="/news/articles/{{$article->hex}}/{{$article->slug}}" class="text-zinc-100 hover:!text-zinc-100 hover:!text-opacity-80">
+                    <a href="{{$article->link()}}" class="text-zinc-100 hover:!text-zinc-100 hover:!text-opacity-80">
                         {{$article->title}}
                     </a>
                 </h2>

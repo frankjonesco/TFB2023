@@ -8,7 +8,7 @@
         
         <div id="formLayout">
             {{-- Save subscriber form --}}
-            <form action="/subscribe/save" method="POST" class="flex items-center" x-data="saveEmail()" @submit.prevent="submitData()">
+            <form action="{{url('subscribe/save')}}" method="POST" class="flex items-center" x-data="saveEmail()" @submit.prevent="submitData()">
                 @csrf
 
                 {{-- Email --}}
@@ -33,7 +33,7 @@
     function saveEmail() {
         return {
             formData: {
-                email: 'monkey@gmail.com',
+                email: '',
                 no_refresh: true
             },
             // message: 'Some message',

@@ -11,7 +11,7 @@
 
             <div class="mb-4">
                 <div class="box">
-                    <img id="image" src="{{asset('images/articles/'.$article->hex.'/'.$article->image)}}" alt="" style="height:500px;">
+                    <img id="image" src="{{$article->getImage()}}" alt="" style="height:500px;">
                 </div>
                 {{-- <div class="hidden">
                     <button><i class="fa-solid fa-rotate-right mr-0"></i></button>
@@ -35,7 +35,7 @@
                 
             </div>
 
-            <form action="/dashboard/articles/{{$article->hex}}/image/render" method="POST" class="flex justify-between">
+            <form action="{{url('dashboard/articles/'.$article->hex.'/image/render')}}" method="POST" class="flex justify-between">
                 @csrf
                 <input type="hidden" name="x" id="imgX">
                 <input type="hidden" name="y" id="imgY">

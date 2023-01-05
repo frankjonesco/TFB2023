@@ -8,7 +8,7 @@
             <h2>Delete article</h2>
             <x-alerts/>
 
-            <form action="/dashboard/articles/{{$article->hex}}/delete" method="POST">
+            <form action="{{url('dashboard/articles/'.$article->hex.'/delete')}}" method="POST">
                 @csrf
                 @method('DELETE')
                 

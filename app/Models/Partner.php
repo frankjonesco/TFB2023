@@ -15,4 +15,20 @@ class Partner extends Model
     public function article(){
         return $this->hasOne(Article::class);
     }
+
+
+
+
+
+    // RENDERING METHODS
+    
+    // Get image
+    public function getLogo(){
+        if(!$this->logo){
+            return asset('images/no-image.png');
+        }
+
+        return asset('images/partners/'.$this->hex.'/'.$this->logo);
+    }
+
 }

@@ -152,16 +152,16 @@
                             @foreach($company->sectors as $sector)
                                 <div class="w-1/3 m-1 border border-gray-200 p-2.5 bg-zinc-50">
                                 
-                                    <a href="/sectors/{{$sector->hex}}/{{$sector->slug}}">
-                                        <img src="{{asset('images/sectors/'.$sector->hex.'/'.$sector->image)}}">
+                                    <a href="{{$sector->link()}}">
+                                        <img src="{{$sector->getImageThumbnail()}}">
                                     </a>
                                     <h5 class="font-bold text-sm mt-2">
-                                        <a href="/sectors/{{$sector->hex}}/{{$sector->slug}}">
+                                        <a href="{{$sector->link()}}">
                                             {{$sector->name}}
                                         </a>
                                     </h5>
                                     <span class="text-xs">
-                                        <a href="/sectors/{{$sector->hex}}/{{$sector->slug}}">
+                                        <a href="{{$sector->link()}}">
                                             {{count($sector->companies)}} companies
                                         </a>
                                     </span>
@@ -172,49 +172,17 @@
                     @endif    
                     
                     @if(count($company->associated_articles) > 0)
-                    
                         <h3>Articles about {{$company->show_name}}</h3>
-                    
                         <div class="grid grid-cols-2 gap-3 w-full">
-                        
-                            
-                                @foreach($company->associated_articles as $article)
-                                <div class="flex w-full">
-                                    <div class="bg-no-repeat bg-center bg-cover px-4 py-5 m- flex flex-col justify-end overflow-hidden" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.85)), url('{{asset('images/articles/'.$article->hex.'/'.$article->image)}}');">
-                                        <div class="translate-y-0">
-                                            <span class="bg-lime-500 w-max px-2 py-1 rounded-lg text-xs font-bold text-zinc-100">
-                                                Top Stories
-                                            </span>
-                                            <h3 class="pt-1.5 pb-1">
-                                                <a href="/news/articles/{{$article->hex}}/{{$article->slug}}" class="text-zinc-100 hover:!text-zinc-100 hover:!text-opacity-80">
-                                                    {{$article->title}}
-                                                </a>
-                                            </h3>
-                                            <span class="text-xs italic text-zinc-100">
-                                                <span class="mr-3">
-                                                    <i class="fa-regular fa-clock mr-1"></i>
-                                                    {{showDate($article->created_at)}}
-                                                </span>
-                                                <span>
-                                                    <i class="fa-regular fa-eye mr-1"></i>
-                                                    {{$article->views}}
-                                                </span>
-                                            </span>
-                                        
-                                        </div>
-                                    </div></div>
-                                @endforeach
+                            @foreach($company->associated_articles as $article)
+                                <x-card-articles-photo-fill :article="$article" />
+                            @endforeach
                         </div>
                     @endif    
 
                 </div>
             </div>
 
-            
-
-
-
-            
         </x-layout-main-area>
         <x-layout-sidebar>
             <x-module-companies-ranking-charts :company="$company" />

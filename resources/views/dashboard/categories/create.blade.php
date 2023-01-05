@@ -7,7 +7,7 @@
 
     <x-alerts/>
     
-    <form action="/dashboard/categories/store" method="POST">
+    <form action="{{url('dashboard/categories/store')}}" method="POST">
         @csrf
         <input type="hidden" id="inputSlug" name="slug" value="{{old('slug')}}">
         <input type="hidden" id="inputEnglishSlug" name="english_slug" value="{{old('english_slug')}}">

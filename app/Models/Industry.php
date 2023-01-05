@@ -83,6 +83,14 @@ class Industry extends Model
     * @return \Illuminate\Database\Eloquent\Casts\Attribute
     */
 
+
+
+    // FETCH METHODS
+
+    // Link
+    public function link(){
+        return url('industries/'.$this->hex.'/'.$this->slug);
+    }
     
 
 

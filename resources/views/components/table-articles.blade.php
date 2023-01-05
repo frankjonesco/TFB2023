@@ -21,13 +21,13 @@
                     <td>
                         <div class="flex items-center">
                             <input type="checkbox" name="article_id_checkboxes[]" value="{{$article->id}}" onclick="handleClick(this)">
-                            <a href="/dashboard/articles/{{$article->hex}}">
+                            <a href="{{url('dashboard/articles/'.$article->hex)}}">
                                 {{$article->title}}
                             </a>
                         </div>
                     </td>
                     <td>
-                        <a href="/dashboard/articles/{{$article->hex}}">
+                        <a href="{{url('dashboard/articles/'.$article->hex)}}">
                             <img 
                                 src="{{$article->getImageThumbnail()}}"
                                 alt="Top Family Business - {{$article->title}}"
@@ -37,7 +37,7 @@
                     </td>
                     <td>
                         @if($article->category)
-                            <a href="/dashboard/categories/{{$article->category->hex}}">
+                            <a href="{{url('dashboard/categories/'.$article->category->hex)}}">
                                 {{$article->category->name}}
                             </a>
                         @else
@@ -61,7 +61,7 @@
                         {!!$article->statusInColor()!!}
                     </td>
                     <td class="text-right">
-                        <a href="/dashboard/articles/{{$article->hex}}">
+                        <a href="{{url('dashboard/articles/'.$article->hex)}}">
                             <button class="block">
                                 <i class="fa-solid fa-info-circle"></i>
                                 Details

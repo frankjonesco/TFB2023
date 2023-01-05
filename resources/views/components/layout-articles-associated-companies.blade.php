@@ -5,7 +5,7 @@
         <div class="flex flex-row border-b border-gray-100 mb-6 pb-6">
             <div class="w-1/4 mr-10">
                 <div class="h-32 p-2 border border-gray-200 flex items-center">
-                    <a href="/companies/{{$company->hex}}/{{$company->slug}}">
+                    <a href="{{$company->link()}}">
                         <img 
                             src="{{$company->getImageThumbnail()}}"
                             alt="Top Family Business - {{$company->registered_name}}"
@@ -38,7 +38,7 @@
             </div>
             <div class="w-3/4">
                 <h2 class="pt-0">
-                    <a href="/companies/{{$company->hex}}/{{$company->slug}}" class="plain">{{$company->show_name}}</a>
+                    <a href="{{$company->link()}}" class="plain">{{$company->show_name}}</a>
                 </h2>
                 <div class="flex mb-5">
                     <div class="w-1/3">
@@ -56,7 +56,7 @@
                         </span>
                     </div>
                 </div>
-                <a href="/companies/{{$company->hex}}/{{$company->slug}}">
+                <a href="{{$company->link()}}">
                     <button class="btn btn-plain">
                         <i class="fa-solid fa-globe mr-1 text-sky-600"></i>
                         Inspect company

@@ -8,7 +8,7 @@
             <h2>Edit article text</h2>
             <x-alerts/>
     
-            <form action="/dashboard/articles/{{$article->hex}}/text/update" method="POST">
+            <form action="{{url('dashboard/articles/'.$article->hex.'/text/update')}}" method="POST">
                 @csrf
                 @method('PUT')
                 <input type="hidden" id="inputSlug" name="slug" value="{{old('slug') ?? $article->slug}}">

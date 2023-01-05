@@ -7,7 +7,7 @@
             <h2>Change article image</h2>
             <x-alerts/>
 
-            <form id="form" action="/dashboard/articles/{{$article->hex}}/image/update" method="POST" enctype="multipart/form-data">
+            <form id="form" action="{{url('dashboard/articles/'.$article->hex.'/image/update')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="form-block">

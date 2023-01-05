@@ -67,6 +67,8 @@ class Article extends Model
     // }
 
 
+    
+
 
     // HELPER METHODS
 
@@ -118,6 +120,19 @@ class Article extends Model
         return $this;
     }
 
+
+
+
+
+    // FETCH METHODS
+
+    // Public Link
+    public function link(){
+        return url('news/articles/'.$this->hex.'/'.$this->slug);
+    }
+
+
+    
 
     // RENDERING METHODS
     

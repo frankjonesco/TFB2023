@@ -11,7 +11,7 @@
                 Top Stories
             </span>
             <h2 class="py-3">
-                <a href="/news/articles/{{$article->hex}}/{{$article->slug}}" class="text-zinc-100 hover:!text-zinc-100 hover:!text-opacity-80 no-underline">
+                <a href="{{$article->link()}}" class="text-zinc-100 hover:!text-zinc-100 hover:!text-opacity-80 no-underline">
                     {{$article->title}}
                 </a>
             </h2>
@@ -57,13 +57,13 @@
                         $color = 'bg-black-500';
                     }
                 @endphp
-                <div class="bg-no-repeat bg-center bg-cover px-4 py-5 flex flex-col justify-end overflow-hidden" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.85)), url('{{asset('images/articles/'.$article->hex.'/'.$article->image)}}');">
+                <div class="bg-no-repeat bg-center bg-cover px-4 py-5 flex flex-col justify-end overflow-hidden" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.85)), url('{{$article->getImage()}}');">
                     <div class="translate-y-0">
                         <span class="{{$color}} w-max px-2 py-1 rounded-lg text-xs font-bold text-zinc-100">
                             Top Stories
                         </span>
                         <h3 class="pt-1.5 pb-1">
-                            <a href="/news/articles/{{$article->hex}}/{{$article->slug}}" class="text-zinc-100 hover:!text-zinc-100 hover:!text-opacity-80 no-underline">
+                            <a href="{{$article->link()}}" class="text-zinc-100 hover:!text-zinc-100 hover:!text-opacity-80 no-underline">
                                 {{$article->title}}
                             </a>
                         </h3>

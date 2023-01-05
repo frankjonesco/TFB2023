@@ -6,7 +6,7 @@
         <div class="w-3/4 pr-10">
 
             <div class="flex justify-start buttons-mr mt-4">
-                <a href="/dashboard/articles">   
+                <a href="{{url('dashboard/articles')}}">   
                     <button>
                         <i class="fa-solid fa-arrow-left"></i>
                         Back to articles
@@ -16,7 +16,7 @@
             <h2>Create a new article</h2>
             <x-alerts/>
     
-            <form action="/dashboard/articles/store" method="POST">
+            <form action="{{url('dashboard/articles/store')}}" method="POST">
                 @csrf
                 <input type="hidden" id="inputSlug" name="slug" value="{{old('slug')}}">
 

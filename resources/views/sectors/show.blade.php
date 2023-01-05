@@ -27,7 +27,7 @@
                     @foreach($companies as $company)
                         <div class="w-full m-1 border border-gray-200 p-2.5 bg-zinc-50">
                             <div class="max-h-min p-2 border border-gray-200 flex items-center bg-white w-full text-center" style="min-height:8rem;">
-                                <a href="/companies/{{$company->hex}}/{{$company->slug}}" class="w-full">
+                                <a href="{{$company->getImageThumbnail()}}" class="w-full">
                                     <img 
                                         src="{{$company->getImageThumbnail()}}"
                                         alt="Top Family Business - {{$company->registered_name}}"
@@ -38,7 +38,7 @@
                             </div>
                             </a>
                             <h5 class="font-bold text-sm mt-2">
-                                <a href="/companies/{{$company->hex}}/{{$company->slug}}" class="plain">
+                                <a href="{{$company->link()}}" class="plain">
                                     {{$company->show_name}}
                                 </a>
                             </h5>

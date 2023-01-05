@@ -113,19 +113,7 @@ class Company extends Model
         );
     }
 
-    protected function logoImage(): Attribute
-    {
-        return Attribute::make(
-            get: fn ($value, $attributes) => $attributes['image'] ? asset('images/companies/'.$attributes['hex'].'/'.$attributes['image']) : asset('images/no-image.png')
-        );
-    }
-
-    protected function logoImageThumbnail(): Attribute
-    {
-        return Attribute::make(
-            get: fn ($value, $attributes) => $attributes['image'] ? asset('images/companies/'.$attributes['hex'].'/tn-'.$attributes['image']) : asset('images/tn-no-image.png')
-        );
-    }
+    
 
     /**
      * Get the user's first name.
@@ -234,6 +222,14 @@ class Company extends Model
         return $this;
         
     }
+
+
+    // FETCH METHODS
+    public function link(){
+        return url('companies/'.$this->hex.'/'.$this->slug);
+    }
+
+
 
 
     // RENDERING METHODS

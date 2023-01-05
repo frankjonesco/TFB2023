@@ -4,7 +4,7 @@
         <x-layout-main-area>
             <x-layout-heading heading="Sign up" />
 
-                <form action="/users/store" method="POST" class="flex flex-wrap">
+                <form action="{{url('users/store')}}" method="POST" class="flex flex-wrap">
                     @csrf
 
                     <div class="form-block w-1/2 pr-3">

@@ -39,6 +39,35 @@ class Category extends Model
 
 
 
+    // FETCH METHODS
+
+    
+
+
+    // RENDERING METHODS
+
+    // Get image
+    public function getImage(){
+        if(!$this->image){
+            return asset('images/no-image.png');
+        }
+
+        return asset('images/categories/'.$this->hex.'/'.$this->image);
+    }
+
+    // Get image thumbnail
+    public function getImageThumbnail(){
+        if(!$this->image){
+            return asset('images/tn-no-image.png');
+        }
+
+        return asset('images/categories/'.$this->hex.'/tn-'.$this->image);
+    }
+
+
+    
+
+
     // ACTION METHODS
 
     // Save text (update)

@@ -7,7 +7,7 @@
             </button>
         </a>
         <div class="flex justify-end buttons-ml">
-            <a href="/dashboard/sectors/create">
+            <a href="{{url('dashboard/sectors/create')}}">
                 <button>
                     <i class="fa-solid fa-plus"></i>
                     Create sector

@@ -104,13 +104,23 @@ class User extends Authenticatable
         return ucfirst($this->first_name).' '.ucfirst($this->last_name);
     }
 
-    // Accessor for profile pic
-    public function getProfilePicAttribute()
-    {   
-        if(empty($this->image)){
-            return asset('images/users/profile-pic-male.jpg');
+    // RENDERING METHODS
+    
+    // Get image
+    public function getImage(){
+        if(!$this->image){
+            return asset('images/no-image.png');
         }
 
         return asset('images/users/'.$this->hex.'/'.$this->image);
+    }
+
+    // Get image thumbnail
+    public function getImageThumbnail(){
+        if(!$this->image){
+            return asset('images/tn-no-image.png');
+        }
+
+        return asset('images/users/'.$this->hex.'/tn-'.$this->image);
     }
 }

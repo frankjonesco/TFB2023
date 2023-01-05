@@ -9,7 +9,7 @@
 
     <div class="mb-4">
         <div class="box">
-            <img id="image" src="{{asset('images/sectors/'.$sector->hex.'/'.$sector->image)}}" alt="" style="height:500px;">
+            <img id="image" src="{{$sector->getImage()}}" alt="" style="height:500px;">
         </div>
         {{-- <div class="hidden">
             <button><i class="fa-solid fa-rotate-right mr-0"></i></button>
@@ -33,13 +33,13 @@
         
     </div>
 
-    <form action="/dashboard/sectors/{{$sector->hex}}/image/render" method="POST" class="flex justify-between">
+    <form action="{{url('dashboard/sectors/'.$sector->hex.'/image/render')}}" method="POST" class="flex justify-between">
         @csrf
         <input type="hidden" name="x" id="imgX">
         <input type="hidden" name="y" id="imgY">
         <input type="hidden" name="w" id="imgW">
         <input type="hidden" name="h" id="imgH">
-        <a href="/dashboard/sectors/{{$sector->hex}}/image/edit">
+        <a href="{{url('dashboard/sectors/'.$sector->hex.'/image/edit')}}">
             <button type="button">
                 <i class="fa-solid fa-arrow-left"></i> 
                 Upload a different image

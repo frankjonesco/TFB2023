@@ -5,7 +5,7 @@
         <ul>
             @foreach($article->splitTags() as $tag)
                 <li>
-                    <a href="/tags/{{strtolower($tag)}}">
+                    <a href="{{url('tags/'.strtolower($tag))}}">
                         {{$tag}}
                     </a>
                 </li>

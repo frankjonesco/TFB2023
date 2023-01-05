@@ -8,7 +8,7 @@
             <h2>Delete category</h2>
             <x-alerts/>
 
-            <form action="/dashboard/categories/{{$category->hex}}/delete" method="POST">
+            <form action="{{url('dashboard/categories/'.$category->hex.'/delete')}}" method="POST">
                 @csrf
                 @method('DELETE')
                 

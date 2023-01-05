@@ -3,7 +3,7 @@
     <div class="flex w-full">
         <div class="w-3/4 pr-10">
             <div class="flex justify-between mt-4">
-                <a href="/dashboard/companies">   
+                <a href="{{url('dashboard/companies')}}">   
                     <button>
                         <i class="fa-solid fa-arrow-left"></i>
                         Back to companies
@@ -14,7 +14,7 @@
                 Create company
             </h2>
             <x-alerts/>    
-            <form action="/dashboard/companies/store" method="POST">
+            <form action="{{url('dashboard/companies/store')}}" method="POST">
                 @csrf
                 <input type="hidden" id="inputSlug" name="slug" value="{{old('slug')}}">
 

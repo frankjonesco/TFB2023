@@ -3,7 +3,7 @@
     <x-container>
 
         <x-layout-main-area>
-            <form action="/news/search" method="POST">
+            <form action="{{url('news/search')}}" method="POST">
                 <div class="form-block flex mb-2">
                     <input type="text" name="term" value="{{old('term')}}" placeholder="Search articles" class="!bg-gray-50 !rounded !border !border-gray-300 focus:!border-sky-400 !p-2 !text-sm !text-gray-500 !outline-0 !placeholder-gray-400 mr-2">
                     <button class="btn-plain px-4">
@@ -25,16 +25,15 @@
                     @endforeach
                 </div>
                 <div class="w-1/2">
-                    
                     @foreach($featured_articles as $key => $article)
                         @if($loop->first)
-                            <x-card-articles-small-list-item :article="$article" class="p-3 mb-0 pt-0 !border-0" />
+                            <x-card-articles-list-item-sm :article="$article" class="p-3 mb-0 pt-0 !border-0" />
                         @elseif($key === 1)
-                            <x-card-articles-small-list-item :article="$article" class="bg-orange-50 rounded border border-gray-200 p-3 mb-0 !font-bold" />
+                            <x-card-articles-list-item-sm :article="$article" class="bg-orange-50 rounded border border-gray-200 p-3 mb-0 !font-bold" />
                         @elseif($loop->last)
-                            <x-card-articles-small-list-item :article="$article" class="!border-0 p-3 mb-0" />
+                            <x-card-articles-list-item-sm :article="$article" class="!border-0 p-3 mb-0" />
                         @else
-                            <x-card-articles-small-list-item :article="$article" class="p-3 px-0 mb-0 mx-3" />
+                            <x-card-articles-list-item-sm :article="$article" class="p-3 px-0 mb-0 mx-3" />
                         @endif
                     @endforeach
                     {{-- <button class="w-full mt-2">View all articles</button> --}}

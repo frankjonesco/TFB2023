@@ -8,7 +8,7 @@
             <i class="fa-regular fa-building"></i>
         </div>
         <div class="p-2 w-full border-b border-gray-700">
-            <a href="/dashboard/sectors/{{$sector->hex}}">
+            <a href="{{url('dashboard/sectors/'.$sector->hex)}}">
                 {{$sector->name}}
             </a>
         </div>
@@ -17,7 +17,7 @@
                 <i class="fa-regular fa-folder font-thin"></i>
             </div>
             <div class="p-2 w-full border-b border-gray-700 font-thin text-zinc-500">
-                <a href="/dashboard/industries/{{$industry->hex}}">
+                <a href="{{url('dashboard/industries/'.$industry->hex)}}">
                     {{$industry->name}}
                 </a>
             </div>

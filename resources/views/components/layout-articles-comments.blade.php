@@ -24,7 +24,7 @@
     <div id="commentsList"></div>
 @endif
 
-<form id="commentForm" action="/news/articles/post-comment" method="POST" x-data="submitComment()" @submit.prevent="submitData()">
+<form id="commentForm" action="{{url('news/articles/post-comment')}}" method="POST" x-data="submitComment()" @submit.prevent="submitData()">
     @csrf
     <input type="hidden" name="hex" x-model="formData.hex" value="{{$article->hex}}">
     <div class="flex flex-col mb-3">
@@ -64,7 +64,7 @@
             
             submitData() {
                 this.message = ''
-                fetch('/news/articles/post-comment', {
+                fetch({{url('news/articles/post-comment')}}, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json', 

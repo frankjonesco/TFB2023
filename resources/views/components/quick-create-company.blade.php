@@ -1,4 +1,4 @@
-<form action="/dashboard/sectors/{{$sector->hex}}/industries/{{$industry->hex}}/companies/store" method="POST">
+<form action="{{url('dashboard/sectors/'.$sector->hex.'/industries/'.$industry->hex.'/companies/store')}}" method="POST">
     @csrf
     <div class="flex">
         <input type="text" name="company_name" placeholder="Enter new company name" class="!w-64 mr-5 text-sm !p-2 @error('company_name') !border !border-red-500 @enderror" value="{{old('company_name')}}">

@@ -21,13 +21,13 @@
                     <td>
                         <div class="flex items-center">
                             <input type="checkbox" name="industry_id_checkboxes[]" value="{{$industry->id}}" onclick="handleClick(this)">
-                            <a href="/dashboard/industries/{{$industry->hex}}">
+                            <a href="{{url('dashboard/industries/'.$industry->hex)}}">
                                 {{$industry->english_name}}
                             </a>
                         </div>
                     </td>
                     <td>
-                        <a href="/dashboard/industries/{{$industry->hex}}">
+                        <a href="{{url('dashboard/industries/'.$industry->hex)}}">
                             <img 
                                 src="{{$industry->getImageThumbnail()}}"
                                 alt="Top Family Business - {{$industry->registered_name}}"
@@ -39,7 +39,7 @@
                         <ul>
                             @foreach($industry->grouped_sectors as $grouped_sector)
                                 <li>- 
-                                    <a href="/dashboard/sectors/{{$grouped_sector->hex}}">
+                                    <a href="{{url('dashboard/sectors/'.$grouped_sector->hex)}}">
                                         {{$grouped_sector->english_name}}
                                     </a>
                                 </li>
@@ -53,7 +53,7 @@
                         <x-user-profile-pic-full-name :user="$industry->user" />
                     </td>
                     <td class="text-right">
-                        <a href="/dashboard/industries/{{$industry->hex}}">
+                        <a href="{{url('dashboard/industries/'.$industry->hex)}}">
                             <button type="button">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                                 Inspect

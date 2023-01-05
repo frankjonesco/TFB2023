@@ -4,7 +4,7 @@
     <div class="grid grid-cols-2 gap-1">
         @foreach(matchbirdPartners() as $matchbird_partner)
             <div class="text-center px-2 pb-2 flex items-center">
-                <a href="/companies/{{$matchbird_partner->hex}}/{{$matchbird_partner->slug}}">
+                <a href="{{$matchbird_partner->link()}}">
                     <img 
                         src="{{$matchbird_partner->getImageThumbnail()}}"
                         alt="Top Family Business - {{$matchbird_partner->registered_name}}"

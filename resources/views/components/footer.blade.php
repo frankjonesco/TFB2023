@@ -1,7 +1,7 @@
 <footer class="mt-0 px-4 pt-12 pb-6 text-sm text-zinc-200 bg-slate-700 border-t border-t-zinc-600">
     <div class="flex justify-between border-b border-zinc-500 mx-12 mb-4">
         <div class="flex flex-col">
-            <a href="/">
+            <a href="{{url('')}}">
                 <img src="{{asset('images/top-family-business-logo.png')}}" alt="" class="w-56">
             </a>
             <p class="w-80 my-4">
@@ -47,16 +47,16 @@
             <div class="grow">
                 <span>Matchbird GmbH &copy; {{date('Y', time())}}</span>
                 <span class="text-zinc-400 mx-1"> | </span>
-                <a href="/terms" class="text-zinc-200">Terms</a>
+                <a href="{{url('terms')}}" class="text-zinc-200">Terms</a>
                 <span class="text-zinc-400 mx-1"> | </span>
-                <a href="/privacy" class="text-zinc-200">Privacy</a>
+                <a href="{{url('privacy')}}" class="text-zinc-200">Privacy</a>
             </div>
             <div>
-                <a href="/" class="text-zinc-200">Home</a>
+                <a href="{{url('')}}" class="text-zinc-200">Home</a>
                 <span class="text-zinc-400 mx-1"> | </span>
-                <a href="/about" class="text-zinc-200">About</a>
+                <a href="{{url('about')}}" class="text-zinc-200">About</a>
                 <span class="text-zinc-400 mx-1"> | </span>
-                <a href="/contact" class="text-zinc-200">Contact</a>
+                <a href="{{url('contact')}}" class="text-zinc-200">Contact</a>
             </div>
         </div>
         

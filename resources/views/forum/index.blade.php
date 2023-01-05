@@ -15,7 +15,7 @@
                         {{$message}}
                     </div>
                 @else
-                    <form action="/subscribe/save" method="POST" class="flex w-full mt-4">
+                    <form action="{{url('subscribe/save')}}" method="POST" class="flex w-full mt-4">
                         @csrf
                         <input type="email" name="email" placeholder="Your email address" value="{{old('email')}}" class="!bg-gray-50 !rounded !border !border-gray-300 focus:!border-sky-400 !p-2 !text-sm !text-gray-500 !outline-0 !placeholder-gray-400 !w-full !mr-4">
                         <button class="btn btn-plain whitespace-nowrap">Get notified</button>

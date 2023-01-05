@@ -5,8 +5,8 @@
 
             <div class="flex w-full gap-4 mb-6 items-center">
                 @foreach($partners as $partner)
-                    <a href="/news/articles/{{$partner->article->hex}}/{{$partner->article->slug}}" class="w-1/4 p-7 text-center bg-slate-500 border-b-8 border-b-orange-300 border-t-8 border-t-orange-300 hover:bg-slate-600">
-                        <img src="{{asset('images/partners/'.$partner->hex.'/'.$partner->logo)}}" alt="" class="max-h-8 mx-auto">
+                    <a href="{{$partner->article->link()}}" class="w-1/4 p-7 text-center bg-slate-500 border-b-8 border-b-orange-300 border-t-8 border-t-orange-300 hover:bg-slate-600">
+                        <img src="{{$partner->getLogo()}}" alt="" class="max-h-8 mx-auto">
                     </a>
                 @endforeach
             </div>
@@ -18,12 +18,12 @@
                    @endphp
                     <div class="flex items-center border-b border-gray-200 mb-5 pb-5 text-gray-500">
             
-                        <a href="/news/articles/{{$article->hex}}/{{$article->slug}}" class="!text-gray-200 hover:!text-gray-200">
-                            <div id="{{$article->hex}}" onmouseover="gridMouseOver(this.id)" onmouseout="gridMouseOut(this.id)" class="w-72 h-56 mr-6 bg-no-repeat bg-cover bg-center flex flex-col justify-end overflow-hidden" style="background-image: url('{{asset('images/articles/'.$article->hex.'/'.$article->image)}}');"></div>
+                        <a href="{{$article->link()}}" class="!text-gray-200 hover:!text-gray-200">
+                            <div id="{{$article->hex}}" onmouseover="gridMouseOver(this.id)" onmouseout="gridMouseOut(this.id)" class="w-72 h-56 mr-6 bg-no-repeat bg-cover bg-center flex flex-col justify-end overflow-hidden" style="background-image: url('{{$article->getImageThumbnail()}}');"></div>
                         </a>
                         <div>
                             <h3 class="pt-0 pb-2">
-                                <a href="/news/articles/{{$article->hex}}/{{$article->slug}}" class="plain">{{$article->title}}</a>
+                                <a href="{{$article->link()}}" class="plain">{{$article->title}}</a>
                             </h3>
                             <span class="text-xs italic">
                                 <span class="mr-6">
@@ -55,17 +55,17 @@
                                     <p class="font-bold">Tofam Partner:</p>
                                     <p>
                                         <div class="flex items-center">
-                                            <a href="/news/articles/{{$partner->article->hex}}/{{$partner->article->slug}}">
-                                                <img src="{{asset('images/partners/'.$partner->hex.'/'.$partner->logo)}}" alt="{{$partner->article->show_name}}" title="{{$partner->article->show_name}}" class="w-5 mr-1.5">
+                                            <a href="{{$article->link()}}">
+                                                <img src="{{$partner->getLogo()}}" alt="{{$partner->article->show_name}}" title="{{$partner->article->show_name}}" class="w-5 mr-1.5">
                                             </a>
-                                            <a href="/news/articles/{{$partner->article->hex}}/{{$partner->article->slug}}" class="plain">
+                                            <a href="{{$partner->article->link()}}" class="plain">
                                                 {{$partner->name}}
                                             </a>
                                         </div>
                                     </p>
                                 </div>
 
-                                <a href="/news/articles/{{$article->hex}}/{{$article->slug}}" class="text-slate-700 hover:!text-red-500">
+                                <a href="{{$partner->article->link()}}" class="text-slate-700 hover:!text-red-500">
                                     <button class="btn btn-plain"><i class="fa-solid fa-arrow-right mr-1.5"></i>Read more</button>
                                 </a>
                             </div>

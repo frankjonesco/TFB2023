@@ -173,6 +173,16 @@ class Sector extends Model
 
 
 
+
+    // FETCH METHODS
+
+    // Link
+    public function link(){
+        return url('sectors/'.$this->hex.'/'.$this->slug);
+    }
+
+
+
     // RENDERING METHODS
     
     // Get image
