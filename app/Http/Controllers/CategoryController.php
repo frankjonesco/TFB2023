@@ -16,6 +16,16 @@ class CategoryController extends Controller
             'categories' => $site->publicCategories()
         ]);
     }
+
+    // Show sing category
+    public function show(Category $category, Site $site){
+        return view('categories.show', [
+            'category' => $category,
+            'current_category' => $category->id,
+            'categories' => $site->publicCategories(),
+            'articles' => $category->articles
+        ]);
+    }
     
 
     // ADMIN METHODS

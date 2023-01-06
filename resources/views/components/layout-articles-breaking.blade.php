@@ -12,7 +12,7 @@
 </style>
 
 <div class="flex items-center mb-2.5 py-5 border-b border-b-gray-200 w-full">
-    <a href="{{url('news')}}">
+    <a href="{{url('news')}}" class="plain">
         <div class="arrow hover:arrow-hover cursor-pointer">
             Breaking news
         </div>
@@ -43,6 +43,9 @@
         </button>
         <button id="btnNext" class="border border-gray-300 bg-transparent text-gray-400 rounded-full w-5 h-5 p-0 m-0">
             <i class="fa-solid fa-chevron-right" style="font-size:0.6125rem; position:relative; top:-2px;"></i>
+        </button>
+        <button id="btnNext" class="border border-gray-300 bg-transparent text-gray-400 rounded-full w-5 h-5 p-0 m-0">
+            <i class="fa-solid fa-times" style="font-size:0.6125rem; position:relative; top:-2px;"></i>
         </button>
     </div>
 </div>

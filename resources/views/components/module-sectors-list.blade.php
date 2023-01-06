@@ -27,7 +27,7 @@
                     <ul class="flex w-full text-sm">
                         <li class="mb-1 px-2 py-2 border-b border-b-gray-200 w-full flex items-center">  
                             <div class="w-2 h-2/3 bg-sky-500 mr-2 rounded-sm" style="background-color: #{{$sector->color->code}};"></div>
-                            <a href="{{$sector->link)}}" class="grow plain">
+                            <a href="{{$sector->link()}}" class="grow plain">
                                 {{$sector->name}}
                             </a>
                             <div>{{count($sector->companies)}}</div>

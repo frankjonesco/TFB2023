@@ -101,6 +101,7 @@ Route::controller(CategoryController::class)->middleware('auth')->group(function
 // Public routes for CategoryController
 Route::controller(CategoryController::class)->group(function(){
     Route::get('/categories', 'index');
+    Route::get('/news/categories/{category}/{slug}', 'show');
 });
 
 
