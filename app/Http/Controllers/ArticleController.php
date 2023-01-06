@@ -15,11 +15,17 @@ class ArticleController extends Controller
     
 
     // Show article index
-    public function index(Site $site){
+    public function index(Site $site, Request $request){
+        $show_news_header = true;
+        if($request->has('page')){
+            $show_news_header = false;
+        }
+
         return view('articles.index', [
             'latest_articles' => Article::latest()->take(12)->get(),
             'articles' => Article::latest()->skip(12)->paginate(6),
-            'categories' => $site->publicCategories()
+            'categories' => $site->publicCategories(),
+            'show_news_header' => $show_news_header
         ]);
     }
 

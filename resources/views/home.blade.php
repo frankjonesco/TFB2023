@@ -46,6 +46,8 @@
             @include('includes._rankings-table')
             {{-- <x-layout-articles-grid heading="Articles grid" :articles="$grid_articles" /> --}}
             <x-layout-articles-slide-table :articles="$slide_table_articles" />
+            <x-layout-heading heading="Latest articles" class="heading-mt" />
+            <x-layout-articles-search-form />
             <x-layout-articles-list :articles="$list_articles" />
         </x-layout-main-area>
 

@@ -2,6 +2,7 @@
     <x-container>
         <x-layout-main-area>
             <x-layout-articles-search-form :articles="$articles" :term="$term" />
+            <x-layout-heading heading="Search results" />
             <x-layout-articles-list :articles="$articles" />
         </x-layout-main-area>
         <x-layout-sidebar>
