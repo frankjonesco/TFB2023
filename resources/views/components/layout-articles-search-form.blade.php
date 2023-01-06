@@ -4,7 +4,7 @@
     }
 @endphp
 
-<form action="/news/search" method="GET">
+<form action="{{url('news/search')}}" method="GET">
 
     <div class="form-block flex">
         <input type="text" name="term" value="{{$term ? $term : old('term')}}" placeholder="Search articles" class="!bg-gray-50 !rounded !border !border-gray-300 focus:!border-sky-400 !p-2 !text-sm !text-gray-500 !outline-0 !placeholder-gray-400 mr-2">

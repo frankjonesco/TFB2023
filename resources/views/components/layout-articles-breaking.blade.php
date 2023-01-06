@@ -11,7 +11,7 @@
 }
 </style>
 
-<div class="flex items-center mb-2.5 py-5 border-b border-b-gray-200 w-full">
+<div id="breaking" class="flex items-center mb-2.5 py-5 border-b border-b-gray-200 w-full">
     <a href="{{url('news')}}" class="plain">
         <div class="arrow hover:arrow-hover cursor-pointer">
             Breaking news
@@ -44,10 +44,17 @@
         <button id="btnNext" class="border border-gray-300 bg-transparent text-gray-400 rounded-full w-5 h-5 p-0 m-0">
             <i class="fa-solid fa-chevron-right" style="font-size:0.6125rem; position:relative; top:-2px;"></i>
         </button>
-        <button id="btnNext" class="border border-gray-300 bg-transparent text-gray-400 rounded-full w-5 h-5 p-0 m-0">
+        <button id="btnClose" class="border border-gray-300 bg-transparent text-gray-400 rounded-full w-5 h-5 p-0 m-0">
             <i class="fa-solid fa-times" style="font-size:0.6125rem; position:relative; top:-2px;"></i>
         </button>
     </div>
+</div>
+
+<div id="breakingSpace" class="flex mt-3.5 -mb-0.5 w-full hidden">
+    <div class="h-2 w-full border-b border-b-gray-200 mr-6"></div>
+    <button id="btnOpen" class="border border-gray-300 bg-transparent text-gray-400 rounded-full w-5 h-5 p-0 m-0">
+        <i class="fa-solid fa-minus" style="font-size:0.6125rem; position:relative; top:-2px;"></i>
+    </button>
 </div>
 
 <style>
@@ -128,6 +135,20 @@
         }
         setVisibleItem(currentItem);
         btnPrevious.blur()
+    });
+
+    // Close button
+    btnClose.addEventListener('click', function () {
+        clearInterval(bulletinMotion);
+        document.querySelector('#breaking').classList.add('hidden');
+        document.querySelector('#breakingSpace').classList.remove('hidden');
+    });
+
+    // Open button
+    btnOpen.addEventListener('click', function () {
+        play();
+        document.querySelector('#breaking').classList.remove('hidden');
+        document.querySelector('#breakingSpace').classList.add('hidden');
     });
 
 </script>

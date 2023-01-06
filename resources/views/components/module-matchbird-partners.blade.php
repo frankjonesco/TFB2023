@@ -1,17 +1,15 @@
 <div class="sidebar-module">
     <x-layout-heading heading="Matchbird partners" class="heading-mt" />
 
-    <div class="grid grid-cols-2 gap-1">
-        @foreach(matchbirdPartners() as $matchbird_partner)
-            <div class="text-center px-2 pb-2 flex items-center">
-                <a href="{{$matchbird_partner->link()}}">
-                    <img 
-                        src="{{$matchbird_partner->getImageThumbnail()}}"
-                        alt="Top Family Business - {{$matchbird_partner->registered_name}}"
-                        class="rounded cursor-pointer w-3/4 mx-auto"
-                    >
-                </a>
-            </div>
+    <div class="grid grid-cols-1 gap-1">
+        @foreach(matchbirdPartners()->take(4) as $matchbird_partner)
+            <x-card-companies-list-item-sm :company="$matchbird_partner" />
         @endforeach
+        <a href="{{url('companies/matchbird-partners')}}">
+            <button class="mt-4 w-full btn-plain">
+                <i class="fa-solid fa-handshake mr-1.5"></i>
+                View all Mathcbird partners
+            </button>
+        </a>
     </div>
 </div>

@@ -12,6 +12,8 @@
         <x-layout-sidebar>
                 <x-module-articles-category-menu :categories="$categories" />
                 <x-module-socials />
+                <x-module-subscribe />
+                <x-module-matchbird-partners />
         </x-layout-sidebar>
     </x-container>
 </x-layout>
