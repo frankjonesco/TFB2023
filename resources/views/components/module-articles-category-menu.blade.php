@@ -12,14 +12,14 @@
             @if($currentCategory === $category->id)
                 <div class="flex flex-row items-center border-b text-sm p-2 font-bold cursor-pointer text-red-500">
                     <div class="grow">{{$category->name}}</div>
-                    <div class="count-square p-1.5 py-0.5 border border-red-500 bg-red-500 text-white">
+                    <div class="count-square p-1.5 py-0.5 border border-red-500 bg-red-500 text-white rounded-sm">
                         {{count($category->articles)}}
                     </div>
                 </div>
             @else
                 <div onmouseover="mouseOverCategory(this)" onmouseout="mouseOutCategory(this)" class="flex flex-row items-center border-b text-sm p-2 font-bold cursor-pointer rounded">
                     <div class="grow">{{$category->name}}</div>
-                    <div class="count-square p-1.5 py-0.5 border border-gray-300">
+                    <div class="count-square p-1.5 py-0.5 border border-gray-200 rounded-sm">
                         {{count($category->articles)}}
                     </div>
                 </div>

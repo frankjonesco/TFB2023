@@ -38,6 +38,16 @@ class ArticleController extends Controller
         ]);
     }
 
+    // Search results
+    public function searchResults(Request $request, Site $site){
+        // dd($request->term);
+        return view('articles.search-results', [
+            'term' => $request->term,
+            'articles' => Article::where('title', 'LIKE', '%'.$request->term.'%')->orWhere('body', 'LIKE', '%'.$request->term.'%')->latest()->paginate(6),
+            'categories' => $site->publicCategories()
+        ]);
+    }
+
     // Post comment to article
     public function postComment(Request $request){
         

@@ -45,7 +45,7 @@
     <div class="text-xs mx-12">
         <div class="flex">
             <div class="grow">
-                <span>Matchbird GmbH &copy; {{date('Y', time())}}</span>
+                <span>{{config('meta_copyright')}} &copy; {{date('Y', time())}}</span>
                 <span class="text-zinc-400 mx-1"> | </span>
                 <a href="{{url('terms')}}" class="text-zinc-200">Terms</a>
                 <span class="text-zinc-400 mx-1"> | </span>

@@ -45,6 +45,10 @@ class ComposerServiceProvider extends ServiceProvider
         //     $view->with('global', Setting::find(1));
         // });
         $settings = Setting::find(1);
+        Config::set(['meta_title' => $settings->meta_title]);
+        Config::set(['meta_description' => $settings->meta_description]);
+        Config::set(['meta_author' => $settings->meta_author]);
+        Config::set(['meta_copyright' => $settings->meta_copyright]);
         Config::set(['color_theme_id' => $settings->color_theme_id]);
         Config::set(['date_format' => $settings->date_format]);
         Config::set(['time_format' => $settings->time_format]);

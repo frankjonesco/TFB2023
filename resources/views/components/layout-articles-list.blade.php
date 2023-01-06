@@ -1,4 +1,4 @@
-<x-layout-heading heading="Latest articles" class="heading-mt" />
+<x-layout-heading heading="Latest articles" />
 
 <div class="grid grid-cols-1 gap-6 border-b border-gray-100">
     @foreach($articles as $article)

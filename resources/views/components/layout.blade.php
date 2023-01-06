@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Top Family Business 2023</title>
+    <title>{{config('meta_title')}}</title>
+    <meta name="description" content="{{config('meta_description')}}">
+    <meta name="author" content="{{config('meta_author')}}">
 
     <link
         rel="stylesheet"

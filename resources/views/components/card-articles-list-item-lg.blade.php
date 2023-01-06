@@ -1,7 +1,7 @@
 @php
-    if(!isset($thumbnailSize)){
-        $thumbnailSize = null;
-    }
+if(!isset($thumbnailSize)){
+    $thumbnailSize = null;
+}
 @endphp
 
 @php
@@ -13,18 +13,19 @@
 <div {{$attributes->merge(['class' => 'grid grid-cols-10 gap-4 p-4 border-b border-gray-200'])}}>
     
         <a href="{{$article->link()}}" class="no-underline col-span-4">
-            <div class="w-full h-48 mb-2 bg-no-repeat bg-cover bg-center p-4 flex flex-col justify-end border hover:border-gray-300" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.25)), url('{{$article->getImageThumbnail()}}');">
+            <div class="border border-gray-200 rounded-sm p-1.5 bg-lime-50">
+            <div class="w-full h-48 bg-no-repeat bg-cover bg-center p-4 flex flex-col justify-end" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.25)), url('{{$article->getImageThumbnail()}}');">
                 <span class="{{$color}} w-max px-2 py-1 rounded text-xs font-bold text-zinc-100">
                     {{$article->category_id ? $article->category->name : 'Top Stories'}}
                 </span>
-            </div>
+            </div></div>
         </a> 
 
 
 
         <div class="col-span-6">
             <h3 class="p-0 m-0 mt-1">
-                <a href="{{$article->link()}}" class="plain">
+                <a href="{{$article->link()}}" class="plain !text-slate-700 hover:!text-red-500 no-underline">
                     {{$article->title}}
                 </a>
             </h3>
