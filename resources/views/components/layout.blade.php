@@ -18,11 +18,11 @@
     <script src="//unpkg.com/alpinejs" defer></script>
 
     {{-- Local scripts --}}
-    @vite(['resources/css/app.css', 'resources/scss/app.scss', 'resources/js/app.js'])
+    {{-- @vite(['resources/css/app.css', 'resources/scss/app.scss', 'resources/js/app.js']) --}}
     
-    {{-- <link rel="stylesheet" href="{{ asset('build/assets/app.084d03d8.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/app.066c067c.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/app.dd9f1f38.css') }}">
-    <script src="{{ asset('build/assets/app.ab424fc8.js') }}"></script>  --}}
+    <script src="{{ asset('build/assets/app.ab424fc8.js') }}"></script> 
    
     
 
