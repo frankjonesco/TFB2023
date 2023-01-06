@@ -19,37 +19,27 @@ class SectorSeeder extends Seeder
      */
     public function run()
     {
-        // Import sectors (previously named 'categories')
-        $sectors = Category::on('mysql_import')->get();
+        $sectors = Sector::on('mysql_import')->get();
 
-        // Create sectors
         foreach($sectors as $sector){
-            $site = new Site();
-            $slug = $site->slug($sector->name);
-            $english_slug = $site->slug($sector->english_name);
-
-            $ids = [1,2,3,4];
-            $random_user_id = $ids[array_rand($ids)];
             
             Sector::create([
-                'old_id' => $sector->id,
-                'hex' => Str::random(11),
-                'user_id' => $random_user_id,
-                'name' => trim($sector->name),
-                'slug' => $slug,
-                'english_name' => trim($sector->english_name),
-                'english_slug' => $english_slug,
-                'description' => null,
+                'hex' => $sector->hex,
+                'user_id' => $sector->user_id,
+                'name' => $sector->name,
+                'slug' => $sector->slug,
+                'english_name' => $sector->english_name,
+                'english_slug' => $sector->english_slug,
+                'description' => $sector->description,
                 'image' => $sector->image,
-                'color_id' => $sector->color,
-                'created_at' => date('Y-m-d H:i:s', $sector->created),
-                'status' => 'public'
+                'color_id' => $sector->color_id,
+                'created_at' => $sector->created_at,
+                'updated_at' => $sector->updated_at,
+                'status' => $sector->status
             ]);
+
         }
 
-        // HANDLE IMAGE TRANSFER
-        $site = new Site();
-        
-        $site->handleImageTransfer('sectors', Sector::all());
     }
+
 }

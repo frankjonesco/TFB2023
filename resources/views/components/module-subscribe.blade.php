@@ -12,7 +12,7 @@
                 @csrf
 
                 {{-- Email --}}
-                <input type="email" name="email" x-model="formData.email" placeholder="Your email address" class="!bg-gray-50 !rounded !border focus:!border-sky-400 !p-2 !text-sm !text-gray-500 !outline-0">
+                <input type="email" name="email" x-model="formDataSubscribe.email" placeholder="Your email address" class="!bg-gray-50 !rounded !border focus:!border-sky-400 !p-2 !text-sm !text-gray-500 !outline-0">
 
                 {{-- Submit --}}
                 <button type="submit" class="!rounded-full !ml-3 !text-xs !bg-red-500 !h-6 !w-7 !p-0">
@@ -32,7 +32,7 @@
 <script>
     function saveEmail() {
         return {
-            formData: {
+            formDataSubscribe: {
                 email: '',
                 no_refresh: true
             },
@@ -46,7 +46,7 @@
                         'Content-Type': 'application/json', 
                         'X-CSRF-TOKEN': "{{csrf_token()}}",
                     },
-                    body: JSON.stringify(this.formData)
+                    body: JSON.stringify(this.formDataSubscribe)
                 })
                 .then(response => response.json())
                 .then(result => {

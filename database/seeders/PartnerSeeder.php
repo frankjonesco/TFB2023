@@ -17,54 +17,25 @@ class PartnerSeeder extends Seeder
      */
     public function run()
     {
-        $partners = [
-            [
-                'old_id' => 1,
-                'hex' => Str::random(11),
-                'article_id' => 290,
-                'name' => 'PricewaterhouseCoopers',
-                'slug' => 'pwc',
-                'logo' => 'pricewaterhousecoopers.png',
-                'show_in_navbar' => true,
-                'url' => 'https://www.pwc.com/',
-                'active' => 1
-            ],
-            [
-                'old_id' => 2,
-                'hex' => Str::random(11),
-                'article_id' => 136,
-                'name' => 'Matchbird',
-                'slug' => 'matchbird',
-                'logo' => 'matchbird.png',
-                'show_in_navbar' => true,
-                'url' => 'https://matchbird.com/',
-                'active' => 1
-            ],
-            [
-                'old_id' => 3,
-                'hex' => Str::random(11),
-                'article_id' => 122,
-                'name' => 'Headgate',
-                'slug' => 'headgate',
-                'logo' => 'headgate.png',
-                'url' => 'https://head-gate.de/',
-                'active' => 1
-            ],
-            [
-                'old_id' => 4,
-                'hex' => Str::random(11),
-                'article_id' => 137,
-                'name' => 'Top Family Business',
-                'slug' => 'top-family-business',
-                'logo' => 'top-family-business.png',
-                'active' => 1
-            ]
-        ];
+        $partners = Partner::on('mysql_import')->get();
 
-        collect($partners)->each(function($partner){ Partner::create($partner); });
+        foreach($partners as $partner){
+            
+            Partner::create([
+                'hex' => $partner->hex,
+                'article_id' => $partner->article_id,
+                'name' => $partner->name,
+                'slug' => $partner->slug,
+                'logo' => $partner->logo,
+                'show_in_navbar' => $partner->show_in_navbar,
+                'url' => $partner->url,
+                'created_at' => $partner->created_at,
+                'updated_at' => $partner->updated_at,
+                'active' => $partner->active
+            ]);
 
-        // HANDLE IMAGE TRANSFER
-        $site = new Site();
-        $site->handleImageTransfer('partners', Partner::all());
+        }
+
     }
+    
 }

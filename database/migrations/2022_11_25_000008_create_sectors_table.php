@@ -16,7 +16,7 @@ return new class extends Migration
     {
         Schema::create('sectors', function (Blueprint $table) {
             $table->id();
-            $table->integer('old_id')->length(11)->nullable();
+            // $table->integer('old_id')->length(11)->nullable();
             $table->string('hex', 11)->unique();
             $table->integer('user_id')->length(11);
             $table->string('name');

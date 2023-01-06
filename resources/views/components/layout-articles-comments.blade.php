@@ -64,7 +64,7 @@
             
             submitData() {
                 this.message = ''
-                fetch({{url('news/articles/post-comment')}}, {
+                fetch('/news/articles/post-comment', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json', 

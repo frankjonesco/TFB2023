@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->integer('old_id')->length(11)->nullable();
+            // $table->integer('old_id')->length(11)->nullable();
             $table->string('hex', 11)->unique();
             $table->string('user_id')->nullable();
             $table->foreignId('sector_id')->nullable()->constrained();

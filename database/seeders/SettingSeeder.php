@@ -16,13 +16,22 @@ class SettingSeeder extends Seeder
      */
     public function run()
     {
-        $config = [
-            'hex' => Str::random(11),
-            'color_theme_id' => 1,
-            'date_format' => 'd M Y',
-            'time_format' => 'H:i'
-        ];
+        $settings = Setting::on('mysql_import')->get();
 
-        Setting::create($config);
+        foreach($settings as $setting){
+
+            Setting::create([
+                'hex' => $setting->hex,
+                'color_theme_id' => $setting->color_theme_id,
+                'date_format' => $setting->date_format,
+                'time_format' => $setting->time_format,
+                'created_at' => $setting->created_at,
+                'updated_at' => $setting->updated_at
+
+            ]);
+        
+        }
+       
     }
+
 }

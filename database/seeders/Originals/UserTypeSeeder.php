@@ -16,18 +16,18 @@ class UserTypeSeeder extends Seeder
      */
     public function run()
     {
+        // Import user types
         $user_types = UserType::on('mysql_import')->get();
 
+        // Create user types
         foreach($user_types as $user_type) {
             UserType::create([
-                'hex' => $user_type->hex,
+                'old_id' => $user_type->id,
+                'hex' => Str::random(11),
                 'name' => $user_type->name,
-                'slug' => $user_type->slug,
+                'slug' => Str::slug($user_type->name),
                 'active' => $user_type->active
             ]);
-
         }
-
     }
-
 }

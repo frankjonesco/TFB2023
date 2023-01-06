@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('user_types', function (Blueprint $table) {
             $table->id();
-            $table->integer('old_id');
+            // $table->integer('old_id');
             $table->string('hex', 11);
             $table->string('name');
             $table->string('slug');

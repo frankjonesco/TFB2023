@@ -12,9 +12,11 @@
 </style>
 
 <div class="flex items-center mb-2.5 py-5 border-b border-b-gray-200 w-full">
-    <div class="arrow">
-        Breaking news
-    </div>
+    <a href="{{url('news')}}">
+        <div class="arrow hover:arrow-hover cursor-pointer">
+            Breaking news
+        </div>
+    </a>
     <div class="bg-gray-700 h-fit p-0.5 px-1 mr-3 rounded text-white" style="font-size:0.625rem;">
         New
     </div>

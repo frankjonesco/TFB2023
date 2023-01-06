@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('rankings', function (Blueprint $table) {
             $table->id();
-            $table->integer('old_id');
+            // $table->integer('old_id');
             $table->string('hex', 11)->unique();
             $table->foreignId('user_id')->nullable();
             $table->foreignId('company_id')->onDelete('cascade');

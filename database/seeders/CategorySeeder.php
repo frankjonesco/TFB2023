@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
-use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -16,89 +15,27 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        $categories = [
-            [
-                'hex' => Str::random(11),
-                'user_id' => 1,
-                'sector_id' => null,
-                'name' => 'Acquisitions',
-                'slug' => 'acquisitions',
-                'status' => 'public'
-            ],
-            [
-                'hex' => Str::random(11),
-                'user_id' => 1,
-                'sector_id' => null,
-                'name' => 'Shareholdings',
-                'slug' => 'shareholdings',
-                'status' => 'public'
-            ],
-            [
-                'hex' => Str::random(11),
-                'user_id' => 1,
-                'sector_id' => null,
-                'name' => 'Innovation',
-                'slug' => 'innovation',
-                'status' => 'public'
-            ],
-            [
-                'hex' => Str::random(11),
-                'user_id' => 1,
-                'sector_id' => null,
-                'name' => 'Sustainability',
-                'slug' => 'sustainability',
-                'status' => 'public'
-            ],
-            [
-                'hex' => Str::random(11),
-                'user_id' => 1,
-                'sector_id' => null,
-                'name' => 'Resignations',
-                'slug' => 'resignations',
-                'status' => 'public'
-            ],
-            [
-                'hex' => Str::random(11),
-                'user_id' => 1,
-                'sector_id' => null,
-                'name' => 'Growth',
-                'slug' => 'growth',
-                'status' => 'public'
-            ],
-            [
-                'hex' => Str::random(11),
-                'user_id' => 1,
-                'sector_id' => null,
-                'name' => 'Decline',
-                'slug' => 'decline',
-                'status' => 'public'
-            ],
-            [
-                'hex' => Str::random(11),
-                'user_id' => 1,
-                'sector_id' => null,
-                'name' => 'Tolerance',
-                'slug' => 'tolerance',
-                'status' => 'public'
-            ],
-            [
-                'hex' => Str::random(11),
-                'user_id' => 1,
-                'sector_id' => null,
-                'name' => 'Investments',
-                'slug' => 'investments',
-                'status' => 'public'
-            ],
-            [
-                'hex' => Str::random(11),
-                'user_id' => 1,
-                'sector_id' => null,
-                'name' => 'Partnerships',
-                'slug' => 'partnerships',
-                'status' => 'public'
-            ],
-        ];
+        $categories = Category::on('mysql_import')->get();
 
-        collect($categories)->each(function($category){ Category::create($category);});
+        foreach($categories as $category){
+
+            Category::create([
+                'hex' => $category->hex,
+                'user_id' => $category->user_id,
+                'sector_id' => $category->sector_id,
+                'name' => $category->name,
+                'slug' => $category->slug,
+                'english_name' => $category->english_name,
+                'english_slug' => $category->english_slug,
+                'description' => $category->description,
+                'image' => $category->image,
+                'color_id' => $category->color_id,
+                'created_at' => $category->created_at,
+                'updated_at' => $category->updated_at,
+                'status' => $category->status
+            ]);
+            
+        }
+
     }
 }

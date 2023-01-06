@@ -35,7 +35,7 @@ class ComposerServiceProvider extends ServiceProvider
         //     //
         // });
 
-        $this->globalThings();
+        // $this->globalThings();
     }
 
     private function globalThings()

@@ -705,5 +705,13 @@
         top: 3px;
         right: -7px;
     }
+
+    .arrow-hover{
+        background: #7930f0;
+    }
+
+    .arrow-hover:after{
+        background: #7930f0;
+    }
     
 }

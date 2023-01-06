@@ -17,31 +17,25 @@ class IndustrySeeder extends Seeder
      */
     public function run()
     {
-        // Import industries
-        $industries = Industry::on('mysql_import')->where('category_id', '!=', null)->get();
+        $industries = Industry::on('mysql_import')->get();
 
-        // Create industries
         foreach($industries as $industry){
-            $site = new Site();
-            $slug = $site->slug($industry->name);
-            $english_slug = $site->slug($industry->english_name);
-
-            $ids = [1,2,3,4];
-            $random_user_id = $ids[array_rand($ids)];
             
             Industry::create([
-                'old_id' => $industry->id,
-                'hex' => Str::random(11),
-                'user_id' => $random_user_id,
-                'name' => trim($industry->name),
-                'slug' => $slug,
-                'english_name' => trim($industry->english_name),
-                'english_slug' => $english_slug,
+                'hex' => $industry->hex,
+                'user_id' => $industry->random_user_id,
+                'name' => $industry->name,
+                'slug' => $industry->slug,
+                'english_name' => $industry->english_name,
+                'english_slug' => $industry->english_slug,
                 'description' => $industry->description,
-                'created_at' => date('Y-m-d H:i:s', $industry->created),
-                'status' => 'public',
+                'created_at' => $industry->created_at,
+                'updated_at' => $industry->updated_at,
+                'status' => $industry->status
             ]);
+
         }
 
     }
+
 }
