@@ -20,23 +20,7 @@ class CategorySeeder extends Seeder
             [
                 'hex' => Str::random(11),
                 'user_id' => 1,
-                'sector_id' => 2,
-                'name' => 'Partnerships',
-                'slug' => 'partnerships',
-                'status' => 'public'
-            ],
-            [
-                'hex' => Str::random(11),
-                'user_id' => 1,
-                'sector_id' => 3,
-                'name' => 'Products',
-                'slug' => 'products',
-                'status' => 'public'
-            ],
-            [
-                'hex' => Str::random(11),
-                'user_id' => 1,
-                'sector_id' => 3,
+                'sector_id' => null,
                 'name' => 'Acquisitions',
                 'slug' => 'acquisitions',
                 'status' => 'public'
@@ -44,17 +28,73 @@ class CategorySeeder extends Seeder
             [
                 'hex' => Str::random(11),
                 'user_id' => 1,
-                'sector_id' => 4,
-                'name' => 'Sustainable practices',
-                'slug' => 'sustainable-practices',
+                'sector_id' => null,
+                'name' => 'Shareholdings',
+                'slug' => 'shareholdings',
                 'status' => 'public'
             ],
             [
                 'hex' => Str::random(11),
                 'user_id' => 1,
-                'sector_id' => 2,
+                'sector_id' => null,
                 'name' => 'Innovation',
                 'slug' => 'innovation',
+                'status' => 'public'
+            ],
+            [
+                'hex' => Str::random(11),
+                'user_id' => 1,
+                'sector_id' => null,
+                'name' => 'Sustainability',
+                'slug' => 'sustainability',
+                'status' => 'public'
+            ],
+            [
+                'hex' => Str::random(11),
+                'user_id' => 1,
+                'sector_id' => null,
+                'name' => 'Resignations',
+                'slug' => 'resignations',
+                'status' => 'public'
+            ],
+            [
+                'hex' => Str::random(11),
+                'user_id' => 1,
+                'sector_id' => null,
+                'name' => 'Growth',
+                'slug' => 'growth',
+                'status' => 'public'
+            ],
+            [
+                'hex' => Str::random(11),
+                'user_id' => 1,
+                'sector_id' => null,
+                'name' => 'Decline',
+                'slug' => 'decline',
+                'status' => 'public'
+            ],
+            [
+                'hex' => Str::random(11),
+                'user_id' => 1,
+                'sector_id' => null,
+                'name' => 'Tolerance',
+                'slug' => 'tolerance',
+                'status' => 'public'
+            ],
+            [
+                'hex' => Str::random(11),
+                'user_id' => 1,
+                'sector_id' => null,
+                'name' => 'Investments',
+                'slug' => 'investments',
+                'status' => 'public'
+            ],
+            [
+                'hex' => Str::random(11),
+                'user_id' => 1,
+                'sector_id' => null,
+                'name' => 'Partnerships',
+                'slug' => 'partnerships',
                 'status' => 'public'
             ],
         ];

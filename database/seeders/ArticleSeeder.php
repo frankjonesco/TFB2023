@@ -119,6 +119,54 @@ class ArticleSeeder extends Seeder
             ]);
         }
 
+        // Import articles
+        $articles = Article::get();
+
+        // Create articles
+        foreach($articles as $article){
+            // Acquisitions
+            if(in_array($article->id, [84,21])){
+                $article->category_id = 1;
+            }
+            // Shareholdings
+            if(in_array($article->id, [266])){
+                $article->category_id = 2;
+            }
+            // Innovation
+            if(in_array($article->id, [249,217])){
+                $article->category_id = 3;
+            }
+            //Sustainability
+            if(in_array($article->id, [22,271])){
+                $article->category_id = 4;
+            }
+            // Resignations
+            if(in_array($article->id, [28])){
+                $article->category_id = 5;
+            }
+            // Growth
+            if(in_array($article->id, [257,294,210,233])){
+                $article->category_id = 6;
+            }
+            // Decline
+            if(in_array($article->id, [115])){
+                $article->category_id = 7;
+            }
+            // Tolerance
+            if(in_array($article->id, [157])){
+                $article->category_id = 8;
+            }
+            // Investments
+            if(in_array($article->id, [252])){
+                $article->category_id = 9;
+            }
+            // Partnerships
+            if(in_array($article->id, [265])){
+                $article->category_id = 10;
+            }
+            $article->save();
+        }
+
         // HANDLE IMAGE TRANSFER
         $site = new Site();
         $site->handleImageTransfer('articles', Article::all());
