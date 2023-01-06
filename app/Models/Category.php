@@ -41,6 +41,11 @@ class Category extends Model
 
     // FETCH METHODS
 
+    // Public Link
+    public function link(){
+        return url('news/categories/'.$this->hex.'/'.$this->slug);
+    }
+
     
 
 
