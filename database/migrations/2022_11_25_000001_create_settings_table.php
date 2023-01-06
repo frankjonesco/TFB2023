@@ -16,6 +16,10 @@ return new class extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
             $table->string('hex', 11);
+            $table->string('meta_title');
+            $table->string('meta_description');
+            $table->string('meta_author');
+            $table->string('meta_copyright');
             $table->foreignId('color_theme_id');
             $table->string('date_format');
             $table->string('time_format');

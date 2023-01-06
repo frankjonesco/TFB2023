@@ -10,7 +10,7 @@
     $color = $colors[$random];
 @endphp
 
-<div {{$attributes->merge(['class' => 'grid grid-cols-10 gap-4 p-4 border-b border-gray-200 mb-2'])}}>
+<div {{$attributes->merge(['class' => 'grid grid-cols-10 gap-4 p-4 border-b border-gray-200'])}}>
     
         <a href="{{$article->link()}}" class="no-underline col-span-4">
             <div class="w-full h-48 mb-2 bg-no-repeat bg-cover bg-center p-4 flex flex-col justify-end border hover:border-gray-300" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.25)), url('{{$article->getImageThumbnail()}}');">
@@ -23,7 +23,7 @@
 
 
         <div class="col-span-6">
-            <h3 class="p-0 m-0 mt-2">
+            <h3 class="p-0 m-0 mt-1">
                 <a href="{{$article->link()}}" class="plain">
                     {{$article->title}}
                 </a>
@@ -44,7 +44,7 @@
             </span>
 
             <p class="text-sm p-1">
-                {{truncate(strip_tags($article->body), 300)}}
+                {{str_replace('&amp;', '&', truncate(strip_tags($article->body), 240))}}
             </p>
 
             <div class="flex items-center justify-end p-1">

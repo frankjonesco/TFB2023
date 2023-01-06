@@ -22,6 +22,10 @@ class SettingSeeder extends Seeder
 
             Setting::create([
                 'hex' => $setting->hex,
+                'meta_title' => $setting->meta_title,
+                'meta_description' => $setting->meta_description,
+                'meta_author' => $setting->meta_author,
+                'meta_copyright' => $setting->meta_copyright,
                 'color_theme_id' => $setting->color_theme_id,
                 'date_format' => $setting->date_format,
                 'time_format' => $setting->time_format,
