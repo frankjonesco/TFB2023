@@ -37,7 +37,7 @@
                                 alt="Top Family Business - {{$company->registered_name}}"
                                 class="w-6 mr-4 rounded border border-indigo-100 hover:border-blue-300 cursor-pointer"
                             >
-                            <a href="/companies/{{$company->hex}}/{{$company->slug}}" class="plain hover:!underline">{{$company->show_name}}</a>
+                            <a href="{{url('companies/'.$company->hex.'/'.$company->slug)}}" class="plain hover:!underline">{{$company->show_name}}</a>
                         </div>
                     </td>
                     @if($search_order_by === 'companies.family_name')

@@ -28,7 +28,9 @@
                 <div class="flex flex-col w-full">
                     {{-- Chart for turnover --}}                        
                     <div class="mb-3 pb-3 rounded-lg bg-white border border-gray-200 w-full">
-                        <div id="turnoverChart"></div>
+                        <div id="turnoverChart" class="flex justify-center items-center h-[250px]">
+                            <span class="loader"></span>
+                        </div>
                     </div>
                     {{-- End: Chart for turnover --}}
                     <table class="text-sm">
@@ -159,134 +161,147 @@
         return num_parts.join(",");
     }
 
-    // TURNOVER CHART
-    var turnoverChart = c3.generate({
-        bindto: document.getElementById('turnoverChart'),
-        data: {
-            x: 'x',
-            columns: [
-                ['x', {{$company->turnoverYears()}}],
-                ['Turnover in  Mio. €', {{$company->rankingTurnovers()}}]
-            ]
-        },
-        axis: {
-            x: {
-                padding: {
-                    left:0.5,
-                    right:0.5,
-                }
-            },
-            y: {
-                min: {{$company->turnover_low_y_axis()}},
-                max: {{$company->turnover_high_y_axis()}},
-                show: true,
-                tick: {
-                    count: 3,
-                    format: function (d) { return thousands_separators(Math.floor(d/1000000)); },                        
-                },
-                padding: {
-                    top:0,
-                    bottom:0,
-                }
-            },
-        },
-        size: {
-            height: 250
-        },
-        padding: {
-            top: 30,
-            right: 25,
-            bottom: 20,
-            left: 60,
-        },
-        color: {
-            pattern: [
-                '#00c2e0',
-            ]
-        },
-        transition: {
-            duration: 1000
-        },
-        grid: {
-            x: {
-                show: true
-            },
-            y: {
-                show: true
-            }
-        },
-        tooltip: {
-            format: {
-                title: function (x, index) { return 'Turnover ' + x; }
-            }
-        }
-    });
+    setTimeout(() => {
+        drawCharts();
+    }, 500);
 
-    // EMPLOYEES CHART
-    var employeesChart = c3.generate({
-        bindto: document.getElementById('employeesChart'),
-        data: {
-            x: 'x',
-            columns: [
-                ['x', {{$company->employeesYears()}}],
-                ['Employees', {{$company->rankingEmployees()}}]
-            ]
-        },
-        axis: {
-            x: {
-                padding: {
-                    left:0.5,
-                    right:0.5,
-                }
+    function drawCharts(){
+        drawTurnoverChart();
+        drawEmployeesChart();
+    }
+
+    function drawTurnoverChart(){
+        // TURNOVER CHART
+        var turnoverChart = c3.generate({
+            bindto: document.querySelector('#turnoverChart'),
+            data: {
+                x: 'x',
+                columns: [
+                    ['x', {{$company->turnoverYears()}}],
+                    ['Turnover in  Mio. €', {{$company->rankingTurnovers()}}]
+                ]
             },
-            y: {
-                min: {{$company->employees_low_y_axis()}},
-                max: {{$company->employees_high_y_axis()}},
-                show: true,
-                tick: {
-                    count: 3,
-                    format: function (d) { return thousands_separators(Math.floor(d)); },                        
+            axis: {
+                x: {
+                    padding: {
+                        left:0.5,
+                        right:0.5,
+                    }
                 },
-                padding: {
-                    top:0,
-                    bottom:0,
+                y: {
+                    min: {{$company->turnover_low_y_axis()}},
+                    max: {{$company->turnover_high_y_axis()}},
+                    show: true,
+                    tick: {
+                        count: 3,
+                        format: function (d) { return thousands_separators(Math.floor(d/1000000)); },                        
+                    },
+                    padding: {
+                        top:0,
+                        bottom:0,
+                    }
+                },
+            },
+            size: {
+                height: 250
+            },
+            padding: {
+                top: 30,
+                right: 25,
+                bottom: 20,
+                left: 60,
+            },
+            color: {
+                pattern: [
+                    '#00c2e0',
+                ]
+            },
+            transition: {
+                duration: 1000
+            },
+            grid: {
+                x: {
+                    show: true
+                },
+                y: {
+                    show: true
                 }
             },
-        },
-        size: {
-            height: 250
-        },
-        padding: {
-            top: 30,
-            right: 51,
-            bottom: 20,
-            left: 60,
-        },
-        color: {
-            pattern: [
-                '#FFA500',
-            ]
-        },
-        transition: {
-            duration: 1000
-        },
-        grid: {
-            x: {
-                show: true,
-                    
-            },
-            y: {
-                show: true
+            tooltip: {
+                format: {
+                    title: function (x, index) { return 'Turnover ' + x; }
+                }
             }
-        },
-        tooltip: {
-            format: {
-                title: function (x, index) { return 'Employees ' + x; },
-                name: function (name, ratio, id, index) { return name; }
+        });
+    }
+   
+    function drawEmployeesChart(){
+        // EMPLOYEES CHART
+        var employeesChart = c3.generate({
+            bindto: document.getElementById('employeesChart'),
+            data: {
+                x: 'x',
+                columns: [
+                    ['x', {{$company->employeesYears()}}],
+                    ['Employees', {{$company->rankingEmployees()}}]
+                ]
             },
+            axis: {
+                x: {
+                    padding: {
+                        left:0.5,
+                        right:0.5,
+                    }
+                },
+                y: {
+                    min: {{$company->employees_low_y_axis()}},
+                    max: {{$company->employees_high_y_axis()}},
+                    show: true,
+                    tick: {
+                        count: 3,
+                        format: function (d) { return thousands_separators(Math.floor(d)); },                        
+                    },
+                    padding: {
+                        top:0,
+                        bottom:0,
+                    }
+                },
+            },
+            size: {
+                height: 250
+            },
+            padding: {
+                top: 30,
+                right: 51,
+                bottom: 20,
+                left: 60,
+            },
+            color: {
+                pattern: [
+                    '#FFA500',
+                ]
+            },
+            transition: {
+                duration: 1000
+            },
+            grid: {
+                x: {
+                    show: true,
+                    
+                },
+                y: {
+                    show: true
+                }
+            },
+            tooltip: {
+                format: {
+                    title: function (x, index) { return 'Employees ' + x; },
+                    name: function (name, ratio, id, index) { return name; }
+                },
                 
-        }
-            
-    });
+            }
+        });
+    }
+    
 
 </script>

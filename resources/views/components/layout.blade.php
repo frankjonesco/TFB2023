@@ -56,11 +56,11 @@
     <x-toast-message />
     <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
 
-    <div id="loader" class="center" ></div>
+    <div id="pageContentLoader" class="loader center"></div>
     <script>
         document.onreadystatechange = function() {
             if (document.readyState == "complete") {
-                document.querySelector('#loader').classList.add('hidden');
+                document.querySelector('#pageContentLoader').classList.add('hidden');
                 document.querySelector('#pageContent').classList.remove('hidden');
             }
         };
