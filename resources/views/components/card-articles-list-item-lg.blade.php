@@ -64,6 +64,13 @@ if(!isset($thumbnailSize)){
                         @endforeach
                     </div>
                 @endif
+                {{-- Show TOFAM partner --}}
+                @if($article->partner)
+                    <div class="text-xs grow">
+                        <p class="font-bold">TOFAM Partner:</p>
+                        <p><x-partner-logo-show-name :partner="$article->partner" /></p>
+                    </div>
+                @endif
 
                 <a href="{{$article->link()}}" class="text-slate-700 hover:!text-red-500 self-end">
                     <button class="btn btn-black !text-xs"><i class="fa-solid fa-arrow-right mr-1.5"></i>Read more</button>

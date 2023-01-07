@@ -28,7 +28,8 @@ class PartnerSeeder extends Seeder
                 'slug' => $partner->slug,
                 'logo' => $partner->logo,
                 'show_in_navbar' => $partner->show_in_navbar,
-                'url' => $partner->url,
+                'show_in_footer' => $partner->show_in_footer,
+                'link' => $partner->link,
                 'created_at' => $partner->created_at,
                 'updated_at' => $partner->updated_at,
                 'active' => $partner->active

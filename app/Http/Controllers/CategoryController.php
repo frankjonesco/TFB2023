@@ -13,7 +13,6 @@ class CategoryController extends Controller
     // Show all public categories
     public function index(Site $site){
         return view('categories.index', [
-            'categories' => $site->publicCategories()
         ]);
     }
 
@@ -22,7 +21,6 @@ class CategoryController extends Controller
         return view('categories.show', [
             'category' => $category,
             'current_category' => $category->id,
-            'categories' => $site->publicCategories(),
             'articles' => $category->public_articles()->paginate(6)
         ]);
     }

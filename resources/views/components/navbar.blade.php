@@ -61,7 +61,7 @@
             </a>
             @foreach(navPartners() as $nav_partner)
                 <a href="{{$nav_partner->url}}" class="flex items-center mr-10" target="_blank">
-                    <img src="{{asset('images/partners/'.$nav_partner->hex.'/'.$nav_partner->logo)}}" alt="{{$nav_partner->name}}" class="h-9" />
+                    <img src="{{asset('images/partners/'.$nav_partner->hex.'/light-'.$nav_partner->logo)}}" alt="{{$nav_partner->name}}" class="h-9" />
                 </a>
             @endforeach
         </div>

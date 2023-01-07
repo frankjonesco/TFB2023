@@ -33,12 +33,11 @@
                 Zimmerstraße 19, 40215 Düsseldorf
             </p>
             <div class="flex">
-                <a href="https://www.pwc.com/" target="_blank">
-                    <img src="/images/sponsors/pricewaterhousecoopers.png" alt="" class="h-7 ml-6">
-                </a>
-                <a href="https://head-gate.de/" target="_blank">
-                    <img src="/images/sponsors/headgate.png" alt="" class="h-7 ml-6">
-                </a>
+                @foreach(footerPartners() as $nav_partner)
+                    <a href="{{$nav_partner->url}}" class="flex items-center ml-10" target="_blank">
+                        <img src="{{asset('images/partners/'.$nav_partner->hex.'/light-'.$nav_partner->logo)}}" alt="{{$nav_partner->name}}" class="h-9" />
+                    </a>
+                @endforeach
             </div>
         </div>
     </div>

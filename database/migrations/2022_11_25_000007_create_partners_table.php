@@ -22,7 +22,8 @@ return new class extends Migration
             $table->string('slug');
             $table->string('logo')->nullable();
             $table->boolean('show_in_navbar')->nullable();
-            $table->string('url')->nullable();
+            $table->boolean('show_in_footer')->nullable();
+            $table->string('link')->nullable();
             $table->timestamps();
             $table->boolean('active')->nullable();
         });

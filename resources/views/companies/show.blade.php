@@ -54,7 +54,7 @@
                             </span>
                         </div>
                     </div>
-                    <a href="{{$company->website}}" target="_blank">
+                    <a href="https://{{$company->website}}" target="_blank">
                         <button class="btn btn-plain">
                             <i class="fa-solid fa-globe mr-1 text-sky-600"></i>
                             Company website

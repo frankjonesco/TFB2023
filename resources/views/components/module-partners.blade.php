@@ -1,8 +1,12 @@
 <x-layout-heading heading="TOFAM Partners" class="!mb-3" />
-<div class="grid grid-cols-2 gap-1 w-full mb-6 items-center">
+<div class="grid grid-cols-2 gap-1 w-full mb-12 items-center">
     @foreach(tofamPartners() as $partner)
-        <a href="{{$partner->url}}" target="_blank" class="p-7 text-center bg-slate-300 border border-zinc-400">
-            <img src="{{$partner->getLogo()}}" alt="" class="max-h-8 mx-auto">
+        @if($partner->url === '/')
+            <a href="{{$partner->url}}" class="text-center bg-white border border-gray-200 border-t-white border-l-white hover:bg-amber-50 hover:border-t-gray-200 hover:border-l-gray-200">
+        @else
+            <a href="{{$partner->url}}" target="_blank" class="text-center bg-white border border-gray-200 border-t-white border-l-white hover:bg-amber-50 hover:border-t-gray-200 hover:border-l-gray-200">
+        @endif
+            <img src="{{$partner->getLogo()}}" alt="" class="max-h-20 mx-auto p-5 cursor-pointer">
         </a>
     @endforeach
 </div>

@@ -50,6 +50,11 @@ class Article extends Model
         );
     }
 
+    // Relationship to TOFAM partner
+    public function partner(){
+        return $this->belongsTo(Partner::class);
+    }
+
 
     // ACCESSOR METHODS
 

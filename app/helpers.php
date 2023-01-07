@@ -4,6 +4,7 @@ use App\Models\Article;
 use App\Models\Company;
 use App\Models\Partner;
 use App\Models\Ranking;
+use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Config;
@@ -96,7 +97,14 @@ use Illuminate\Support\Facades\Config;
 
     // FETCHERS
 
-    // Nav partners
+    // Get categories
+    if(!function_exists('getCategories')) {
+        function getCategories($status = 'public'){
+            return Category::where('status', $status)->get();
+        }
+    }
+
+    // TOFAM partners
     if(!function_exists('tofamPartners')) {
         function tofamPartners(){
             return Partner::where('active', true)->get();
@@ -107,6 +115,13 @@ use Illuminate\Support\Facades\Config;
     if(!function_exists('navPartners')) {
         function navPartners(){
             return Partner::where('show_in_navbar', true)->get();
+        }
+    }
+
+    // Footer partners
+    if(!function_exists('footerPartners')) {
+        function footerPartners(){
+            return Partner::where('show_in_footer', true)->get();
         }
     }
 

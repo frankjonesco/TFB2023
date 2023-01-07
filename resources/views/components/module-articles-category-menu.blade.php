@@ -6,7 +6,7 @@
 
 <x-layout-heading heading="News categories" class="!mb-3" />
 <div class="grid grid-cols-2 mb-12 gap-0.5">
-    @foreach($categories as $category)
+    @foreach(getCategories() as $category)
         <a href="{{$category->link()}}" class="plain">
 
             @if($currentCategory === $category->id)
