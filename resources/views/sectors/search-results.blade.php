@@ -1,10 +1,8 @@
 <x-layout>
     <x-container>
         <x-layout-main-area>
-
-            <x-layout-sectors-search-form :term="$term" />
-            <x-layout-heading heading="Sectors" />
-
+            <x-layout-sectors-search-form :sectors="$sectors" :term="$term" />
+            <x-layout-heading heading="Search results" />
             {{-- Sectors --}}
             @if($sectors)
                 <div class="grid grid-cols-4 gap-3 w-full">
@@ -32,12 +30,10 @@
                     @endforeach
                 </div>
             @endif    
-
         </x-layout-main-area>
         <x-layout-sidebar>
-            <x-module-socials />
-            <x-module-articles-features />
-            <x-module-subscribe />
+                <x-module-articles-category-menu />
+                <x-module-socials />
         </x-layout-sidebar>
     </x-container>
 </x-layout>

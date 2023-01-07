@@ -7,9 +7,7 @@
         @endphp
         <div class="bg-no-repeat bg-center bg-cover px-7 py-8 flex flex-col justify-end h-[32rem]" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.85)),
         url('{{$article->getImage()}}');" >
-            <span class="bg-indigo-500 text-white w-max px-2 py-1 rounded-lg text-sm font-bold">
-                Top Stories
-            </span>
+            <x-category-pip :category="$article->category" />
             <h2 class="py-3">
                 <a href="{{$article->link()}}" class="text-zinc-100 hover:!text-zinc-100 hover:!text-opacity-80 no-underline">
                     {{$article->title}}
@@ -59,9 +57,9 @@
                 @endphp
                 <div class="bg-no-repeat bg-center bg-cover px-4 py-5 flex flex-col justify-end overflow-hidden" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.85)), url('{{$article->getImage()}}');">
                     <div class="translate-y-0">
-                        <span class="{{$color}} w-max px-2 py-1 rounded-lg text-xs font-bold text-zinc-100">
-                            Top Stories
-                        </span>
+
+                        <x-category-pip :category="$article->category" />
+
                         <h3 class="pt-1.5 pb-1">
                             <a href="{{$article->link()}}" class="text-zinc-100 hover:!text-zinc-100 hover:!text-opacity-80 no-underline">
                                 {{$article->title}}

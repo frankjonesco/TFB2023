@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -41,6 +42,15 @@ class Category extends Model
     // Relationship to sector
     public function sector(){
         return $this->belongsTo(Sector::class, 'sector_id');
+    }
+
+    // Relationship to color
+    public function color(){
+        return $this->belongsTo(
+            Color::class, 
+            'color_fill_id', 
+            'fill_id'
+        )->where('color_theme_id', Config::get(['color_theme_id']));
     }
 
 

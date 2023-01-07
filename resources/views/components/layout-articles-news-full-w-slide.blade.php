@@ -64,14 +64,14 @@
 </style>
 
 @php 
-$bg_color = 'bg-amber-50';
+$bg_color = 'bg-slate-700';
 @endphp
 
-<div class="flex w-full {{$bg_color}} border-b border-b-gray-300 h-[30rem] overflow-hidden">
+<div class="flex w-full {{$bg_color}} border-b border-b-gray-300 h-[33rem] overflow-hidden">
     <div class="{{$bg_color}} z-10 bg-opacity-70 h-full" style="width:12.5%;"></div>
-    <div class="w-3/4 overflow-visible z-0 h-full pt-6 pb-32">
+    <div class="w-3/4 overflow-visible z-0 pt-6 pb-32">
         <div {{$attributes->merge(['class' => 'flex mb-7'])}}>
-            <h3 class="pr-2 pb-3 border-b border-red-500 uppercase text-sm text-gray-800">Featured Articles</h3>
+            <h3 class="pr-2 pb-3 border-b border-red-500 uppercase text-sm text-gray-100">Featured Articles</h3>
             <span class="grow border-b border-gray-300 text-right">
                 <!-- Control buttons -->
                 <button class="btn-carousel btn-prev px-1.5 hover:bg-yellow-50 bg-transparent border border-gray-400 text-gray-400 py-0" id="prev"><</button>
@@ -81,9 +81,9 @@ $bg_color = 'bg-amber-50';
         
 
 
-        <div class="slider my-7 h-full">
+        <div class="slider my-7">
             @foreach($articles as $article)
-                <div class="slide border-r border-gray-200">
+                <div class="slide border-r border-gray-600 h-min">
                     <x-card-articles-list-item-md :article="$article" />
                 </div>
             @endforeach

@@ -42,6 +42,11 @@ class Site extends Model
         return Sector::where('status', 'public')->orderBy('name', 'ASC')->get();
     }
 
+    // Public article search results
+    public function publicSectorsSearchResults($term){
+        return Sector::where('name', 'LIKE', '%'.$term.'%')->orWhere('description', 'LIKE', '%'.$term.'%')->latest()->get();
+    }
+
 
 
     // INDUSTRIES

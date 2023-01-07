@@ -15,9 +15,7 @@ if(!isset($thumbnailSize)){
         <a href="{{$article->link()}}" class="no-underline col-span-4">
             <div class="border border-gray-200 rounded-sm p-1.5 bg-lime-50">
                 <div class="w-full h-48 bg-no-repeat bg-cover bg-center p-4 flex flex-col justify-end" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.25)), url('{{$article->getImageThumbnail()}}');">
-                    <span class="{{$color}} w-max px-2 py-1 rounded text-xs font-bold text-zinc-100">
-                        {{$article->category_id ? $article->category->name : 'Top Stories'}}
-                    </span>
+                    
                 </div>
             </div>
         </a> 
@@ -25,6 +23,7 @@ if(!isset($thumbnailSize)){
 
 
         <div class="col-span-6 ml-1.5">
+            <x-category-pip :category="$article->category" />
             <h3 class="p-0 m-0 mt-2">
                 <a href="{{$article->link()}}" class="plain !text-slate-700 hover:!text-red-500 no-underline">
                     {{$article->title}}

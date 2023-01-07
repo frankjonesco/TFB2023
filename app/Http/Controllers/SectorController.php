@@ -19,7 +19,8 @@ class SectorController extends Controller
     // Show all public sectors
     public function index(Site $site){
         return view('sectors.index', [
-            'sectors' => $site->publicSectors()
+            'sectors' => $site->publicSectors(),
+            'term' => null
         ]);
     }
 
@@ -28,9 +29,21 @@ class SectorController extends Controller
         return view('sectors.show', [
             'sector' => $sector,
             'other_sectors' => Sector::where('id', '!=', $sector->id)->orderBy(DB::Raw('RAND()'))->take(6)->get(),
-            'companies' => $sector->companies
+            'companies' => $sector->companies,
+            'term' => null
         ]);
     }
+
+    // Search results
+    public function searchResults(Request $request, Site $site){
+        // dd($request->term);
+        return view('sectors.search-results', [
+            'term' => $request->term,
+            'sectors' => $site->publicSectorsSearchResults($request->term)
+        ]);
+    }
+
+
     
 
     // ADMIN METHODS

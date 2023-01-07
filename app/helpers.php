@@ -97,6 +97,20 @@ use Illuminate\Support\Facades\Config;
 
     // FETCHERS
 
+    // Get random color
+    if(!function_exists('randomColor')) {
+        function randomColor($prepend = 'bg'){
+            $colors = ['orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'fuchsia', 'pink', 'red', 'rose'];
+            $random = array_rand($colors);
+            $color = $colors[$random];
+            $shades = [400,500,600,700,800];
+            $random = array_rand($shades);
+            $shade = $shades[$random];
+
+            return $prepend.'-pink-'.$shade.' hover:'.$prepend.'-'.$color.'-'.($shade - 200);
+        }
+    }
+
     // Get categories
     if(!function_exists('getCategories')) {
         function getCategories($status = 'public'){

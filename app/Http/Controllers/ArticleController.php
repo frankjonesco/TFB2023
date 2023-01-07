@@ -49,8 +49,7 @@ class ArticleController extends Controller
         // dd($request->term);
         return view('articles.search-results', [
             'term' => $request->term,
-            'articles' => $site->publicArticlesSearchResults($request->term),
-            'categories' => $site->publicCategories()
+            'articles' => $site->publicArticlesSearchResults($request->term)
         ]);
     }
 

@@ -6,7 +6,7 @@
         @else
             <a href="{{$partner->url}}" target="_blank" class="text-center bg-white border border-gray-200 border-t-white border-l-white hover:bg-amber-50 hover:border-t-gray-200 hover:border-l-gray-200">
         @endif
-            <img src="{{$partner->getLogo()}}" alt="" class="max-h-20 mx-auto p-5 cursor-pointer">
+            <img src="{{$partner->getLogo()}}" alt="" class="max-h-24 mx-auto p-5 cursor-pointer">
         </a>
     @endforeach
 </div>

@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('color_theme_id')->constrained()->cascadeOnDelete();
             $table->integer('fill_id');
-            $table->string('code', 6);
+            $table->string('code', 6)->nullable();
+            $table->string('tailwind_class')->nullable();
             $table->string('name')->nullable();
             $table->timestamps();
         });
