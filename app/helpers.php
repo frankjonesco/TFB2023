@@ -96,14 +96,21 @@ use Illuminate\Support\Facades\Config;
 
     // FETCHERS
 
-    // Nav sponsors
+    // Nav partners
+    if(!function_exists('tofamPartners')) {
+        function tofamPartners(){
+            return Partner::where('active', true)->get();
+        }
+    }
+
+    // Nav partners
     if(!function_exists('navPartners')) {
         function navPartners(){
             return Partner::where('show_in_navbar', true)->get();
         }
     }
 
-    // Nav sponsors
+    // Matchbird sponsors
     if(!function_exists('matchbirdPartners')) {
         function matchbirdPartners(){
             return Company::where('matchbird_partner', 1)->take(9)->orderBy(DB::raw('RAND()'))->get();

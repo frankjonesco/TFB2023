@@ -1,15 +1,9 @@
 <x-layout>
     <x-container>
         <x-layout-main-area>
-            <x-layout-heading heading="TOFAM Partners" />
+            <x-layout-heading heading="News articles from TOFAM partners" />
 
-            <div class="flex w-full gap-4 mb-6 items-center">
-                @foreach($partners as $partner)
-                    <a href="{{$partner->article->link()}}" class="w-1/4 p-7 text-center bg-slate-500 border-b-8 border-b-orange-300 border-t-8 border-t-orange-300 hover:bg-slate-600">
-                        <img src="{{$partner->getLogo()}}" alt="" class="max-h-8 mx-auto">
-                    </a>
-                @endforeach
-            </div>
+            
 
             <div class="flex flex-col border-b border-gray-100 mb-3">
                 @foreach($partners as $partner)
@@ -81,9 +75,10 @@
             
         </x-layout-main-area>
         <x-layout-sidebar>
-                <x-module-socials />
-                <x-module-subscribe />
-                <x-module-articles-tabbed-list />
+            <x-module-partners />
+            <x-module-socials />
+            <x-module-subscribe />
+            <x-module-articles-tabbed-list />
         </x-layout-sidebar>
     </x-container>
 </x-layout>
