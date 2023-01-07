@@ -27,6 +27,12 @@ class Category extends Model
         return $this->hasMany(Article::class, 'category_id');
     }
 
+    // Relationship to articles
+    public function public_articles(){
+        return $this->hasMany(Article::class, 'category_id')->where('status', 'public');
+    }
+
+
     // Relationship to users
     public function user(){
         return $this->belongsTo(User::class, 'user_id');

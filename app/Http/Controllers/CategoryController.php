@@ -23,7 +23,7 @@ class CategoryController extends Controller
             'category' => $category,
             'current_category' => $category->id,
             'categories' => $site->publicCategories(),
-            'articles' => $category->articles
+            'articles' => $category->public_articles()->paginate(6)
         ]);
     }
     

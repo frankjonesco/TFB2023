@@ -149,6 +149,11 @@ class Site extends Model
         return Article::where('status', 'public')->orderBy('created_at', 'DESC')->get();
     }
 
+    // Public article search results
+    public function publicArticlesSearchResults($term){
+        return Article::where('title', 'LIKE', '%'.$term.'%')->orWhere('body', 'LIKE', '%'.$term.'%')->latest()->paginate(6);
+    }
+
 
 
     // USERS

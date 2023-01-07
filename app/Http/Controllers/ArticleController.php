@@ -49,7 +49,7 @@ class ArticleController extends Controller
         // dd($request->term);
         return view('articles.search-results', [
             'term' => $request->term,
-            'articles' => Article::where('title', 'LIKE', '%'.$request->term.'%')->orWhere('body', 'LIKE', '%'.$request->term.'%')->latest()->paginate(6),
+            'articles' => $site->publicArticlesSearchResults($request->term),
             'categories' => $site->publicCategories()
         ]);
     }
