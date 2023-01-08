@@ -6,7 +6,7 @@
             <x-layout-articles-list :articles="$articles" />
         </x-layout-main-area>
         <x-layout-sidebar>
-                <x-module-articles-category-menu :categories="$categories" />
+                <x-module-articles-category-menu />
                 <x-module-socials />
         </x-layout-sidebar>
     </x-container>

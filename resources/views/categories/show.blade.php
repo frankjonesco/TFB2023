@@ -1,8 +1,9 @@
 <x-layout>
     <x-container>
         <x-layout-main-area>
+            <x-layout-page-heading heading="News: {{$category->name}}" />     
             <x-layout-articles-search-form />
-            <x-layout-heading heading="News about {{$category->name}}" />            
+            <x-layout-heading heading="News about {{$category->name}}" />       
             <x-layout-articles-list :articles="$articles" />
         </x-layout-main-area>
         <x-layout-sidebar>

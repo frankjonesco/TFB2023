@@ -1,6 +1,9 @@
 <x-layout>
     <x-container>
         <x-layout-main-area>
+
+            <x-layout-page-heading heading="Business Sectors: {{$sector->name}}" />   
+                <x-layout-sectors-search-form :term="$term" />
             <x-layout-heading heading="{{$sector->name}} Sector" />
 
             <table class="mb-12">

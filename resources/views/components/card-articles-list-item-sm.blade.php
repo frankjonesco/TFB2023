@@ -33,7 +33,7 @@
                                 
     <div class="flex flex-col pl-4 self-center">
         <span class="text-gray-400 text-xs italic">
-            Top Stories
+            {!!$article->category ? '<a href="'.$article->category->link().'" class="text-gray-400 hover:text-red-400 no-underline">'.$article->category->name.'</a>' : '<a href="'.url('news/categories').'" class="text-gray-400 hover:text-red-400 no-underline">Top stories</a>'!!}
         </span> 
         <h4 class="pt-1 pb-1 text-gray-500 text-xs font-bold">
             <a href="{{$article->link()}}" class="text-slate-900 hover:!text-red-500 no-underline">

@@ -19,19 +19,6 @@
                 {{$article->title}}
             </a>
         </h3>
-        <span class="text-xs italic text-zinc-100 font-light">
-            <span class="mr-3">
-                <i class="fa-regular fa-clock mr-1"></i>
-                {{showDate($article->created_at)}}
-            </span>
-            <span class="mr-6">
-                <i class="fa-regular fa-user mr-1"></i>
-                by {{$article->user->full_name}}
-            </span>
-            <span>
-                <i class="fa-regular fa-eye mr-1"></i>
-                {{$article->views}}
-            </span>
-        </span>
+        <x-article-stats :article="$article" size="md" class="text-xs" />
     </div>
 </div>

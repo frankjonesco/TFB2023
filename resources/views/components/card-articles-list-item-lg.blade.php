@@ -22,32 +22,14 @@ if(!isset($thumbnailSize)){
 
 
 
-        <div class="col-span-6 ml-1.5">
+        <div class="col-span-6 ml-1.5 pt-1.5">
             <x-category-pip :category="$article->category" />
             <h3 class="p-0 m-0 mt-2">
                 <a href="{{$article->link()}}" class="plain !text-slate-700 hover:!text-red-500 no-underline">
                     {{$article->title}}
                 </a>
             </h3>
-            <span class="text-xs italic font-light text-gray-900 my-2.5 block">
-                <span class="mr-3">
-                    <i class="fa-regular fa-clock mr-1"></i>
-                    {{showDate($article->created_at)}}
-                </span>
-                <span class="mr-6">
-                    <i class="fa-regular fa-user mr-1"></i>
-                    by {{$article->user->full_name}}
-                </span>
-                <span class="mr-6">
-                    <i class="fa-regular fa-eye mr-1"></i>
-                    {{$article->views}} Views
-                </span>
-                <span>
-                    
-                    <i class="fa-regular fa-comments mr-1"></i>
-                    {{count($article->publicComments)}} {{count($article->publicComments) === 1 ? 'Comment' : 'Comments'}}
-                </span>
-            </span>
+            <x-article-stats :article="$article" class="text-xs text-gray-400 py-2.5" />
 
             <p class="text-sm p-1">
                 {{str_replace('&amp;', '&', truncate(strip_tags($article->body), 240))}}
