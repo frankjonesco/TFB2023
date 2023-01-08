@@ -17,7 +17,6 @@
                                     {{$sector->name}}
                                 </a>
                             </h5>
-
                             <ul class="flex flex-col text-xs mx-1 mt-1.5">
                                 <li class="flex my-0.5">
                                     <span class="grow">Companies</span>
@@ -28,15 +27,12 @@
                                     <span>{{count($sector->industries)}}</span>
                                 </li>
                             </ul>
-                    
                             <a href="{{$sector->link()}}" class="mt-3 block">
                                 <button class="btn btn-plain whitespace-nowrap w-full">
                                     <i class="fa-solid fa-globe mr-1 text-sky-600"></i>
                                     Inspect sector
                                 </button>
                             </a>
-
-                            
                         </div>       
                     @endforeach
                 </div>

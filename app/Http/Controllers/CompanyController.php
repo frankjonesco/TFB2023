@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Site;
+use App\Models\Article;
 use App\Models\Company;
 use App\Models\Industry;
 use Illuminate\Support\Str;
@@ -13,13 +14,19 @@ class CompanyController extends Controller
 {
     // Show all public companies
     public function index(Site $site){
+
+        $slide_table_articles['first'] = Article::latest()->skip(3)->take(4)->get();
+        $slide_table_articles['second'] = Article::latest()->skip(7)->take(4)->get();
+
         return view('companies.index', [
             // 'companies' => $site->paginatePublicCompanies()
             'companies' => $site->paginatePublicCompaniesAndRankingsLatest(),
             'search_term' => null,
             'search_year' => null,
             'search_order_by' => null,
-            'search_sort_direction' => null
+            'search_sort_direction' => null,
+            'articles' => Article::where('status', 'public')->take(3)->latest()->get(),
+            'slide_table_articles' => $slide_table_articles
         ]);
     }
 

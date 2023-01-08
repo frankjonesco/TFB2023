@@ -27,20 +27,20 @@
     
     <ul class="flex flex-col text-sm">
         <li class="flex m-0 pt-3 pb-3 border-b border-gray-200 px-1.5">
-            <span class="grow">No. of Companies</span>
-            <span>{{count($sector->companies)}}</span>
+            <span class="grow font-bold">No. of Companies</span>
+            <span class="font-light">{{count($sector->companies)}}</span>
         </li>
         <li class="flex m-0 pt-3 pb-3 border-b border-gray-200 px-1.5">
-            <span class="grow">Total Turnover</span>
-            <span>{{formatTurnover($sector->totalTurnoverOfSectorCompanies())}} €</span>
+            <span class="grow font-bold">Total Turnover</span>
+            <span class="font-light">{{formatTurnover($sector->totalTurnoverOfSectorCompanies())}} €</span>
         </li>
         <li class="flex m-0 pt-3 pb-3 border-b border-gray-200 px-1.5">
-            <span class="grow">Total Employees</span>
-            <span>{{formatEmployees($sector->totalEmployeesOfSectorCompanies())}}</span>
+            <span class="grow font-bold">Total Employees</span>
+            <span class="font-light">{{formatEmployees($sector->totalEmployeesOfSectorCompanies())}}</span>
         </li>
         <li class="flex m-0 pt-3 pb-3 border-b border-gray-200 px-1.5">
-            <span class="grow">Avg. Turnover per company</span>
-            <span>{{formatTurnover($sector->totalTurnoverOfSectorCompanies() / count($sector->companies))}} €</span>
+            <span class="grow font-bold">Avg. Turnover per company</span>
+            <span class="font-light">{{formatTurnover($sector->totalTurnoverOfSectorCompanies() / count($sector->companies))}} €</span>
         </li>
     </ul>
 

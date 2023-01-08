@@ -1,6 +1,8 @@
-<x-layout-heading heading="Slide tables" class="heading-mt" />
+@if(isset($heading))
+    <x-layout-heading heading="{{$heading}}" class="heading-mt" />
+@endif
 
-<div class="grid grid-cols-2 gap-8 border-b border-gray-100 mb-3">
+<div class="grid grid-cols-2 gap-4 border-b border-gray-100 mb-3">
     <div>
         @foreach($articles['first'] as $article)
             @if($loop->first)

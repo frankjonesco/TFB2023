@@ -11,16 +11,16 @@
         <a href="{{$sector->link()}}" class="plain">
 
             @if($currentSector === $sector->id)
-                <div class="flex flex-row items-center border-b text-sm p-2 py-2.5 font-bold cursor-pointer text-red-500">
+                <div class="flex flex-row items-center border-b border-r text-sm p-2 py-2.5 font-bold cursor-pointer border-gray-200 hover:border-red-200 text-red-500">
                     <div class="grow">{{truncate($sector->name, 17)}}</div>
                     <div class="count-square p-1.5 py-0.5 border border-red-500 bg-red-500 text-white rounded-sm font-bold text-xs">
                         {{count($sector->companies)}}
                     </div>
                 </div>
             @else
-                <div onmouseover="mouseOverCategory(this)" onmouseout="mouseOutCategory(this)" class="col-span-2 flex flex-row items-center border-b text-sm p-2 py-2.5 font-bold cursor-pointer">
+                <div onmouseover="mouseOverCategory(this)" onmouseout="mouseOutCategory(this)" class="col-span-2 flex flex-row items-center border-b border-r border-gray-200 rounded-sm hover:border-red-200 text-sm p-2 py-2.5 font-bold cursor-pointer">
                     <div class="grow">{{truncate($sector->name, 17)}}</div>
-                    <div class="count-square p-1.5 py-0.5 border border-gray-200 rounded-sm  font-bold text-xs">
+                    <div class="count-square p-1.5 py-0.5 border border-gray-200 rounded-sm font-bold text-xs">
                         {{count($sector->companies)}}
                     </div>
                 </div>

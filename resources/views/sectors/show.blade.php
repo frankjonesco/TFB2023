@@ -13,7 +13,7 @@
                     @foreach($companies as $company)
                         <div class="w-full h-full flex flex-col m-1 border border-gray-200 p-2.5 bg-zinc-50">
                             <div class="max-h-min p-2 border border-gray-200 flex items-center bg-white w-full text-center" style="min-height:8rem;">
-                                <a href="{{$company->link()}}" class="w-full h-full">
+                                <a href="{{$company->link()}}" class="w-full">
                                     <img 
                                         src="{{$company->getImageThumbnail()}}"
                                         alt="Top Family Business - {{$company->registered_name}}"
@@ -24,7 +24,7 @@
                             </div>
                             </a>
                             <h5 class="font-bold text-sm mt-2.5 mx-1">
-                                <a href="{{$company->link()}}" class="plain">
+                                <a href="{{$company->link()}}" class="text-gray-700 no-underline hover:underline">
                                     {{truncate($company->show_name, 26)}}
                                 </a>
                             </h5>
@@ -66,10 +66,11 @@
 
         </x-layout-main-area>
         <x-layout-sidebar>
+            <x-module-sectors-menu :current-sector="$current_sector" />
             <x-module-sector-information :sector="$sector" />
             <x-module-sector-description :description="$sector->description" />
+            
             <x-module-subscribe />
-            <x-module-sectors-menu :current-sector="$current_sector" />
         </x-layout-sidebar>
     </x-container>
 </x-layout>

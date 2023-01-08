@@ -1,4 +1,4 @@
-<form action="{{url('rankings/search')}}" method="POST">
+<form action="{{url('rankings/search')}}" method="POST" class="flex flex-col bg-amber-50 p-4 border border-gray-200 rounded-sm">
     @csrf
     <label for="search_term" class="font-bold">
         Company name
@@ -59,8 +59,10 @@
             @enderror
         </div>
     </div>
-    <button type="submit" class="btn-black mt-1.5 !text-xs">
-        <i class="fa-solid fa-magnifying-glass mr-1.5"></i>
-        Search
-    </button>
+    <div class="text-start">
+        <button type="submit" class="btn-black  mt-1.5 !text-xs">
+            <i class="fa-solid fa-magnifying-glass mr-1.5"></i>
+            Search
+        </button>
+    </div>
 </form>
