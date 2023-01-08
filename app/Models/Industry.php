@@ -150,14 +150,17 @@ class Industry extends Model
 
 
     // RENDERING METHODS
-    
+
     // Get image
     public function getImage(){
         if(!$this->image){
             return asset('images/no-image.png');
         }
-
-        return asset('images/industries/'.$this->hex.'/'.$this->image);
+        elseif(file_exists(public_path('images/industries/'.$this->hex.'/'.$this->image))){
+            return asset('images/industries/'.$this->hex.'/'.$this->image);
+        }
+        return asset('images/no-image.png');
+        
     }
 
     // Get image thumbnail
@@ -165,7 +168,9 @@ class Industry extends Model
         if(!$this->image){
             return asset('images/tn-no-image.png');
         }
-
-        return asset('images/industries/'.$this->hex.'/tn-'.$this->image);
+        elseif(file_exists(public_path('images/industries/'.$this->hex.'/tn-'.$this->image))){
+            return asset('images/industries/'.$this->hex.'/tn-'.$this->image);
+        }
+        return asset('images/tn-no-image.png');
     }
 }

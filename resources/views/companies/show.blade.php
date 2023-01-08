@@ -2,9 +2,10 @@
 
     <x-container>
         <x-layout-main-area>
+            <x-layout-companies-search-form />
             {{-- Company layout --}}
             <div class="flex">
-                <div class="w-1/4 mr-10">
+                <div class="w-1/4 mr-6">
                     <div class="max-h-min p-2 border border-gray-200 flex items-center" style="min-height:8rem;">
                         <img 
                             src="{{$company->getImageThumbnail()}}"
@@ -37,7 +38,7 @@
                     </ul>
                 </div>
                 <div class="w-3/4">
-                    <h2 class="pt-0">{{$company->show_name}}</h2>
+                    <h2 class="pt-2">{{$company->show_name}}</h2>
                     <div class="flex mb-5">
                         <div class="w-1/3">
                             <span>Turnover</span><br>

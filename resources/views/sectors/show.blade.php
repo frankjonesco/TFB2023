@@ -2,35 +2,18 @@
     <x-container>
         <x-layout-main-area>
 
-            <x-layout-page-heading heading="Business Sectors: {{$sector->name}}" />   
+            <x-layout-page-heading heading="{{$sector->name}} sector: companies" />   
             <x-layout-sectors-search-form :term="$term" />
-            <x-layout-heading heading="{{$sector->name}} Sector" />
 
-            <table class="mb-12">
-                <thead>
-                    <th class="text-center font-bold">No. of Companies</th>
-                    <th class="text-center font-bold">Total Turnover</th>
-                    <th class="text-center font-bold">Total Employees</th>
-                    <th class="text-center font-bold">Avg. Turnover per company</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="text-center">{{count($sector->companies)}}</td>
-                        <td class="text-center">{{formatTurnover($sector->totalTurnoverOfSectorCompanies())}} €</td>
-                        <td class="text-center">{{formatEmployees($sector->totalEmployeesOfSectorCompanies())}}</td>
-                        <td class="text-center">{{formatTurnover($sector->totalTurnoverOfSectorCompanies() / count($sector->companies))}} €</td>
-                    </tr>
-                </tbody>
-            </table>
             
-            <x-layout-heading heading="Companies in the {{$sector->name}} Sector" />
+            
             {{-- Companies --}}
             @if($companies)
-                <div class="grid grid-cols-4 gap-3 w-full">
+                <div class="grid grid-cols-3 gap-3 w-full">
                     @foreach($companies as $company)
-                        <div class="w-full m-1 border border-gray-200 p-2.5 bg-zinc-50">
+                        <div class="w-full h-full flex flex-col m-1 border border-gray-200 p-2.5 bg-zinc-50">
                             <div class="max-h-min p-2 border border-gray-200 flex items-center bg-white w-full text-center" style="min-height:8rem;">
-                                <a href="{{$company->getImageThumbnail()}}" class="w-full">
+                                <a href="{{$company->link()}}" class="w-full h-full">
                                     <img 
                                         src="{{$company->getImageThumbnail()}}"
                                         alt="Top Family Business - {{$company->registered_name}}"
@@ -40,28 +23,53 @@
                                 </a>
                             </div>
                             </a>
-                            <h5 class="font-bold text-sm mt-2">
+                            <h5 class="font-bold text-sm mt-2.5 mx-1">
                                 <a href="{{$company->link()}}" class="plain">
-                                    {{$company->show_name}}
+                                    {{truncate($company->show_name, 26)}}
                                 </a>
                             </h5>
-                            <span class="text-xs block">
-                                
-                                {{formatTurnover($company->latest_ranking->turnover)}}
-                                
-                            </span>
+                            <ul class="flex flex-col text-xs mx-1 mt-1.5">
+                                <li class="flex my-0.5">
+                                    <span class="grow">Turnover</span>
+                                    <span>{{formatTurnover($company->latest_ranking->turnover)}} €</span>
+                                </li>
+                                <li class="flex my-0.5">
+                                    <span class="grow">Employees</span>
+                                    <span>{{formatEmployees($company->latest_ranking->employees)}}</span>
+                                </li>
+                                <li class="flex my-0.5">
+                                    <span class="grow">Year</span>
+                                    <span>{{$company->latest_ranking->year}}</span>
+                                </li>
+                                <li class="flex my-0.5">
+                                    <span class="grow">Sector</span>
+                                    <span>{{$sector->name}}</span>
+                                </li>
+                            </ul>
+                    
+                            <a href="{{$company->link()}}" class="mt-3 block">
+                                <button class="btn btn-plain whitespace-nowrap w-full">
+                                    <i class="fa-solid fa-globe mr-1 text-sky-600"></i>
+                                    Inspect company
+                                </button>
+                            </a>
+                   
                         </div>       
                     @endforeach
                 </div>
+                <x-pagination-public table="companies" :results="$companies" />
             @endif 
+
+
+            
              
 
         </x-layout-main-area>
         <x-layout-sidebar>
-            <x-module-sectors-menu :current-sector="$current_sector" />
-            <x-module-socials />
-            <x-module-articles-features />
+            <x-module-sector-information :sector="$sector" />
+            <x-module-sector-description :description="$sector->description" />
             <x-module-subscribe />
+            <x-module-sectors-menu :current-sector="$current_sector" />
         </x-layout-sidebar>
     </x-container>
 </x-layout>

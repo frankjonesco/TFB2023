@@ -19,7 +19,7 @@ class SectorController extends Controller
     // Show all public sectors
     public function index(Site $site){
         return view('sectors.index', [
-            'sectors' => $site->publicSectors(),
+            'sectors' => $site->paginatePublicSectors(),
             'term' => null
         ]);
     }
@@ -29,7 +29,7 @@ class SectorController extends Controller
         return view('sectors.show', [
             'sector' => $sector,
             'current_sector' => $sector->id,
-            'companies' => $sector->companies,
+            'companies' => $sector->grouped_companies()->paginate(15),
             'term' => null
         ]);
     }

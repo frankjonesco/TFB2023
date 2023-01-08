@@ -72,8 +72,11 @@ class Category extends Model
         if(!$this->image){
             return asset('images/no-image.png');
         }
-
-        return asset('images/categories/'.$this->hex.'/'.$this->image);
+        elseif(file_exists(public_path('images/categories/'.$this->hex.'/'.$this->image))){
+            return asset('images/categories/'.$this->hex.'/'.$this->image);
+        }
+        return asset('images/no-image.png');
+        
     }
 
     // Get image thumbnail
@@ -81,8 +84,10 @@ class Category extends Model
         if(!$this->image){
             return asset('images/tn-no-image.png');
         }
-
-        return asset('images/categories/'.$this->hex.'/tn-'.$this->image);
+        elseif(file_exists(public_path('images/categories/'.$this->hex.'/tn-'.$this->image))){
+            return asset('images/categories/'.$this->hex.'/tn-'.$this->image);
+        }
+        return asset('images/tn-no-image.png');
     }
 
 

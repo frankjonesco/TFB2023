@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Http\File;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -239,8 +240,10 @@ class Company extends Model
         if(!$this->image){
             return asset('images/no-image.png');
         }
-
-        return asset('images/companies/'.$this->hex.'/'.$this->image);
+        elseif(file_exists(public_path('images/companies/'.$this->hex.'/'.$this->image))){
+            return asset('images/companies/'.$this->hex.'/'.$this->image);
+        }
+        return asset('images/no-image.png');
     }
 
     // Get image thumbnail
@@ -248,8 +251,10 @@ class Company extends Model
         if(!$this->image){
             return asset('images/tn-no-image.png');
         }
-
-        return asset('images/companies/'.$this->hex.'/tn-'.$this->image);
+        elseif(file_exists(public_path('images/companies/'.$this->hex.'/tn-'.$this->image))){
+            return asset('images/companies/'.$this->hex.'/tn-'.$this->image);
+        }
+        return asset('images/tn-no-image.png');
     }
 
     

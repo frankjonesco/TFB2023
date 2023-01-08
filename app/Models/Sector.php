@@ -59,7 +59,7 @@ class Sector extends Model
     // Relationship to companies (grouped)
     public function grouped_companies(){
         return $this->belongsToMany(
-            Industry::class,
+            Company::class,
             'maps'
         )->distinct();
     }

@@ -146,8 +146,10 @@ class Article extends Model
         if(!$this->image){
             return asset('images/no-image.png');
         }
-
-        return asset('images/articles/'.$this->hex.'/'.$this->image);
+        elseif(file_exists(public_path('images/articles/'.$this->hex.'/'.$this->image))){
+            return asset('images/articles/'.$this->hex.'/'.$this->image);
+        }
+        return asset('images/no-image.png');
     }
 
     // Get image thumbnail
@@ -155,8 +157,10 @@ class Article extends Model
         if(!$this->image){
             return asset('images/tn-no-image.png');
         }
-
-        return asset('images/articles/'.$this->hex.'/tn-'.$this->image);
+        elseif(file_exists(public_path('images/articles/'.$this->hex.'/tn-'.$this->image))){
+            return asset('images/articles/'.$this->hex.'/tn-'.$this->image);
+        }
+        return asset('images/tn-no-image.png');
     }
 
     // Split tags (into Array)

@@ -1,40 +1,45 @@
 <x-layout>
     <x-container>
         <x-layout-main-area>
-            <x-layout-page-heading heading="Search results for '{{$term}}'" />
+            <x-layout-page-heading heading="Searching sectors for '{{$term}}'" />
             <x-layout-sectors-search-form :sectors="$sectors" :term="$term" />
-            <x-layout-heading heading="Search results" />
             {{-- Sectors --}}
             @if($sectors)
-                <div class="grid grid-cols-4 gap-3 w-full">
+                <div class="grid grid-cols-3 gap-3 w-full">
                     @foreach($sectors as $sector)
                         <div class="w-full m-1 border border-gray-200 p-2.5 bg-zinc-50">
                             <a href="{{$sector->link()}}">
                                 <img src="{{$sector->getImageThumbnail()}}">
                             </a>
-                            <h5 class="font-bold text-sm mt-2">
+                            <h5 class="font-bold text-sm mx-1 mt-2.5">
                                 <a href="{{$sector->link()}}" class="plain">
                                     {{$sector->name}}
                                 </a>
                             </h5>
-                            <span class="text-xs block">
-                                <a href="{{url('sectors/'.$sector->hex.'/'.$sector->slug.'/industries')}}" class="plain">
-                                    {{count($sector->industries)}} industries
-                                </a>
-                            </span>
-                            <span class="text-xs block">
-                                <a href="{{$sector->link()}}" class="plain">
-                                    {{count($sector->companies)}} companies
-                                </a>
-                            </span>
-                        </div>       
+                            <ul class="flex flex-col text-xs mx-1 mt-1.5">
+                                <li class="flex my-0.5">
+                                    <span class="grow">Companies</span>
+                                    <span>{{count($sector->companies)}}</span>
+                                </li>
+                                <li class="flex my-0.5">
+                                    <span class="grow">Industries</span>
+                                    <span>{{count($sector->industries)}}</span>
+                                </li>
+                            </ul>
+                            <a href="{{$sector->link()}}" class="mt-3 block">
+                                <button class="btn btn-plain whitespace-nowrap w-full">
+                                    <i class="fa-solid fa-globe mr-1 text-sky-600"></i>
+                                    Inspect sector
+                                </button>
+                            </a>
+                        </div>         
                     @endforeach
                 </div>
             @endif    
         </x-layout-main-area>
         <x-layout-sidebar>
                 <x-module-sectors-menu />
-                <x-module-socials />
+                <x-module-subscribe />
         </x-layout-sidebar>
     </x-container>
 </x-layout>

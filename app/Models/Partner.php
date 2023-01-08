@@ -27,7 +27,6 @@ class Partner extends Model
         if(!$this->logo){
             return asset('images/no-image.png');
         }
-
         return asset('images/partners/'.$this->hex.'/'.$this->logo);
     }
 

@@ -46,16 +46,16 @@
             <div class="grow">
                 <span>{{config('meta_copyright')}} &copy; {{date('Y', time())}}</span>
                 <span class="text-zinc-400 mx-1"> | </span>
-                <a href="{{url('terms')}}" class="text-zinc-200">Terms</a>
+                <a href="{{url('terms')}}" class="text-zinc-200 no-underline hover:underline">Terms</a>
                 <span class="text-zinc-400 mx-1"> | </span>
-                <a href="{{url('privacy')}}" class="text-zinc-200">Privacy</a>
+                <a href="{{url('privacy')}}" class="text-zinc-200 no-underline hover:underline">Privacy</a>
             </div>
             <div>
-                <a href="{{url('')}}" class="text-zinc-200">Home</a>
+                <a href="{{url('')}}" class="text-zinc-200 no-underline hover:underline">Home</a>
                 <span class="text-zinc-400 mx-1"> | </span>
-                <a href="{{url('about')}}" class="text-zinc-200">About</a>
+                <a href="{{url('about')}}" class="text-zinc-200 no-underline hover:underline">About</a>
                 <span class="text-zinc-400 mx-1"> | </span>
-                <a href="{{url('contact')}}" class="text-zinc-200">Contact</a>
+                <a href="{{url('contact')}}" class="text-zinc-200 no-underline hover:underline">Contact</a>
             </div>
         </div>
         

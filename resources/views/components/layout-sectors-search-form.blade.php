@@ -15,6 +15,15 @@
 </form>
 
 @if($term)
-    <p class="text-sm">Showing <span class="underline underline-offset-2">{{count($sectors)}}</span> {{count($sectors) === 1 ? 'result' : 'results'}} for search term <span class="underline underline-offset-2">'{{$term}}'</span>.</p>
+    <p class="text-sm mb-5">Showing <span class="underline underline-offset-2">{{count($sectors)}}</span> {{count($sectors) === 1 ? 'sector' : 'sectors'}} for search term <span class="underline underline-offset-2">'{{$term}}'</span>.</p>
+
+    @if(count($sectors) < 1)
+        <a href="{{url('sectors')}}">
+            <button class="btn-black">
+                <i class="fa-solid fa-arrow-left mr-1.5"></i>
+                Back to sectors
+            </button>
+        </a>
+    @endif
 @endif
 
