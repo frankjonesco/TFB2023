@@ -22,9 +22,9 @@ if(!isset($thumbnailSize)){
 
 
 
-        <div class="col-span-6 ml-1.5 pt-1.5">
+        <div class="col-span-6 ml-1.5 pt-2.5">
             <x-category-pip :category="$article->category" />
-            <h3 class="p-0 m-0 mt-2">
+            <h3 class="p-0 m-0 mt-2.5">
                 <a href="{{$article->link()}}" class="plain !text-slate-700 hover:!text-red-500 no-underline">
                     {{$article->title}}
                 </a>
@@ -40,7 +40,7 @@ if(!isset($thumbnailSize)){
                 {{-- Show associated companies --}}
                 @if(count($article->associated_companies) > 0)
                     <div class="text-xs grow">
-                        <p class="font-bold">Associated companies:</p>
+                        <p class="font-bold text-gray-600">Associated companies:</p>
                         @foreach($article->associated_companies as $company)
                             <p><x-company-logo-show-name :company="$company" /></p>
                         @endforeach
@@ -49,7 +49,7 @@ if(!isset($thumbnailSize)){
                 {{-- Show TOFAM partner --}}
                 @if($article->partner)
                     <div class="text-xs grow">
-                        <p class="font-bold">TOFAM Partner:</p>
+                        <p class="font-bold text-gray-600">TOFAM Partner:</p>
                         <p><x-partner-logo-show-name :partner="$article->partner" /></p>
                     </div>
                 @endif

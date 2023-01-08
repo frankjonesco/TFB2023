@@ -4,7 +4,7 @@
             <x-layout-page-heading heading="{!!$article->title!!}" class="pb-0" />   
             
             <b class="block mb-2">{{$article->caption}}</b>
-            <x-article-stats :article="$article" class="text-sm text-gray-400 py-1.5 pb-2" />
+            <x-article-stats :article="$article" class="text-sm !text-gray-500 py-1.5 pb-2" />
             <div class="bg-no-repeat bg-center bg-cover my-3 mb-6 flex flex-col justify-end h-[423px]" style="background-image: url('{{$article->getImage()}}');">
                 @if($article->image_caption || $article->image_copyright)
                     <div class="bg-black px-3 py-2 bg-opacity-40 text-xs text-white flex items-center border-t border-t-white border-opacity-40">
@@ -26,6 +26,7 @@
         </x-layout-main-area>
         <x-layout-sidebar>
             <x-module-ranking-table :companies="$companies" />
+            <x-module-articles-tabbed-list />
             <x-module-socials />
             <x-module-articles-features />
             <x-module-articles-tabbed-list />
