@@ -5,25 +5,7 @@
                 {{$article->title}}
             </h2>
             <b class="block mb-2">{{$article->caption}}</b>
-            <span class="text-sm italic" style="font-size:0.82rem;">
-                <span class="mr-6">
-                    <i class="fa-regular fa-clock mr-1"></i>
-                    {{showDate($article->created_at)}}
-                </span>
-                <span class="mr-6">
-                    <i class="fa-regular fa-user mr-1"></i>
-                    by {{$article->user->full_name}}
-                </span>
-                <span class="mr-6">
-                    <i class="fa-regular fa-comments mr-1"></i>
-                    {{count($article->publicComments)}} comments
-                </span>
-                <span>
-                    <i class="fa-regular fa-eye mr-1"></i>
-                    {{$article->views}}
-                </span>
-            </span>
-
+            <x-article-stats :article="$article" class="text-sm text-gray-400 py-1.5 pb-2" />
             <div class="bg-no-repeat bg-center bg-cover my-3 mb-6 flex flex-col justify-end h-[423px]" style="background-image: url('{{$article->getImage()}}');">
                 @if($article->image_caption || $article->image_copyright)
                     <div class="bg-black px-3 py-2 bg-opacity-40 text-xs text-white flex items-center border-t border-t-white border-opacity-40">

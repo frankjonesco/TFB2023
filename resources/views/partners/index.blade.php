@@ -1,7 +1,7 @@
 <x-layout>
     <x-container>
         <x-layout-main-area>
-            
+            <x-layout-page-heading heading="TOFAM Partners" />   
             <x-layout-articles-search-form />
             <x-layout-heading heading="News articles from TOFAM partners" />
 
@@ -12,6 +12,7 @@
                     @endphp
                     <x-card-articles-list-item-lg :article="$article" />
                 @endforeach
+                <x-pagination-public table="partners" :results="$partners" />
             </div>
             
         </x-layout-main-area>

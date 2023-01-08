@@ -192,6 +192,11 @@ class Site extends Model
         return Partner::where('active', 1)->orderBy('id', 'ASC')->get();
     }
 
+    // Public sponsors
+    public function paginatePublicPartners(){
+        return Partner::where('active', 1)->orderBy('id', 'ASC')->paginate(6);
+    }
+
     // END: RETRIEVAL METHODS
 
 

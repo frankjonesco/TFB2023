@@ -29,7 +29,8 @@ if(!isset($thumbnailSize)){
                     {{$article->title}}
                 </a>
             </h3>
-            <x-article-stats :article="$article" class="text-xs text-gray-400 py-2.5" />
+            
+            <x-article-stats :article="$article" class="text-xs text-gray-500 py-2.5" />
 
             <p class="text-sm p-1">
                 {{str_replace('&amp;', '&', truncate(strip_tags($article->body), 240))}}

@@ -11,7 +11,7 @@ class PartnerController extends Controller
     public function index(Site $site){
         
         return view('partners.index', [
-            'partners' => $site->publicPartners(),
+            'partners' => $site->paginatePublicPartners(),
         ]);
     }
 }

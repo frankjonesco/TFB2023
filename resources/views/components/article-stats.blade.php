@@ -21,7 +21,7 @@
         </span>
     @endif
     @if($size === 'full')
-        @if(count($article->comments) > 0)
+        @if(count($article->publicComments) > 0)
             <span class="mr-6">
                 <i class="fa-regular fa-comments mr-1"></i>
                 {{count($article->comments)}} comments
