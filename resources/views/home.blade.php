@@ -3,6 +3,7 @@
     <x-container>
 
         <x-layout-main-area>
+            <x-layout-page-heading heading="Nachrichten für und von Familienunternehmen" />
             <x-layout-articles-search-form />
             <x-layout-heading heading="Today's features" />
             <div class="flex border-b border-gray-100 mb-3">
@@ -32,7 +33,7 @@
                     {{-- <button class="w-full mt-2">View all articles</button> --}}
                 </div>
             </div>
-            <div class="w-full text-center">
+            <div class="w-full text-center mt-4">
                 <a href="{{url('news')}}">
                     <button class="btn btn-plain">
                         <i class="fa-solid fa-refresh mr-1.5"></i>
@@ -41,7 +42,7 @@
                 </a>
             </div>
             <hr>
-            <h2 class="font-black text-5xl mb-4 text-gray-800">Das <span class="text-red-500">TOFAM-Ranking</span> listet alle Familienunternehmen mit mehr als 250 Millionen Euro Jahresumsatz.</h2>
+            <h2 class="font-black text-5xl mb-4 pt-4 text-gray-800">Das <span class="text-red-500">TOFAM-Ranking</span> listet alle Familienunternehmen mit mehr als 250 Millionen Euro Jahresumsatz.</h2>
             @include('includes._rankings-search-form')
             @include('includes._rankings-table')
             {{-- <x-layout-articles-grid heading="Articles grid" :articles="$grid_articles" /> --}}

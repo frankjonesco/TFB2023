@@ -1,7 +1,7 @@
 <x-layout>
     <x-container>
         <x-layout-main-area>
-            <x-layout-page-heading heading="Business Sectors" />   
+            <x-layout-page-heading heading="Business sectors" />   
             <x-layout-sectors-search-form :term="$term" />
 
             {{-- Sectors --}}

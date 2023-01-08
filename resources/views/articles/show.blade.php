@@ -1,9 +1,8 @@
 <x-layout>
     <x-container>
         <x-layout-main-area>
-            <h2 class="pt-1 pb-2 !text-3xl">
-                {{$article->title}}
-            </h2>
+            <x-layout-page-heading heading="{!!$article->title!!}" class="pb-0" />   
+            
             <b class="block mb-2">{{$article->caption}}</b>
             <x-article-stats :article="$article" class="text-sm text-gray-400 py-1.5 pb-2" />
             <div class="bg-no-repeat bg-center bg-cover my-3 mb-6 flex flex-col justify-end h-[423px]" style="background-image: url('{{$article->getImage()}}');">

@@ -2,7 +2,7 @@
     <x-container>
         <x-layout-main-area>
 
-            <x-layout-page-heading heading="{{$sector->name}} sector: companies" />   
+            <x-layout-page-heading heading="Business Sectors: {{$sector->name}}" />   
             <x-layout-sectors-search-form :term="$term" />
 
             

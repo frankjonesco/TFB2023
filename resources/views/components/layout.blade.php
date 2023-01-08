@@ -41,6 +41,7 @@
 
 </head>
 <body style="background-image:url('{{asset('images/bg.png')}}')';" class="bg-repeat bg-cover">
+    
     <div class="flex flex-col h-screen">
         <x-navbar />
         <div id="pageContent" class="hidden">
@@ -67,5 +68,6 @@
             }
         };
     </script>
+    <x-cookie-consent />
 </body>
 </html>

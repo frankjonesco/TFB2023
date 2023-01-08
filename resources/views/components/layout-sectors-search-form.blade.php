@@ -4,7 +4,7 @@
     }
 @endphp
 
-<form action="{{url('sectors/search')}}" method="GET">
+<form action="{{url('sectors/search')}}" method="GET" class="mb-10">
 
     <div class="form-block flex">
         <input type="text" name="term" value="{{$term ? $term : old('term')}}" placeholder="Search sectors" class="!bg-gray-50 !rounded !border !border-gray-300 focus:!border-sky-400 !p-2 !text-sm !text-gray-500 !outline-0 !placeholder-gray-400 mr-2">
