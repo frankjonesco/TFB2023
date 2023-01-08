@@ -35,6 +35,7 @@
 
         </x-layout-main-area>
         <x-layout-sidebar>
+            <x-module-sectors-menu />
             <x-module-socials />
             <x-module-articles-features />
             <x-module-subscribe />

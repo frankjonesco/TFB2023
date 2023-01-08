@@ -1,6 +1,7 @@
 <x-layout>
     <x-container>
         <x-layout-main-area>
+            <x-layout-page-heading heading="Search results for '{{$term}}'" />
             <x-layout-sectors-search-form :sectors="$sectors" :term="$term" />
             <x-layout-heading heading="Search results" />
             {{-- Sectors --}}
@@ -32,7 +33,7 @@
             @endif    
         </x-layout-main-area>
         <x-layout-sidebar>
-                <x-module-articles-category-menu />
+                <x-module-sectors-menu />
                 <x-module-socials />
         </x-layout-sidebar>
     </x-container>

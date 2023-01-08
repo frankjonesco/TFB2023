@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Sector;
 use App\Models\Article;
 use App\Models\Company;
 use App\Models\Partner;
@@ -100,7 +101,7 @@ use Illuminate\Support\Facades\Config;
     // Get random color
     if(!function_exists('randomColor')) {
         function randomColor($prepend = 'bg'){
-            $colors = ['orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'fuchsia', 'pink', 'red', 'rose'];
+            $colors = ['orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'fuchsia'];
             $random = array_rand($colors);
             $color = $colors[$random];
             $shades = [400,500,600,700,800];
@@ -108,6 +109,13 @@ use Illuminate\Support\Facades\Config;
             $shade = $shades[$random];
 
             return $prepend.'-pink-'.$shade.' hover:'.$prepend.'-'.$color.'-'.($shade - 200);
+        }
+    }
+
+    // Get sectors
+    if(!function_exists('getSectors')) {
+        function getSectors($status = 'public'){
+            return Sector::where('status', $status)->get();
         }
     }
 

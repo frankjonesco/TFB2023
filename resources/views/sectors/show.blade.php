@@ -3,7 +3,7 @@
         <x-layout-main-area>
 
             <x-layout-page-heading heading="Business Sectors: {{$sector->name}}" />   
-                <x-layout-sectors-search-form :term="$term" />
+            <x-layout-sectors-search-form :term="$term" />
             <x-layout-heading heading="{{$sector->name}} Sector" />
 
             <table class="mb-12">
@@ -58,7 +58,7 @@
 
         </x-layout-main-area>
         <x-layout-sidebar>
-            <x-module-sectors-list :other-sectors="$other_sectors" />
+            <x-module-sectors-menu :current-sector="$current_sector" />
             <x-module-socials />
             <x-module-articles-features />
             <x-module-subscribe />

@@ -28,7 +28,7 @@ class SectorController extends Controller
     public function show(Sector $sector){
         return view('sectors.show', [
             'sector' => $sector,
-            'other_sectors' => Sector::where('id', '!=', $sector->id)->orderBy(DB::Raw('RAND()'))->take(6)->get(),
+            'current_sector' => $sector->id,
             'companies' => $sector->companies,
             'term' => null
         ]);

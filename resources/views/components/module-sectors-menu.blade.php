@@ -1,26 +1,27 @@
 @php
-    if(!isset($currentCategory)){
-        $currentCategory = null;
+    if(!isset($currentSector)){
+        $currentSector = null;
     }
 @endphp
 
-<x-layout-heading heading="News categories" class="!mb-3" />
-<div class="grid grid-cols-2 mb-12 gap-0.5">
-    @foreach(getCategories() as $category)
-        <a href="{{$category->link()}}" class="plain">
+<x-layout-heading heading="Business sectors" class="!mb-3" />
 
-            @if($currentCategory === $category->id)
+<div class="grid grid-cols-2 mb-12 gap-0.5">
+    @foreach(getSectors() as $sector)
+        <a href="{{$sector->link()}}" class="plain">
+
+            @if($currentSector === $sector->id)
                 <div class="flex flex-row items-center border-b text-sm p-2 py-2.5 font-bold cursor-pointer text-red-500">
-                    <div class="grow">{{truncate($category->name, 17)}}</div>
+                    <div class="grow">{{truncate($sector->name, 17)}}</div>
                     <div class="count-square p-1.5 py-0.5 border border-red-500 bg-red-500 text-white rounded-sm font-bold text-xs">
-                        {{count($category->articles)}}
+                        {{count($sector->companies)}}
                     </div>
                 </div>
             @else
-                <div onmouseover="mouseOverCategory(this)" onmouseout="mouseOutCategory(this)" class="flex flex-row items-center border-b text-sm p-2 py-2.5 font-bold cursor-pointer">
-                    <div class="grow">{{truncate($category->name, 17)}}</div>
+                <div onmouseover="mouseOverCategory(this)" onmouseout="mouseOutCategory(this)" class="col-span-2 flex flex-row items-center border-b text-sm p-2 py-2.5 font-bold cursor-pointer">
+                    <div class="grow">{{truncate($sector->name, 17)}}</div>
                     <div class="count-square p-1.5 py-0.5 border border-gray-200 rounded-sm  font-bold text-xs">
-                        {{count($category->articles)}}
+                        {{count($sector->companies)}}
                     </div>
                 </div>
             @endif
@@ -28,7 +29,6 @@
         </a>
     @endforeach
 </div>
-
 
 <script>
     function mouseOverCategory(div){

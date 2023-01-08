@@ -26,7 +26,7 @@
                 @else
                     <ul class="flex w-full text-sm">
                         <li class="mb-1 px-2 py-2 border-b border-b-gray-200 w-full flex items-center">  
-                            <div class="w-2 h-2/3 bg-sky-500 mr-2 rounded-sm" style="background-color: #{{$sector->color->code}};"></div>
+                            <div class="w-2 h-2/3 mr-2 rounded-sm bg-{{$sector->color ? $sector->color->tailwind_class : randomColor()}}"></div>
                             <a href="{{$sector->link()}}" class="grow plain">
                                 {{$sector->name}}
                             </a>
@@ -43,4 +43,35 @@
             </a>
         </div>
     @endif
+</div>
+
+
+@php
+    if(!isset($currentSector)){
+        $currentSector = null;
+    }
+@endphp
+
+<div class="grid grid-cols-2 mb-12 gap-0.5">
+    @foreach($sectors as $sector)
+        <a href="{{$sector->link()}}" class="plain">
+
+            @if($currentSector === $sector->id)
+                <div class="flex flex-row items-center border-b text-sm p-2 py-2.5 font-bold cursor-pointer text-red-500">
+                    <div class="grow">{{$sector->name}}</div>
+                    <div class="count-square p-1.5 py-0.5 border border-red-500 bg-red-500 text-white rounded-sm font-bold text-xs">
+                        {{count($category->companies)}}
+                    </div>
+                </div>
+            @else
+                <div onmouseover="mouseOverCategory(this)" onmouseout="mouseOutCategory(this)" class="flex flex-row items-center border-b text-sm p-2 py-2.5 font-bold cursor-pointer">
+                    <div class="grow">{{$sector->name}}</div>
+                    <div class="count-square p-1.5 py-0.5 border border-gray-200 rounded-sm  font-bold text-xs">
+                        {{count($sector->companies)}}
+                    </div>
+                </div>
+            @endif
+    
+        </a>
+    @endforeach
 </div>
