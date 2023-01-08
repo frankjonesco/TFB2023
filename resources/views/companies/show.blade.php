@@ -36,6 +36,11 @@
                             <span><i class="fa-solid fa-check text-green-700"></i></span>
                         </li>
                     </ul>
+
+                    
+
+
+
                 </div>
                 <div class="w-3/4">
                     <h2 class="pt-2">{{$company->show_name}}</h2>
@@ -68,7 +73,7 @@
 
 
 
-                    <h3 class="pt-0 mt-0">Details</h3>
+                    <h3 class="pt-0 mt-0">Company information</h3>
 
                     <table>
                         <tbody>
@@ -145,35 +150,19 @@
                         </tbody>
                     </table>
 
-                    <hr>
 
                     @if($company->sectors)
-                        <h3>Sectors</h3>
-                        <div class="flex w-full">
-                            @foreach($company->sectors as $sector)
-                                <div class="w-1/3 m-1 border border-gray-200 p-2.5 bg-zinc-50">
-                                
-                                    <a href="{{$sector->link()}}">
-                                        <img src="{{$sector->getImageThumbnail()}}">
-                                    </a>
-                                    <h5 class="font-bold text-sm mt-2">
-                                        <a href="{{$sector->link()}}">
-                                            {{$sector->name}}
-                                        </a>
-                                    </h5>
-                                    <span class="text-xs">
-                                        <a href="{{$sector->link()}}">
-                                            {{count($sector->companies)}} companies
-                                        </a>
-                                    </span>
-                                </div>
-                                
+                        <h3 class="mt-12 mb-2">{{$company->show_name}} works in the following sectors</h3>
+                        <div class="grid grid-cols-2 gap-3">
+                            @foreach($company->grouped_sectors as $sector)
+                                <x-card-sectors-list-item-sm :sector="$sector" />
                             @endforeach
                         </div>
-                    @endif    
+                    @endif
+                    
                     
                     @if(count($company->associated_articles) > 0)
-                        <h3>Articles about {{$company->show_name}}</h3>
+                        <h3 class="mt-12 mb-2">News articles about {{$company->show_name}}</h3>
                         <div class="grid grid-cols-2 gap-3 w-full">
                             @foreach($company->associated_articles as $article)
                                 <x-card-articles-photo-fill :article="$article" />
