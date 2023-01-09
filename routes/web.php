@@ -288,6 +288,16 @@ Route::controller(UserController::class)->group(function(){
 // Auth routes for ProfileController
 Route::controller(ProfileController::class)->middleware('auth')->group(function(){
     Route::get('/profile', 'show');
+    Route::get('/profile/edit', 'edit');
+    Route::post('/profile/update', 'update');
+    Route::get('/profile/edit/image', 'editImage');
+    Route::post('/profile/update/image', 'updateImage');
+    Route::get('/profile/edit/image/crop', 'cropImage');
+    Route::post('/profile/update/image/crop', 'updateCropImage');
+    Route::get('/profile/edit/settings', 'editSettings');
+    Route::post('/profile/update/settings', 'updateSettings');
+    Route::get('/profile/confirm-delete', 'confirmDelete');
+    Route::delete('/profile/delete', 'delete');
 });
 
 
