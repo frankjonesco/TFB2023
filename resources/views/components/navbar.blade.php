@@ -107,16 +107,28 @@
                     <li>
                         <a href="{{url('contact')}}" class="no-underline">Contact</a>
                     </li>
+
+                    {{-- If user is logged in --}}
                     @auth
-                        <li>
-                            <a href="{{url('dashboard')}}" class="no-underline">Dashboard</a>
-                        </li>
+
+                        @if(auth()->user()->user_type_id > 1)
+                            <li>
+                                <a href="{{url('dashboard')}}" class="no-underline">Dashboard</a>
+                            </li>
+                        @else
+                            <li>
+                                <a href="{{url('profile')}}" class="no-underline">Profile</a>
+                            </li>
+                        @endif
+                        
                         <li>
                             <form action="{{url('logout')}}" class="inline" method="POST">
                                 @csrf
                                 <a href="#" onclick="this.parentNode.submit()" class="bg-transparent block py-2 pl-3 pr-4 rounded md:p-0 no-underline">Logout</a>
                             </form>
                         </li>
+
+                    {{-- If user is not logged in --}}
                     @else
                         <li>
                             <a href="{{url('login')}}" class="no-underline">Login</a>

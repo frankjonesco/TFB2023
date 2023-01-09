@@ -8,6 +8,7 @@ use App\Http\Controllers\SectorController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\IndustryController;
 use App\Http\Controllers\DashboardController;
@@ -275,6 +276,18 @@ Route::controller(UserController::class)->middleware('guest')->group(function(){
 // Public routes for UserController
 Route::controller(UserController::class)->group(function(){
     
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| Routes for ProfileController
+|--------------------------------------------------------------------------
+*/
+
+// Auth routes for ProfileController
+Route::controller(ProfileController::class)->middleware('auth')->group(function(){
+    Route::get('/profile', 'show');
 });
 
 

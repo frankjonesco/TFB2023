@@ -45,7 +45,7 @@ class UserController extends Controller
             'gender' => $request->gender,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'user_type_id' => 6
+            'user_type_id' => 1
         ]);
 
         // Log user in
