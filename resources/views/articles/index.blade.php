@@ -1,7 +1,7 @@
 <x-layout>
-    @if($show_news_header)
+    {{-- @if($show_news_header)
         <x-layout-articles-news-full-w-slide :articles="$latest_articles" />
-    @endif
+    @endif --}}
     
     <x-container>
         <x-layout-main-area>

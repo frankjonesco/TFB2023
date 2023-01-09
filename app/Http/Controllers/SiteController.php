@@ -17,18 +17,18 @@ class SiteController extends Controller
     public function home(Site $site){
        
 
-        $slide_table_articles['first'] = Article::latest()->skip(36)->take(4)->get();
-        $slide_table_articles['second'] = Article::latest()->skip(40)->take(4)->get();
-        $slide_table_articles['third'] = Article::latest()->skip(44)->take(4)->get();
+        $slide_table_articles['first'] = Article::latest()->skip(17)->take(4)->get();
+        $slide_table_articles['second'] = Article::latest()->skip(21)->take(4)->get();
+        $slide_table_articles['third'] = Article::latest()->skip(25)->take(4)->get();
 
         return view('home', [
             'leading_articles' => Article::latest()->take(3)->get(),
-            'latest_articles' => Article::latest()->skip(3)->take(4)->get(),
-            'highlighted_feature_articles' => Article::latest()->skip(7)->take(2)->get(),
-            'featured_articles' => Article::latest()->skip(9)->take(6)->get(),
-            'grid_articles' => Article::latest()->skip(30)->take(6)->get(),
+            'latest_articles' => Article::latest()->skip(3)->take(6)->get(),
+            'highlighted_feature_articles' => Article::latest()->skip(9)->take(2)->get(),
+            'featured_articles' => Article::latest()->skip(11)->take(6)->get(),
+            'grid_articles' => Article::latest()->skip(29)->take(6)->get(),
             'slide_table_articles' => $slide_table_articles,
-            'list_articles' => Article::latest()->skip(48)->paginate(4),
+            'list_articles' => Article::latest()->skip(35)->paginate(4),
             'comments' => Comment::where('resource_type', 'article')->latest()->take(6)->get(),
             'companies' => $site->paginatePublicCompaniesAndRankingsLatest(12),
             'search_term' => null,

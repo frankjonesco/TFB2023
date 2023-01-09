@@ -39,7 +39,7 @@ class Article extends Model
 
     // Relationship to public comments
     public function publicComments(){
-        return $this->hasMany(Comment::class, 'resource_id')->where('status', 'public');
+        return $this->hasMany(Comment::class, 'resource_id')->where(['resource_type' => 'article', 'status' => 'public']);
     }
 
     // Relationship to associated companies
