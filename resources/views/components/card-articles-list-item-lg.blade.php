@@ -39,9 +39,9 @@ if(!isset($thumbnailSize)){
             <p class="text-sm p-1">
 
                 @if(isset($term))
-                    {!!str_replace('&amp;', '&', truncate(highlightSearchTerm($article->body, $term), 240))!!}       
+                    {!!str_replace('&amp;', '&', highlightSearchTerm(truncate($article->body, 240), $term))!!}       
                 @else
-                    {{str_replace('&amp;', '&', truncate(strip_tags($article->body, 240)))}}  
+                    {{str_replace('&amp;', '&', truncate(strip_tags($article->body), 240))}}  
                 @endif
 
             </p>
