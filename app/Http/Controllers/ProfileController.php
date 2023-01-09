@@ -8,6 +8,8 @@ class ProfileController extends Controller
 {
     // Show single profile
     public function show(){
-        return view('profile.show');
+        return view('profile.show', [
+            'user' => auth()->user()
+        ]);
     }
 }

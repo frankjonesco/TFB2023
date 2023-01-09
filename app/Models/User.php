@@ -109,7 +109,7 @@ class User extends Authenticatable
     // Get image
     public function getImage(){
         if(!$this->image){
-            return asset('images/no-image.png');
+            return asset('images/users/profile-pic-male.jpg');
         }
 
         return asset('images/users/'.$this->hex.'/'.$this->image);
@@ -118,7 +118,7 @@ class User extends Authenticatable
     // Get image thumbnail
     public function getImageThumbnail(){
         if(!$this->image){
-            return asset('images/tn-no-image.png');
+            return asset('images/users/profile-pic-male.jpg');
         }
 
         return asset('images/users/'.$this->hex.'/tn-'.$this->image);

@@ -4,7 +4,7 @@
             <x-layout-heading heading="Profile" />
         </x-layout-main-area>
         <x-layout-sidebar>
-                <x-module-socials />
+                <x-module-users-profile :user="$user" />
         </x-layout-sidebar>
     </x-container>
 </x-layout>
