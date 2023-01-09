@@ -21,19 +21,29 @@ if(!isset($thumbnailSize)){
         </a> 
 
 
-
         <div class="col-span-6 ml-1.5 pt-2.5">
             <x-category-pip :category="$article->category" />
             <h3 class="p-0 m-0 mt-2.5">
                 <a href="{{$article->link()}}" class="plain !text-slate-700 hover:!text-red-500 no-underline">
-                    {{$article->title}}
+                    @if(isset($term))
+                        {!!highlightSearchTerm($article->title, $term)!!}       
+                    @else
+                        {{$article->title}}  
+                    @endif
+                    
                 </a>
             </h3>
             
             <x-article-stats :article="$article" class="text-xs text-gray-500 py-2.5" />
 
             <p class="text-sm p-1">
-                {{str_replace('&amp;', '&', truncate(strip_tags($article->body), 240))}}
+
+                @if(isset($term))
+                    {!!str_replace('&amp;', '&', truncate(highlightSearchTerm($article->body, $term), 240))!!}       
+                @else
+                    {{str_replace('&amp;', '&', truncate(strip_tags($article->body, 240)))}}  
+                @endif
+
             </p>
 
             <div class="flex items-center justify-end p-1">

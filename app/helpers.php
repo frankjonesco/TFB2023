@@ -94,6 +94,48 @@ use Illuminate\Support\Facades\Config;
         }
     }
 
+    // Highligh search term
+    if(!function_exists('highlightSearchTerm')){
+        function highlightSearchTerm($text, $term){
+            $color = 'text-red-500';
+            $text = strip_tags($text);
+            $text = str_replace($term, '<span class="'.$color.'">'.$term.'</span>', $text);
+            
+            $term = ucfirst($term);
+            $text = str_replace($term, '<span class="'.$color.'">'.$term.'</span>', $text);
+
+            $term = strtoupper($term);
+            $text = str_replace($term, '<span class="'.$color.'">'.$term.'</span>', $text);
+
+            $term = strtolower($term);
+            $text = str_replace($term, '<span class="'.$color.'">'.$term.'</span>', $text);
+
+            return $text;
+        }
+    }
+
+    function closeTags($html) {
+        preg_match_all('#<([a-z]+)(?: .*)?(?<![/|/ ])>#iU', $html, $result);
+        $openedtags = $result[1];
+        preg_match_all('#</([a-z]+)>#iU', $html, $result);
+
+        $closedtags = $result[1];
+        $len_opened = count($openedtags);
+
+        if (count($closedtags) == $len_opened) {
+            return $html;
+        }
+        $openedtags = array_reverse($openedtags);
+        for ($i=0; $i < $len_opened; $i++) {
+            if (!in_array($openedtags[$i], $closedtags)) {
+                $html .= '</'.$openedtags[$i].'>';
+            } else {
+                unset($closedtags[array_search($openedtags[$i], $closedtags)]);
+            }
+        }
+        return $html;
+    }
+
 
 
     // FETCHERS
