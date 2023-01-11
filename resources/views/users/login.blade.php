@@ -2,7 +2,7 @@
     <x-container>
 
         <x-layout-main-area>
-            <x-layout-heading heading="Log in" />
+            <x-layout-page-heading heading="Log in" />
             <form action="{{url('users/authenticate')}}" method="POST">
                 @csrf
                 {{-- Email input --}}

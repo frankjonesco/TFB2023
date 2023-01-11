@@ -73,6 +73,22 @@ class CompanyController extends Controller
             'search_sort_direction' => $search_sort_direction,
         ]);
     }
+
+
+    // Matchbird partners
+    public function matchbirdPartners(Site $site){
+        return view('companies.matchbird-partners', [
+            'companies' => Company::with('rankings')
+                ->join('rankings', 'rankings.company_id', '=', 'companies.id')
+                ->where('rankings.turnover', '>=', 250000000)
+                ->where('companies.family_business', 1)
+                ->where('companies.tofam_status', 'in')
+                ->where('companies.matchbird_partner', true)
+                ->select('companies.*') // Avoid selecting everything from the stocks table
+                ->groupBy('companies.id')
+                ->paginate(15)
+        ]);
+    }
     
 
     // ADMIN METHODS

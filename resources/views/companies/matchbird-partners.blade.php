@@ -2,8 +2,8 @@
     <x-container>
         <x-layout-main-area>
 
-            <x-layout-page-heading heading="Business Sectors: {{$sector->name}}" />   
-            <x-layout-sectors-search-form :term="$term" />
+            <x-layout-page-heading heading="Matchbird partners" />   
+            <x-layout-sectors-search-form />
 
             
             
@@ -72,9 +72,7 @@
 
         </x-layout-main-area>
         <x-layout-sidebar>
-            <x-module-sectors-menu :current-sector="$current_sector" />
-            <x-module-sector-information :sector="$sector" />
-            <x-module-sector-description :description="$sector->description" />
+            <x-module-sectors-menu />
             
             <x-module-subscribe />
         </x-layout-sidebar>

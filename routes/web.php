@@ -134,6 +134,7 @@ Route::controller(CompanyController::class)->group(function(){
     Route::get('/rankings', 'index');
     Route::post('/rankings/search', 'searchResults');
     Route::get('/companies/{company}/{slug}', 'show');
+    Route::get('/companies/matchbird-partners', 'matchbirdPartners');
 });
 
 

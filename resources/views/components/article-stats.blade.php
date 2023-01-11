@@ -17,7 +17,7 @@
     @if($size === 'full' || $size === 'md')
         <span class="mr-6">
             <i class="fa-regular fa-eye mr-1"></i>
-            {{$article->views}}
+            {{number_format($article->views,0,".",",")}}
         </span>
     @endif
     @if($size === 'full')
