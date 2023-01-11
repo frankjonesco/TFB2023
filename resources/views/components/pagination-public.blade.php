@@ -22,7 +22,12 @@
                         @endphp
                         @if($from < $i && $i < $to)
                             <li>
-                                <a href="{{$results->appends($_GET)->url($i)}}"
+                                @if(isset($urlPath))
+                                    <a href="{{url($urlPath.'/?page='.$i)}}"                                    
+                                @else
+                                    <a href="{{$results->appends($_GET)->url($i)}}"
+                                @endif
+
                                     @if($results->currentPage() == $i)
                                         class="px-3 py-2 mr-1.5 leading-tight bg-red-500 text-white hover:bg-red-600 no-underline hover:!text-white"
                                     @else

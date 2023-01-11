@@ -59,5 +59,5 @@
             @endforeach
         </tbody>
     </table>
-    <x-pagination-public table="companies" :results="$companies" />
+    <x-pagination-public table="companies" :results="$companies" url-path="rankings" />
 @endif

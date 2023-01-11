@@ -22,8 +22,7 @@ class ArticleController extends Controller
         }
 
         return view('articles.index', [
-            'latest_articles' => Article::latest()->take(12)->get(),
-            'articles' => Article::latest()->skip(12)->paginate(6),
+            'articles' => Article::latest()->paginate(8),
             'categories' => $site->publicCategories(),
             'show_news_header' => $show_news_header
         ]);

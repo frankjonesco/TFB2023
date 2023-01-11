@@ -62,7 +62,7 @@ class CompanyController extends Controller
             ->where('registered_name', 'like', '%'.$search_term.'%')
             ->select('companies.*', 'rankings.id AS ranking_id') // Avoid selecting everything from the stocks table
             ->orderBy($search_order_by, $search_sort_direction)
-            ->paginate(20);
+            ->paginate(15);
 
         
         return view('companies.search-results', [

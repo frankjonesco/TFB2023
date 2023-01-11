@@ -7,4 +7,4 @@
         @endif
     @endforeach
 </div>
-<x-pagination-public table="articles" :results="$articles" />
+<x-pagination-public table="articles" :results="$articles" url-path="news" />

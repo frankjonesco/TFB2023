@@ -96,7 +96,7 @@ class Site extends Model
     }
 
     // Paginate public companies
-    public function paginatePublicCompaniesAndRankingsLatest($take = 20){
+    public function paginatePublicCompaniesAndRankingsLatest($take = 15){
         return Company::with('rankings')
         ->join('rankings', 'rankings.company_id', '=', 'companies.id')
         ->where('rankings.is_latest', true)
