@@ -5,7 +5,7 @@
         <div class="grid grid-rows-2 gap-0.5 h-full">
             @foreach($latestArticles as $key => $article)
                 @if($key <= 1)
-                    <div class="bg-no-repeat bg-center bg-cover px-4 py-5 flex flex-col justify-end overflow-hidden" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.85)), url('{{$article->getImage()}}');">
+                    <div class="bg-no-repeat bg-center bg-cover px-4 py-5 flex flex-col justify-end overflow-hidden" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.6)), url('{{$article->getImage()}}');">
                         <div class="translate-y-0">
 
                             <x-category-pip :category="$article->category" />
@@ -15,7 +15,7 @@
                                     {{$article->title}}
                                 </a>
                             </h3>
-                            <x-article-stats :article="$article" size="xs" class="text-xs" />
+                            <x-article-stats :article="$article" size="md" class="text-xs" />
                                     
                         </div>
                     </div>
@@ -29,7 +29,7 @@
         @php
             $article = $leadingArticles[0];
         @endphp
-        <div class="bg-no-repeat bg-center bg-cover px-7 py-8 flex flex-col justify-end h-[32rem]" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.85)),
+        <div class="bg-no-repeat bg-center bg-cover px-7 py-8 flex flex-col justify-end h-[32rem]" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.7)),
         url('{{$article->getImage()}}');" >
             <x-category-pip :category="$article->category" />
             <h2 class="py-3">
@@ -46,7 +46,7 @@
         <div class="grid grid-cols-2 gap-0.5 h-full">
             @foreach($latestArticles as $key => $article)
                 @if($key >= 2)
-                    <div class="bg-no-repeat bg-center bg-cover px-4 py-5 flex flex-col justify-end overflow-hidden" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.85)), url('{{$article->getImage()}}');">
+                    <div class="bg-no-repeat bg-center bg-cover px-4 py-5 flex flex-col justify-end overflow-hidden" style="background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.6)), url('{{$article->getImage()}}');">
                         <div class="translate-y-0">
 
                             <x-category-pip :category="$article->category" />
@@ -56,7 +56,7 @@
                                     {{$article->title}}
                                 </a>
                             </h3>
-                            <x-article-stats :article="$article" size="xs" class="text-xs" />
+                            <x-article-stats :article="$article" size="md" class="text-xs" />
                                     
                         </div>
                     </div>

@@ -22,7 +22,7 @@
     {{-- Local scripts --}}
     @vite(['resources/css/app.css', 'resources/scss/app.scss', 'resources/js/app.js'])
     
-    {{-- <link rel="stylesheet" href="{{ asset('build/assets/app.e9a05461.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('build/assets/app.466ecf89.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/app.dd9f1f38.css') }}">
     <script src="{{ asset('build/assets/app.ab424fc8.js') }}"></script>  --}}
    

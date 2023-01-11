@@ -87,7 +87,8 @@
  
         </x-layout-main-area>
         <x-layout-sidebar>
-                <x-module-socials />
+            <x-module-socials />
+            <x-module-articles-features />
         </x-layout-sidebar>
     </x-container>
 </x-layout>

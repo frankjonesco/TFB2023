@@ -1,7 +1,7 @@
 <x-layout>
     <x-container>
         <x-layout-main-area>
-            <x-layout-page-heading heading="Contact" />
+            <x-layout-heading heading="Contact" />
 
             <x-alerts />
 

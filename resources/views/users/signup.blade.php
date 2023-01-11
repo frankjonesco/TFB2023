@@ -2,7 +2,7 @@
     <x-container>
 
         <x-layout-main-area>
-            <x-layout-page-heading heading="Sign up" />
+            <x-layout-heading heading="Sign up" />
 
                 <form action="{{url('users/store')}}" method="POST" class="flex flex-wrap">
                     @csrf
