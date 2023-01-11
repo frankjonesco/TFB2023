@@ -19,8 +19,8 @@
     </ul>
     <a href="{{$sector->link()}}" class="mt-3 block">
         <button class="btn btn-plain whitespace-nowrap w-full">
-            <i class="fa-solid fa-globe mr-1 text-sky-600"></i>
-            Inspect sector
+            <i class="fa-solid fa-building mr-1 text-sky-600"></i>
+            View companies
         </button>
     </a>
 </div> 

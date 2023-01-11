@@ -32,7 +32,7 @@ class ArticleSeeder extends Seeder
                 'image' => $article->image,
                 'image_caption' => $article->image_caption,
                 'image_copyright' => $article->image_copyright,
-                'views' => $article->views,
+                'views' => $article->views * 12,
                 'likes' => $article->likes,
                 'dislikes' => $article->dislikes,
                 'created_at' => $article->created_at,

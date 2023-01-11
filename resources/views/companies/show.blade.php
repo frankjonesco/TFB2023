@@ -41,6 +41,7 @@
 
 
 
+
                 </div>
                 <div class="w-3/4">
                     <h2 class="pt-2">{{$company->show_name}}</h2>
@@ -73,9 +74,9 @@
 
 
 
-                    <h3 class="pt-0 mt-0">Company information</h3>
+                    <x-layout-heading heading="Company information" class="!mb-3" />
 
-                    <table>
+                    <table class="mb-12">
                         <tbody>
                             {{-- Registered name --}}
                             @if($company->registered_name)
@@ -147,23 +148,40 @@
                                     <td class="px-0">{{$company->family_name}}</td>
                                 </tr>
                             @endif
+
+                            @if($company->sectors)
+                                <tr>
+                                    <td class="px-0 text-center">
+                                        <i class="fa-solid fa-industry text-green-500"></i>
+                                    </td>
+                                    <td class="px-0">
+                                        @if(count($company->sectors) < 2)
+                                            Business sector
+                                        @else
+                                            Business sectors
+                                        @endif
+                                    </td>
+                                    <td class="px-0">
+                                        @foreach($company->grouped_sectors as $sector)
+                                            @if($loop->last)
+                                                <a href="{{$sector->link()}}">{{$sector->name}}</a>
+                                            @else
+                                                <a href="{{$sector->link()}}">{{$sector->name}}</a>, 
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                </tr>
+
+                                
+                            @endif
                         </tbody>
                     </table>
 
 
-                    @if($company->sectors)
-                        <h3 class="mt-12 mb-2">{{$company->show_name}} works in the following sectors</h3>
-                        <div class="grid grid-cols-2 gap-3">
-                            @foreach($company->grouped_sectors as $sector)
-                                <x-card-sectors-list-item-sm :sector="$sector" />
-                            @endforeach
-                        </div>
-                    @endif
-                    
                     
                     @if(count($company->associated_articles) > 0)
-                        <h3 class="mt-12 mb-2">News articles about {{$company->show_name}}</h3>
-                        <div class="grid grid-cols-2 gap-3 w-full">
+                        <x-layout-heading heading="News articles about {{$company->show_name}}" class="!mb-3" />
+                        <div class="grid grid-cols-1 gap-3 w-full">
                             @foreach($company->associated_articles as $article)
                                 <x-card-articles-photo-fill :article="$article" />
                             @endforeach
@@ -176,7 +194,6 @@
         </x-layout-main-area>
         <x-layout-sidebar>
             <x-module-companies-ranking-charts :company="$company" />
-            <x-module-socials />
             <x-module-matchbird-partners />
         </x-layout-sidebar>
     </x-container>
