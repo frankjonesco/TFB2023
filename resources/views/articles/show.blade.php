@@ -29,7 +29,6 @@
             <x-module-articles-tabbed-list />
             <x-module-socials />
             <x-module-articles-features />
-            <x-module-articles-tabbed-list />
             <x-module-subscribe />
         </x-layout-sidebar>
     </x-container>

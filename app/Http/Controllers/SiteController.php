@@ -15,6 +15,7 @@ class SiteController extends Controller
 {
     // Show homepage
     public function home(Site $site){
+
        
 
         $slide_table_articles['first'] = Article::latest()->skip(17)->take(4)->get();

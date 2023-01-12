@@ -8,6 +8,7 @@ use App\Models\Ranking;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Stevebauman\Location\Location;
 use Illuminate\Support\Facades\Config;
 
     // FORMATTERS
@@ -117,6 +118,67 @@ use Illuminate\Support\Facades\Config;
     
 
     // FETCHERS
+
+
+    function get_client_ip()
+    {
+        $ipaddress = '';
+        if (getenv('HTTP_CLIENT_IP'))
+            $ipaddress = getenv('HTTP_CLIENT_IP');
+        else if (getenv('HTTP_X_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+        else if (getenv('HTTP_X_FORWARDED'))
+            $ipaddress = getenv('HTTP_X_FORWARDED');
+        else if (getenv('HTTP_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_FORWARDED_FOR');
+        else if (getenv('HTTP_FORWARDED'))
+            $ipaddress = getenv('HTTP_FORWARDED');
+        else if (getenv('REMOTE_ADDR'))
+            $ipaddress = getenv('REMOTE_ADDR');
+        else
+            $ipaddress = 'UNKNOWN';
+        return $ipaddress;
+    }
+
+    function runTest(){
+        // The ip address to query
+        $ip = get_client_ip(); 
+
+        // Test ip address in Prague
+        // $ip = "194.228.235.234";
+
+        $query = @unserialize(file_get_contents('http://ip-api.com/php/' . $ip));
+
+        if ($query && $query['status'] == 'success')
+        {
+            //get Coords
+            $lat = $query['lat'];
+            $lon = $query['lon'];
+
+            $url = "http://api.weatherapi.com/v1/current.json?key=924edc6c3de146fabf6111133231201&q=".$ip."&aqi=no";
+            $djson = file_get_contents($url);
+
+            return json_decode($djson);
+        }
+        else
+        {
+            $url = "http://api.weatherapi.com/v1/current.json?key=924edc6c3sdde146fabf6111133231201&q=New%20York&aqi=no";
+            // $djson = file_get_contents($url);
+
+            // return json_decode($djson); 
+        }
+    }
+
+    // Get location 
+    if(!function_exists('getLocation')) {
+        function getLocation(){           
+            // $ip = '103.239.147.187'; //For static IP address get
+            $ip = request()->ip(); //Dynamic IP address get
+            
+            $data = \Location::get($ip);                
+            return compact('data');
+        }
+    }
 
     // Get random color
     if(!function_exists('randomColor')) {

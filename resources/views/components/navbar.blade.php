@@ -1,8 +1,53 @@
+
+
 <section id="topNav">
     <span class="weather pre-navbar-item">
-        <i class="fa-solid fa-cloud-moon-rain"></i>
-        <span class="temperature">15.1</span>
-        Düsseldorf
+        
+        @if(request()->ip() != '127.0.0.1')
+            @php
+                $icon = 'fa-cloud-sun';
+
+                if(runTest()->current->condition->text === 'Light rain'){
+                    $icon = 'fa-cloud-rain';
+                    if(runTest()->current->is_day === false){
+                        $icon = 'fa-cloud-moon-rain';
+                    }
+                }elseif(runTest()->current->condition->text === 'Light sleet'){
+                    $icon = 'fa-cloud-rain';
+                    if(runTest()->current->is_day === false){
+                        $icon = 'fa-cloud-moon-rain';
+                    }
+                }elseif(runTest()->current->condition->text === 'Moderate rain at times'){
+                    $icon = 'fa-cloud-rain';
+                    if(runTest()->current->is_day === false){
+                        $icon = 'fa-cloud-moon-rain';
+                    }
+                }elseif(runTest()->current->condition->text === 'Partly cloudy'){
+                    $icon = 'fa-cloud';
+                    if(runTest()->current->is_day === false){
+                        $icon = 'fa-cloud-moon';
+                    }
+                }
+            @endphp
+
+            <i class="fa-solid {{$icon}} mr-1.5"></i>
+        
+        
+            <span class="temperature">
+                @php
+                    echo number_format(runTest()->current->temp_c, 1, '.', ',');
+                @endphp
+            </span>
+            @php
+                echo runTest()->location->name;
+            @endphp
+        @else
+            <i class="fa-solid fa-cloud-moon-rain"></i>
+            <span class="temperature">
+                15.1
+            </span>
+            Berlin
+        @endif
     </span>
 
     <span class="date pre-navbar-item">
@@ -66,27 +111,7 @@
             @endforeach
         </div>
 
-        <nav id="primaryNav">
-            <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
-                <ul class="flex flex-col space-x-8 rounded-lg md:flex-row">
-                    <li>
-                        <a href="{{url('news')}}" aria-current="page" class="no-underline">News</a>
-                    </li>
-                    <li>
-                        <a href="{{url('rankings')}}" aria-current="page" class="no-underline">Ranking</a>
-                    </li>
-                    <li>
-                        <a href="{{url('sectors')}}" aria-current="page" class="no-underline">Sectors</a>
-                    </li>
-                    <li>
-                        <a href="{{url('industries')}}" aria-current="page" class="no-underline">Industries</a>
-                    </li>
-                    <li>
-                        <a href="{{url('partners')}}" aria-current="page" class="no-underline">TOFAM Partners</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        
     </div>
     <div class="flex flex-col justify-center items-end">
 
@@ -99,13 +124,13 @@
             <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
                 <ul class="flex flex-col space-x-4 rounded-lg md:flex-row">
                     <li>
-                        <a href="{{url('/')}}" aria-current="page" class="no-underline">Home</a>
+                        <a href="{{url('/')}}" aria-current="page" class="no-underline hover-underline-small">Home</a>
                     </li>
                     <li>
-                        <a href="{{url('about')}}" class="no-underline">About</a>
+                        <a href="{{url('about')}}" class="no-underline hover-underline-small">About</a>
                     </li>
                     <li>
-                        <a href="{{url('contact')}}" class="no-underline">Contact</a>
+                        <a href="{{url('contact')}}" class="no-underline hover-underline-small">Contact</a>
                     </li>
 
                     {{-- If user is logged in --}}
@@ -113,40 +138,103 @@
 
                         @if(auth()->user()->user_type_id > 1)
                             <li>
-                                <a href="{{url('dashboard')}}" class="no-underline">Dashboard</a>
+                                <a href="{{url('dashboard')}}" class="no-underline hover-underline-small">Dashboard</a>
                             </li>
                         @else
                             <li>
-                                <a href="{{url('profile')}}" class="no-underline">Profile</a>
+                                <a href="{{url('profile')}}" class="no-underline hover-underline-small">Profile</a>
                             </li>
                         @endif
                         
                         <li>
                             <form action="{{url('logout')}}" class="inline" method="POST">
                                 @csrf
-                                <a href="#" onclick="this.parentNode.submit()" class="bg-transparent block py-2 pl-3 pr-4 rounded md:p-0 no-underline">Logout</a>
+                                <a href="#" onclick="this.parentNode.submit()" class="bg-transparent block py-2 pl-3 pr-4 rounded md:p-0 no-underline hover-underline-small">Logout</a>
                             </form>
                         </li>
 
                     {{-- If user is not logged in --}}
                     @else
                         <li>
-                            <a href="{{url('login')}}" class="no-underline">Login</a>
+                            <a href="{{url('login')}}" class="no-underline hover-underline-small">Login</a>
                         </li>
                         <li>
-                            <a href="{{url('signup')}}" class="no-underline">Sign up</a>
+                            <a href="{{url('signup')}}" class="no-underline hover-underline-small">Sign up</a>
                         </li>
                     @endauth
                 </ul>
             </div>
         </nav>
 
+        
         <a href="https://www.bitrock.partners/" class="flex items-center" target="_blank">
             <img src="{{asset('images/bitrock-strip-1.jpg')}}" alt="Bitrock - Digital Patners" width="576" class="border border-zinc-400 opacity-75" />
         </a>
+       
     </div>
+
+    
 </section>
 
 
+<div class="w-full bg-slate-800 mx-auto" style="position: sticky !important; top: 0; z-index:9999;">
+    <nav id="primaryNav">
+        <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
+            <ul class="flex flex-col space-x-0 rounded-lg md:flex-row color-nav">
+                <li class="!pr-0">
+                    <a 
+                        href="{{url('news')}}" 
+                        aria-current="page" 
+                        class="hover-underline border-t-pink-600"
+                        style="background-size: 100% 200%; background-image: linear-gradient(to bottom, transparent 50%, rgb(219 39 119) 50%);"
+                        >
+                            News
+                        </a>
+                </li>
+                <li>
+                    <a
+                        href="{{url('rankings')}}"
+                        aria-current="page"
+                        class="hover-underline border-t-sky-600"
+                        style="background-size: 100% 200%; background-image: linear-gradient(to bottom, transparent 50%, rgb(2 132 199) 50%);"
+                        >
+                            Ranking
+                        </a>
+                </li>
+                <li>
+                    <a 
+                    href="{{url('sectors')}}" 
+                    aria-current="page" 
+                    class="hover-underline border-t-orange-600"
+                    style="background-size: 100% 200%; background-image: linear-gradient(to bottom, transparent 50%, rgb(234 88 12) 50%);"
+                    >
+                        Sectors
+                    </a>
+                </li>
+                <li>
+                    <a
+                    href="{{url('industries')}}"
+                    aria-current="page"
+                    class="hover-underline border-t-emerald-600"
+                    style="background-size: 100% 200%; background-image: linear-gradient(to bottom, transparent 50%, rgb(5 150 105) 50%);"
+                    >
+                        Industries
+                    </a>
+                </li>
+                <li>
+                    <a 
+                    href="{{url('partners')}}" 
+                    aria-current="page" 
+                    class="hover-underline border-t-purple-600"
+                    style="background-size: 100% 200%; background-image: linear-gradient(to bottom, transparent 50%, rgb(147 51 234) 50%);"
+                    >
+                        TOFAM Partners
+                    </a>
+                </li>
+                <li class="grow border-t border-t-gray-600"></li>
+            </ul>
+        </div>
+    </nav>
+</div>
 
 

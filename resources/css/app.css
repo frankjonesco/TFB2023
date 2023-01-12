@@ -497,7 +497,7 @@
     }
 
     section#topNav a{
-        @apply text-zinc-500;
+        @apply text-zinc-600;
     }
 
     #topNav>span{
@@ -536,11 +536,10 @@
 
     section#navigation{
         @apply flex;
-        @apply px-8;
-        @apply py-6;
+        @apply px-6;
+        @apply py-5;
         @apply bg-slate-900;
-        @apply border-b;
-        @apply border-zinc-700;
+
     }
 
     section#navigation>div{
@@ -559,15 +558,94 @@
         @apply uppercase;
         @apply font-medium;
         @apply text-zinc-100;
+        -webkit-transition: background-position .25s;
+        -moz-transition: background-position .25s;
+        transition: background-position .25s;
     }
+
+    nav ul>li>a:hover,
+    nav ul>li>form>a:hover{
+        background-position: 0 -100%;
+    }
+
+
+    nav ul.color-nav>li>a,
+    nav ul.color-nav>li>form>a{
+        @apply !m-0;
+        @apply no-underline;
+        @apply p-4;
+        @apply py-5;
+        @apply text-white;
+        @apply font-bold;
+        @apply text-sm;
+        @apply border-t;
+        @apply rounded-none;
+    }
+
+    nav ul.color-nav>li>a::before {
+        content: "";
+        @apply w-full;
+        @apply h-full;
+        @apply bg-red-100;
+      }
 
     nav#primaryNav{
 
     }
 
     nav#secondaryNav{
-        @apply pb-6;
+        @apply pb-4;
         @apply text-xs;
+    }
+
+    .hover-underline {
+        display: inline-block;
+        position: relative;
+        color: #0087ca;
+    }
+  
+    .hover-underline::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 10px;
+        left: 0;
+        background-color: #fff;
+        transform-origin: bottom center;
+        transition: transform 0.5s ease-out;
+        opacity: 0.25;
+    }
+  
+    .hover-underline:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom center;
+    }
+
+
+    .hover-underline-small {
+        display: inline-block;
+        position: relative;
+    }
+  
+    .hover-underline-small::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 0.5px;
+        bottom: -5px;
+        left: 0;
+        background-color: #fff;
+        transform-origin: bottom center;
+        transition: transform 0.25s ease-out;
+        opacity: 0.7;
+    }
+  
+    .hover-underline-small:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom center;
     }
 
 

@@ -40,7 +40,7 @@
     </script>
 
 </head>
-<body style="background-image:url('{{asset('images/bg.png')}}')';" class="bg-repeat bg-cover">
+<body style="background-image:url('{{asset('images/bg.png')}}');" class="bg-repeat bg-cover">
     
     <div class="flex flex-col h-screen">
         <x-navbar />
