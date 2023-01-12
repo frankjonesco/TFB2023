@@ -8,7 +8,6 @@ use App\Models\Ranking;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
-use Stevebauman\Location\Location;
 use Illuminate\Support\Facades\Config;
 
     // FORMATTERS
@@ -169,16 +168,7 @@ use Illuminate\Support\Facades\Config;
         }
     }
 
-    // Get location 
-    if(!function_exists('getLocation')) {
-        function getLocation(){           
-            // $ip = '103.239.147.187'; //For static IP address get
-            $ip = request()->ip(); //Dynamic IP address get
-            
-            $data = \Location::get($ip);                
-            return compact('data');
-        }
-    }
+
 
     // Get random color
     if(!function_exists('randomColor')) {

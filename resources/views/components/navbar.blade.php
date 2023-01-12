@@ -56,9 +56,9 @@
 
     <span class="links pre-navbar-item">
         <ul>
-            <li><a href="{{url('signup')}}" class="no-underline">Sign up / Register</a></li>
-            <li><a href="{{url('blog')}}" class="no-underline">Blog</a></li>
-            <li><a href="{{url('forum')}}" class="no-underline">Forum</a></li>
+            <li><a href="{{url('signup')}}" class="no-underline hover:text-zinc-100">Sign up / Register</a></li>
+            <li><a href="{{url('blog')}}" class="no-underline hover:text-zinc-100">Blog</a></li>
+            <li><a href="{{url('forum')}}" class="no-underline hover:text-zinc-100">Forum</a></li>
         </ul>
     </span>
 
@@ -66,32 +66,32 @@
         <ul>
             <li class="facebook">
                 <a href="https://www.facebook.com/Matchbird-GmbH-1050852385302281" target="_blank">
-                    <i class="fab fa-center fa-facebook-f"></i>
+                    <i class="fab fa-center fa-facebook-f hover:text-zinc-100"></i>
                 </a>
             </li>
             <li class="twitter">
                 <a href="https://twitter.com/matchbirdgmbh" target="_blank">
-                    <i class="fa-brands fa-center fa-twitter"></i>
+                    <i class="fa-brands fa-center fa-twitter hover:text-zinc-100"></i>
                 </a>
             </li>
             <li class="instagram">
                 <a href="https://www.instagram.com/matchbird.gmbh/" target="_blank">
-                    <i class="fa-brands fa-center fa-instagram"></i>
+                    <i class="fa-brands fa-center fa-instagram hover:text-zinc-100"></i>
                 </a>
             </li>
             <li class="linkedin">
                 <a href="https://www.linkedin.com/company/matchbird" target="_blank">
-                    <i class="fa-brands fa-center fa-linkedin-in"></i>
+                    <i class="fa-brands fa-center fa-linkedin-in hover:text-zinc-100"></i>
                 </a>
             </li>
             <li class="xing">
                 <a href="https://www.xing.com/pages/matchbirdgmbh" target="_blank">
-                    <i class="fa-brands fa-center fa-xing"></i>
+                    <i class="fa-brands fa-center fa-xing hover:text-zinc-100""></i>
                 </a>
             </li>
             <li class="youtube">
                 <a href="https://www.youtube.com/channel/UC4GnbbnwvAnl80_cVXJRuMA" target="_blank">
-                    <i class="fa-brands fa-center fa-youtube"></i>
+                    <i class="fa-brands fa-center fa-youtube hover:text-zinc-100"></i>
                 </a>
             </li>
         </ul>
@@ -231,7 +231,8 @@
                         TOFAM Partners
                     </a>
                 </li>
-                <li class="grow border-t border-t-gray-600"></li>
+                <li class="grow border-t border-t-gray-600 text-right text-stone-300 pt-4 text-sm italic pr-6">
+                </li>
             </ul>
         </div>
     </nav>

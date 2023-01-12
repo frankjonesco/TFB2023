@@ -576,8 +576,7 @@
         @apply p-4;
         @apply py-5;
         @apply text-white;
-        @apply font-bold;
-        @apply text-sm;
+        @apply text-base;
         @apply border-t;
         @apply rounded-none;
     }
